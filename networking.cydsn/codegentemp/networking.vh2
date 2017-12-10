@@ -2,7 +2,7 @@
 --	Conversion of networking.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Dec 10 15:09:42 2017
+--	Sun Dec 10 16:17:13 2017
 --
 
 USE cypress.cypress.all;
@@ -729,9 +729,9 @@ clock_1:cy_clock_v1_0
 		po=>open);
 Rx:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"264be2d3-9481-494b-8d9c-c1905a45e9cc",
-		drive_mode=>"010",
+		drive_mode=>"011",
 		ibuf_enabled=>"1",
-		init_dr_st=>"1",
+		init_dr_st=>"0",
 		input_sync=>"0",
 		input_clk_en=>'0',
 		input_sync_mode=>"0",

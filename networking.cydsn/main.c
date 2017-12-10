@@ -14,6 +14,11 @@ int InterruptCnt;
 /*******************************************************************************
 * Define Interrupt service routine and allocate an vector to the Interrupt
 ********************************************************************************/
+
+typedef enum state {IDLE, COLLISION, BUSY_HIGH, BUSY_LOW} State;
+State cur_state = IDLE;
+int check_for_low = 0;
+
 CY_ISR(InterruptHandler)
 {
 	/* Read Status register in order to clear the sticky Terminal Count (TC) bit 
@@ -22,18 +27,33 @@ CY_ISR(InterruptHandler)
 	 */
    	Timer_1_STATUS;
     
-	/* Increment the Counter to indicate the keep track of the number of 
-     * interrupts received */
-    InterruptCnt++;    
+    uint8 recieve = Rx_Read();
+    if (recieve == 0){
+        cur_state = IDLE;
+    } else {
+        cur_state = COLLISION;
+    }
 }
 CY_ISR(rise)
 {
-
+    if (check_for_low == 0){
+        Timer_1_WritePeriod(60);
+        Timer_1_WriteCounter(59);
+        check_for_low = 1;
+        cur_state = BUSY_HIGH;
+        Timer_1_Start();
+    }
 }
  
 CY_ISR(fall)
 {
-
+    if (check_for_low == 1){
+        Timer_1_WritePeriod(770);
+        Timer_1_WriteCounter(769);
+        check_for_low = 0;
+        cur_state = BUSY_LOW;
+        Timer_1_Start();
+    }
 }
 int main(void)
 {
@@ -42,8 +62,6 @@ int main(void)
     InterruptCnt=0;
     LCD_Start();
     
-    //isr_1_Start();
-    //isr_2_Start();
     isr_1_StartEx(rise);
     isr_2_StartEx(fall);
 
@@ -51,7 +69,27 @@ int main(void)
 
     for(;;)
     {
-        /* Place your application code here. */
+        switch(cur_state){
+            case IDLE :;
+                LCD_Position(0,0);
+                LCD_PrintString("      IDLE      ");
+            break;
+            
+            case BUSY_HIGH:;
+                LCD_Position(0,0);
+                LCD_PrintString("      BUSY      ");
+            break;
+            
+            case BUSY_LOW:;
+                LCD_Position(0,0);
+                LCD_PrintString("      BUSY      ");
+            break;
+            
+            case COLLISION:;
+                LCD_Position(0,0);
+                LCD_PrintString("   COLLISION    ");
+            break;
+        }
     }
 }
 
