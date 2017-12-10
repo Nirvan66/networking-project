@@ -1,6 +1,6 @@
 // ======================================================================
 // networking.v generated from TopDesign.cysch
-// 12/10/2017 at 15:09
+// 12/10/2017 at 16:17
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -452,9 +452,9 @@ module top ;
 
 	cy_psoc3_pins_v1_10
 		#(.id("264be2d3-9481-494b-8d9c-c1905a45e9cc"),
-		  .drive_mode(3'b010),
+		  .drive_mode(3'b011),
 		  .ibuf_enabled(1'b1),
-		  .init_dr_st(1'b1),
+		  .init_dr_st(1'b0),
 		  .input_clk_en(0),
 		  .input_sync(1'b0),
 		  .input_sync_mode(1'b0),

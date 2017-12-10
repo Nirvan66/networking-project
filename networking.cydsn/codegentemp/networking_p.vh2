@@ -1,5 +1,5 @@
 -- Project:   networking
--- Generated: 12/10/2017 15:09:43
+-- Generated: 12/10/2017 16:17:13
 -- PSoC Creator  4.1 Update 1
 
 ENTITY networking IS
@@ -121,6 +121,8 @@ ARCHITECTURE __DEFAULT__ OF networking IS
     ATTRIBUTE Location OF \LCD:LCDPort(5)\ : LABEL IS "P2[5]";
     ATTRIBUTE lib_model OF \LCD:LCDPort(6)\ : LABEL IS "iocell7";
     ATTRIBUTE Location OF \LCD:LCDPort(6)\ : LABEL IS "P2[6]";
+    ATTRIBUTE lib_model OF Rx(0) : LABEL IS "iocell8";
+    ATTRIBUTE Location OF Rx(0) : LABEL IS "P12[4]";
     ATTRIBUTE lib_model OF \Timer_1:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF \Timer_1:TimerUDB:status_tc\ : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF Net_66 : LABEL IS "macrocell3";
@@ -676,10 +678,10 @@ BEGIN
 
     Rx:logicalport
         GENERIC MAP(
-            drive_mode => "010",
+            drive_mode => "011",
             ibuf_enabled => "1",
             id => "264be2d3-9481-494b-8d9c-c1905a45e9cc",
-            init_dr_st => "1",
+            init_dr_st => "0",
             input_buffer_sel => "00",
             input_clk_en => 0,
             input_sync => "0",

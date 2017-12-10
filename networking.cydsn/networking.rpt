@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.147ms
+Loading plugins phase: Elapsed time ==> 0s.125ms
 <CYPRESSTAG name="CyDsfit arguments...">
-cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\networking.cyprj -d CY8C5868AXI-LP035 -s C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
+cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\networking.cyprj -d CY8C5868AXI-LP035 -s C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
 </CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.259ms
+Elaboration phase: Elapsed time ==> 1s.047ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.037ms
+HDL generation phase: Elapsed time ==> 0s.031ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -25,23 +25,23 @@ HDL generation phase: Elapsed time ==> 0s.037ms
 ======================================================================
 Compiling:  networking.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 networking.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 networking.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  networking.v
 Program  :   C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\bin\warp.exe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 networking.v -verilog
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 networking.v -verilog
 ======================================================================
 
 ======================================================================
 Compiling:  networking.v
 Program  :   vlogfe
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 -verilog networking.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 -verilog networking.v
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Sun Dec 10 15:09:42 2017
+Sun Dec 10 16:17:12 2017
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 networking.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Sun Dec 10 15:09:42 2017
+Sun Dec 10 16:17:12 2017
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_sync_v1_0\cy_sync_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\cypress.v'
@@ -90,11 +90,11 @@ vlogfe:  No errors.
 ======================================================================
 Compiling:  networking.v
 Program  :   tovif
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 -verilog networking.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 -verilog networking.v
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Sun Dec 10 15:09:42 2017
+Sun Dec 10 16:17:12 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -105,8 +105,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\codegentemp\networking.ctl'.
-Linking 'C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\codegentemp\networking.v'.
+Linking 'C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\codegentemp\networking.ctl'.
+Linking 'C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\codegentemp\networking.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_sync_v1_0\cy_sync_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\cypress.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
@@ -124,11 +124,11 @@ tovif:  No errors.
 ======================================================================
 Compiling:  networking.v
 Program  :   topld
-Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 -verilog networking.v
+Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 -verilog networking.v
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Sun Dec 10 15:09:42 2017
+Sun Dec 10 16:17:13 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -139,8 +139,8 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\c
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\stdlogic\mod_cnst.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\stdlogic\mod_mthv.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\stdlogic\mod_genv.vif'.
-Linking 'C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\codegentemp\networking.ctl'.
-Linking 'C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\codegentemp\networking.v'.
+Linking 'C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\codegentemp\networking.ctl'.
+Linking 'C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\codegentemp\networking.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\CyPrimitives\cyprimitives.cylib\cy_sync_v1_0\cy_sync_v1_0.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\cypress.v'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\lib\common\cy_psoc3_inc.v'.
@@ -300,16 +300,16 @@ topld:  No errors.
 
 CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\warp\bin\warp.exe
-Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya "-.fftprj=C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\networking.cyprj" -dcpsoc3 networking.v -verilog
+Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\networking.cyprj -dcpsoc3 networking.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.838ms
+Warp synthesis phase: Elapsed time ==> 0s.547ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.1.0.3210, Family: PSoC3, Started at: Sunday, 10 December 2017 15:09:42
-Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\networking.cyprj -d CY8C5868AXI-LP035 networking.v -verilog
+cyp3fit: V4.1.0.3210, Family: PSoC3, Started at: Sunday, 10 December 2017 16:17:13
+Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\schledererj\sdp\github\networking-project\networking.cydsn\networking.cyprj -d CY8C5868AXI-LP035 networking.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.008ms
+Design parsing phase: Elapsed time ==> 0s.015ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -331,8 +331,6 @@ Done removing unused cells.
         EnableIn: Constant 1 was determined to be synchronous to ClockIn
         ClockOut: clock_1, EnableOut: Constant 1
 </CYPRESSTAG>
-ADD: pft.M0040: information: The following 1 pin(s) will be assigned a location by the fitter: Rx(0)
-
 
 Removing unused cells resulting from optimization
 Done removing unused cells.
@@ -648,7 +646,7 @@ Design Equations
             Out Sync Option: AUTO
             Interrupt generated: False
             Interrupt mode: NONE
-            Drive mode: RES_PULL_UP
+            Drive mode: RES_PULL_DOWN
             VTrip: CMOS
             Slew: FAST
             Input Sync needed: False
@@ -671,12 +669,15 @@ Design Equations
             SIO Multiplier Index: 0
             SIO RefSel: VCC_IO
             Required Capabilities: DIGITAL, ROUTABLE
-            Initial Value: 1
+            Initial Value: 0
             IO Voltage: 0
         PORT MAP (
             pa_out => Rx(0)__PA ,
             fb => Net_659 ,
             pad => Rx(0)_PAD );
+        Properties:
+        {
+        }
     </CYPRESSTAG>
     <CYPRESSTAG name="Macrocell listing" icon="FILE_RPT_EQUATION">
 
@@ -1009,11 +1010,12 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.150ms
-Tech Mapping phase: Elapsed time ==> 0s.215ms
+Technology Mapping: Elapsed time ==> 0s.078ms
+Tech Mapping phase: Elapsed time ==> 0s.140ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
+IO_4@[IOP=(12)][IoId=(4)] : Rx(0) (fixed)
 IO_0@[IOP=(2)][IoId=(0)] : \LCD:LCDPort(0)\ (fixed)
 IO_1@[IOP=(2)][IoId=(1)] : \LCD:LCDPort(1)\ (fixed)
 IO_2@[IOP=(2)][IoId=(2)] : \LCD:LCDPort(2)\ (fixed)
@@ -1021,7 +1023,7 @@ IO_3@[IOP=(2)][IoId=(3)] : \LCD:LCDPort(3)\ (fixed)
 IO_4@[IOP=(2)][IoId=(4)] : \LCD:LCDPort(4)\ (fixed)
 IO_5@[IOP=(2)][IoId=(5)] : \LCD:LCDPort(5)\ (fixed)
 IO_6@[IOP=(2)][IoId=(6)] : \LCD:LCDPort(6)\ (fixed)
-Analog Placement phase: Elapsed time ==> 0s.023ms
+Analog Placement phase: Elapsed time ==> 0s.015ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.000ms
@@ -1039,11 +1041,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.236ms
+Analog Code Generation phase: Elapsed time ==> 0s.234ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 0.6 sec.
+I2076: Total run-time: 0.5 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -1067,14 +1069,14 @@ PLD Packing Summary
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.001ms
+PLD Packing: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.014ms
+Partitioning: Elapsed time ==> 0s.031ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -1084,7 +1086,7 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :          3 :       2.00 :       2.00
+                 UDB :          4 :       1.50 :       1.50
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
@@ -1094,16 +1096,7 @@ Component Placement Details
 UDB [UDB=(0,0)] is empty.
 UDB [UDB=(0,1)] is empty.
 UDB [UDB=(0,2)] is empty.
-UDB [UDB=(0,3)] is empty.
-UDB [UDB=(0,4)] is empty.
-UDB [UDB=(0,5)] is empty.
-UDB [UDB=(1,0)] is empty.
-UDB [UDB=(1,1)] is empty.
-UDB [UDB=(1,2)] is empty.
-UDB [UDB=(1,3)] is empty.
-UDB [UDB=(1,4)] is empty.
-UDB [UDB=(1,5)] is empty.
-UDB [UDB=(2,0)] contents:
+UDB [UDB=(0,3)] contents:
 datapathcell: Name =\Timer_1:TimerUDB:sT24:timerdp:u0\
     PORT MAP (
         clock => Net_255 ,
@@ -1150,15 +1143,61 @@ synccell: Name =\Sync_1:genblk1[0]:INST\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(2,1)] is empty.
-UDB [UDB=(2,2)] is empty.
-UDB [UDB=(2,3)] is empty.
-UDB [UDB=(2,4)] is empty.
-UDB [UDB=(2,5)] is empty.
-UDB [UDB=(3,0)] contents:
-LAB@[UDB=(3,0)][LB=0] #macrocells=3, #inputs=4, #pterms=3
+UDB [UDB=(0,4)] contents:
+LAB@[UDB=(0,4)][LB=0] #macrocells=3, #inputs=2, #pterms=3
 {
-    [McSlotId=0]:     MacroCell: Name=\Timer_1:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=Net_71, Mode=(Combinatorial) @ [UDB=(0,4)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \EdgeDetect_rise:last\ * !Net_659
+        );
+        Output = Net_71 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\EdgeDetect_rise:last\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_3) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_659
+        );
+        Output = \EdgeDetect_rise:last\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=Net_66, Mode=(Combinatorial) @ [UDB=(0,4)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\EdgeDetect_rise:last\ * Net_659
+        );
+        Output = Net_66 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+UDB [UDB=(0,5)] is empty.
+UDB [UDB=(1,0)] is empty.
+UDB [UDB=(1,1)] is empty.
+UDB [UDB=(1,2)] is empty.
+UDB [UDB=(1,3)] contents:
+LAB@[UDB=(1,3)][LB=0] #macrocells=3, #inputs=4, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=\Timer_1:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(1,3)][LB=0][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
@@ -1171,7 +1210,7 @@ LAB@[UDB=(3,0)][LB=0] #macrocells=3, #inputs=4, #pterms=3
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\Timer_1:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=0][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\Timer_1:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(1,3)][LB=0][MC=1]
         Total # of inputs        : 3
         Total # of product terms : 1
             Clock Enable: True
@@ -1185,7 +1224,7 @@ LAB@[UDB=(3,0)][LB=0] #macrocells=3, #inputs=4, #pterms=3
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\Timer_1:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=2]
+    [McSlotId=2]:     MacroCell: Name=\Timer_1:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(1,3)][LB=0][MC=2]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -1279,53 +1318,7 @@ controlcell: Name =\Timer_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,1)] contents:
-LAB@[UDB=(3,1)][LB=0] #macrocells=3, #inputs=2, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=Net_71, Mode=(Combinatorial) @ [UDB=(3,1)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \EdgeDetect_rise:last\ * !Net_659
-        );
-        Output = Net_71 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\EdgeDetect_rise:last\, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_3) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_659
-        );
-        Output = \EdgeDetect_rise:last\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=Net_66, Mode=(Combinatorial) @ [UDB=(3,1)][LB=0][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\EdgeDetect_rise:last\ * Net_659
-        );
-        Output = Net_66 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
+UDB [UDB=(1,4)] contents:
 datapathcell: Name =\Timer_1:TimerUDB:sT24:timerdp:u2\
     PORT MAP (
         clock => Net_255 ,
@@ -1364,6 +1357,15 @@ datapathcell: Name =\Timer_1:TimerUDB:sT24:timerdp:u2\
     Clock Enable: True
     Previous in chain : \Timer_1:TimerUDB:sT24:timerdp:u1\
 
+UDB [UDB=(1,5)] is empty.
+UDB [UDB=(2,0)] is empty.
+UDB [UDB=(2,1)] is empty.
+UDB [UDB=(2,2)] is empty.
+UDB [UDB=(2,3)] is empty.
+UDB [UDB=(2,4)] is empty.
+UDB [UDB=(2,5)] is empty.
+UDB [UDB=(3,0)] is empty.
+UDB [UDB=(3,1)] is empty.
 UDB [UDB=(3,2)] is empty.
 UDB [UDB=(3,3)] is empty.
 UDB [UDB=(3,4)] is empty.
@@ -1398,47 +1400,6 @@ Intr container @ [IntrContainer=(0)]:
         }
 Drq container @ [DrqContainer=(0)]: empty
 Port 0 contains the following IO cells:
-[IoId=0]: 
-Pin : Name = Rx(0)
-    Attributes:
-        In Group/Port: True
-        In Sync Option: NOSYNC
-        Out Sync Option: AUTO
-        Interrupt generated: False
-        Interrupt mode: NONE
-        Drive mode: RES_PULL_UP
-        VTrip: CMOS
-        Slew: FAST
-        Input Sync needed: False
-        Output Sync needed: False
-        SC shield enabled: False
-        POR State: ANY
-        LCD Mode: COMMON
-        Register Mode: RegComb
-        CaSense Mode: NEITHER
-        Treat as pin: True
-        Is OE Registered: False
-        Uses Analog: False
-        Can contain Digital: True
-        Is SIO: False
-        SIO Output Buf: NONREGULATED
-        SIO Input Buf: SINGLE_ENDED
-        SIO HiFreq: LOW
-        SIO Hyst: DISABLED
-        SIO Vtrip: MULTIPLIER_0_5
-        SIO Multiplier Index: 0
-        SIO RefSel: VCC_IO
-        Required Capabilities: DIGITAL, ROUTABLE
-        Initial Value: 1
-        IO Voltage: 0
-    PORT MAP (
-        pa_out => Rx(0)__PA ,
-        fb => Net_659 ,
-        pad => Rx(0)_PAD );
-    Properties:
-    {
-    }
-
 Port 1 contains the following IO cells:
 Port 2 contains the following IO cells:
 [IoId=0]: 
@@ -1726,6 +1687,47 @@ Port 4 contains the following IO cells:
 Port 5 contains the following IO cells:
 Port 6 contains the following IO cells:
 Port 12 contains the following IO cells:
+[IoId=4]: 
+Pin : Name = Rx(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: RES_PULL_DOWN
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilities: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => Rx(0)__PA ,
+        fb => Net_659 ,
+        pad => Rx(0)_PAD );
+    Properties:
+    {
+    }
+
 Port 15 contains the following IO cells:
 ARM group 0: empty
 CAN group 0: empty
@@ -1786,8 +1788,6 @@ Port Configuration report
      |     |       | Interrupt |                  |                  | 
 Port | Pin | Fixed |      Type |       Drive Mode |             Name | Connections
 -----+-----+-------+-----------+------------------+------------------+------------
-   0 |   0 |       |      NONE |      RES_PULL_UP |            Rx(0) | FB(Net_659)
------+-----+-------+-----------+------------------+------------------+------------
    2 |   0 |     * |      NONE |         CMOS_OUT | \LCD:LCDPort(0)\ | 
      |   1 |     * |      NONE |         CMOS_OUT | \LCD:LCDPort(1)\ | 
      |   2 |     * |      NONE |         CMOS_OUT | \LCD:LCDPort(2)\ | 
@@ -1795,37 +1795,39 @@ Port | Pin | Fixed |      Type |       Drive Mode |             Name | Connectio
      |   4 |     * |      NONE |         CMOS_OUT | \LCD:LCDPort(4)\ | 
      |   5 |     * |      NONE |         CMOS_OUT | \LCD:LCDPort(5)\ | 
      |   6 |     * |      NONE |         CMOS_OUT | \LCD:LCDPort(6)\ | 
+-----+-----+-------+-----------+------------------+------------------+------------
+  12 |   4 |     * |      NONE |    RES_PULL_DOWN |            Rx(0) | FB(Net_659)
 ----------------------------------------------------------------------------------
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
 Digital component placer commit/Report: Elapsed time ==> 0s.015ms
-Digital Placement phase: Elapsed time ==> 0s.948ms
+Digital Placement phase: Elapsed time ==> 0s.812ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 "C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\bin/sjrouter.exe" --xml-path "C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\dev\psoc5/psoc5lp/route_arch-rrg.cydata" --vh2-path "networking_r.vh2" --pcf-path "networking.pco" --des-name "networking" --dsf-path "networking.dsf" --sdc-path "networking.sdc" --lib-path "networking_r.lib"
 Routing successful.
-Digital Routing phase: Elapsed time ==> 1s.225ms
+Digital Routing phase: Elapsed time ==> 1s.078ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.186ms
+Bitstream Generation phase: Elapsed time ==> 0s.203ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.035ms
+Bitstream Verification phase: Elapsed time ==> 0s.046ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in networking_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.238ms
+Static timing analysis phase: Elapsed time ==> 0s.281ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
-Data reporting phase: Elapsed time ==> 0s.001ms
+Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.181ms
+Design database save phase: Elapsed time ==> 0s.171ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 3s.316ms
+cydsfit: Elapsed time ==> 3s.031ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 3s.317ms
-API generation phase: Elapsed time ==> 0s.789ms
-Dependency generation phase: Elapsed time ==> 0s.011ms
-Cleanup phase: Elapsed time ==> 0s.001ms
+Fitter phase: Elapsed time ==> 3s.031ms
+API generation phase: Elapsed time ==> 0s.950ms
+Dependency generation phase: Elapsed time ==> 0s.031ms
+Cleanup phase: Elapsed time ==> 0s.000ms
