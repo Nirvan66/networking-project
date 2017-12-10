@@ -1,0 +1,702 @@
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.InterruptHandler,"ax",%progbits
+  20              		.align	2
+  21              		.global	InterruptHandler
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	InterruptHandler, %function
+  25              	InterruptHandler:
+  26              	.LFB63:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** int InterruptCnt;
+  14:main.c        **** /*******************************************************************************
+  15:main.c        **** * Define Interrupt service routine and allocate an vector to the Interrupt
+  16:main.c        **** ********************************************************************************/
+  17:main.c        **** CY_ISR(InterruptHandler)
+  18:main.c        **** {
+  28              		.loc 1 18 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  19:main.c        **** 	/* Read Status register in order to clear the sticky Terminal Count (TC) bit 
+  20:main.c        **** 	 * in the status register. Note that the function is not called, but rather 
+  21:main.c        **** 	 * the status is read directly.
+  22:main.c        **** 	 */
+  23:main.c        ****    	Timer_1_STATUS;
+  33              		.loc 1 23 0
+  34 0000 034B     		ldr	r3, .L2
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 2
+
+
+  35 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  24:main.c        ****     
+  25:main.c        **** 	/* Increment the Counter to indicate the keep track of the number of 
+  26:main.c        ****      * interrupts received */
+  27:main.c        ****     InterruptCnt++;    
+  36              		.loc 1 27 0
+  37 0004 034A     		ldr	r2, .L2+4
+  38 0006 1368     		ldr	r3, [r2]
+  39 0008 0133     		adds	r3, r3, #1
+  40 000a 1360     		str	r3, [r2]
+  41 000c 7047     		bx	lr
+  42              	.L3:
+  43 000e 00BF     		.align	2
+  44              	.L2:
+  45 0010 65650040 		.word	1073767781
+  46 0014 00000000 		.word	InterruptCnt
+  47              		.cfi_endproc
+  48              	.LFE63:
+  49              		.size	InterruptHandler, .-InterruptHandler
+  50              		.section	.text.main,"ax",%progbits
+  51              		.align	2
+  52              		.global	main
+  53              		.thumb
+  54              		.thumb_func
+  55              		.type	main, %function
+  56              	main:
+  57              	.LFB64:
+  28:main.c        **** }
+  29:main.c        **** int main(void)
+  30:main.c        **** {
+  58              		.loc 1 30 0
+  59              		.cfi_startproc
+  60              		@ Volatile: function does not return.
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 08B5     		push	{r3, lr}
+  64              		.cfi_def_cfa_offset 8
+  65              		.cfi_offset 3, -8
+  66              		.cfi_offset 14, -4
+  31:main.c        ****     CyGlobalIntEnable;
+  67              		.loc 1 31 0
+  68              		.syntax unified
+  69              	@ 31 "main.c" 1
+  70 0002 62B6     		CPSIE   i
+  71              	@ 0 "" 2
+  32:main.c        ****     TimerISR_StartEx(InterruptHandler);
+  72              		.loc 1 32 0
+  73              		.thumb
+  74              		.syntax unified
+  75 0004 0448     		ldr	r0, .L7
+  76 0006 FFF7FEFF 		bl	TimerISR_StartEx
+  77              	.LVL0:
+  33:main.c        ****     InterruptCnt=0;
+  78              		.loc 1 33 0
+  79 000a 0022     		movs	r2, #0
+  80 000c 034B     		ldr	r3, .L7+4
+  81 000e 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 3
+
+
+  34:main.c        ****     LCD_Start();
+  82              		.loc 1 34 0
+  83 0010 FFF7FEFF 		bl	LCD_Start
+  84              	.LVL1:
+  85              	.L5:
+  86 0014 FEE7     		b	.L5
+  87              	.L8:
+  88 0016 00BF     		.align	2
+  89              	.L7:
+  90 0018 00000000 		.word	InterruptHandler
+  91 001c 00000000 		.word	InterruptCnt
+  92              		.cfi_endproc
+  93              	.LFE64:
+  94              		.size	main, .-main
+  95              		.comm	InterruptCnt,4,4
+  96              		.text
+  97              	.Letext0:
+  98              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+  99              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+ 100              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 101              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 102              		.file 6 "Generated_Source\\PSoC5/TimerISR.h"
+ 103              		.file 7 "Generated_Source\\PSoC5/LCD.h"
+ 104              		.section	.debug_info,"",%progbits
+ 105              	.Ldebug_info0:
+ 106 0000 41010000 		.4byte	0x141
+ 107 0004 0400     		.2byte	0x4
+ 108 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 109 000a 04       		.byte	0x4
+ 110 000b 01       		.uleb128 0x1
+ 111 000c 4B000000 		.4byte	.LASF22
+ 112 0010 0C       		.byte	0xc
+ 113 0011 3F000000 		.4byte	.LASF23
+ 114 0015 7C010000 		.4byte	.LASF24
+ 115 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 116 001d 00000000 		.4byte	0
+ 117 0021 00000000 		.4byte	.Ldebug_line0
+ 118 0025 02       		.uleb128 0x2
+ 119 0026 01       		.byte	0x1
+ 120 0027 06       		.byte	0x6
+ 121 0028 54010000 		.4byte	.LASF0
+ 122 002c 02       		.uleb128 0x2
+ 123 002d 01       		.byte	0x1
+ 124 002e 08       		.byte	0x8
+ 125 002f 12010000 		.4byte	.LASF1
+ 126 0033 02       		.uleb128 0x2
+ 127 0034 02       		.byte	0x2
+ 128 0035 05       		.byte	0x5
+ 129 0036 DE010000 		.4byte	.LASF2
+ 130 003a 02       		.uleb128 0x2
+ 131 003b 02       		.byte	0x2
+ 132 003c 07       		.byte	0x7
+ 133 003d 0E000000 		.4byte	.LASF3
+ 134 0041 03       		.uleb128 0x3
+ 135 0042 6C010000 		.4byte	.LASF9
+ 136 0046 02       		.byte	0x2
+ 137 0047 3F       		.byte	0x3f
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 4
+
+
+ 138 0048 4C000000 		.4byte	0x4c
+ 139 004c 02       		.uleb128 0x2
+ 140 004d 04       		.byte	0x4
+ 141 004e 05       		.byte	0x5
+ 142 004f 3E010000 		.4byte	.LASF4
+ 143 0053 02       		.uleb128 0x2
+ 144 0054 04       		.byte	0x4
+ 145 0055 07       		.byte	0x7
+ 146 0056 DF000000 		.4byte	.LASF5
+ 147 005a 02       		.uleb128 0x2
+ 148 005b 08       		.byte	0x8
+ 149 005c 05       		.byte	0x5
+ 150 005d 00000000 		.4byte	.LASF6
+ 151 0061 02       		.uleb128 0x2
+ 152 0062 08       		.byte	0x8
+ 153 0063 07       		.byte	0x7
+ 154 0064 F1000000 		.4byte	.LASF7
+ 155 0068 04       		.uleb128 0x4
+ 156 0069 04       		.byte	0x4
+ 157 006a 05       		.byte	0x5
+ 158 006b 696E7400 		.ascii	"int\000"
+ 159 006f 02       		.uleb128 0x2
+ 160 0070 04       		.byte	0x4
+ 161 0071 07       		.byte	0x7
+ 162 0072 21000000 		.4byte	.LASF8
+ 163 0076 03       		.uleb128 0x3
+ 164 0077 E8010000 		.4byte	.LASF10
+ 165 007b 03       		.byte	0x3
+ 166 007c 2C       		.byte	0x2c
+ 167 007d 41000000 		.4byte	0x41
+ 168 0081 05       		.uleb128 0x5
+ 169 0082 D9000000 		.4byte	.LASF11
+ 170 0086 04       		.byte	0x4
+ 171 0087 9201     		.2byte	0x192
+ 172 0089 2C000000 		.4byte	0x2c
+ 173 008d 02       		.uleb128 0x2
+ 174 008e 04       		.byte	0x4
+ 175 008f 04       		.byte	0x4
+ 176 0090 76010000 		.4byte	.LASF12
+ 177 0094 02       		.uleb128 0x2
+ 178 0095 08       		.byte	0x8
+ 179 0096 04       		.byte	0x4
+ 180 0097 37010000 		.4byte	.LASF13
+ 181 009b 02       		.uleb128 0x2
+ 182 009c 01       		.byte	0x1
+ 183 009d 08       		.byte	0x8
+ 184 009e 20010000 		.4byte	.LASF14
+ 185 00a2 05       		.uleb128 0x5
+ 186 00a3 32010000 		.4byte	.LASF15
+ 187 00a7 04       		.byte	0x4
+ 188 00a8 3C02     		.2byte	0x23c
+ 189 00aa AE000000 		.4byte	0xae
+ 190 00ae 06       		.uleb128 0x6
+ 191 00af 81000000 		.4byte	0x81
+ 192 00b3 02       		.uleb128 0x2
+ 193 00b4 08       		.byte	0x8
+ 194 00b5 04       		.byte	0x4
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 5
+
+
+ 195 00b6 60010000 		.4byte	.LASF16
+ 196 00ba 02       		.uleb128 0x2
+ 197 00bb 04       		.byte	0x4
+ 198 00bc 07       		.byte	0x7
+ 199 00bd 01020000 		.4byte	.LASF17
+ 200 00c1 07       		.uleb128 0x7
+ 201 00c2 F0010000 		.4byte	.LASF25
+ 202 00c6 01       		.byte	0x1
+ 203 00c7 11       		.byte	0x11
+ 204 00c8 00000000 		.4byte	.LFB63
+ 205 00cc 18000000 		.4byte	.LFE63-.LFB63
+ 206 00d0 01       		.uleb128 0x1
+ 207 00d1 9C       		.byte	0x9c
+ 208 00d2 08       		.uleb128 0x8
+ 209 00d3 46000000 		.4byte	.LASF26
+ 210 00d7 01       		.byte	0x1
+ 211 00d8 1D       		.byte	0x1d
+ 212 00d9 68000000 		.4byte	0x68
+ 213 00dd 00000000 		.4byte	.LFB64
+ 214 00e1 20000000 		.4byte	.LFE64-.LFB64
+ 215 00e5 01       		.uleb128 0x1
+ 216 00e6 9C       		.byte	0x9c
+ 217 00e7 0C010000 		.4byte	0x10c
+ 218 00eb 09       		.uleb128 0x9
+ 219 00ec 0A000000 		.4byte	.LVL0
+ 220 00f0 2E010000 		.4byte	0x12e
+ 221 00f4 02010000 		.4byte	0x102
+ 222 00f8 0A       		.uleb128 0xa
+ 223 00f9 01       		.uleb128 0x1
+ 224 00fa 50       		.byte	0x50
+ 225 00fb 05       		.uleb128 0x5
+ 226 00fc 03       		.byte	0x3
+ 227 00fd 00000000 		.4byte	InterruptHandler
+ 228 0101 00       		.byte	0
+ 229 0102 0B       		.uleb128 0xb
+ 230 0103 14000000 		.4byte	.LVL1
+ 231 0107 39010000 		.4byte	0x139
+ 232 010b 00       		.byte	0
+ 233 010c 0C       		.uleb128 0xc
+ 234 010d 47010000 		.4byte	.LASF18
+ 235 0111 05       		.byte	0x5
+ 236 0112 1207     		.2byte	0x712
+ 237 0114 18010000 		.4byte	0x118
+ 238 0118 06       		.uleb128 0x6
+ 239 0119 76000000 		.4byte	0x76
+ 240 011d 0D       		.uleb128 0xd
+ 241 011e 25010000 		.4byte	.LASF19
+ 242 0122 01       		.byte	0x1
+ 243 0123 0D       		.byte	0xd
+ 244 0124 68000000 		.4byte	0x68
+ 245 0128 05       		.uleb128 0x5
+ 246 0129 03       		.byte	0x3
+ 247 012a 00000000 		.4byte	InterruptCnt
+ 248 012e 0E       		.uleb128 0xe
+ 249 012f 2E000000 		.4byte	.LASF20
+ 250 0133 2E000000 		.4byte	.LASF20
+ 251 0137 06       		.byte	0x6
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 6
+
+
+ 252 0138 18       		.byte	0x18
+ 253 0139 0E       		.uleb128 0xe
+ 254 013a 08010000 		.4byte	.LASF21
+ 255 013e 08010000 		.4byte	.LASF21
+ 256 0142 07       		.byte	0x7
+ 257 0143 38       		.byte	0x38
+ 258 0144 00       		.byte	0
+ 259              		.section	.debug_abbrev,"",%progbits
+ 260              	.Ldebug_abbrev0:
+ 261 0000 01       		.uleb128 0x1
+ 262 0001 11       		.uleb128 0x11
+ 263 0002 01       		.byte	0x1
+ 264 0003 25       		.uleb128 0x25
+ 265 0004 0E       		.uleb128 0xe
+ 266 0005 13       		.uleb128 0x13
+ 267 0006 0B       		.uleb128 0xb
+ 268 0007 03       		.uleb128 0x3
+ 269 0008 0E       		.uleb128 0xe
+ 270 0009 1B       		.uleb128 0x1b
+ 271 000a 0E       		.uleb128 0xe
+ 272 000b 55       		.uleb128 0x55
+ 273 000c 17       		.uleb128 0x17
+ 274 000d 11       		.uleb128 0x11
+ 275 000e 01       		.uleb128 0x1
+ 276 000f 10       		.uleb128 0x10
+ 277 0010 17       		.uleb128 0x17
+ 278 0011 00       		.byte	0
+ 279 0012 00       		.byte	0
+ 280 0013 02       		.uleb128 0x2
+ 281 0014 24       		.uleb128 0x24
+ 282 0015 00       		.byte	0
+ 283 0016 0B       		.uleb128 0xb
+ 284 0017 0B       		.uleb128 0xb
+ 285 0018 3E       		.uleb128 0x3e
+ 286 0019 0B       		.uleb128 0xb
+ 287 001a 03       		.uleb128 0x3
+ 288 001b 0E       		.uleb128 0xe
+ 289 001c 00       		.byte	0
+ 290 001d 00       		.byte	0
+ 291 001e 03       		.uleb128 0x3
+ 292 001f 16       		.uleb128 0x16
+ 293 0020 00       		.byte	0
+ 294 0021 03       		.uleb128 0x3
+ 295 0022 0E       		.uleb128 0xe
+ 296 0023 3A       		.uleb128 0x3a
+ 297 0024 0B       		.uleb128 0xb
+ 298 0025 3B       		.uleb128 0x3b
+ 299 0026 0B       		.uleb128 0xb
+ 300 0027 49       		.uleb128 0x49
+ 301 0028 13       		.uleb128 0x13
+ 302 0029 00       		.byte	0
+ 303 002a 00       		.byte	0
+ 304 002b 04       		.uleb128 0x4
+ 305 002c 24       		.uleb128 0x24
+ 306 002d 00       		.byte	0
+ 307 002e 0B       		.uleb128 0xb
+ 308 002f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 7
+
+
+ 309 0030 3E       		.uleb128 0x3e
+ 310 0031 0B       		.uleb128 0xb
+ 311 0032 03       		.uleb128 0x3
+ 312 0033 08       		.uleb128 0x8
+ 313 0034 00       		.byte	0
+ 314 0035 00       		.byte	0
+ 315 0036 05       		.uleb128 0x5
+ 316 0037 16       		.uleb128 0x16
+ 317 0038 00       		.byte	0
+ 318 0039 03       		.uleb128 0x3
+ 319 003a 0E       		.uleb128 0xe
+ 320 003b 3A       		.uleb128 0x3a
+ 321 003c 0B       		.uleb128 0xb
+ 322 003d 3B       		.uleb128 0x3b
+ 323 003e 05       		.uleb128 0x5
+ 324 003f 49       		.uleb128 0x49
+ 325 0040 13       		.uleb128 0x13
+ 326 0041 00       		.byte	0
+ 327 0042 00       		.byte	0
+ 328 0043 06       		.uleb128 0x6
+ 329 0044 35       		.uleb128 0x35
+ 330 0045 00       		.byte	0
+ 331 0046 49       		.uleb128 0x49
+ 332 0047 13       		.uleb128 0x13
+ 333 0048 00       		.byte	0
+ 334 0049 00       		.byte	0
+ 335 004a 07       		.uleb128 0x7
+ 336 004b 2E       		.uleb128 0x2e
+ 337 004c 00       		.byte	0
+ 338 004d 3F       		.uleb128 0x3f
+ 339 004e 19       		.uleb128 0x19
+ 340 004f 03       		.uleb128 0x3
+ 341 0050 0E       		.uleb128 0xe
+ 342 0051 3A       		.uleb128 0x3a
+ 343 0052 0B       		.uleb128 0xb
+ 344 0053 3B       		.uleb128 0x3b
+ 345 0054 0B       		.uleb128 0xb
+ 346 0055 27       		.uleb128 0x27
+ 347 0056 19       		.uleb128 0x19
+ 348 0057 11       		.uleb128 0x11
+ 349 0058 01       		.uleb128 0x1
+ 350 0059 12       		.uleb128 0x12
+ 351 005a 06       		.uleb128 0x6
+ 352 005b 40       		.uleb128 0x40
+ 353 005c 18       		.uleb128 0x18
+ 354 005d 9742     		.uleb128 0x2117
+ 355 005f 19       		.uleb128 0x19
+ 356 0060 00       		.byte	0
+ 357 0061 00       		.byte	0
+ 358 0062 08       		.uleb128 0x8
+ 359 0063 2E       		.uleb128 0x2e
+ 360 0064 01       		.byte	0x1
+ 361 0065 3F       		.uleb128 0x3f
+ 362 0066 19       		.uleb128 0x19
+ 363 0067 03       		.uleb128 0x3
+ 364 0068 0E       		.uleb128 0xe
+ 365 0069 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 8
+
+
+ 366 006a 0B       		.uleb128 0xb
+ 367 006b 3B       		.uleb128 0x3b
+ 368 006c 0B       		.uleb128 0xb
+ 369 006d 27       		.uleb128 0x27
+ 370 006e 19       		.uleb128 0x19
+ 371 006f 49       		.uleb128 0x49
+ 372 0070 13       		.uleb128 0x13
+ 373 0071 8701     		.uleb128 0x87
+ 374 0073 19       		.uleb128 0x19
+ 375 0074 11       		.uleb128 0x11
+ 376 0075 01       		.uleb128 0x1
+ 377 0076 12       		.uleb128 0x12
+ 378 0077 06       		.uleb128 0x6
+ 379 0078 40       		.uleb128 0x40
+ 380 0079 18       		.uleb128 0x18
+ 381 007a 9742     		.uleb128 0x2117
+ 382 007c 19       		.uleb128 0x19
+ 383 007d 01       		.uleb128 0x1
+ 384 007e 13       		.uleb128 0x13
+ 385 007f 00       		.byte	0
+ 386 0080 00       		.byte	0
+ 387 0081 09       		.uleb128 0x9
+ 388 0082 898201   		.uleb128 0x4109
+ 389 0085 01       		.byte	0x1
+ 390 0086 11       		.uleb128 0x11
+ 391 0087 01       		.uleb128 0x1
+ 392 0088 31       		.uleb128 0x31
+ 393 0089 13       		.uleb128 0x13
+ 394 008a 01       		.uleb128 0x1
+ 395 008b 13       		.uleb128 0x13
+ 396 008c 00       		.byte	0
+ 397 008d 00       		.byte	0
+ 398 008e 0A       		.uleb128 0xa
+ 399 008f 8A8201   		.uleb128 0x410a
+ 400 0092 00       		.byte	0
+ 401 0093 02       		.uleb128 0x2
+ 402 0094 18       		.uleb128 0x18
+ 403 0095 9142     		.uleb128 0x2111
+ 404 0097 18       		.uleb128 0x18
+ 405 0098 00       		.byte	0
+ 406 0099 00       		.byte	0
+ 407 009a 0B       		.uleb128 0xb
+ 408 009b 898201   		.uleb128 0x4109
+ 409 009e 00       		.byte	0
+ 410 009f 11       		.uleb128 0x11
+ 411 00a0 01       		.uleb128 0x1
+ 412 00a1 31       		.uleb128 0x31
+ 413 00a2 13       		.uleb128 0x13
+ 414 00a3 00       		.byte	0
+ 415 00a4 00       		.byte	0
+ 416 00a5 0C       		.uleb128 0xc
+ 417 00a6 34       		.uleb128 0x34
+ 418 00a7 00       		.byte	0
+ 419 00a8 03       		.uleb128 0x3
+ 420 00a9 0E       		.uleb128 0xe
+ 421 00aa 3A       		.uleb128 0x3a
+ 422 00ab 0B       		.uleb128 0xb
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 9
+
+
+ 423 00ac 3B       		.uleb128 0x3b
+ 424 00ad 05       		.uleb128 0x5
+ 425 00ae 49       		.uleb128 0x49
+ 426 00af 13       		.uleb128 0x13
+ 427 00b0 3F       		.uleb128 0x3f
+ 428 00b1 19       		.uleb128 0x19
+ 429 00b2 3C       		.uleb128 0x3c
+ 430 00b3 19       		.uleb128 0x19
+ 431 00b4 00       		.byte	0
+ 432 00b5 00       		.byte	0
+ 433 00b6 0D       		.uleb128 0xd
+ 434 00b7 34       		.uleb128 0x34
+ 435 00b8 00       		.byte	0
+ 436 00b9 03       		.uleb128 0x3
+ 437 00ba 0E       		.uleb128 0xe
+ 438 00bb 3A       		.uleb128 0x3a
+ 439 00bc 0B       		.uleb128 0xb
+ 440 00bd 3B       		.uleb128 0x3b
+ 441 00be 0B       		.uleb128 0xb
+ 442 00bf 49       		.uleb128 0x49
+ 443 00c0 13       		.uleb128 0x13
+ 444 00c1 3F       		.uleb128 0x3f
+ 445 00c2 19       		.uleb128 0x19
+ 446 00c3 02       		.uleb128 0x2
+ 447 00c4 18       		.uleb128 0x18
+ 448 00c5 00       		.byte	0
+ 449 00c6 00       		.byte	0
+ 450 00c7 0E       		.uleb128 0xe
+ 451 00c8 2E       		.uleb128 0x2e
+ 452 00c9 00       		.byte	0
+ 453 00ca 3F       		.uleb128 0x3f
+ 454 00cb 19       		.uleb128 0x19
+ 455 00cc 3C       		.uleb128 0x3c
+ 456 00cd 19       		.uleb128 0x19
+ 457 00ce 6E       		.uleb128 0x6e
+ 458 00cf 0E       		.uleb128 0xe
+ 459 00d0 03       		.uleb128 0x3
+ 460 00d1 0E       		.uleb128 0xe
+ 461 00d2 3A       		.uleb128 0x3a
+ 462 00d3 0B       		.uleb128 0xb
+ 463 00d4 3B       		.uleb128 0x3b
+ 464 00d5 0B       		.uleb128 0xb
+ 465 00d6 00       		.byte	0
+ 466 00d7 00       		.byte	0
+ 467 00d8 00       		.byte	0
+ 468              		.section	.debug_aranges,"",%progbits
+ 469 0000 24000000 		.4byte	0x24
+ 470 0004 0200     		.2byte	0x2
+ 471 0006 00000000 		.4byte	.Ldebug_info0
+ 472 000a 04       		.byte	0x4
+ 473 000b 00       		.byte	0
+ 474 000c 0000     		.2byte	0
+ 475 000e 0000     		.2byte	0
+ 476 0010 00000000 		.4byte	.LFB63
+ 477 0014 18000000 		.4byte	.LFE63-.LFB63
+ 478 0018 00000000 		.4byte	.LFB64
+ 479 001c 20000000 		.4byte	.LFE64-.LFB64
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 10
+
+
+ 480 0020 00000000 		.4byte	0
+ 481 0024 00000000 		.4byte	0
+ 482              		.section	.debug_ranges,"",%progbits
+ 483              	.Ldebug_ranges0:
+ 484 0000 00000000 		.4byte	.LFB63
+ 485 0004 18000000 		.4byte	.LFE63
+ 486 0008 00000000 		.4byte	.LFB64
+ 487 000c 20000000 		.4byte	.LFE64
+ 488 0010 00000000 		.4byte	0
+ 489 0014 00000000 		.4byte	0
+ 490              		.section	.debug_line,"",%progbits
+ 491              	.Ldebug_line0:
+ 492 0000 8D010000 		.section	.debug_str,"MS",%progbits,1
+ 492      02006301 
+ 492      00000201 
+ 492      FB0E0D00 
+ 492      01010101 
+ 493              	.LASF6:
+ 494 0000 6C6F6E67 		.ascii	"long long int\000"
+ 494      206C6F6E 
+ 494      6720696E 
+ 494      7400
+ 495              	.LASF3:
+ 496 000e 73686F72 		.ascii	"short unsigned int\000"
+ 496      7420756E 
+ 496      7369676E 
+ 496      65642069 
+ 496      6E7400
+ 497              	.LASF8:
+ 498 0021 756E7369 		.ascii	"unsigned int\000"
+ 498      676E6564 
+ 498      20696E74 
+ 498      00
+ 499              	.LASF20:
+ 500 002e 54696D65 		.ascii	"TimerISR_StartEx\000"
+ 500      72495352 
+ 500      5F537461 
+ 500      72744578 
+ 500      00
+ 501              	.LASF23:
+ 502 003f 6D61696E 		.ascii	"main.c\000"
+ 502      2E6300
+ 503              	.LASF26:
+ 504 0046 6D61696E 		.ascii	"main\000"
+ 504      00
+ 505              	.LASF22:
+ 506 004b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 506      43313120 
+ 506      352E342E 
+ 506      31203230 
+ 506      31363036 
+ 507 007e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 507      20726576 
+ 507      6973696F 
+ 507      6E203233 
+ 507      37373135 
+ 508 00b1 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 11
+
+
+ 508      66756E63 
+ 508      74696F6E 
+ 508      2D736563 
+ 508      74696F6E 
+ 509              	.LASF11:
+ 510 00d9 75696E74 		.ascii	"uint8\000"
+ 510      3800
+ 511              	.LASF5:
+ 512 00df 6C6F6E67 		.ascii	"long unsigned int\000"
+ 512      20756E73 
+ 512      69676E65 
+ 512      6420696E 
+ 512      7400
+ 513              	.LASF7:
+ 514 00f1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 514      206C6F6E 
+ 514      6720756E 
+ 514      7369676E 
+ 514      65642069 
+ 515              	.LASF21:
+ 516 0108 4C43445F 		.ascii	"LCD_Start\000"
+ 516      53746172 
+ 516      7400
+ 517              	.LASF1:
+ 518 0112 756E7369 		.ascii	"unsigned char\000"
+ 518      676E6564 
+ 518      20636861 
+ 518      7200
+ 519              	.LASF14:
+ 520 0120 63686172 		.ascii	"char\000"
+ 520      00
+ 521              	.LASF19:
+ 522 0125 496E7465 		.ascii	"InterruptCnt\000"
+ 522      72727570 
+ 522      74436E74 
+ 522      00
+ 523              	.LASF15:
+ 524 0132 72656738 		.ascii	"reg8\000"
+ 524      00
+ 525              	.LASF13:
+ 526 0137 646F7562 		.ascii	"double\000"
+ 526      6C6500
+ 527              	.LASF4:
+ 528 013e 6C6F6E67 		.ascii	"long int\000"
+ 528      20696E74 
+ 528      00
+ 529              	.LASF18:
+ 530 0147 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 530      52784275 
+ 530      66666572 
+ 530      00
+ 531              	.LASF0:
+ 532 0154 7369676E 		.ascii	"signed char\000"
+ 532      65642063 
+ 532      68617200 
+ 533              	.LASF16:
+ 534 0160 6C6F6E67 		.ascii	"long double\000"
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccLjCH9W.s 			page 12
+
+
+ 534      20646F75 
+ 534      626C6500 
+ 535              	.LASF9:
+ 536 016c 5F5F696E 		.ascii	"__int32_t\000"
+ 536      7433325F 
+ 536      7400
+ 537              	.LASF12:
+ 538 0176 666C6F61 		.ascii	"float\000"
+ 538      7400
+ 539              	.LASF24:
+ 540 017c 433A5C55 		.ascii	"C:\\Users\\poonachatheethiran\\Documents\\PSoC Crea"
+ 540      73657273 
+ 540      5C706F6F 
+ 540      6E616368 
+ 540      61746865 
+ 541 01ab 746F725C 		.ascii	"tor\\networking\\networking-project\\networking.cyd"
+ 541      6E657477 
+ 541      6F726B69 
+ 541      6E675C6E 
+ 541      6574776F 
+ 542 01db 736E00   		.ascii	"sn\000"
+ 543              	.LASF2:
+ 544 01de 73686F72 		.ascii	"short int\000"
+ 544      7420696E 
+ 544      7400
+ 545              	.LASF10:
+ 546 01e8 696E7433 		.ascii	"int32_t\000"
+ 546      325F7400 
+ 547              	.LASF25:
+ 548 01f0 496E7465 		.ascii	"InterruptHandler\000"
+ 548      72727570 
+ 548      7448616E 
+ 548      646C6572 
+ 548      00
+ 549              	.LASF17:
+ 550 0201 73697A65 		.ascii	"sizetype\000"
+ 550      74797065 
+ 550      00
+ 551              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
