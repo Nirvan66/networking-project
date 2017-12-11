@@ -27,21 +27,21 @@ CY_ISR(InterruptHandler)
 	 */
    	Timer_1_STATUS;
     
-    uint8 recieve = Rx_Read();
-    if (recieve == 0){
+    if (check_for_low == 0){
         cur_state = IDLE;
     } else {
         cur_state = COLLISION;
     }
 }
+
 CY_ISR(rise)
 {
     if (check_for_low == 0){
         Timer_1_WritePeriod(60);
         Timer_1_WriteCounter(59);
+        Timer_1_Start();
         check_for_low = 1;
         cur_state = BUSY_HIGH;
-        Timer_1_Start();
     }
 }
  
@@ -50,11 +50,12 @@ CY_ISR(fall)
     if (check_for_low == 1){
         Timer_1_WritePeriod(770);
         Timer_1_WriteCounter(769);
+        Timer_1_Start();
         check_for_low = 0;
         cur_state = BUSY_LOW;
-        Timer_1_Start();
     }
 }
+
 int main(void)
 {
     CyGlobalIntEnable;
@@ -73,21 +74,37 @@ int main(void)
             case IDLE :;
                 LCD_Position(0,0);
                 LCD_PrintString("      IDLE      ");
+                
+                IDLE_Write(1);
+                BUSY_Write(!IDLE_Read());
+                COLLISION_Write(!IDLE_Read());
             break;
             
             case BUSY_HIGH:;
                 LCD_Position(0,0);
                 LCD_PrintString("      BUSY      ");
+                
+                BUSY_Write(1);
+                IDLE_Write(!BUSY_Read());
+                COLLISION_Write(!BUSY_Read());
             break;
             
             case BUSY_LOW:;
                 LCD_Position(0,0);
                 LCD_PrintString("      BUSY      ");
+                
+                BUSY_Write(1);
+                IDLE_Write(!BUSY_Read());
+                COLLISION_Write(!BUSY_Read());
             break;
             
             case COLLISION:;
                 LCD_Position(0,0);
                 LCD_PrintString("   COLLISION    ");
+                
+                COLLISION_Write(1);
+                IDLE_Write(!COLLISION_Read());
+                BUSY_Write(!COLLISION_Read());
             break;
         }
     }

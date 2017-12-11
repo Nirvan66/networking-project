@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
   28:Generated_Source\PSoC5/Timer_1.c **** 
   29:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
   30:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_Init
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 2
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 2
 
 
   31:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
   85:Generated_Source\PSoC5/Timer_1.c ****             #if (CY_PSOC5A)
   86:Generated_Source\PSoC5/Timer_1.c ****                 /* Set the default Run Mode of the Timer to Continuous */
   87:Generated_Source\PSoC5/Timer_1.c ****                 Timer_1_CONTROL2 |= Timer_1_CTRL_MODE_PULSEWIDTH;
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 3
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 3
 
 
   88:Generated_Source\PSoC5/Timer_1.c ****             #endif /* Set Continuous Run Mode in CONTROL2 for PSoC5A */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  142:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_interruptState = CyEnterCriticalSection();
  143:Generated_Source\PSoC5/Timer_1.c **** 
  144:Generated_Source\PSoC5/Timer_1.c ****         /* Use the interrupt output of the status register for IRQ output */
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 4
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 4
 
 
  145:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_STATUS_AUX_CTRL |= Timer_1_STATUS_ACTL_INT_EN_MASK;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
   36 0004 43F08003 		orr	r3, r3, #128
   37 0008 1370     		strb	r3, [r2]
   38 000a 7047     		bx	lr
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 5
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 5
 
 
   39              	.L3:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  230:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_Stop
  231:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
  232:Generated_Source\PSoC5/Timer_1.c **** *
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 6
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 6
 
 
  233:Generated_Source\PSoC5/Timer_1.c **** * Summary:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  261:Generated_Source\PSoC5/Timer_1.c **** 
  262:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
  263:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_SetInterruptMode
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 7
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 7
 
 
  264:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  293:Generated_Source\PSoC5/Timer_1.c **** *  void
  294:Generated_Source\PSoC5/Timer_1.c **** *
  295:Generated_Source\PSoC5/Timer_1.c **** * Return:
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 8
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 8
 
 
  296:Generated_Source\PSoC5/Timer_1.c **** *  void
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  326:Generated_Source\PSoC5/Timer_1.c **** * Return:
  327:Generated_Source\PSoC5/Timer_1.c **** *  The contents of the status register
  328:Generated_Source\PSoC5/Timer_1.c **** *
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 9
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 9
 
 
  329:Generated_Source\PSoC5/Timer_1.c **** * Side Effects:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  154              		.loc 1 357 0
  155              		.cfi_startproc
  156              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 10
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 10
 
 
  157              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  186 0000 014B     		ldr	r3, .L20
  187 0002 1870     		strb	r0, [r3]
  188 0004 7047     		bx	lr
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 11
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 11
 
 
  189              	.L21:
@@ -638,7 +638,7 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  402:Generated_Source\PSoC5/Timer_1.c **** *  The present value of the counter.
  403:Generated_Source\PSoC5/Timer_1.c **** *
  404:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
- 405:Generated_Source\PSoC5/Timer_1.c **** uint32 Timer_1_ReadPeriod(void) 
+ 405:Generated_Source\PSoC5/Timer_1.c **** uint16 Timer_1_ReadPeriod(void) 
  406:Generated_Source\PSoC5/Timer_1.c **** {
  204              		.loc 1 406 0
  205              		.cfi_startproc
@@ -646,24 +646,24 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  207              		@ frame_needed = 0, uses_anonymous_args = 0
  208              		@ link register save eliminated.
  407:Generated_Source\PSoC5/Timer_1.c ****    #if(Timer_1_UsingFixedFunction)
- 408:Generated_Source\PSoC5/Timer_1.c ****        return ((uint32)CY_GET_REG16(Timer_1_PERIOD_LSB_PTR));
+ 408:Generated_Source\PSoC5/Timer_1.c ****        return ((uint16)CY_GET_REG16(Timer_1_PERIOD_LSB_PTR));
  409:Generated_Source\PSoC5/Timer_1.c ****    #else
- 410:Generated_Source\PSoC5/Timer_1.c ****        return (CY_GET_REG24(Timer_1_PERIOD_LSB_PTR));
+ 410:Generated_Source\PSoC5/Timer_1.c ****        return (CY_GET_REG16(Timer_1_PERIOD_LSB_PTR));
  209              		.loc 1 410 0
- 210 0000 024B     		ldr	r3, .L23
- 211 0002 1868     		ldr	r0, [r3]	@ unaligned
+ 210 0000 014B     		ldr	r3, .L23
+ 211 0002 1888     		ldrh	r0, [r3]
  411:Generated_Source\PSoC5/Timer_1.c ****    #endif /* (Timer_1_UsingFixedFunction) */
  412:Generated_Source\PSoC5/Timer_1.c **** }
  212              		.loc 1 412 0
- 213 0004 20F07F40 		bic	r0, r0, #-16777216
- 214 0008 7047     		bx	lr
+ 213 0004 80B2     		uxth	r0, r0
+ 214 0006 7047     		bx	lr
  215              	.L24:
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 12
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 12
 
 
- 216 000a 00BF     		.align	2
+ 216              		.align	2
  217              	.L23:
- 218 000c 2A640040 		.word	1073767466
+ 218 0008 54680040 		.word	1073768532
  219              		.cfi_endproc
  220              	.LFE9:
  221              		.size	Timer_1_ReadPeriod, .-Timer_1_ReadPeriod
@@ -693,47 +693,41 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  428:Generated_Source\PSoC5/Timer_1.c **** *  void
  429:Generated_Source\PSoC5/Timer_1.c **** *
  430:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
- 431:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_WritePeriod(uint32 period) 
+ 431:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_WritePeriod(uint16 period) 
  432:Generated_Source\PSoC5/Timer_1.c **** {
  230              		.loc 1 432 0
  231              		.cfi_startproc
  232              		@ args = 0, pretend = 0, frame = 0
  233              		@ frame_needed = 0, uses_anonymous_args = 0
- 234              	.LVL2:
- 235 0000 08B5     		push	{r3, lr}
- 236              		.cfi_def_cfa_offset 8
- 237              		.cfi_offset 3, -8
- 238              		.cfi_offset 14, -4
+ 234              		@ link register save eliminated.
+ 235              	.LVL2:
  433:Generated_Source\PSoC5/Timer_1.c ****     #if(Timer_1_UsingFixedFunction)
  434:Generated_Source\PSoC5/Timer_1.c ****         uint16 period_temp = (uint16)period;
  435:Generated_Source\PSoC5/Timer_1.c ****         CY_SET_REG16(Timer_1_PERIOD_LSB_PTR, period_temp);
  436:Generated_Source\PSoC5/Timer_1.c ****     #else
- 437:Generated_Source\PSoC5/Timer_1.c ****         CY_SET_REG24(Timer_1_PERIOD_LSB_PTR, period);
- 239              		.loc 1 437 0
- 240 0002 0146     		mov	r1, r0
- 241 0004 0148     		ldr	r0, .L27
- 242              	.LVL3:
- 243 0006 FFF7FEFF 		bl	CySetReg24
- 244              	.LVL4:
- 245 000a 08BD     		pop	{r3, pc}
- 246              	.L28:
- 247              		.align	2
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 13
+ 437:Generated_Source\PSoC5/Timer_1.c ****         CY_SET_REG16(Timer_1_PERIOD_LSB_PTR, period);
+ 236              		.loc 1 437 0
+ 237 0000 014B     		ldr	r3, .L26
+ 238 0002 1880     		strh	r0, [r3]	@ movhi
+ 239 0004 7047     		bx	lr
+ 240              	.L27:
+ 241 0006 00BF     		.align	2
+ 242              	.L26:
+ 243 0008 54680040 		.word	1073768532
+ 244              		.cfi_endproc
+ 245              	.LFE10:
+ 246              		.size	Timer_1_WritePeriod, .-Timer_1_WritePeriod
+ 247              		.section	.text.Timer_1_ReadCapture,"ax",%progbits
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 13
 
 
- 248              	.L27:
- 249 000c 2A640040 		.word	1073767466
- 250              		.cfi_endproc
- 251              	.LFE10:
- 252              		.size	Timer_1_WritePeriod, .-Timer_1_WritePeriod
- 253              		.section	.text.Timer_1_ReadCapture,"ax",%progbits
- 254              		.align	2
- 255              		.global	Timer_1_ReadCapture
- 256              		.thumb
- 257              		.thumb_func
- 258              		.type	Timer_1_ReadCapture, %function
- 259              	Timer_1_ReadCapture:
- 260              	.LFB11:
+ 248              		.align	2
+ 249              		.global	Timer_1_ReadCapture
+ 250              		.thumb
+ 251              		.thumb_func
+ 252              		.type	Timer_1_ReadCapture, %function
+ 253              	Timer_1_ReadCapture:
+ 254              	.LFB11:
  438:Generated_Source\PSoC5/Timer_1.c ****     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed functi
  439:Generated_Source\PSoC5/Timer_1.c **** }
  440:Generated_Source\PSoC5/Timer_1.c **** 
@@ -752,43 +746,43 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  453:Generated_Source\PSoC5/Timer_1.c **** *  Present Capture value.
  454:Generated_Source\PSoC5/Timer_1.c **** *
  455:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
- 456:Generated_Source\PSoC5/Timer_1.c **** uint32 Timer_1_ReadCapture(void) 
+ 456:Generated_Source\PSoC5/Timer_1.c **** uint16 Timer_1_ReadCapture(void) 
  457:Generated_Source\PSoC5/Timer_1.c **** {
- 261              		.loc 1 457 0
- 262              		.cfi_startproc
- 263              		@ args = 0, pretend = 0, frame = 0
- 264              		@ frame_needed = 0, uses_anonymous_args = 0
- 265              		@ link register save eliminated.
+ 255              		.loc 1 457 0
+ 256              		.cfi_startproc
+ 257              		@ args = 0, pretend = 0, frame = 0
+ 258              		@ frame_needed = 0, uses_anonymous_args = 0
+ 259              		@ link register save eliminated.
  458:Generated_Source\PSoC5/Timer_1.c ****    #if(Timer_1_UsingFixedFunction)
- 459:Generated_Source\PSoC5/Timer_1.c ****        return ((uint32)CY_GET_REG16(Timer_1_CAPTURE_LSB_PTR));
+ 459:Generated_Source\PSoC5/Timer_1.c ****        return ((uint16)CY_GET_REG16(Timer_1_CAPTURE_LSB_PTR));
  460:Generated_Source\PSoC5/Timer_1.c ****    #else
- 461:Generated_Source\PSoC5/Timer_1.c ****        return (CY_GET_REG24(Timer_1_CAPTURE_LSB_PTR));
- 266              		.loc 1 461 0
- 267 0000 024B     		ldr	r3, .L30
- 268 0002 1868     		ldr	r0, [r3]	@ unaligned
+ 461:Generated_Source\PSoC5/Timer_1.c ****        return (CY_GET_REG16(Timer_1_CAPTURE_LSB_PTR));
+ 260              		.loc 1 461 0
+ 261 0000 014B     		ldr	r3, .L29
+ 262 0002 1888     		ldrh	r0, [r3]
  462:Generated_Source\PSoC5/Timer_1.c ****    #endif /* (Timer_1_UsingFixedFunction) */
  463:Generated_Source\PSoC5/Timer_1.c **** }
- 269              		.loc 1 463 0
- 270 0004 20F07F40 		bic	r0, r0, #-16777216
- 271 0008 7047     		bx	lr
- 272              	.L31:
- 273 000a 00BF     		.align	2
- 274              	.L30:
- 275 000c 4A640040 		.word	1073767498
- 276              		.cfi_endproc
- 277              	.LFE11:
- 278              		.size	Timer_1_ReadCapture, .-Timer_1_ReadCapture
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 14
+ 263              		.loc 1 463 0
+ 264 0004 80B2     		uxth	r0, r0
+ 265 0006 7047     		bx	lr
+ 266              	.L30:
+ 267              		.align	2
+ 268              	.L29:
+ 269 0008 94680040 		.word	1073768596
+ 270              		.cfi_endproc
+ 271              	.LFE11:
+ 272              		.size	Timer_1_ReadCapture, .-Timer_1_ReadCapture
+ 273              		.section	.text.Timer_1_WriteCounter,"ax",%progbits
+ 274              		.align	2
+ 275              		.global	Timer_1_WriteCounter
+ 276              		.thumb
+ 277              		.thumb_func
+ 278              		.type	Timer_1_WriteCounter, %function
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 14
 
 
- 279              		.section	.text.Timer_1_WriteCounter,"ax",%progbits
- 280              		.align	2
- 281              		.global	Timer_1_WriteCounter
- 282              		.thumb
- 283              		.thumb_func
- 284              		.type	Timer_1_WriteCounter, %function
- 285              	Timer_1_WriteCounter:
- 286              	.LFB12:
+ 279              	Timer_1_WriteCounter:
+ 280              	.LFB12:
  464:Generated_Source\PSoC5/Timer_1.c **** 
  465:Generated_Source\PSoC5/Timer_1.c **** 
  466:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
@@ -805,17 +799,14 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  477:Generated_Source\PSoC5/Timer_1.c **** *  void
  478:Generated_Source\PSoC5/Timer_1.c **** *
  479:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
- 480:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_WriteCounter(uint32 counter) 
+ 480:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_WriteCounter(uint16 counter) 
  481:Generated_Source\PSoC5/Timer_1.c **** {
- 287              		.loc 1 481 0
- 288              		.cfi_startproc
- 289              		@ args = 0, pretend = 0, frame = 0
- 290              		@ frame_needed = 0, uses_anonymous_args = 0
- 291              	.LVL5:
- 292 0000 08B5     		push	{r3, lr}
- 293              		.cfi_def_cfa_offset 8
- 294              		.cfi_offset 3, -8
- 295              		.cfi_offset 14, -4
+ 281              		.loc 1 481 0
+ 282              		.cfi_startproc
+ 283              		@ args = 0, pretend = 0, frame = 0
+ 284              		@ frame_needed = 0, uses_anonymous_args = 0
+ 285              		@ link register save eliminated.
+ 286              	.LVL3:
  482:Generated_Source\PSoC5/Timer_1.c ****    #if(Timer_1_UsingFixedFunction)
  483:Generated_Source\PSoC5/Timer_1.c ****         /* This functionality is removed until a FixedFunction HW update to
  484:Generated_Source\PSoC5/Timer_1.c ****          * allow this register to be written
@@ -823,36 +814,33 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  486:Generated_Source\PSoC5/Timer_1.c ****         CY_SET_REG16(Timer_1_COUNTER_LSB_PTR, (uint16)counter);
  487:Generated_Source\PSoC5/Timer_1.c ****         
  488:Generated_Source\PSoC5/Timer_1.c ****     #else
- 489:Generated_Source\PSoC5/Timer_1.c ****         CY_SET_REG24(Timer_1_COUNTER_LSB_PTR, counter);
- 296              		.loc 1 489 0
- 297 0002 0146     		mov	r1, r0
- 298 0004 0148     		ldr	r0, .L34
- 299              	.LVL6:
- 300 0006 FFF7FEFF 		bl	CySetReg24
- 301              	.LVL7:
- 302 000a 08BD     		pop	{r3, pc}
- 303              	.L35:
- 304              		.align	2
- 305              	.L34:
- 306 000c 0A640040 		.word	1073767434
- 307              		.cfi_endproc
- 308              	.LFE12:
- 309              		.size	Timer_1_WriteCounter, .-Timer_1_WriteCounter
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 15
-
-
- 310              		.section	.text.Timer_1_ReadCounter,"ax",%progbits
- 311              		.align	2
- 312              		.global	Timer_1_ReadCounter
- 313              		.thumb
- 314              		.thumb_func
- 315              		.type	Timer_1_ReadCounter, %function
- 316              	Timer_1_ReadCounter:
- 317              	.LFB13:
+ 489:Generated_Source\PSoC5/Timer_1.c ****         CY_SET_REG16(Timer_1_COUNTER_LSB_PTR, counter);
+ 287              		.loc 1 489 0
+ 288 0000 014B     		ldr	r3, .L32
+ 289 0002 1880     		strh	r0, [r3]	@ movhi
+ 290 0004 7047     		bx	lr
+ 291              	.L33:
+ 292 0006 00BF     		.align	2
+ 293              	.L32:
+ 294 0008 14680040 		.word	1073768468
+ 295              		.cfi_endproc
+ 296              	.LFE12:
+ 297              		.size	Timer_1_WriteCounter, .-Timer_1_WriteCounter
+ 298              		.section	.text.Timer_1_ReadCounter,"ax",%progbits
+ 299              		.align	2
+ 300              		.global	Timer_1_ReadCounter
+ 301              		.thumb
+ 302              		.thumb_func
+ 303              		.type	Timer_1_ReadCounter, %function
+ 304              	Timer_1_ReadCounter:
+ 305              	.LFB13:
  490:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fix
  491:Generated_Source\PSoC5/Timer_1.c **** }
  492:Generated_Source\PSoC5/Timer_1.c **** 
  493:Generated_Source\PSoC5/Timer_1.c **** 
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 15
+
+
  494:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
  495:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_ReadCounter
  496:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
@@ -867,13 +855,13 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  505:Generated_Source\PSoC5/Timer_1.c **** *  Present compare value.
  506:Generated_Source\PSoC5/Timer_1.c **** *
  507:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
- 508:Generated_Source\PSoC5/Timer_1.c **** uint32 Timer_1_ReadCounter(void) 
+ 508:Generated_Source\PSoC5/Timer_1.c **** uint16 Timer_1_ReadCounter(void) 
  509:Generated_Source\PSoC5/Timer_1.c **** {
- 318              		.loc 1 509 0
- 319              		.cfi_startproc
- 320              		@ args = 0, pretend = 0, frame = 0
- 321              		@ frame_needed = 0, uses_anonymous_args = 0
- 322              		@ link register save eliminated.
+ 306              		.loc 1 509 0
+ 307              		.cfi_startproc
+ 308              		@ args = 0, pretend = 0, frame = 0
+ 309              		@ frame_needed = 0, uses_anonymous_args = 0
+ 310              		@ link register save eliminated.
  510:Generated_Source\PSoC5/Timer_1.c ****     /* Force capture by reading Accumulator */
  511:Generated_Source\PSoC5/Timer_1.c ****     /* Must first do a software capture to be able to read the counter */
  512:Generated_Source\PSoC5/Timer_1.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
@@ -881,43 +869,43 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  514:Generated_Source\PSoC5/Timer_1.c ****         (void)CY_GET_REG16(Timer_1_COUNTER_LSB_PTR);
  515:Generated_Source\PSoC5/Timer_1.c ****     #else
  516:Generated_Source\PSoC5/Timer_1.c ****         (void)CY_GET_REG8(Timer_1_COUNTER_LSB_PTR_8BIT);
- 323              		.loc 1 516 0
- 324 0000 034B     		ldr	r3, .L37
- 325 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 311              		.loc 1 516 0
+ 312 0000 024B     		ldr	r3, .L35
+ 313 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  517:Generated_Source\PSoC5/Timer_1.c ****     #endif/* (Timer_1_UsingFixedFunction) */
  518:Generated_Source\PSoC5/Timer_1.c **** 
  519:Generated_Source\PSoC5/Timer_1.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
  520:Generated_Source\PSoC5/Timer_1.c ****     #if(Timer_1_UsingFixedFunction)
- 521:Generated_Source\PSoC5/Timer_1.c ****         return ((uint32)CY_GET_REG16(Timer_1_CAPTURE_LSB_PTR));
+ 521:Generated_Source\PSoC5/Timer_1.c ****         return ((uint16)CY_GET_REG16(Timer_1_CAPTURE_LSB_PTR));
  522:Generated_Source\PSoC5/Timer_1.c ****     #else
- 523:Generated_Source\PSoC5/Timer_1.c ****         return (CY_GET_REG24(Timer_1_CAPTURE_LSB_PTR));
- 326              		.loc 1 523 0
- 327 0004 034B     		ldr	r3, .L37+4
- 328 0006 1868     		ldr	r0, [r3]	@ unaligned
+ 523:Generated_Source\PSoC5/Timer_1.c ****         return (CY_GET_REG16(Timer_1_CAPTURE_LSB_PTR));
+ 314              		.loc 1 523 0
+ 315 0004 024B     		ldr	r3, .L35+4
+ 316 0006 1888     		ldrh	r0, [r3]
  524:Generated_Source\PSoC5/Timer_1.c ****     #endif /* (Timer_1_UsingFixedFunction) */
  525:Generated_Source\PSoC5/Timer_1.c **** }
- 329              		.loc 1 525 0
- 330 0008 20F07F40 		bic	r0, r0, #-16777216
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 16
+ 317              		.loc 1 525 0
+ 318 0008 80B2     		uxth	r0, r0
+ 319 000a 7047     		bx	lr
+ 320              	.L36:
+ 321              		.align	2
+ 322              	.L35:
+ 323 000c 0A640040 		.word	1073767434
+ 324 0010 94680040 		.word	1073768596
+ 325              		.cfi_endproc
+ 326              	.LFE13:
+ 327              		.size	Timer_1_ReadCounter, .-Timer_1_ReadCounter
+ 328              		.section	.text.Timer_1_ClearFIFO,"ax",%progbits
+ 329              		.align	2
+ 330              		.global	Timer_1_ClearFIFO
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 16
 
 
- 331 000c 7047     		bx	lr
- 332              	.L38:
- 333 000e 00BF     		.align	2
- 334              	.L37:
- 335 0010 0A640040 		.word	1073767434
- 336 0014 4A640040 		.word	1073767498
- 337              		.cfi_endproc
- 338              	.LFE13:
- 339              		.size	Timer_1_ReadCounter, .-Timer_1_ReadCounter
- 340              		.section	.text.Timer_1_ClearFIFO,"ax",%progbits
- 341              		.align	2
- 342              		.global	Timer_1_ClearFIFO
- 343              		.thumb
- 344              		.thumb_func
- 345              		.type	Timer_1_ClearFIFO, %function
- 346              	Timer_1_ClearFIFO:
- 347              	.LFB14:
+ 331              		.thumb
+ 332              		.thumb_func
+ 333              		.type	Timer_1_ClearFIFO, %function
+ 334              	Timer_1_ClearFIFO:
+ 335              	.LFB14:
  526:Generated_Source\PSoC5/Timer_1.c **** 
  527:Generated_Source\PSoC5/Timer_1.c **** 
  528:Generated_Source\PSoC5/Timer_1.c **** #if(!Timer_1_UsingFixedFunction) /* UDB Specific Functions */
@@ -958,9 +946,6 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  563:Generated_Source\PSoC5/Timer_1.c **** *  void
  564:Generated_Source\PSoC5/Timer_1.c **** *
  565:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 17
-
-
  566:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_SetCaptureMode(uint8 captureMode) 
  567:Generated_Source\PSoC5/Timer_1.c **** {
  568:Generated_Source\PSoC5/Timer_1.c ****     /* This must only set to two bits of the control register associated */
@@ -973,6 +958,9 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  575:Generated_Source\PSoC5/Timer_1.c **** 
  576:Generated_Source\PSoC5/Timer_1.c ****         /* Write The New Setting */
  577:Generated_Source\PSoC5/Timer_1.c ****         Timer_1_CONTROL |= captureMode;
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 17
+
+
  578:Generated_Source\PSoC5/Timer_1.c ****     #endif /* (!Timer_1_UDB_CONTROL_REG_REMOVED) */
  579:Generated_Source\PSoC5/Timer_1.c **** }
  580:Generated_Source\PSoC5/Timer_1.c **** #endif /* Remove API if Capture Mode is not Software Controlled */
@@ -1018,9 +1006,6 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  620:Generated_Source\PSoC5/Timer_1.c **** 
  621:Generated_Source\PSoC5/Timer_1.c **** #if (Timer_1_EnableTriggerMode)
  622:Generated_Source\PSoC5/Timer_1.c **** 
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 18
-
-
  623:Generated_Source\PSoC5/Timer_1.c **** 
  624:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
  625:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_EnableTrigger
@@ -1033,6 +1018,9 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  632:Generated_Source\PSoC5/Timer_1.c **** *  void
  633:Generated_Source\PSoC5/Timer_1.c **** *
  634:Generated_Source\PSoC5/Timer_1.c **** * Return:
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 18
+
+
  635:Generated_Source\PSoC5/Timer_1.c **** *  void
  636:Generated_Source\PSoC5/Timer_1.c **** *
  637:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
@@ -1078,9 +1066,6 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  677:Generated_Source\PSoC5/Timer_1.c **** *
  678:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
  679:Generated_Source\PSoC5/Timer_1.c **** *  interruptCount:  A value between 0 and 3 is valid.  If the value is 0, then
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 19
-
-
  680:Generated_Source\PSoC5/Timer_1.c **** *                   an interrupt will occur each time a capture occurs.
  681:Generated_Source\PSoC5/Timer_1.c **** *                   A value of 1 to 3 will cause the interrupt
  682:Generated_Source\PSoC5/Timer_1.c **** *                   to delay by the same number of captures.
@@ -1093,6 +1078,9 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  689:Generated_Source\PSoC5/Timer_1.c **** {
  690:Generated_Source\PSoC5/Timer_1.c ****     /* This must only set to two bits of the control register associated */
  691:Generated_Source\PSoC5/Timer_1.c ****     interruptCount &= Timer_1_CTRL_INTCNT_MASK;
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 19
+
+
  692:Generated_Source\PSoC5/Timer_1.c **** 
  693:Generated_Source\PSoC5/Timer_1.c ****     #if (!Timer_1_UDB_CONTROL_REG_REMOVED)
  694:Generated_Source\PSoC5/Timer_1.c ****         /* Clear the Current Setting */
@@ -1138,9 +1126,6 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  734:Generated_Source\PSoC5/Timer_1.c **** *
  735:Generated_Source\PSoC5/Timer_1.c **** * Parameters:
  736:Generated_Source\PSoC5/Timer_1.c **** *  void
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 20
-
-
  737:Generated_Source\PSoC5/Timer_1.c **** *
  738:Generated_Source\PSoC5/Timer_1.c **** * Return:
  739:Generated_Source\PSoC5/Timer_1.c **** *  Returns the Capture Count Setting
@@ -1153,6 +1138,9 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  746:Generated_Source\PSoC5/Timer_1.c **** #endif /* Timer_1_UsingHWCaptureCounter */
  747:Generated_Source\PSoC5/Timer_1.c **** 
  748:Generated_Source\PSoC5/Timer_1.c **** 
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 20
+
+
  749:Generated_Source\PSoC5/Timer_1.c **** /*******************************************************************************
  750:Generated_Source\PSoC5/Timer_1.c **** * Function Name: Timer_1_ClearFIFO
  751:Generated_Source\PSoC5/Timer_1.c **** ********************************************************************************
@@ -1169,1267 +1157,1153 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 1
  762:Generated_Source\PSoC5/Timer_1.c **** *******************************************************************************/
  763:Generated_Source\PSoC5/Timer_1.c **** void Timer_1_ClearFIFO(void) 
  764:Generated_Source\PSoC5/Timer_1.c **** {
- 348              		.loc 1 764 0
- 349              		.cfi_startproc
- 350              		@ args = 0, pretend = 0, frame = 0
- 351              		@ frame_needed = 0, uses_anonymous_args = 0
- 352 0000 08B5     		push	{r3, lr}
- 353              		.cfi_def_cfa_offset 8
- 354              		.cfi_offset 3, -8
- 355              		.cfi_offset 14, -4
+ 336              		.loc 1 764 0
+ 337              		.cfi_startproc
+ 338              		@ args = 0, pretend = 0, frame = 0
+ 339              		@ frame_needed = 0, uses_anonymous_args = 0
+ 340 0000 08B5     		push	{r3, lr}
+ 341              		.cfi_def_cfa_offset 8
+ 342              		.cfi_offset 3, -8
+ 343              		.cfi_offset 14, -4
  765:Generated_Source\PSoC5/Timer_1.c ****     while(0u != (Timer_1_ReadStatusRegister() & Timer_1_STATUS_FIFONEMP))
- 356              		.loc 1 765 0
- 357 0002 01E0     		b	.L40
- 358              	.L41:
+ 344              		.loc 1 765 0
+ 345 0002 01E0     		b	.L38
+ 346              	.L39:
  766:Generated_Source\PSoC5/Timer_1.c ****     {
  767:Generated_Source\PSoC5/Timer_1.c ****         (void)Timer_1_ReadCapture();
- 359              		.loc 1 767 0
- 360 0004 FFF7FEFF 		bl	Timer_1_ReadCapture
- 361              	.LVL8:
- 362              	.L40:
+ 347              		.loc 1 767 0
+ 348 0004 FFF7FEFF 		bl	Timer_1_ReadCapture
+ 349              	.LVL4:
+ 350              	.L38:
  765:Generated_Source\PSoC5/Timer_1.c ****     while(0u != (Timer_1_ReadStatusRegister() & Timer_1_STATUS_FIFONEMP))
- 363              		.loc 1 765 0
- 364 0008 FFF7FEFF 		bl	Timer_1_ReadStatusRegister
- 365              	.LVL9:
- 366 000c 10F0080F 		tst	r0, #8
- 367 0010 F8D1     		bne	.L41
+ 351              		.loc 1 765 0
+ 352 0008 FFF7FEFF 		bl	Timer_1_ReadStatusRegister
+ 353              	.LVL5:
+ 354 000c 10F0080F 		tst	r0, #8
+ 355 0010 F8D1     		bne	.L39
  768:Generated_Source\PSoC5/Timer_1.c ****     }
  769:Generated_Source\PSoC5/Timer_1.c **** }
- 368              		.loc 1 769 0
- 369 0012 08BD     		pop	{r3, pc}
- 370              		.cfi_endproc
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 21
-
-
- 371              	.LFE14:
- 372              		.size	Timer_1_ClearFIFO, .-Timer_1_ClearFIFO
- 373              		.section	.text.Timer_1_Init,"ax",%progbits
- 374              		.align	2
- 375              		.global	Timer_1_Init
- 376              		.thumb
- 377              		.thumb_func
- 378              		.type	Timer_1_Init, %function
- 379              	Timer_1_Init:
- 380              	.LFB0:
+ 356              		.loc 1 769 0
+ 357 0012 08BD     		pop	{r3, pc}
+ 358              		.cfi_endproc
+ 359              	.LFE14:
+ 360              		.size	Timer_1_ClearFIFO, .-Timer_1_ClearFIFO
+ 361              		.section	.text.Timer_1_Init,"ax",%progbits
+ 362              		.align	2
+ 363              		.global	Timer_1_Init
+ 364              		.thumb
+ 365              		.thumb_func
+ 366              		.type	Timer_1_Init, %function
+ 367              	Timer_1_Init:
+ 368              	.LFB0:
   44:Generated_Source\PSoC5/Timer_1.c ****     #if(!Timer_1_UsingFixedFunction)
- 381              		.loc 1 44 0
- 382              		.cfi_startproc
- 383              		@ args = 0, pretend = 0, frame = 0
- 384              		@ frame_needed = 0, uses_anonymous_args = 0
- 385 0000 08B5     		push	{r3, lr}
- 386              		.cfi_def_cfa_offset 8
- 387              		.cfi_offset 3, -8
- 388              		.cfi_offset 14, -4
+ 369              		.loc 1 44 0
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 21
+
+
+ 370              		.cfi_startproc
+ 371              		@ args = 0, pretend = 0, frame = 0
+ 372              		@ frame_needed = 0, uses_anonymous_args = 0
+ 373 0000 08B5     		push	{r3, lr}
+ 374              		.cfi_def_cfa_offset 8
+ 375              		.cfi_offset 3, -8
+ 376              		.cfi_offset 14, -4
  118:Generated_Source\PSoC5/Timer_1.c ****     Timer_1_WriteCounter(Timer_1_INIT_PERIOD);
- 389              		.loc 1 118 0
- 390 0002 0920     		movs	r0, #9
- 391 0004 FFF7FEFF 		bl	Timer_1_WritePeriod
- 392              	.LVL10:
+ 377              		.loc 1 118 0
+ 378 0002 0920     		movs	r0, #9
+ 379 0004 FFF7FEFF 		bl	Timer_1_WritePeriod
+ 380              	.LVL6:
  119:Generated_Source\PSoC5/Timer_1.c **** 
- 393              		.loc 1 119 0
- 394 0008 0920     		movs	r0, #9
- 395 000a FFF7FEFF 		bl	Timer_1_WriteCounter
- 396              	.LVL11:
+ 381              		.loc 1 119 0
+ 382 0008 0920     		movs	r0, #9
+ 383 000a FFF7FEFF 		bl	Timer_1_WriteCounter
+ 384              	.LVL7:
  142:Generated_Source\PSoC5/Timer_1.c **** 
- 397              		.loc 1 142 0
- 398 000e FFF7FEFF 		bl	CyEnterCriticalSection
- 399              	.LVL12:
+ 385              		.loc 1 142 0
+ 386 000e FFF7FEFF 		bl	CyEnterCriticalSection
+ 387              	.LVL8:
  145:Generated_Source\PSoC5/Timer_1.c **** 
- 400              		.loc 1 145 0
- 401 0012 064A     		ldr	r2, .L45
- 402 0014 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 403 0016 43F01003 		orr	r3, r3, #16
- 404 001a 1370     		strb	r3, [r2]
+ 388              		.loc 1 145 0
+ 389 0012 064A     		ldr	r2, .L43
+ 390 0014 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 391 0016 43F01003 		orr	r3, r3, #16
+ 392 001a 1370     		strb	r3, [r2]
  148:Generated_Source\PSoC5/Timer_1.c **** 
- 405              		.loc 1 148 0
- 406 001c FFF7FEFF 		bl	CyExitCriticalSection
- 407              	.LVL13:
+ 393              		.loc 1 148 0
+ 394 001c FFF7FEFF 		bl	CyExitCriticalSection
+ 395              	.LVL9:
  159:Generated_Source\PSoC5/Timer_1.c ****     #endif /* Configure additional features of UDB implementation */
- 408              		.loc 1 159 0
- 409 0020 FFF7FEFF 		bl	Timer_1_ClearFIFO
- 410              	.LVL14:
+ 396              		.loc 1 159 0
+ 397 0020 FFF7FEFF 		bl	Timer_1_ClearFIFO
+ 398              	.LVL10:
  162:Generated_Source\PSoC5/Timer_1.c **** }
- 411              		.loc 1 162 0
- 412 0024 0120     		movs	r0, #1
- 413 0026 FFF7FEFF 		bl	Timer_1_SetInterruptMode
- 414              	.LVL15:
- 415 002a 08BD     		pop	{r3, pc}
- 416              	.L46:
- 417              		.align	2
- 418              	.L45:
- 419 002c 9B640040 		.word	1073767579
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 22
-
-
- 420              		.cfi_endproc
- 421              	.LFE0:
- 422              		.size	Timer_1_Init, .-Timer_1_Init
- 423              		.section	.text.Timer_1_Start,"ax",%progbits
- 424              		.align	2
- 425              		.global	Timer_1_Start
- 426              		.thumb
- 427              		.thumb_func
- 428              		.type	Timer_1_Start, %function
- 429              	Timer_1_Start:
- 430              	.LFB2:
+ 399              		.loc 1 162 0
+ 400 0024 0120     		movs	r0, #1
+ 401 0026 FFF7FEFF 		bl	Timer_1_SetInterruptMode
+ 402              	.LVL11:
+ 403 002a 08BD     		pop	{r3, pc}
+ 404              	.L44:
+ 405              		.align	2
+ 406              	.L43:
+ 407 002c 9B640040 		.word	1073767579
+ 408              		.cfi_endproc
+ 409              	.LFE0:
+ 410              		.size	Timer_1_Init, .-Timer_1_Init
+ 411              		.section	.text.Timer_1_Start,"ax",%progbits
+ 412              		.align	2
+ 413              		.global	Timer_1_Start
+ 414              		.thumb
+ 415              		.thumb_func
+ 416              		.type	Timer_1_Start, %function
+ 417              	Timer_1_Start:
+ 418              	.LFB2:
  216:Generated_Source\PSoC5/Timer_1.c ****     if(Timer_1_initVar == 0u)
- 431              		.loc 1 216 0
- 432              		.cfi_startproc
- 433              		@ args = 0, pretend = 0, frame = 0
- 434              		@ frame_needed = 0, uses_anonymous_args = 0
- 435 0000 08B5     		push	{r3, lr}
- 436              		.cfi_def_cfa_offset 8
- 437              		.cfi_offset 3, -8
- 438              		.cfi_offset 14, -4
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 22
+
+
+ 419              		.loc 1 216 0
+ 420              		.cfi_startproc
+ 421              		@ args = 0, pretend = 0, frame = 0
+ 422              		@ frame_needed = 0, uses_anonymous_args = 0
+ 423 0000 08B5     		push	{r3, lr}
+ 424              		.cfi_def_cfa_offset 8
+ 425              		.cfi_offset 3, -8
+ 426              		.cfi_offset 14, -4
  217:Generated_Source\PSoC5/Timer_1.c ****     {
- 439              		.loc 1 217 0
- 440 0002 054B     		ldr	r3, .L50
- 441 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 442 0006 23B9     		cbnz	r3, .L48
+ 427              		.loc 1 217 0
+ 428 0002 054B     		ldr	r3, .L48
+ 429 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 430 0006 23B9     		cbnz	r3, .L46
  219:Generated_Source\PSoC5/Timer_1.c **** 
- 443              		.loc 1 219 0
- 444 0008 FFF7FEFF 		bl	Timer_1_Init
- 445              	.LVL16:
+ 431              		.loc 1 219 0
+ 432 0008 FFF7FEFF 		bl	Timer_1_Init
+ 433              	.LVL12:
  221:Generated_Source\PSoC5/Timer_1.c ****     }
- 446              		.loc 1 221 0
- 447 000c 0122     		movs	r2, #1
- 448 000e 024B     		ldr	r3, .L50
- 449 0010 1A70     		strb	r2, [r3]
- 450              	.L48:
+ 434              		.loc 1 221 0
+ 435 000c 0122     		movs	r2, #1
+ 436 000e 024B     		ldr	r3, .L48
+ 437 0010 1A70     		strb	r2, [r3]
+ 438              	.L46:
  225:Generated_Source\PSoC5/Timer_1.c **** }
- 451              		.loc 1 225 0
- 452 0012 FFF7FEFF 		bl	Timer_1_Enable
- 453              	.LVL17:
- 454 0016 08BD     		pop	{r3, pc}
- 455              	.L51:
- 456              		.align	2
- 457              	.L50:
- 458 0018 00000000 		.word	.LANCHOR0
- 459              		.cfi_endproc
- 460              	.LFE2:
- 461              		.size	Timer_1_Start, .-Timer_1_Start
- 462              		.global	Timer_1_initVar
- 463              		.bss
- 464              		.set	.LANCHOR0,. + 0
- 465              		.type	Timer_1_initVar, %object
- 466              		.size	Timer_1_initVar, 1
- 467              	Timer_1_initVar:
- 468 0000 00       		.space	1
- 469              		.text
- 470              	.Letext0:
- 471              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 23
+ 439              		.loc 1 225 0
+ 440 0012 FFF7FEFF 		bl	Timer_1_Enable
+ 441              	.LVL13:
+ 442 0016 08BD     		pop	{r3, pc}
+ 443              	.L49:
+ 444              		.align	2
+ 445              	.L48:
+ 446 0018 00000000 		.word	.LANCHOR0
+ 447              		.cfi_endproc
+ 448              	.LFE2:
+ 449              		.size	Timer_1_Start, .-Timer_1_Start
+ 450              		.global	Timer_1_initVar
+ 451              		.bss
+ 452              		.set	.LANCHOR0,. + 0
+ 453              		.type	Timer_1_initVar, %object
+ 454              		.size	Timer_1_initVar, 1
+ 455              	Timer_1_initVar:
+ 456 0000 00       		.space	1
+ 457              		.text
+ 458              	.Letext0:
+ 459              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 460              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
+ 461              		.section	.debug_info,"",%progbits
+ 462              	.Ldebug_info0:
+ 463 0000 E8020000 		.4byte	0x2e8
+ 464 0004 0400     		.2byte	0x4
+ 465 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 466 000a 04       		.byte	0x4
+ 467 000b 01       		.uleb128 0x1
+ 468 000c 11010000 		.4byte	.LASF39
+ 469 0010 0C       		.byte	0xc
+ 470 0011 AE000000 		.4byte	.LASF40
+ 471 0015 06000000 		.4byte	.LASF41
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 23
 
 
- 472              		.file 3 "Generated_Source\\PSoC5\\CyLib.h"
- 473              		.section	.debug_info,"",%progbits
- 474              	.Ldebug_info0:
- 475 0000 2C030000 		.4byte	0x32c
- 476 0004 0400     		.2byte	0x4
- 477 0006 00000000 		.4byte	.Ldebug_abbrev0
- 478 000a 04       		.byte	0x4
- 479 000b 01       		.uleb128 0x1
- 480 000c B2000000 		.4byte	.LASF40
- 481 0010 0C       		.byte	0xc
- 482 0011 4C000000 		.4byte	.LASF41
- 483 0015 28030000 		.4byte	.LASF42
- 484 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 485 001d 00000000 		.4byte	0
- 486 0021 00000000 		.4byte	.Ldebug_line0
- 487 0025 02       		.uleb128 0x2
- 488 0026 01       		.byte	0x1
- 489 0027 06       		.byte	0x6
- 490 0028 1C030000 		.4byte	.LASF0
- 491 002c 02       		.uleb128 0x2
- 492 002d 01       		.byte	0x1
- 493 002e 08       		.byte	0x8
- 494 002f A4000000 		.4byte	.LASF1
- 495 0033 02       		.uleb128 0x2
- 496 0034 02       		.byte	0x2
- 497 0035 05       		.byte	0x5
- 498 0036 DD020000 		.4byte	.LASF2
- 499 003a 02       		.uleb128 0x2
- 500 003b 02       		.byte	0x2
- 501 003c 07       		.byte	0x7
- 502 003d 39000000 		.4byte	.LASF3
- 503 0041 02       		.uleb128 0x2
- 504 0042 04       		.byte	0x4
- 505 0043 05       		.byte	0x5
- 506 0044 02030000 		.4byte	.LASF4
- 507 0048 02       		.uleb128 0x2
- 508 0049 04       		.byte	0x4
- 509 004a 07       		.byte	0x7
- 510 004b 58010000 		.4byte	.LASF5
- 511 004f 02       		.uleb128 0x2
- 512 0050 08       		.byte	0x8
- 513 0051 05       		.byte	0x5
- 514 0052 6C020000 		.4byte	.LASF6
- 515 0056 02       		.uleb128 0x2
- 516 0057 08       		.byte	0x8
- 517 0058 07       		.byte	0x7
- 518 0059 8D000000 		.4byte	.LASF7
- 519 005d 03       		.uleb128 0x3
- 520 005e 04       		.byte	0x4
- 521 005f 05       		.byte	0x5
- 522 0060 696E7400 		.ascii	"int\000"
- 523 0064 02       		.uleb128 0x2
- 524 0065 04       		.byte	0x4
- 525 0066 07       		.byte	0x7
- 526 0067 6D000000 		.4byte	.LASF8
- 527 006b 04       		.uleb128 0x4
- 528 006c 6A010000 		.4byte	.LASF9
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 24
+ 472 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 473 001d 00000000 		.4byte	0
+ 474 0021 00000000 		.4byte	.Ldebug_line0
+ 475 0025 02       		.uleb128 0x2
+ 476 0026 01       		.byte	0x1
+ 477 0027 06       		.byte	0x6
+ 478 0028 66030000 		.4byte	.LASF0
+ 479 002c 02       		.uleb128 0x2
+ 480 002d 01       		.byte	0x1
+ 481 002e 08       		.byte	0x8
+ 482 002f D7010000 		.4byte	.LASF1
+ 483 0033 02       		.uleb128 0x2
+ 484 0034 02       		.byte	0x2
+ 485 0035 05       		.byte	0x5
+ 486 0036 27030000 		.4byte	.LASF2
+ 487 003a 02       		.uleb128 0x2
+ 488 003b 02       		.byte	0x2
+ 489 003c 07       		.byte	0x7
+ 490 003d 9B000000 		.4byte	.LASF3
+ 491 0041 02       		.uleb128 0x2
+ 492 0042 04       		.byte	0x4
+ 493 0043 05       		.byte	0x5
+ 494 0044 4C030000 		.4byte	.LASF4
+ 495 0048 02       		.uleb128 0x2
+ 496 0049 04       		.byte	0x4
+ 497 004a 07       		.byte	0x7
+ 498 004b B7010000 		.4byte	.LASF5
+ 499 004f 02       		.uleb128 0x2
+ 500 0050 08       		.byte	0x8
+ 501 0051 05       		.byte	0x5
+ 502 0052 C9020000 		.4byte	.LASF6
+ 503 0056 02       		.uleb128 0x2
+ 504 0057 08       		.byte	0x8
+ 505 0058 07       		.byte	0x7
+ 506 0059 EA000000 		.4byte	.LASF7
+ 507 005d 03       		.uleb128 0x3
+ 508 005e 04       		.byte	0x4
+ 509 005f 05       		.byte	0x5
+ 510 0060 696E7400 		.ascii	"int\000"
+ 511 0064 02       		.uleb128 0x2
+ 512 0065 04       		.byte	0x4
+ 513 0066 07       		.byte	0x7
+ 514 0067 CF000000 		.4byte	.LASF8
+ 515 006b 04       		.uleb128 0x4
+ 516 006c C9010000 		.4byte	.LASF9
+ 517 0070 02       		.byte	0x2
+ 518 0071 9201     		.2byte	0x192
+ 519 0073 2C000000 		.4byte	0x2c
+ 520 0077 04       		.uleb128 0x4
+ 521 0078 14020000 		.4byte	.LASF10
+ 522 007c 02       		.byte	0x2
+ 523 007d 9301     		.2byte	0x193
+ 524 007f 3A000000 		.4byte	0x3a
+ 525 0083 02       		.uleb128 0x2
+ 526 0084 04       		.byte	0x4
+ 527 0085 04       		.byte	0x4
+ 528 0086 DC000000 		.4byte	.LASF11
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 24
 
 
- 529 0070 02       		.byte	0x2
- 530 0071 9201     		.2byte	0x192
- 531 0073 2C000000 		.4byte	0x2c
- 532 0077 04       		.uleb128 0x4
- 533 0078 D4010000 		.4byte	.LASF10
- 534 007c 02       		.byte	0x2
- 535 007d 9401     		.2byte	0x194
- 536 007f 48000000 		.4byte	0x48
- 537 0083 02       		.uleb128 0x2
- 538 0084 04       		.byte	0x4
- 539 0085 04       		.byte	0x4
- 540 0086 7A000000 		.4byte	.LASF11
- 541 008a 02       		.uleb128 0x2
- 542 008b 08       		.byte	0x8
- 543 008c 04       		.byte	0x4
- 544 008d 87010000 		.4byte	.LASF12
- 545 0091 02       		.uleb128 0x2
- 546 0092 01       		.byte	0x1
- 547 0093 08       		.byte	0x8
- 548 0094 0B030000 		.4byte	.LASF13
- 549 0098 04       		.uleb128 0x4
- 550 0099 40010000 		.4byte	.LASF14
- 551 009d 02       		.byte	0x2
- 552 009e 3C02     		.2byte	0x23c
- 553 00a0 A4000000 		.4byte	0xa4
- 554 00a4 05       		.uleb128 0x5
- 555 00a5 6B000000 		.4byte	0x6b
- 556 00a9 04       		.uleb128 0x4
- 557 00aa 00000000 		.4byte	.LASF15
- 558 00ae 02       		.byte	0x2
- 559 00af 3E02     		.2byte	0x23e
- 560 00b1 B5000000 		.4byte	0xb5
- 561 00b5 05       		.uleb128 0x5
- 562 00b6 77000000 		.4byte	0x77
- 563 00ba 02       		.uleb128 0x2
- 564 00bb 08       		.byte	0x8
- 565 00bc 04       		.byte	0x4
- 566 00bd 10030000 		.4byte	.LASF16
- 567 00c1 02       		.uleb128 0x2
- 568 00c2 04       		.byte	0x4
- 569 00c3 07       		.byte	0x7
- 570 00c4 63020000 		.4byte	.LASF17
- 571 00c8 06       		.uleb128 0x6
- 572 00c9 78010000 		.4byte	.LASF18
- 573 00cd 01       		.byte	0x1
- 574 00ce B4       		.byte	0xb4
- 575 00cf 00000000 		.4byte	.LFB1
- 576 00d3 10000000 		.4byte	.LFE1-.LFB1
- 577 00d7 01       		.uleb128 0x1
- 578 00d8 9C       		.byte	0x9c
- 579 00d9 06       		.uleb128 0x6
- 580 00da 80000000 		.4byte	.LASF19
- 581 00de 01       		.byte	0x1
- 582 00df F7       		.byte	0xf7
- 583 00e0 00000000 		.4byte	.LFB3
- 584 00e4 10000000 		.4byte	.LFE3-.LFB3
- 585 00e8 01       		.uleb128 0x1
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 25
+ 529 008a 02       		.uleb128 0x2
+ 530 008b 08       		.byte	0x8
+ 531 008c 04       		.byte	0x4
+ 532 008d F4010000 		.4byte	.LASF12
+ 533 0091 02       		.uleb128 0x2
+ 534 0092 01       		.byte	0x1
+ 535 0093 08       		.byte	0x8
+ 536 0094 55030000 		.4byte	.LASF13
+ 537 0098 04       		.uleb128 0x4
+ 538 0099 9F010000 		.4byte	.LASF14
+ 539 009d 02       		.byte	0x2
+ 540 009e 3C02     		.2byte	0x23c
+ 541 00a0 A4000000 		.4byte	0xa4
+ 542 00a4 05       		.uleb128 0x5
+ 543 00a5 6B000000 		.4byte	0x6b
+ 544 00a9 04       		.uleb128 0x4
+ 545 00aa 00000000 		.4byte	.LASF15
+ 546 00ae 02       		.byte	0x2
+ 547 00af 3D02     		.2byte	0x23d
+ 548 00b1 B5000000 		.4byte	0xb5
+ 549 00b5 05       		.uleb128 0x5
+ 550 00b6 77000000 		.4byte	0x77
+ 551 00ba 02       		.uleb128 0x2
+ 552 00bb 08       		.byte	0x8
+ 553 00bc 04       		.byte	0x4
+ 554 00bd 5A030000 		.4byte	.LASF16
+ 555 00c1 02       		.uleb128 0x2
+ 556 00c2 04       		.byte	0x4
+ 557 00c3 07       		.byte	0x7
+ 558 00c4 C0020000 		.4byte	.LASF17
+ 559 00c8 06       		.uleb128 0x6
+ 560 00c9 E5010000 		.4byte	.LASF18
+ 561 00cd 01       		.byte	0x1
+ 562 00ce B4       		.byte	0xb4
+ 563 00cf 00000000 		.4byte	.LFB1
+ 564 00d3 10000000 		.4byte	.LFE1-.LFB1
+ 565 00d7 01       		.uleb128 0x1
+ 566 00d8 9C       		.byte	0x9c
+ 567 00d9 06       		.uleb128 0x6
+ 568 00da 72030000 		.4byte	.LASF19
+ 569 00de 01       		.byte	0x1
+ 570 00df F7       		.byte	0xf7
+ 571 00e0 00000000 		.4byte	.LFB3
+ 572 00e4 10000000 		.4byte	.LFE3-.LFB3
+ 573 00e8 01       		.uleb128 0x1
+ 574 00e9 9C       		.byte	0x9c
+ 575 00ea 07       		.uleb128 0x7
+ 576 00eb FB010000 		.4byte	.LASF23
+ 577 00ef 01       		.byte	0x1
+ 578 00f0 1701     		.2byte	0x117
+ 579 00f2 00000000 		.4byte	.LFB4
+ 580 00f6 0C000000 		.4byte	.LFE4-.LFB4
+ 581 00fa 01       		.uleb128 0x1
+ 582 00fb 9C       		.byte	0x9c
+ 583 00fc 0F010000 		.4byte	0x10f
+ 584 0100 08       		.uleb128 0x8
+ 585 0101 D7020000 		.4byte	.LASF25
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 25
 
 
- 586 00e9 9C       		.byte	0x9c
- 587 00ea 07       		.uleb128 0x7
- 588 00eb 8E010000 		.4byte	.LASF23
- 589 00ef 01       		.byte	0x1
- 590 00f0 1701     		.2byte	0x117
- 591 00f2 00000000 		.4byte	.LFB4
- 592 00f6 0C000000 		.4byte	.LFE4-.LFB4
- 593 00fa 01       		.uleb128 0x1
- 594 00fb 9C       		.byte	0x9c
- 595 00fc 0F010000 		.4byte	0x10f
- 596 0100 08       		.uleb128 0x8
- 597 0101 7A020000 		.4byte	.LASF25
- 598 0105 01       		.byte	0x1
- 599 0106 1701     		.2byte	0x117
- 600 0108 6B000000 		.4byte	0x6b
- 601 010c 01       		.uleb128 0x1
- 602 010d 50       		.byte	0x50
- 603 010e 00       		.byte	0
- 604 010f 09       		.uleb128 0x9
- 605 0110 06000000 		.4byte	.LASF20
- 606 0114 01       		.byte	0x1
- 607 0115 2E01     		.2byte	0x12e
- 608 0117 00000000 		.4byte	.LFB5
- 609 011b 0C000000 		.4byte	.LFE5-.LFB5
- 610 011f 01       		.uleb128 0x1
- 611 0120 9C       		.byte	0x9c
- 612 0121 0A       		.uleb128 0xa
- 613 0122 E7020000 		.4byte	.LASF21
- 614 0126 01       		.byte	0x1
- 615 0127 4D01     		.2byte	0x14d
- 616 0129 6B000000 		.4byte	0x6b
- 617 012d 00000000 		.4byte	.LFB6
- 618 0131 0C000000 		.4byte	.LFE6-.LFB6
- 619 0135 01       		.uleb128 0x1
- 620 0136 9C       		.byte	0x9c
- 621 0137 0A       		.uleb128 0xa
- 622 0138 B6020000 		.4byte	.LASF22
- 623 013c 01       		.byte	0x1
- 624 013d 6401     		.2byte	0x164
- 625 013f 6B000000 		.4byte	0x6b
- 626 0143 00000000 		.4byte	.LFB7
- 627 0147 0C000000 		.4byte	.LFE7-.LFB7
- 628 014b 01       		.uleb128 0x1
- 629 014c 9C       		.byte	0x9c
- 630 014d 07       		.uleb128 0x7
- 631 014e B7010000 		.4byte	.LASF24
- 632 0152 01       		.byte	0x1
- 633 0153 7B01     		.2byte	0x17b
- 634 0155 00000000 		.4byte	.LFB8
- 635 0159 0C000000 		.4byte	.LFE8-.LFB8
- 636 015d 01       		.uleb128 0x1
- 637 015e 9C       		.byte	0x9c
- 638 015f 72010000 		.4byte	0x172
- 639 0163 08       		.uleb128 0x8
- 640 0164 70010000 		.4byte	.LASF26
- 641 0168 01       		.byte	0x1
- 642 0169 7B01     		.2byte	0x17b
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 26
+ 586 0105 01       		.byte	0x1
+ 587 0106 1701     		.2byte	0x117
+ 588 0108 6B000000 		.4byte	0x6b
+ 589 010c 01       		.uleb128 0x1
+ 590 010d 50       		.byte	0x50
+ 591 010e 00       		.byte	0
+ 592 010f 09       		.uleb128 0x9
+ 593 0110 68000000 		.4byte	.LASF20
+ 594 0114 01       		.byte	0x1
+ 595 0115 2E01     		.2byte	0x12e
+ 596 0117 00000000 		.4byte	.LFB5
+ 597 011b 0C000000 		.4byte	.LFE5-.LFB5
+ 598 011f 01       		.uleb128 0x1
+ 599 0120 9C       		.byte	0x9c
+ 600 0121 0A       		.uleb128 0xa
+ 601 0122 31030000 		.4byte	.LASF21
+ 602 0126 01       		.byte	0x1
+ 603 0127 4D01     		.2byte	0x14d
+ 604 0129 6B000000 		.4byte	0x6b
+ 605 012d 00000000 		.4byte	.LFB6
+ 606 0131 0C000000 		.4byte	.LFE6-.LFB6
+ 607 0135 01       		.uleb128 0x1
+ 608 0136 9C       		.byte	0x9c
+ 609 0137 0A       		.uleb128 0xa
+ 610 0138 0B030000 		.4byte	.LASF22
+ 611 013c 01       		.byte	0x1
+ 612 013d 6401     		.2byte	0x164
+ 613 013f 6B000000 		.4byte	0x6b
+ 614 0143 00000000 		.4byte	.LFB7
+ 615 0147 0C000000 		.4byte	.LFE7-.LFB7
+ 616 014b 01       		.uleb128 0x1
+ 617 014c 9C       		.byte	0x9c
+ 618 014d 07       		.uleb128 0x7
+ 619 014e 1B020000 		.4byte	.LASF24
+ 620 0152 01       		.byte	0x1
+ 621 0153 7B01     		.2byte	0x17b
+ 622 0155 00000000 		.4byte	.LFB8
+ 623 0159 0C000000 		.4byte	.LFE8-.LFB8
+ 624 015d 01       		.uleb128 0x1
+ 625 015e 9C       		.byte	0x9c
+ 626 015f 72010000 		.4byte	0x172
+ 627 0163 08       		.uleb128 0x8
+ 628 0164 CF010000 		.4byte	.LASF26
+ 629 0168 01       		.byte	0x1
+ 630 0169 7B01     		.2byte	0x17b
+ 631 016b 6B000000 		.4byte	0x6b
+ 632 016f 01       		.uleb128 0x1
+ 633 0170 50       		.byte	0x50
+ 634 0171 00       		.byte	0
+ 635 0172 0A       		.uleb128 0xa
+ 636 0173 A4010000 		.4byte	.LASF27
+ 637 0177 01       		.byte	0x1
+ 638 0178 9501     		.2byte	0x195
+ 639 017a 77000000 		.4byte	0x77
+ 640 017e 00000000 		.4byte	.LFB9
+ 641 0182 0C000000 		.4byte	.LFE9-.LFB9
+ 642 0186 01       		.uleb128 0x1
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 26
 
 
- 643 016b 6B000000 		.4byte	0x6b
- 644 016f 01       		.uleb128 0x1
- 645 0170 50       		.byte	0x50
- 646 0171 00       		.byte	0
- 647 0172 0A       		.uleb128 0xa
- 648 0173 45010000 		.4byte	.LASF27
- 649 0177 01       		.byte	0x1
- 650 0178 9501     		.2byte	0x195
- 651 017a 77000000 		.4byte	0x77
- 652 017e 00000000 		.4byte	.LFB9
- 653 0182 10000000 		.4byte	.LFE9-.LFB9
- 654 0186 01       		.uleb128 0x1
- 655 0187 9C       		.byte	0x9c
- 656 0188 07       		.uleb128 0x7
- 657 0189 1E000000 		.4byte	.LASF28
- 658 018d 01       		.byte	0x1
- 659 018e AF01     		.2byte	0x1af
- 660 0190 00000000 		.4byte	.LFB10
- 661 0194 10000000 		.4byte	.LFE10-.LFB10
- 662 0198 01       		.uleb128 0x1
- 663 0199 9C       		.byte	0x9c
- 664 019a C9010000 		.4byte	0x1c9
- 665 019e 0B       		.uleb128 0xb
- 666 019f 32000000 		.4byte	.LASF29
- 667 01a3 01       		.byte	0x1
- 668 01a4 AF01     		.2byte	0x1af
- 669 01a6 77000000 		.4byte	0x77
- 670 01aa 00000000 		.4byte	.LLST0
- 671 01ae 0C       		.uleb128 0xc
- 672 01af 0A000000 		.4byte	.LVL4
- 673 01b3 0D030000 		.4byte	0x30d
- 674 01b7 0D       		.uleb128 0xd
- 675 01b8 01       		.uleb128 0x1
- 676 01b9 50       		.byte	0x50
- 677 01ba 05       		.uleb128 0x5
- 678 01bb 0C       		.byte	0xc
- 679 01bc 2A640040 		.4byte	0x4000642a
- 680 01c0 0D       		.uleb128 0xd
- 681 01c1 01       		.uleb128 0x1
- 682 01c2 51       		.byte	0x51
- 683 01c3 03       		.uleb128 0x3
- 684 01c4 F3       		.byte	0xf3
- 685 01c5 01       		.uleb128 0x1
- 686 01c6 50       		.byte	0x50
- 687 01c7 00       		.byte	0
- 688 01c8 00       		.byte	0
- 689 01c9 0A       		.uleb128 0xa
- 690 01ca 38020000 		.4byte	.LASF30
- 691 01ce 01       		.byte	0x1
- 692 01cf C801     		.2byte	0x1c8
- 693 01d1 77000000 		.4byte	0x77
- 694 01d5 00000000 		.4byte	.LFB11
- 695 01d9 10000000 		.4byte	.LFE11-.LFB11
- 696 01dd 01       		.uleb128 0x1
- 697 01de 9C       		.byte	0x9c
- 698 01df 07       		.uleb128 0x7
- 699 01e0 23020000 		.4byte	.LASF31
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 27
+ 643 0187 9C       		.byte	0x9c
+ 644 0188 07       		.uleb128 0x7
+ 645 0189 80000000 		.4byte	.LASF28
+ 646 018d 01       		.byte	0x1
+ 647 018e AF01     		.2byte	0x1af
+ 648 0190 00000000 		.4byte	.LFB10
+ 649 0194 0C000000 		.4byte	.LFE10-.LFB10
+ 650 0198 01       		.uleb128 0x1
+ 651 0199 9C       		.byte	0x9c
+ 652 019a AD010000 		.4byte	0x1ad
+ 653 019e 08       		.uleb128 0x8
+ 654 019f 94000000 		.4byte	.LASF29
+ 655 01a3 01       		.byte	0x1
+ 656 01a4 AF01     		.2byte	0x1af
+ 657 01a6 77000000 		.4byte	0x77
+ 658 01aa 01       		.uleb128 0x1
+ 659 01ab 50       		.byte	0x50
+ 660 01ac 00       		.byte	0
+ 661 01ad 0A       		.uleb128 0xa
+ 662 01ae 95020000 		.4byte	.LASF30
+ 663 01b2 01       		.byte	0x1
+ 664 01b3 C801     		.2byte	0x1c8
+ 665 01b5 77000000 		.4byte	0x77
+ 666 01b9 00000000 		.4byte	.LFB11
+ 667 01bd 0C000000 		.4byte	.LFE11-.LFB11
+ 668 01c1 01       		.uleb128 0x1
+ 669 01c2 9C       		.byte	0x9c
+ 670 01c3 07       		.uleb128 0x7
+ 671 01c4 80020000 		.4byte	.LASF31
+ 672 01c8 01       		.byte	0x1
+ 673 01c9 E001     		.2byte	0x1e0
+ 674 01cb 00000000 		.4byte	.LFB12
+ 675 01cf 0C000000 		.4byte	.LFE12-.LFB12
+ 676 01d3 01       		.uleb128 0x1
+ 677 01d4 9C       		.byte	0x9c
+ 678 01d5 E8010000 		.4byte	0x1e8
+ 679 01d9 08       		.uleb128 0x8
+ 680 01da E2000000 		.4byte	.LASF32
+ 681 01de 01       		.byte	0x1
+ 682 01df E001     		.2byte	0x1e0
+ 683 01e1 77000000 		.4byte	0x77
+ 684 01e5 01       		.uleb128 0x1
+ 685 01e6 50       		.byte	0x50
+ 686 01e7 00       		.byte	0
+ 687 01e8 0A       		.uleb128 0xa
+ 688 01e9 E5020000 		.4byte	.LASF33
+ 689 01ed 01       		.byte	0x1
+ 690 01ee FC01     		.2byte	0x1fc
+ 691 01f0 77000000 		.4byte	0x77
+ 692 01f4 00000000 		.4byte	.LFB13
+ 693 01f8 14000000 		.4byte	.LFE13-.LFB13
+ 694 01fc 01       		.uleb128 0x1
+ 695 01fd 9C       		.byte	0x9c
+ 696 01fe 07       		.uleb128 0x7
+ 697 01ff F9020000 		.4byte	.LASF34
+ 698 0203 01       		.byte	0x1
+ 699 0204 FB02     		.2byte	0x2fb
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 27
 
 
- 700 01e4 01       		.byte	0x1
- 701 01e5 E001     		.2byte	0x1e0
- 702 01e7 00000000 		.4byte	.LFB12
- 703 01eb 10000000 		.4byte	.LFE12-.LFB12
- 704 01ef 01       		.uleb128 0x1
- 705 01f0 9C       		.byte	0x9c
- 706 01f1 20020000 		.4byte	0x220
- 707 01f5 0B       		.uleb128 0xb
- 708 01f6 9C020000 		.4byte	.LASF32
- 709 01fa 01       		.byte	0x1
- 710 01fb E001     		.2byte	0x1e0
- 711 01fd 77000000 		.4byte	0x77
- 712 0201 2C000000 		.4byte	.LLST1
- 713 0205 0C       		.uleb128 0xc
- 714 0206 0A000000 		.4byte	.LVL7
- 715 020a 0D030000 		.4byte	0x30d
- 716 020e 0D       		.uleb128 0xd
- 717 020f 01       		.uleb128 0x1
- 718 0210 50       		.byte	0x50
- 719 0211 05       		.uleb128 0x5
- 720 0212 0C       		.byte	0xc
- 721 0213 0A640040 		.4byte	0x4000640a
- 722 0217 0D       		.uleb128 0xd
- 723 0218 01       		.uleb128 0x1
- 724 0219 51       		.byte	0x51
- 725 021a 03       		.uleb128 0x3
- 726 021b F3       		.byte	0xf3
- 727 021c 01       		.uleb128 0x1
- 728 021d 50       		.byte	0x50
- 729 021e 00       		.byte	0
- 730 021f 00       		.byte	0
- 731 0220 0A       		.uleb128 0xa
- 732 0221 88020000 		.4byte	.LASF33
- 733 0225 01       		.byte	0x1
- 734 0226 FC01     		.2byte	0x1fc
- 735 0228 77000000 		.4byte	0x77
- 736 022c 00000000 		.4byte	.LFB13
- 737 0230 18000000 		.4byte	.LFE13-.LFB13
- 738 0234 01       		.uleb128 0x1
- 739 0235 9C       		.byte	0x9c
- 740 0236 07       		.uleb128 0x7
- 741 0237 A4020000 		.4byte	.LASF34
- 742 023b 01       		.byte	0x1
- 743 023c FB02     		.2byte	0x2fb
- 744 023e 00000000 		.4byte	.LFB14
- 745 0242 14000000 		.4byte	.LFE14-.LFB14
- 746 0246 01       		.uleb128 0x1
- 747 0247 9C       		.byte	0x9c
- 748 0248 5F020000 		.4byte	0x25f
- 749 024c 0E       		.uleb128 0xe
- 750 024d 08000000 		.4byte	.LVL8
- 751 0251 C9010000 		.4byte	0x1c9
- 752 0255 0E       		.uleb128 0xe
- 753 0256 0C000000 		.4byte	.LVL9
- 754 025a 21010000 		.4byte	0x121
- 755 025e 00       		.byte	0
- 756 025f 0F       		.uleb128 0xf
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 28
+ 700 0206 00000000 		.4byte	.LFB14
+ 701 020a 14000000 		.4byte	.LFE14-.LFB14
+ 702 020e 01       		.uleb128 0x1
+ 703 020f 9C       		.byte	0x9c
+ 704 0210 27020000 		.4byte	0x227
+ 705 0214 0B       		.uleb128 0xb
+ 706 0215 08000000 		.4byte	.LVL4
+ 707 0219 AD010000 		.4byte	0x1ad
+ 708 021d 0B       		.uleb128 0xb
+ 709 021e 0C000000 		.4byte	.LVL5
+ 710 0222 21010000 		.4byte	0x121
+ 711 0226 00       		.byte	0
+ 712 0227 0C       		.uleb128 0xc
+ 713 0228 5D020000 		.4byte	.LASF35
+ 714 022c 01       		.byte	0x1
+ 715 022d 2B       		.byte	0x2b
+ 716 022e 00000000 		.4byte	.LFB0
+ 717 0232 30000000 		.4byte	.LFE0-.LFB0
+ 718 0236 01       		.uleb128 0x1
+ 719 0237 9C       		.byte	0x9c
+ 720 0238 9C020000 		.4byte	0x29c
+ 721 023c 0D       		.uleb128 0xd
+ 722 023d A9020000 		.4byte	.LASF42
+ 723 0241 01       		.byte	0x1
+ 724 0242 2F       		.byte	0x2f
+ 725 0243 6B000000 		.4byte	0x6b
+ 726 0247 00000000 		.4byte	.LLST0
+ 727 024b 0E       		.uleb128 0xe
+ 728 024c 08000000 		.4byte	.LVL6
+ 729 0250 88010000 		.4byte	0x188
+ 730 0254 5E020000 		.4byte	0x25e
+ 731 0258 0F       		.uleb128 0xf
+ 732 0259 01       		.uleb128 0x1
+ 733 025a 50       		.byte	0x50
+ 734 025b 01       		.uleb128 0x1
+ 735 025c 39       		.byte	0x39
+ 736 025d 00       		.byte	0
+ 737 025e 0E       		.uleb128 0xe
+ 738 025f 0E000000 		.4byte	.LVL7
+ 739 0263 C3010000 		.4byte	0x1c3
+ 740 0267 71020000 		.4byte	0x271
+ 741 026b 0F       		.uleb128 0xf
+ 742 026c 01       		.uleb128 0x1
+ 743 026d 50       		.byte	0x50
+ 744 026e 01       		.uleb128 0x1
+ 745 026f 39       		.byte	0x39
+ 746 0270 00       		.byte	0
+ 747 0271 0B       		.uleb128 0xb
+ 748 0272 12000000 		.4byte	.LVL8
+ 749 0276 D5020000 		.4byte	0x2d5
+ 750 027a 0B       		.uleb128 0xb
+ 751 027b 20000000 		.4byte	.LVL9
+ 752 027f E0020000 		.4byte	0x2e0
+ 753 0283 0B       		.uleb128 0xb
+ 754 0284 24000000 		.4byte	.LVL10
+ 755 0288 FE010000 		.4byte	0x1fe
+ 756 028c 10       		.uleb128 0x10
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 28
 
 
- 757 0260 00020000 		.4byte	.LASF35
- 758 0264 01       		.byte	0x1
- 759 0265 2B       		.byte	0x2b
- 760 0266 00000000 		.4byte	.LFB0
- 761 026a 30000000 		.4byte	.LFE0-.LFB0
- 762 026e 01       		.uleb128 0x1
- 763 026f 9C       		.byte	0x9c
- 764 0270 D4020000 		.4byte	0x2d4
- 765 0274 10       		.uleb128 0x10
- 766 0275 4C020000 		.4byte	.LASF43
- 767 0279 01       		.byte	0x1
- 768 027a 2F       		.byte	0x2f
- 769 027b 6B000000 		.4byte	0x6b
- 770 027f 58000000 		.4byte	.LLST2
- 771 0283 11       		.uleb128 0x11
- 772 0284 08000000 		.4byte	.LVL10
- 773 0288 88010000 		.4byte	0x188
- 774 028c 96020000 		.4byte	0x296
- 775 0290 0D       		.uleb128 0xd
- 776 0291 01       		.uleb128 0x1
- 777 0292 50       		.byte	0x50
- 778 0293 01       		.uleb128 0x1
- 779 0294 39       		.byte	0x39
- 780 0295 00       		.byte	0
- 781 0296 11       		.uleb128 0x11
- 782 0297 0E000000 		.4byte	.LVL11
- 783 029b DF010000 		.4byte	0x1df
- 784 029f A9020000 		.4byte	0x2a9
- 785 02a3 0D       		.uleb128 0xd
- 786 02a4 01       		.uleb128 0x1
- 787 02a5 50       		.byte	0x50
- 788 02a6 01       		.uleb128 0x1
- 789 02a7 39       		.byte	0x39
- 790 02a8 00       		.byte	0
- 791 02a9 0E       		.uleb128 0xe
- 792 02aa 12000000 		.4byte	.LVL12
- 793 02ae 19030000 		.4byte	0x319
- 794 02b2 0E       		.uleb128 0xe
- 795 02b3 20000000 		.4byte	.LVL13
- 796 02b7 24030000 		.4byte	0x324
- 797 02bb 0E       		.uleb128 0xe
- 798 02bc 24000000 		.4byte	.LVL14
- 799 02c0 36020000 		.4byte	0x236
- 800 02c4 0C       		.uleb128 0xc
- 801 02c5 2A000000 		.4byte	.LVL15
- 802 02c9 EA000000 		.4byte	0xea
- 803 02cd 0D       		.uleb128 0xd
- 804 02ce 01       		.uleb128 0x1
- 805 02cf 50       		.byte	0x50
- 806 02d0 01       		.uleb128 0x1
- 807 02d1 31       		.byte	0x31
- 808 02d2 00       		.byte	0
- 809 02d3 00       		.byte	0
- 810 02d4 0F       		.uleb128 0xf
- 811 02d5 F2010000 		.4byte	.LASF36
- 812 02d9 01       		.byte	0x1
- 813 02da D7       		.byte	0xd7
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 29
+ 757 028d 2A000000 		.4byte	.LVL11
+ 758 0291 EA000000 		.4byte	0xea
+ 759 0295 0F       		.uleb128 0xf
+ 760 0296 01       		.uleb128 0x1
+ 761 0297 50       		.byte	0x50
+ 762 0298 01       		.uleb128 0x1
+ 763 0299 31       		.byte	0x31
+ 764 029a 00       		.byte	0
+ 765 029b 00       		.byte	0
+ 766 029c 0C       		.uleb128 0xc
+ 767 029d 4F020000 		.4byte	.LASF36
+ 768 02a1 01       		.byte	0x1
+ 769 02a2 D7       		.byte	0xd7
+ 770 02a3 00000000 		.4byte	.LFB2
+ 771 02a7 1C000000 		.4byte	.LFE2-.LFB2
+ 772 02ab 01       		.uleb128 0x1
+ 773 02ac 9C       		.byte	0x9c
+ 774 02ad C4020000 		.4byte	0x2c4
+ 775 02b1 0B       		.uleb128 0xb
+ 776 02b2 0C000000 		.4byte	.LVL12
+ 777 02b6 27020000 		.4byte	0x227
+ 778 02ba 0B       		.uleb128 0xb
+ 779 02bb 16000000 		.4byte	.LVL13
+ 780 02bf C8000000 		.4byte	0xc8
+ 781 02c3 00       		.byte	0
+ 782 02c4 11       		.uleb128 0x11
+ 783 02c5 01010000 		.4byte	.LASF43
+ 784 02c9 01       		.byte	0x1
+ 785 02ca 1A       		.byte	0x1a
+ 786 02cb 6B000000 		.4byte	0x6b
+ 787 02cf 05       		.uleb128 0x5
+ 788 02d0 03       		.byte	0x3
+ 789 02d1 00000000 		.4byte	Timer_1_initVar
+ 790 02d5 12       		.uleb128 0x12
+ 791 02d6 38020000 		.4byte	.LASF37
+ 792 02da 38020000 		.4byte	.LASF37
+ 793 02de 03       		.byte	0x3
+ 794 02df 7D       		.byte	0x7d
+ 795 02e0 12       		.uleb128 0x12
+ 796 02e1 6A020000 		.4byte	.LASF38
+ 797 02e5 6A020000 		.4byte	.LASF38
+ 798 02e9 03       		.byte	0x3
+ 799 02ea 7E       		.byte	0x7e
+ 800 02eb 00       		.byte	0
+ 801              		.section	.debug_abbrev,"",%progbits
+ 802              	.Ldebug_abbrev0:
+ 803 0000 01       		.uleb128 0x1
+ 804 0001 11       		.uleb128 0x11
+ 805 0002 01       		.byte	0x1
+ 806 0003 25       		.uleb128 0x25
+ 807 0004 0E       		.uleb128 0xe
+ 808 0005 13       		.uleb128 0x13
+ 809 0006 0B       		.uleb128 0xb
+ 810 0007 03       		.uleb128 0x3
+ 811 0008 0E       		.uleb128 0xe
+ 812 0009 1B       		.uleb128 0x1b
+ 813 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 29
 
 
- 814 02db 00000000 		.4byte	.LFB2
- 815 02df 1C000000 		.4byte	.LFE2-.LFB2
- 816 02e3 01       		.uleb128 0x1
- 817 02e4 9C       		.byte	0x9c
- 818 02e5 FC020000 		.4byte	0x2fc
- 819 02e9 0E       		.uleb128 0xe
- 820 02ea 0C000000 		.4byte	.LVL16
- 821 02ee 5F020000 		.4byte	0x25f
- 822 02f2 0E       		.uleb128 0xe
- 823 02f3 16000000 		.4byte	.LVL17
- 824 02f7 C8000000 		.4byte	0xc8
- 825 02fb 00       		.byte	0
- 826 02fc 12       		.uleb128 0x12
- 827 02fd A7010000 		.4byte	.LASF44
- 828 0301 01       		.byte	0x1
- 829 0302 1A       		.byte	0x1a
- 830 0303 6B000000 		.4byte	0x6b
- 831 0307 05       		.uleb128 0x5
- 832 0308 03       		.byte	0x3
- 833 0309 00000000 		.4byte	Timer_1_initVar
- 834 030d 13       		.uleb128 0x13
- 835 030e D2020000 		.4byte	.LASF37
- 836 0312 D2020000 		.4byte	.LASF37
- 837 0316 02       		.byte	0x2
- 838 0317 D501     		.2byte	0x1d5
- 839 0319 14       		.uleb128 0x14
- 840 031a DB010000 		.4byte	.LASF38
- 841 031e DB010000 		.4byte	.LASF38
- 842 0322 03       		.byte	0x3
- 843 0323 7D       		.byte	0x7d
- 844 0324 14       		.uleb128 0x14
- 845 0325 0D020000 		.4byte	.LASF39
- 846 0329 0D020000 		.4byte	.LASF39
- 847 032d 03       		.byte	0x3
- 848 032e 7E       		.byte	0x7e
- 849 032f 00       		.byte	0
- 850              		.section	.debug_abbrev,"",%progbits
- 851              	.Ldebug_abbrev0:
- 852 0000 01       		.uleb128 0x1
- 853 0001 11       		.uleb128 0x11
- 854 0002 01       		.byte	0x1
- 855 0003 25       		.uleb128 0x25
- 856 0004 0E       		.uleb128 0xe
- 857 0005 13       		.uleb128 0x13
- 858 0006 0B       		.uleb128 0xb
- 859 0007 03       		.uleb128 0x3
- 860 0008 0E       		.uleb128 0xe
- 861 0009 1B       		.uleb128 0x1b
- 862 000a 0E       		.uleb128 0xe
- 863 000b 55       		.uleb128 0x55
- 864 000c 17       		.uleb128 0x17
- 865 000d 11       		.uleb128 0x11
- 866 000e 01       		.uleb128 0x1
- 867 000f 10       		.uleb128 0x10
- 868 0010 17       		.uleb128 0x17
- 869 0011 00       		.byte	0
- 870 0012 00       		.byte	0
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 30
+ 814 000b 55       		.uleb128 0x55
+ 815 000c 17       		.uleb128 0x17
+ 816 000d 11       		.uleb128 0x11
+ 817 000e 01       		.uleb128 0x1
+ 818 000f 10       		.uleb128 0x10
+ 819 0010 17       		.uleb128 0x17
+ 820 0011 00       		.byte	0
+ 821 0012 00       		.byte	0
+ 822 0013 02       		.uleb128 0x2
+ 823 0014 24       		.uleb128 0x24
+ 824 0015 00       		.byte	0
+ 825 0016 0B       		.uleb128 0xb
+ 826 0017 0B       		.uleb128 0xb
+ 827 0018 3E       		.uleb128 0x3e
+ 828 0019 0B       		.uleb128 0xb
+ 829 001a 03       		.uleb128 0x3
+ 830 001b 0E       		.uleb128 0xe
+ 831 001c 00       		.byte	0
+ 832 001d 00       		.byte	0
+ 833 001e 03       		.uleb128 0x3
+ 834 001f 24       		.uleb128 0x24
+ 835 0020 00       		.byte	0
+ 836 0021 0B       		.uleb128 0xb
+ 837 0022 0B       		.uleb128 0xb
+ 838 0023 3E       		.uleb128 0x3e
+ 839 0024 0B       		.uleb128 0xb
+ 840 0025 03       		.uleb128 0x3
+ 841 0026 08       		.uleb128 0x8
+ 842 0027 00       		.byte	0
+ 843 0028 00       		.byte	0
+ 844 0029 04       		.uleb128 0x4
+ 845 002a 16       		.uleb128 0x16
+ 846 002b 00       		.byte	0
+ 847 002c 03       		.uleb128 0x3
+ 848 002d 0E       		.uleb128 0xe
+ 849 002e 3A       		.uleb128 0x3a
+ 850 002f 0B       		.uleb128 0xb
+ 851 0030 3B       		.uleb128 0x3b
+ 852 0031 05       		.uleb128 0x5
+ 853 0032 49       		.uleb128 0x49
+ 854 0033 13       		.uleb128 0x13
+ 855 0034 00       		.byte	0
+ 856 0035 00       		.byte	0
+ 857 0036 05       		.uleb128 0x5
+ 858 0037 35       		.uleb128 0x35
+ 859 0038 00       		.byte	0
+ 860 0039 49       		.uleb128 0x49
+ 861 003a 13       		.uleb128 0x13
+ 862 003b 00       		.byte	0
+ 863 003c 00       		.byte	0
+ 864 003d 06       		.uleb128 0x6
+ 865 003e 2E       		.uleb128 0x2e
+ 866 003f 00       		.byte	0
+ 867 0040 3F       		.uleb128 0x3f
+ 868 0041 19       		.uleb128 0x19
+ 869 0042 03       		.uleb128 0x3
+ 870 0043 0E       		.uleb128 0xe
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 30
 
 
- 871 0013 02       		.uleb128 0x2
- 872 0014 24       		.uleb128 0x24
- 873 0015 00       		.byte	0
- 874 0016 0B       		.uleb128 0xb
- 875 0017 0B       		.uleb128 0xb
- 876 0018 3E       		.uleb128 0x3e
- 877 0019 0B       		.uleb128 0xb
- 878 001a 03       		.uleb128 0x3
- 879 001b 0E       		.uleb128 0xe
- 880 001c 00       		.byte	0
- 881 001d 00       		.byte	0
- 882 001e 03       		.uleb128 0x3
- 883 001f 24       		.uleb128 0x24
- 884 0020 00       		.byte	0
- 885 0021 0B       		.uleb128 0xb
- 886 0022 0B       		.uleb128 0xb
- 887 0023 3E       		.uleb128 0x3e
- 888 0024 0B       		.uleb128 0xb
- 889 0025 03       		.uleb128 0x3
- 890 0026 08       		.uleb128 0x8
- 891 0027 00       		.byte	0
- 892 0028 00       		.byte	0
- 893 0029 04       		.uleb128 0x4
- 894 002a 16       		.uleb128 0x16
- 895 002b 00       		.byte	0
- 896 002c 03       		.uleb128 0x3
- 897 002d 0E       		.uleb128 0xe
- 898 002e 3A       		.uleb128 0x3a
- 899 002f 0B       		.uleb128 0xb
- 900 0030 3B       		.uleb128 0x3b
- 901 0031 05       		.uleb128 0x5
- 902 0032 49       		.uleb128 0x49
- 903 0033 13       		.uleb128 0x13
- 904 0034 00       		.byte	0
- 905 0035 00       		.byte	0
- 906 0036 05       		.uleb128 0x5
- 907 0037 35       		.uleb128 0x35
- 908 0038 00       		.byte	0
- 909 0039 49       		.uleb128 0x49
- 910 003a 13       		.uleb128 0x13
- 911 003b 00       		.byte	0
- 912 003c 00       		.byte	0
- 913 003d 06       		.uleb128 0x6
- 914 003e 2E       		.uleb128 0x2e
- 915 003f 00       		.byte	0
- 916 0040 3F       		.uleb128 0x3f
- 917 0041 19       		.uleb128 0x19
- 918 0042 03       		.uleb128 0x3
- 919 0043 0E       		.uleb128 0xe
- 920 0044 3A       		.uleb128 0x3a
- 921 0045 0B       		.uleb128 0xb
- 922 0046 3B       		.uleb128 0x3b
- 923 0047 0B       		.uleb128 0xb
- 924 0048 27       		.uleb128 0x27
- 925 0049 19       		.uleb128 0x19
- 926 004a 11       		.uleb128 0x11
- 927 004b 01       		.uleb128 0x1
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 31
+ 871 0044 3A       		.uleb128 0x3a
+ 872 0045 0B       		.uleb128 0xb
+ 873 0046 3B       		.uleb128 0x3b
+ 874 0047 0B       		.uleb128 0xb
+ 875 0048 27       		.uleb128 0x27
+ 876 0049 19       		.uleb128 0x19
+ 877 004a 11       		.uleb128 0x11
+ 878 004b 01       		.uleb128 0x1
+ 879 004c 12       		.uleb128 0x12
+ 880 004d 06       		.uleb128 0x6
+ 881 004e 40       		.uleb128 0x40
+ 882 004f 18       		.uleb128 0x18
+ 883 0050 9742     		.uleb128 0x2117
+ 884 0052 19       		.uleb128 0x19
+ 885 0053 00       		.byte	0
+ 886 0054 00       		.byte	0
+ 887 0055 07       		.uleb128 0x7
+ 888 0056 2E       		.uleb128 0x2e
+ 889 0057 01       		.byte	0x1
+ 890 0058 3F       		.uleb128 0x3f
+ 891 0059 19       		.uleb128 0x19
+ 892 005a 03       		.uleb128 0x3
+ 893 005b 0E       		.uleb128 0xe
+ 894 005c 3A       		.uleb128 0x3a
+ 895 005d 0B       		.uleb128 0xb
+ 896 005e 3B       		.uleb128 0x3b
+ 897 005f 05       		.uleb128 0x5
+ 898 0060 27       		.uleb128 0x27
+ 899 0061 19       		.uleb128 0x19
+ 900 0062 11       		.uleb128 0x11
+ 901 0063 01       		.uleb128 0x1
+ 902 0064 12       		.uleb128 0x12
+ 903 0065 06       		.uleb128 0x6
+ 904 0066 40       		.uleb128 0x40
+ 905 0067 18       		.uleb128 0x18
+ 906 0068 9742     		.uleb128 0x2117
+ 907 006a 19       		.uleb128 0x19
+ 908 006b 01       		.uleb128 0x1
+ 909 006c 13       		.uleb128 0x13
+ 910 006d 00       		.byte	0
+ 911 006e 00       		.byte	0
+ 912 006f 08       		.uleb128 0x8
+ 913 0070 05       		.uleb128 0x5
+ 914 0071 00       		.byte	0
+ 915 0072 03       		.uleb128 0x3
+ 916 0073 0E       		.uleb128 0xe
+ 917 0074 3A       		.uleb128 0x3a
+ 918 0075 0B       		.uleb128 0xb
+ 919 0076 3B       		.uleb128 0x3b
+ 920 0077 05       		.uleb128 0x5
+ 921 0078 49       		.uleb128 0x49
+ 922 0079 13       		.uleb128 0x13
+ 923 007a 02       		.uleb128 0x2
+ 924 007b 18       		.uleb128 0x18
+ 925 007c 00       		.byte	0
+ 926 007d 00       		.byte	0
+ 927 007e 09       		.uleb128 0x9
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 31
 
 
- 928 004c 12       		.uleb128 0x12
- 929 004d 06       		.uleb128 0x6
- 930 004e 40       		.uleb128 0x40
- 931 004f 18       		.uleb128 0x18
- 932 0050 9742     		.uleb128 0x2117
- 933 0052 19       		.uleb128 0x19
- 934 0053 00       		.byte	0
- 935 0054 00       		.byte	0
- 936 0055 07       		.uleb128 0x7
- 937 0056 2E       		.uleb128 0x2e
- 938 0057 01       		.byte	0x1
- 939 0058 3F       		.uleb128 0x3f
- 940 0059 19       		.uleb128 0x19
- 941 005a 03       		.uleb128 0x3
- 942 005b 0E       		.uleb128 0xe
- 943 005c 3A       		.uleb128 0x3a
- 944 005d 0B       		.uleb128 0xb
- 945 005e 3B       		.uleb128 0x3b
- 946 005f 05       		.uleb128 0x5
- 947 0060 27       		.uleb128 0x27
- 948 0061 19       		.uleb128 0x19
- 949 0062 11       		.uleb128 0x11
- 950 0063 01       		.uleb128 0x1
- 951 0064 12       		.uleb128 0x12
- 952 0065 06       		.uleb128 0x6
- 953 0066 40       		.uleb128 0x40
- 954 0067 18       		.uleb128 0x18
- 955 0068 9742     		.uleb128 0x2117
- 956 006a 19       		.uleb128 0x19
- 957 006b 01       		.uleb128 0x1
- 958 006c 13       		.uleb128 0x13
- 959 006d 00       		.byte	0
- 960 006e 00       		.byte	0
- 961 006f 08       		.uleb128 0x8
- 962 0070 05       		.uleb128 0x5
- 963 0071 00       		.byte	0
- 964 0072 03       		.uleb128 0x3
- 965 0073 0E       		.uleb128 0xe
- 966 0074 3A       		.uleb128 0x3a
- 967 0075 0B       		.uleb128 0xb
- 968 0076 3B       		.uleb128 0x3b
- 969 0077 05       		.uleb128 0x5
- 970 0078 49       		.uleb128 0x49
- 971 0079 13       		.uleb128 0x13
- 972 007a 02       		.uleb128 0x2
- 973 007b 18       		.uleb128 0x18
- 974 007c 00       		.byte	0
- 975 007d 00       		.byte	0
- 976 007e 09       		.uleb128 0x9
- 977 007f 2E       		.uleb128 0x2e
- 978 0080 00       		.byte	0
- 979 0081 3F       		.uleb128 0x3f
- 980 0082 19       		.uleb128 0x19
- 981 0083 03       		.uleb128 0x3
- 982 0084 0E       		.uleb128 0xe
- 983 0085 3A       		.uleb128 0x3a
- 984 0086 0B       		.uleb128 0xb
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 32
+ 928 007f 2E       		.uleb128 0x2e
+ 929 0080 00       		.byte	0
+ 930 0081 3F       		.uleb128 0x3f
+ 931 0082 19       		.uleb128 0x19
+ 932 0083 03       		.uleb128 0x3
+ 933 0084 0E       		.uleb128 0xe
+ 934 0085 3A       		.uleb128 0x3a
+ 935 0086 0B       		.uleb128 0xb
+ 936 0087 3B       		.uleb128 0x3b
+ 937 0088 05       		.uleb128 0x5
+ 938 0089 27       		.uleb128 0x27
+ 939 008a 19       		.uleb128 0x19
+ 940 008b 11       		.uleb128 0x11
+ 941 008c 01       		.uleb128 0x1
+ 942 008d 12       		.uleb128 0x12
+ 943 008e 06       		.uleb128 0x6
+ 944 008f 40       		.uleb128 0x40
+ 945 0090 18       		.uleb128 0x18
+ 946 0091 9742     		.uleb128 0x2117
+ 947 0093 19       		.uleb128 0x19
+ 948 0094 00       		.byte	0
+ 949 0095 00       		.byte	0
+ 950 0096 0A       		.uleb128 0xa
+ 951 0097 2E       		.uleb128 0x2e
+ 952 0098 00       		.byte	0
+ 953 0099 3F       		.uleb128 0x3f
+ 954 009a 19       		.uleb128 0x19
+ 955 009b 03       		.uleb128 0x3
+ 956 009c 0E       		.uleb128 0xe
+ 957 009d 3A       		.uleb128 0x3a
+ 958 009e 0B       		.uleb128 0xb
+ 959 009f 3B       		.uleb128 0x3b
+ 960 00a0 05       		.uleb128 0x5
+ 961 00a1 27       		.uleb128 0x27
+ 962 00a2 19       		.uleb128 0x19
+ 963 00a3 49       		.uleb128 0x49
+ 964 00a4 13       		.uleb128 0x13
+ 965 00a5 11       		.uleb128 0x11
+ 966 00a6 01       		.uleb128 0x1
+ 967 00a7 12       		.uleb128 0x12
+ 968 00a8 06       		.uleb128 0x6
+ 969 00a9 40       		.uleb128 0x40
+ 970 00aa 18       		.uleb128 0x18
+ 971 00ab 9742     		.uleb128 0x2117
+ 972 00ad 19       		.uleb128 0x19
+ 973 00ae 00       		.byte	0
+ 974 00af 00       		.byte	0
+ 975 00b0 0B       		.uleb128 0xb
+ 976 00b1 898201   		.uleb128 0x4109
+ 977 00b4 00       		.byte	0
+ 978 00b5 11       		.uleb128 0x11
+ 979 00b6 01       		.uleb128 0x1
+ 980 00b7 31       		.uleb128 0x31
+ 981 00b8 13       		.uleb128 0x13
+ 982 00b9 00       		.byte	0
+ 983 00ba 00       		.byte	0
+ 984 00bb 0C       		.uleb128 0xc
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 32
 
 
- 985 0087 3B       		.uleb128 0x3b
- 986 0088 05       		.uleb128 0x5
- 987 0089 27       		.uleb128 0x27
- 988 008a 19       		.uleb128 0x19
- 989 008b 11       		.uleb128 0x11
- 990 008c 01       		.uleb128 0x1
- 991 008d 12       		.uleb128 0x12
- 992 008e 06       		.uleb128 0x6
- 993 008f 40       		.uleb128 0x40
- 994 0090 18       		.uleb128 0x18
- 995 0091 9742     		.uleb128 0x2117
- 996 0093 19       		.uleb128 0x19
- 997 0094 00       		.byte	0
- 998 0095 00       		.byte	0
- 999 0096 0A       		.uleb128 0xa
- 1000 0097 2E       		.uleb128 0x2e
- 1001 0098 00       		.byte	0
- 1002 0099 3F       		.uleb128 0x3f
- 1003 009a 19       		.uleb128 0x19
- 1004 009b 03       		.uleb128 0x3
- 1005 009c 0E       		.uleb128 0xe
- 1006 009d 3A       		.uleb128 0x3a
- 1007 009e 0B       		.uleb128 0xb
- 1008 009f 3B       		.uleb128 0x3b
- 1009 00a0 05       		.uleb128 0x5
- 1010 00a1 27       		.uleb128 0x27
- 1011 00a2 19       		.uleb128 0x19
- 1012 00a3 49       		.uleb128 0x49
- 1013 00a4 13       		.uleb128 0x13
- 1014 00a5 11       		.uleb128 0x11
- 1015 00a6 01       		.uleb128 0x1
- 1016 00a7 12       		.uleb128 0x12
- 1017 00a8 06       		.uleb128 0x6
- 1018 00a9 40       		.uleb128 0x40
- 1019 00aa 18       		.uleb128 0x18
- 1020 00ab 9742     		.uleb128 0x2117
- 1021 00ad 19       		.uleb128 0x19
- 1022 00ae 00       		.byte	0
- 1023 00af 00       		.byte	0
- 1024 00b0 0B       		.uleb128 0xb
- 1025 00b1 05       		.uleb128 0x5
- 1026 00b2 00       		.byte	0
- 1027 00b3 03       		.uleb128 0x3
- 1028 00b4 0E       		.uleb128 0xe
- 1029 00b5 3A       		.uleb128 0x3a
- 1030 00b6 0B       		.uleb128 0xb
- 1031 00b7 3B       		.uleb128 0x3b
- 1032 00b8 05       		.uleb128 0x5
- 1033 00b9 49       		.uleb128 0x49
- 1034 00ba 13       		.uleb128 0x13
- 1035 00bb 02       		.uleb128 0x2
- 1036 00bc 17       		.uleb128 0x17
- 1037 00bd 00       		.byte	0
- 1038 00be 00       		.byte	0
- 1039 00bf 0C       		.uleb128 0xc
- 1040 00c0 898201   		.uleb128 0x4109
- 1041 00c3 01       		.byte	0x1
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 33
+ 985 00bc 2E       		.uleb128 0x2e
+ 986 00bd 01       		.byte	0x1
+ 987 00be 3F       		.uleb128 0x3f
+ 988 00bf 19       		.uleb128 0x19
+ 989 00c0 03       		.uleb128 0x3
+ 990 00c1 0E       		.uleb128 0xe
+ 991 00c2 3A       		.uleb128 0x3a
+ 992 00c3 0B       		.uleb128 0xb
+ 993 00c4 3B       		.uleb128 0x3b
+ 994 00c5 0B       		.uleb128 0xb
+ 995 00c6 27       		.uleb128 0x27
+ 996 00c7 19       		.uleb128 0x19
+ 997 00c8 11       		.uleb128 0x11
+ 998 00c9 01       		.uleb128 0x1
+ 999 00ca 12       		.uleb128 0x12
+ 1000 00cb 06       		.uleb128 0x6
+ 1001 00cc 40       		.uleb128 0x40
+ 1002 00cd 18       		.uleb128 0x18
+ 1003 00ce 9742     		.uleb128 0x2117
+ 1004 00d0 19       		.uleb128 0x19
+ 1005 00d1 01       		.uleb128 0x1
+ 1006 00d2 13       		.uleb128 0x13
+ 1007 00d3 00       		.byte	0
+ 1008 00d4 00       		.byte	0
+ 1009 00d5 0D       		.uleb128 0xd
+ 1010 00d6 34       		.uleb128 0x34
+ 1011 00d7 00       		.byte	0
+ 1012 00d8 03       		.uleb128 0x3
+ 1013 00d9 0E       		.uleb128 0xe
+ 1014 00da 3A       		.uleb128 0x3a
+ 1015 00db 0B       		.uleb128 0xb
+ 1016 00dc 3B       		.uleb128 0x3b
+ 1017 00dd 0B       		.uleb128 0xb
+ 1018 00de 49       		.uleb128 0x49
+ 1019 00df 13       		.uleb128 0x13
+ 1020 00e0 02       		.uleb128 0x2
+ 1021 00e1 17       		.uleb128 0x17
+ 1022 00e2 00       		.byte	0
+ 1023 00e3 00       		.byte	0
+ 1024 00e4 0E       		.uleb128 0xe
+ 1025 00e5 898201   		.uleb128 0x4109
+ 1026 00e8 01       		.byte	0x1
+ 1027 00e9 11       		.uleb128 0x11
+ 1028 00ea 01       		.uleb128 0x1
+ 1029 00eb 31       		.uleb128 0x31
+ 1030 00ec 13       		.uleb128 0x13
+ 1031 00ed 01       		.uleb128 0x1
+ 1032 00ee 13       		.uleb128 0x13
+ 1033 00ef 00       		.byte	0
+ 1034 00f0 00       		.byte	0
+ 1035 00f1 0F       		.uleb128 0xf
+ 1036 00f2 8A8201   		.uleb128 0x410a
+ 1037 00f5 00       		.byte	0
+ 1038 00f6 02       		.uleb128 0x2
+ 1039 00f7 18       		.uleb128 0x18
+ 1040 00f8 9142     		.uleb128 0x2111
+ 1041 00fa 18       		.uleb128 0x18
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 33
 
 
- 1042 00c4 11       		.uleb128 0x11
- 1043 00c5 01       		.uleb128 0x1
- 1044 00c6 31       		.uleb128 0x31
- 1045 00c7 13       		.uleb128 0x13
- 1046 00c8 00       		.byte	0
- 1047 00c9 00       		.byte	0
- 1048 00ca 0D       		.uleb128 0xd
- 1049 00cb 8A8201   		.uleb128 0x410a
- 1050 00ce 00       		.byte	0
- 1051 00cf 02       		.uleb128 0x2
- 1052 00d0 18       		.uleb128 0x18
- 1053 00d1 9142     		.uleb128 0x2111
- 1054 00d3 18       		.uleb128 0x18
- 1055 00d4 00       		.byte	0
- 1056 00d5 00       		.byte	0
- 1057 00d6 0E       		.uleb128 0xe
- 1058 00d7 898201   		.uleb128 0x4109
- 1059 00da 00       		.byte	0
- 1060 00db 11       		.uleb128 0x11
- 1061 00dc 01       		.uleb128 0x1
- 1062 00dd 31       		.uleb128 0x31
- 1063 00de 13       		.uleb128 0x13
- 1064 00df 00       		.byte	0
- 1065 00e0 00       		.byte	0
- 1066 00e1 0F       		.uleb128 0xf
- 1067 00e2 2E       		.uleb128 0x2e
- 1068 00e3 01       		.byte	0x1
- 1069 00e4 3F       		.uleb128 0x3f
- 1070 00e5 19       		.uleb128 0x19
- 1071 00e6 03       		.uleb128 0x3
- 1072 00e7 0E       		.uleb128 0xe
- 1073 00e8 3A       		.uleb128 0x3a
- 1074 00e9 0B       		.uleb128 0xb
- 1075 00ea 3B       		.uleb128 0x3b
- 1076 00eb 0B       		.uleb128 0xb
- 1077 00ec 27       		.uleb128 0x27
- 1078 00ed 19       		.uleb128 0x19
- 1079 00ee 11       		.uleb128 0x11
- 1080 00ef 01       		.uleb128 0x1
- 1081 00f0 12       		.uleb128 0x12
- 1082 00f1 06       		.uleb128 0x6
- 1083 00f2 40       		.uleb128 0x40
- 1084 00f3 18       		.uleb128 0x18
- 1085 00f4 9742     		.uleb128 0x2117
- 1086 00f6 19       		.uleb128 0x19
- 1087 00f7 01       		.uleb128 0x1
- 1088 00f8 13       		.uleb128 0x13
- 1089 00f9 00       		.byte	0
- 1090 00fa 00       		.byte	0
- 1091 00fb 10       		.uleb128 0x10
- 1092 00fc 34       		.uleb128 0x34
- 1093 00fd 00       		.byte	0
- 1094 00fe 03       		.uleb128 0x3
- 1095 00ff 0E       		.uleb128 0xe
- 1096 0100 3A       		.uleb128 0x3a
- 1097 0101 0B       		.uleb128 0xb
- 1098 0102 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 34
+ 1042 00fb 00       		.byte	0
+ 1043 00fc 00       		.byte	0
+ 1044 00fd 10       		.uleb128 0x10
+ 1045 00fe 898201   		.uleb128 0x4109
+ 1046 0101 01       		.byte	0x1
+ 1047 0102 11       		.uleb128 0x11
+ 1048 0103 01       		.uleb128 0x1
+ 1049 0104 31       		.uleb128 0x31
+ 1050 0105 13       		.uleb128 0x13
+ 1051 0106 00       		.byte	0
+ 1052 0107 00       		.byte	0
+ 1053 0108 11       		.uleb128 0x11
+ 1054 0109 34       		.uleb128 0x34
+ 1055 010a 00       		.byte	0
+ 1056 010b 03       		.uleb128 0x3
+ 1057 010c 0E       		.uleb128 0xe
+ 1058 010d 3A       		.uleb128 0x3a
+ 1059 010e 0B       		.uleb128 0xb
+ 1060 010f 3B       		.uleb128 0x3b
+ 1061 0110 0B       		.uleb128 0xb
+ 1062 0111 49       		.uleb128 0x49
+ 1063 0112 13       		.uleb128 0x13
+ 1064 0113 3F       		.uleb128 0x3f
+ 1065 0114 19       		.uleb128 0x19
+ 1066 0115 02       		.uleb128 0x2
+ 1067 0116 18       		.uleb128 0x18
+ 1068 0117 00       		.byte	0
+ 1069 0118 00       		.byte	0
+ 1070 0119 12       		.uleb128 0x12
+ 1071 011a 2E       		.uleb128 0x2e
+ 1072 011b 00       		.byte	0
+ 1073 011c 3F       		.uleb128 0x3f
+ 1074 011d 19       		.uleb128 0x19
+ 1075 011e 3C       		.uleb128 0x3c
+ 1076 011f 19       		.uleb128 0x19
+ 1077 0120 6E       		.uleb128 0x6e
+ 1078 0121 0E       		.uleb128 0xe
+ 1079 0122 03       		.uleb128 0x3
+ 1080 0123 0E       		.uleb128 0xe
+ 1081 0124 3A       		.uleb128 0x3a
+ 1082 0125 0B       		.uleb128 0xb
+ 1083 0126 3B       		.uleb128 0x3b
+ 1084 0127 0B       		.uleb128 0xb
+ 1085 0128 00       		.byte	0
+ 1086 0129 00       		.byte	0
+ 1087 012a 00       		.byte	0
+ 1088              		.section	.debug_loc,"",%progbits
+ 1089              	.Ldebug_loc0:
+ 1090              	.LLST0:
+ 1091 0000 12000000 		.4byte	.LVL8
+ 1092 0004 1F000000 		.4byte	.LVL9-1
+ 1093 0008 0100     		.2byte	0x1
+ 1094 000a 50       		.byte	0x50
+ 1095 000b 00000000 		.4byte	0
+ 1096 000f 00000000 		.4byte	0
+ 1097              		.section	.debug_aranges,"",%progbits
+ 1098 0000 8C000000 		.4byte	0x8c
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 34
 
 
- 1099 0103 0B       		.uleb128 0xb
- 1100 0104 49       		.uleb128 0x49
- 1101 0105 13       		.uleb128 0x13
- 1102 0106 02       		.uleb128 0x2
- 1103 0107 17       		.uleb128 0x17
- 1104 0108 00       		.byte	0
- 1105 0109 00       		.byte	0
- 1106 010a 11       		.uleb128 0x11
- 1107 010b 898201   		.uleb128 0x4109
- 1108 010e 01       		.byte	0x1
- 1109 010f 11       		.uleb128 0x11
- 1110 0110 01       		.uleb128 0x1
- 1111 0111 31       		.uleb128 0x31
- 1112 0112 13       		.uleb128 0x13
- 1113 0113 01       		.uleb128 0x1
- 1114 0114 13       		.uleb128 0x13
- 1115 0115 00       		.byte	0
- 1116 0116 00       		.byte	0
- 1117 0117 12       		.uleb128 0x12
- 1118 0118 34       		.uleb128 0x34
- 1119 0119 00       		.byte	0
- 1120 011a 03       		.uleb128 0x3
- 1121 011b 0E       		.uleb128 0xe
- 1122 011c 3A       		.uleb128 0x3a
- 1123 011d 0B       		.uleb128 0xb
- 1124 011e 3B       		.uleb128 0x3b
- 1125 011f 0B       		.uleb128 0xb
- 1126 0120 49       		.uleb128 0x49
- 1127 0121 13       		.uleb128 0x13
- 1128 0122 3F       		.uleb128 0x3f
- 1129 0123 19       		.uleb128 0x19
- 1130 0124 02       		.uleb128 0x2
- 1131 0125 18       		.uleb128 0x18
- 1132 0126 00       		.byte	0
- 1133 0127 00       		.byte	0
- 1134 0128 13       		.uleb128 0x13
- 1135 0129 2E       		.uleb128 0x2e
- 1136 012a 00       		.byte	0
- 1137 012b 3F       		.uleb128 0x3f
- 1138 012c 19       		.uleb128 0x19
- 1139 012d 3C       		.uleb128 0x3c
- 1140 012e 19       		.uleb128 0x19
- 1141 012f 6E       		.uleb128 0x6e
- 1142 0130 0E       		.uleb128 0xe
- 1143 0131 03       		.uleb128 0x3
- 1144 0132 0E       		.uleb128 0xe
- 1145 0133 3A       		.uleb128 0x3a
- 1146 0134 0B       		.uleb128 0xb
- 1147 0135 3B       		.uleb128 0x3b
- 1148 0136 05       		.uleb128 0x5
- 1149 0137 00       		.byte	0
- 1150 0138 00       		.byte	0
- 1151 0139 14       		.uleb128 0x14
- 1152 013a 2E       		.uleb128 0x2e
- 1153 013b 00       		.byte	0
- 1154 013c 3F       		.uleb128 0x3f
- 1155 013d 19       		.uleb128 0x19
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 35
+ 1099 0004 0200     		.2byte	0x2
+ 1100 0006 00000000 		.4byte	.Ldebug_info0
+ 1101 000a 04       		.byte	0x4
+ 1102 000b 00       		.byte	0
+ 1103 000c 0000     		.2byte	0
+ 1104 000e 0000     		.2byte	0
+ 1105 0010 00000000 		.4byte	.LFB1
+ 1106 0014 10000000 		.4byte	.LFE1-.LFB1
+ 1107 0018 00000000 		.4byte	.LFB3
+ 1108 001c 10000000 		.4byte	.LFE3-.LFB3
+ 1109 0020 00000000 		.4byte	.LFB4
+ 1110 0024 0C000000 		.4byte	.LFE4-.LFB4
+ 1111 0028 00000000 		.4byte	.LFB5
+ 1112 002c 0C000000 		.4byte	.LFE5-.LFB5
+ 1113 0030 00000000 		.4byte	.LFB6
+ 1114 0034 0C000000 		.4byte	.LFE6-.LFB6
+ 1115 0038 00000000 		.4byte	.LFB7
+ 1116 003c 0C000000 		.4byte	.LFE7-.LFB7
+ 1117 0040 00000000 		.4byte	.LFB8
+ 1118 0044 0C000000 		.4byte	.LFE8-.LFB8
+ 1119 0048 00000000 		.4byte	.LFB9
+ 1120 004c 0C000000 		.4byte	.LFE9-.LFB9
+ 1121 0050 00000000 		.4byte	.LFB10
+ 1122 0054 0C000000 		.4byte	.LFE10-.LFB10
+ 1123 0058 00000000 		.4byte	.LFB11
+ 1124 005c 0C000000 		.4byte	.LFE11-.LFB11
+ 1125 0060 00000000 		.4byte	.LFB12
+ 1126 0064 0C000000 		.4byte	.LFE12-.LFB12
+ 1127 0068 00000000 		.4byte	.LFB13
+ 1128 006c 14000000 		.4byte	.LFE13-.LFB13
+ 1129 0070 00000000 		.4byte	.LFB14
+ 1130 0074 14000000 		.4byte	.LFE14-.LFB14
+ 1131 0078 00000000 		.4byte	.LFB0
+ 1132 007c 30000000 		.4byte	.LFE0-.LFB0
+ 1133 0080 00000000 		.4byte	.LFB2
+ 1134 0084 1C000000 		.4byte	.LFE2-.LFB2
+ 1135 0088 00000000 		.4byte	0
+ 1136 008c 00000000 		.4byte	0
+ 1137              		.section	.debug_ranges,"",%progbits
+ 1138              	.Ldebug_ranges0:
+ 1139 0000 00000000 		.4byte	.LFB1
+ 1140 0004 10000000 		.4byte	.LFE1
+ 1141 0008 00000000 		.4byte	.LFB3
+ 1142 000c 10000000 		.4byte	.LFE3
+ 1143 0010 00000000 		.4byte	.LFB4
+ 1144 0014 0C000000 		.4byte	.LFE4
+ 1145 0018 00000000 		.4byte	.LFB5
+ 1146 001c 0C000000 		.4byte	.LFE5
+ 1147 0020 00000000 		.4byte	.LFB6
+ 1148 0024 0C000000 		.4byte	.LFE6
+ 1149 0028 00000000 		.4byte	.LFB7
+ 1150 002c 0C000000 		.4byte	.LFE7
+ 1151 0030 00000000 		.4byte	.LFB8
+ 1152 0034 0C000000 		.4byte	.LFE8
+ 1153 0038 00000000 		.4byte	.LFB9
+ 1154 003c 0C000000 		.4byte	.LFE9
+ 1155 0040 00000000 		.4byte	.LFB10
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 35
 
 
- 1156 013e 3C       		.uleb128 0x3c
- 1157 013f 19       		.uleb128 0x19
- 1158 0140 6E       		.uleb128 0x6e
- 1159 0141 0E       		.uleb128 0xe
- 1160 0142 03       		.uleb128 0x3
- 1161 0143 0E       		.uleb128 0xe
- 1162 0144 3A       		.uleb128 0x3a
- 1163 0145 0B       		.uleb128 0xb
- 1164 0146 3B       		.uleb128 0x3b
- 1165 0147 0B       		.uleb128 0xb
- 1166 0148 00       		.byte	0
- 1167 0149 00       		.byte	0
- 1168 014a 00       		.byte	0
- 1169              		.section	.debug_loc,"",%progbits
- 1170              	.Ldebug_loc0:
- 1171              	.LLST0:
- 1172 0000 00000000 		.4byte	.LVL2
- 1173 0004 06000000 		.4byte	.LVL3
- 1174 0008 0100     		.2byte	0x1
- 1175 000a 50       		.byte	0x50
- 1176 000b 06000000 		.4byte	.LVL3
- 1177 000f 09000000 		.4byte	.LVL4-1
- 1178 0013 0100     		.2byte	0x1
- 1179 0015 51       		.byte	0x51
- 1180 0016 09000000 		.4byte	.LVL4-1
- 1181 001a 10000000 		.4byte	.LFE10
- 1182 001e 0400     		.2byte	0x4
- 1183 0020 F3       		.byte	0xf3
- 1184 0021 01       		.uleb128 0x1
- 1185 0022 50       		.byte	0x50
- 1186 0023 9F       		.byte	0x9f
- 1187 0024 00000000 		.4byte	0
- 1188 0028 00000000 		.4byte	0
- 1189              	.LLST1:
- 1190 002c 00000000 		.4byte	.LVL5
- 1191 0030 06000000 		.4byte	.LVL6
- 1192 0034 0100     		.2byte	0x1
- 1193 0036 50       		.byte	0x50
- 1194 0037 06000000 		.4byte	.LVL6
- 1195 003b 09000000 		.4byte	.LVL7-1
- 1196 003f 0100     		.2byte	0x1
- 1197 0041 51       		.byte	0x51
- 1198 0042 09000000 		.4byte	.LVL7-1
- 1199 0046 10000000 		.4byte	.LFE12
- 1200 004a 0400     		.2byte	0x4
- 1201 004c F3       		.byte	0xf3
- 1202 004d 01       		.uleb128 0x1
- 1203 004e 50       		.byte	0x50
- 1204 004f 9F       		.byte	0x9f
- 1205 0050 00000000 		.4byte	0
- 1206 0054 00000000 		.4byte	0
- 1207              	.LLST2:
- 1208 0058 12000000 		.4byte	.LVL12
- 1209 005c 1F000000 		.4byte	.LVL13-1
- 1210 0060 0100     		.2byte	0x1
- 1211 0062 50       		.byte	0x50
- 1212 0063 00000000 		.4byte	0
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 36
+ 1156 0044 0C000000 		.4byte	.LFE10
+ 1157 0048 00000000 		.4byte	.LFB11
+ 1158 004c 0C000000 		.4byte	.LFE11
+ 1159 0050 00000000 		.4byte	.LFB12
+ 1160 0054 0C000000 		.4byte	.LFE12
+ 1161 0058 00000000 		.4byte	.LFB13
+ 1162 005c 14000000 		.4byte	.LFE13
+ 1163 0060 00000000 		.4byte	.LFB14
+ 1164 0064 14000000 		.4byte	.LFE14
+ 1165 0068 00000000 		.4byte	.LFB0
+ 1166 006c 30000000 		.4byte	.LFE0
+ 1167 0070 00000000 		.4byte	.LFB2
+ 1168 0074 1C000000 		.4byte	.LFE2
+ 1169 0078 00000000 		.4byte	0
+ 1170 007c 00000000 		.4byte	0
+ 1171              		.section	.debug_line,"",%progbits
+ 1172              	.Ldebug_line0:
+ 1173 0000 6E010000 		.section	.debug_str,"MS",%progbits,1
+ 1173      02004F00 
+ 1173      00000201 
+ 1173      FB0E0D00 
+ 1173      01010101 
+ 1174              	.LASF15:
+ 1175 0000 72656731 		.ascii	"reg16\000"
+ 1175      3600
+ 1176              	.LASF41:
+ 1177 0006 433A5C55 		.ascii	"C:\\Users\\poonachatheethiran\\Documents\\PSoC Crea"
+ 1177      73657273 
+ 1177      5C706F6F 
+ 1177      6E616368 
+ 1177      61746865 
+ 1178 0035 746F725C 		.ascii	"tor\\networking\\networking-project\\networking.cyd"
+ 1178      6E657477 
+ 1178      6F726B69 
+ 1178      6E675C6E 
+ 1178      6574776F 
+ 1179 0065 736E00   		.ascii	"sn\000"
+ 1180              	.LASF20:
+ 1181 0068 54696D65 		.ascii	"Timer_1_SoftwareCapture\000"
+ 1181      725F315F 
+ 1181      536F6674 
+ 1181      77617265 
+ 1181      43617074 
+ 1182              	.LASF28:
+ 1183 0080 54696D65 		.ascii	"Timer_1_WritePeriod\000"
+ 1183      725F315F 
+ 1183      57726974 
+ 1183      65506572 
+ 1183      696F6400 
+ 1184              	.LASF29:
+ 1185 0094 70657269 		.ascii	"period\000"
+ 1185      6F6400
+ 1186              	.LASF3:
+ 1187 009b 73686F72 		.ascii	"short unsigned int\000"
+ 1187      7420756E 
+ 1187      7369676E 
+ 1187      65642069 
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 36
 
 
- 1213 0067 00000000 		.4byte	0
- 1214              		.section	.debug_aranges,"",%progbits
- 1215 0000 8C000000 		.4byte	0x8c
- 1216 0004 0200     		.2byte	0x2
- 1217 0006 00000000 		.4byte	.Ldebug_info0
- 1218 000a 04       		.byte	0x4
- 1219 000b 00       		.byte	0
- 1220 000c 0000     		.2byte	0
- 1221 000e 0000     		.2byte	0
- 1222 0010 00000000 		.4byte	.LFB1
- 1223 0014 10000000 		.4byte	.LFE1-.LFB1
- 1224 0018 00000000 		.4byte	.LFB3
- 1225 001c 10000000 		.4byte	.LFE3-.LFB3
- 1226 0020 00000000 		.4byte	.LFB4
- 1227 0024 0C000000 		.4byte	.LFE4-.LFB4
- 1228 0028 00000000 		.4byte	.LFB5
- 1229 002c 0C000000 		.4byte	.LFE5-.LFB5
- 1230 0030 00000000 		.4byte	.LFB6
- 1231 0034 0C000000 		.4byte	.LFE6-.LFB6
- 1232 0038 00000000 		.4byte	.LFB7
- 1233 003c 0C000000 		.4byte	.LFE7-.LFB7
- 1234 0040 00000000 		.4byte	.LFB8
- 1235 0044 0C000000 		.4byte	.LFE8-.LFB8
- 1236 0048 00000000 		.4byte	.LFB9
- 1237 004c 10000000 		.4byte	.LFE9-.LFB9
- 1238 0050 00000000 		.4byte	.LFB10
- 1239 0054 10000000 		.4byte	.LFE10-.LFB10
- 1240 0058 00000000 		.4byte	.LFB11
- 1241 005c 10000000 		.4byte	.LFE11-.LFB11
- 1242 0060 00000000 		.4byte	.LFB12
- 1243 0064 10000000 		.4byte	.LFE12-.LFB12
- 1244 0068 00000000 		.4byte	.LFB13
- 1245 006c 18000000 		.4byte	.LFE13-.LFB13
- 1246 0070 00000000 		.4byte	.LFB14
- 1247 0074 14000000 		.4byte	.LFE14-.LFB14
- 1248 0078 00000000 		.4byte	.LFB0
- 1249 007c 30000000 		.4byte	.LFE0-.LFB0
- 1250 0080 00000000 		.4byte	.LFB2
- 1251 0084 1C000000 		.4byte	.LFE2-.LFB2
- 1252 0088 00000000 		.4byte	0
- 1253 008c 00000000 		.4byte	0
- 1254              		.section	.debug_ranges,"",%progbits
- 1255              	.Ldebug_ranges0:
- 1256 0000 00000000 		.4byte	.LFB1
- 1257 0004 10000000 		.4byte	.LFE1
- 1258 0008 00000000 		.4byte	.LFB3
- 1259 000c 10000000 		.4byte	.LFE3
- 1260 0010 00000000 		.4byte	.LFB4
- 1261 0014 0C000000 		.4byte	.LFE4
- 1262 0018 00000000 		.4byte	.LFB5
- 1263 001c 0C000000 		.4byte	.LFE5
- 1264 0020 00000000 		.4byte	.LFB6
- 1265 0024 0C000000 		.4byte	.LFE6
- 1266 0028 00000000 		.4byte	.LFB7
- 1267 002c 0C000000 		.4byte	.LFE7
- 1268 0030 00000000 		.4byte	.LFB8
- 1269 0034 0C000000 		.4byte	.LFE8
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 37
+ 1187      6E7400
+ 1188              	.LASF40:
+ 1189 00ae 47656E65 		.ascii	"Generated_Source\\PSoC5\\Timer_1.c\000"
+ 1189      72617465 
+ 1189      645F536F 
+ 1189      75726365 
+ 1189      5C50536F 
+ 1190              	.LASF8:
+ 1191 00cf 756E7369 		.ascii	"unsigned int\000"
+ 1191      676E6564 
+ 1191      20696E74 
+ 1191      00
+ 1192              	.LASF11:
+ 1193 00dc 666C6F61 		.ascii	"float\000"
+ 1193      7400
+ 1194              	.LASF32:
+ 1195 00e2 636F756E 		.ascii	"counter\000"
+ 1195      74657200 
+ 1196              	.LASF7:
+ 1197 00ea 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1197      206C6F6E 
+ 1197      6720756E 
+ 1197      7369676E 
+ 1197      65642069 
+ 1198              	.LASF43:
+ 1199 0101 54696D65 		.ascii	"Timer_1_initVar\000"
+ 1199      725F315F 
+ 1199      696E6974 
+ 1199      56617200 
+ 1200              	.LASF39:
+ 1201 0111 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1201      43313120 
+ 1201      352E342E 
+ 1201      31203230 
+ 1201      31363036 
+ 1202 0144 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1202      20726576 
+ 1202      6973696F 
+ 1202      6E203233 
+ 1202      37373135 
+ 1203 0177 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1203      66756E63 
+ 1203      74696F6E 
+ 1203      2D736563 
+ 1203      74696F6E 
+ 1204              	.LASF14:
+ 1205 019f 72656738 		.ascii	"reg8\000"
+ 1205      00
+ 1206              	.LASF27:
+ 1207 01a4 54696D65 		.ascii	"Timer_1_ReadPeriod\000"
+ 1207      725F315F 
+ 1207      52656164 
+ 1207      50657269 
+ 1207      6F6400
+ 1208              	.LASF5:
+ 1209 01b7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1209      20756E73 
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 37
 
 
- 1270 0038 00000000 		.4byte	.LFB9
- 1271 003c 10000000 		.4byte	.LFE9
- 1272 0040 00000000 		.4byte	.LFB10
- 1273 0044 10000000 		.4byte	.LFE10
- 1274 0048 00000000 		.4byte	.LFB11
- 1275 004c 10000000 		.4byte	.LFE11
- 1276 0050 00000000 		.4byte	.LFB12
- 1277 0054 10000000 		.4byte	.LFE12
- 1278 0058 00000000 		.4byte	.LFB13
- 1279 005c 18000000 		.4byte	.LFE13
- 1280 0060 00000000 		.4byte	.LFB14
- 1281 0064 14000000 		.4byte	.LFE14
- 1282 0068 00000000 		.4byte	.LFB0
- 1283 006c 30000000 		.4byte	.LFE0
- 1284 0070 00000000 		.4byte	.LFB2
- 1285 0074 1C000000 		.4byte	.LFE2
- 1286 0078 00000000 		.4byte	0
- 1287 007c 00000000 		.4byte	0
- 1288              		.section	.debug_line,"",%progbits
- 1289              	.Ldebug_line0:
- 1290 0000 6E010000 		.section	.debug_str,"MS",%progbits,1
- 1290      02004F00 
- 1290      00000201 
- 1290      FB0E0D00 
- 1290      01010101 
- 1291              	.LASF15:
- 1292 0000 72656733 		.ascii	"reg32\000"
- 1292      3200
- 1293              	.LASF20:
- 1294 0006 54696D65 		.ascii	"Timer_1_SoftwareCapture\000"
- 1294      725F315F 
- 1294      536F6674 
- 1294      77617265 
- 1294      43617074 
- 1295              	.LASF28:
- 1296 001e 54696D65 		.ascii	"Timer_1_WritePeriod\000"
- 1296      725F315F 
- 1296      57726974 
- 1296      65506572 
- 1296      696F6400 
- 1297              	.LASF29:
- 1298 0032 70657269 		.ascii	"period\000"
- 1298      6F6400
- 1299              	.LASF3:
- 1300 0039 73686F72 		.ascii	"short unsigned int\000"
- 1300      7420756E 
- 1300      7369676E 
- 1300      65642069 
- 1300      6E7400
- 1301              	.LASF41:
- 1302 004c 47656E65 		.ascii	"Generated_Source\\PSoC5\\Timer_1.c\000"
- 1302      72617465 
- 1302      645F536F 
- 1302      75726365 
- 1302      5C50536F 
- 1303              	.LASF8:
- 1304 006d 756E7369 		.ascii	"unsigned int\000"
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 38
+ 1209      69676E65 
+ 1209      6420696E 
+ 1209      7400
+ 1210              	.LASF9:
+ 1211 01c9 75696E74 		.ascii	"uint8\000"
+ 1211      3800
+ 1212              	.LASF26:
+ 1213 01cf 636F6E74 		.ascii	"control\000"
+ 1213      726F6C00 
+ 1214              	.LASF1:
+ 1215 01d7 756E7369 		.ascii	"unsigned char\000"
+ 1215      676E6564 
+ 1215      20636861 
+ 1215      7200
+ 1216              	.LASF18:
+ 1217 01e5 54696D65 		.ascii	"Timer_1_Enable\000"
+ 1217      725F315F 
+ 1217      456E6162 
+ 1217      6C6500
+ 1218              	.LASF12:
+ 1219 01f4 646F7562 		.ascii	"double\000"
+ 1219      6C6500
+ 1220              	.LASF23:
+ 1221 01fb 54696D65 		.ascii	"Timer_1_SetInterruptMode\000"
+ 1221      725F315F 
+ 1221      53657449 
+ 1221      6E746572 
+ 1221      72757074 
+ 1222              	.LASF10:
+ 1223 0214 75696E74 		.ascii	"uint16\000"
+ 1223      313600
+ 1224              	.LASF24:
+ 1225 021b 54696D65 		.ascii	"Timer_1_WriteControlRegister\000"
+ 1225      725F315F 
+ 1225      57726974 
+ 1225      65436F6E 
+ 1225      74726F6C 
+ 1226              	.LASF37:
+ 1227 0238 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1227      74657243 
+ 1227      72697469 
+ 1227      63616C53 
+ 1227      65637469 
+ 1228              	.LASF36:
+ 1229 024f 54696D65 		.ascii	"Timer_1_Start\000"
+ 1229      725F315F 
+ 1229      53746172 
+ 1229      7400
+ 1230              	.LASF35:
+ 1231 025d 54696D65 		.ascii	"Timer_1_Init\000"
+ 1231      725F315F 
+ 1231      496E6974 
+ 1231      00
+ 1232              	.LASF38:
+ 1233 026a 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1233      69744372 
+ 1233      69746963 
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 38
 
 
- 1304      676E6564 
- 1304      20696E74 
- 1304      00
- 1305              	.LASF11:
- 1306 007a 666C6F61 		.ascii	"float\000"
- 1306      7400
- 1307              	.LASF19:
- 1308 0080 54696D65 		.ascii	"Timer_1_Stop\000"
- 1308      725F315F 
- 1308      53746F70 
- 1308      00
- 1309              	.LASF7:
- 1310 008d 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1310      206C6F6E 
- 1310      6720756E 
- 1310      7369676E 
- 1310      65642069 
- 1311              	.LASF1:
- 1312 00a4 756E7369 		.ascii	"unsigned char\000"
- 1312      676E6564 
- 1312      20636861 
- 1312      7200
- 1313              	.LASF40:
- 1314 00b2 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1314      43313120 
- 1314      352E342E 
- 1314      31203230 
- 1314      31363036 
- 1315 00e5 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1315      20726576 
- 1315      6973696F 
- 1315      6E203233 
- 1315      37373135 
- 1316 0118 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1316      66756E63 
- 1316      74696F6E 
- 1316      2D736563 
- 1316      74696F6E 
- 1317              	.LASF14:
- 1318 0140 72656738 		.ascii	"reg8\000"
- 1318      00
- 1319              	.LASF27:
- 1320 0145 54696D65 		.ascii	"Timer_1_ReadPeriod\000"
- 1320      725F315F 
- 1320      52656164 
- 1320      50657269 
- 1320      6F6400
- 1321              	.LASF5:
- 1322 0158 6C6F6E67 		.ascii	"long unsigned int\000"
- 1322      20756E73 
- 1322      69676E65 
- 1322      6420696E 
- 1322      7400
- 1323              	.LASF9:
- 1324 016a 75696E74 		.ascii	"uint8\000"
- 1324      3800
- 1325              	.LASF26:
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 39
+ 1233      616C5365 
+ 1233      6374696F 
+ 1234              	.LASF31:
+ 1235 0280 54696D65 		.ascii	"Timer_1_WriteCounter\000"
+ 1235      725F315F 
+ 1235      57726974 
+ 1235      65436F75 
+ 1235      6E746572 
+ 1236              	.LASF30:
+ 1237 0295 54696D65 		.ascii	"Timer_1_ReadCapture\000"
+ 1237      725F315F 
+ 1237      52656164 
+ 1237      43617074 
+ 1237      75726500 
+ 1238              	.LASF42:
+ 1239 02a9 54696D65 		.ascii	"Timer_1_interruptState\000"
+ 1239      725F315F 
+ 1239      696E7465 
+ 1239      72727570 
+ 1239      74537461 
+ 1240              	.LASF17:
+ 1241 02c0 73697A65 		.ascii	"sizetype\000"
+ 1241      74797065 
+ 1241      00
+ 1242              	.LASF6:
+ 1243 02c9 6C6F6E67 		.ascii	"long long int\000"
+ 1243      206C6F6E 
+ 1243      6720696E 
+ 1243      7400
+ 1244              	.LASF25:
+ 1245 02d7 696E7465 		.ascii	"interruptMode\000"
+ 1245      72727570 
+ 1245      744D6F64 
+ 1245      6500
+ 1246              	.LASF33:
+ 1247 02e5 54696D65 		.ascii	"Timer_1_ReadCounter\000"
+ 1247      725F315F 
+ 1247      52656164 
+ 1247      436F756E 
+ 1247      74657200 
+ 1248              	.LASF34:
+ 1249 02f9 54696D65 		.ascii	"Timer_1_ClearFIFO\000"
+ 1249      725F315F 
+ 1249      436C6561 
+ 1249      72464946 
+ 1249      4F00
+ 1250              	.LASF22:
+ 1251 030b 54696D65 		.ascii	"Timer_1_ReadControlRegister\000"
+ 1251      725F315F 
+ 1251      52656164 
+ 1251      436F6E74 
+ 1251      726F6C52 
+ 1252              	.LASF2:
+ 1253 0327 73686F72 		.ascii	"short int\000"
+ 1253      7420696E 
+ 1253      7400
+ 1254              	.LASF21:
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccY8KiDg.s 			page 39
 
 
- 1326 0170 636F6E74 		.ascii	"control\000"
- 1326      726F6C00 
- 1327              	.LASF18:
- 1328 0178 54696D65 		.ascii	"Timer_1_Enable\000"
- 1328      725F315F 
- 1328      456E6162 
- 1328      6C6500
- 1329              	.LASF12:
- 1330 0187 646F7562 		.ascii	"double\000"
- 1330      6C6500
- 1331              	.LASF23:
- 1332 018e 54696D65 		.ascii	"Timer_1_SetInterruptMode\000"
- 1332      725F315F 
- 1332      53657449 
- 1332      6E746572 
- 1332      72757074 
- 1333              	.LASF44:
- 1334 01a7 54696D65 		.ascii	"Timer_1_initVar\000"
- 1334      725F315F 
- 1334      696E6974 
- 1334      56617200 
- 1335              	.LASF24:
- 1336 01b7 54696D65 		.ascii	"Timer_1_WriteControlRegister\000"
- 1336      725F315F 
- 1336      57726974 
- 1336      65436F6E 
- 1336      74726F6C 
- 1337              	.LASF10:
- 1338 01d4 75696E74 		.ascii	"uint32\000"
- 1338      333200
- 1339              	.LASF38:
- 1340 01db 4379456E 		.ascii	"CyEnterCriticalSection\000"
- 1340      74657243 
- 1340      72697469 
- 1340      63616C53 
- 1340      65637469 
- 1341              	.LASF36:
- 1342 01f2 54696D65 		.ascii	"Timer_1_Start\000"
- 1342      725F315F 
- 1342      53746172 
- 1342      7400
- 1343              	.LASF35:
- 1344 0200 54696D65 		.ascii	"Timer_1_Init\000"
- 1344      725F315F 
- 1344      496E6974 
- 1344      00
- 1345              	.LASF39:
- 1346 020d 43794578 		.ascii	"CyExitCriticalSection\000"
- 1346      69744372 
- 1346      69746963 
- 1346      616C5365 
- 1346      6374696F 
- 1347              	.LASF31:
- 1348 0223 54696D65 		.ascii	"Timer_1_WriteCounter\000"
- 1348      725F315F 
- 1348      57726974 
- 1348      65436F75 
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 40
-
-
- 1348      6E746572 
- 1349              	.LASF30:
- 1350 0238 54696D65 		.ascii	"Timer_1_ReadCapture\000"
- 1350      725F315F 
- 1350      52656164 
- 1350      43617074 
- 1350      75726500 
- 1351              	.LASF43:
- 1352 024c 54696D65 		.ascii	"Timer_1_interruptState\000"
- 1352      725F315F 
- 1352      696E7465 
- 1352      72727570 
- 1352      74537461 
- 1353              	.LASF17:
- 1354 0263 73697A65 		.ascii	"sizetype\000"
- 1354      74797065 
- 1354      00
- 1355              	.LASF6:
- 1356 026c 6C6F6E67 		.ascii	"long long int\000"
- 1356      206C6F6E 
- 1356      6720696E 
- 1356      7400
- 1357              	.LASF25:
- 1358 027a 696E7465 		.ascii	"interruptMode\000"
- 1358      72727570 
- 1358      744D6F64 
- 1358      6500
- 1359              	.LASF33:
- 1360 0288 54696D65 		.ascii	"Timer_1_ReadCounter\000"
- 1360      725F315F 
- 1360      52656164 
- 1360      436F756E 
- 1360      74657200 
- 1361              	.LASF32:
- 1362 029c 636F756E 		.ascii	"counter\000"
- 1362      74657200 
- 1363              	.LASF34:
- 1364 02a4 54696D65 		.ascii	"Timer_1_ClearFIFO\000"
- 1364      725F315F 
- 1364      436C6561 
- 1364      72464946 
- 1364      4F00
- 1365              	.LASF22:
- 1366 02b6 54696D65 		.ascii	"Timer_1_ReadControlRegister\000"
- 1366      725F315F 
- 1366      52656164 
- 1366      436F6E74 
- 1366      726F6C52 
- 1367              	.LASF37:
- 1368 02d2 43795365 		.ascii	"CySetReg24\000"
- 1368      74526567 
- 1368      323400
- 1369              	.LASF2:
- 1370 02dd 73686F72 		.ascii	"short int\000"
- 1370      7420696E 
- 1370      7400
- 1371              	.LASF21:
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccvLtnHJ.s 			page 41
-
-
- 1372 02e7 54696D65 		.ascii	"Timer_1_ReadStatusRegister\000"
- 1372      725F315F 
- 1372      52656164 
- 1372      53746174 
- 1372      75735265 
- 1373              	.LASF4:
- 1374 0302 6C6F6E67 		.ascii	"long int\000"
- 1374      20696E74 
- 1374      00
- 1375              	.LASF13:
- 1376 030b 63686172 		.ascii	"char\000"
- 1376      00
- 1377              	.LASF16:
- 1378 0310 6C6F6E67 		.ascii	"long double\000"
- 1378      20646F75 
- 1378      626C6500 
- 1379              	.LASF0:
- 1380 031c 7369676E 		.ascii	"signed char\000"
- 1380      65642063 
- 1380      68617200 
- 1381              	.LASF42:
- 1382 0328 433A5C55 		.ascii	"C:\\Users\\schledererj\\sdp\\github\\networking-pro"
- 1382      73657273 
- 1382      5C736368 
- 1382      6C656465 
- 1382      7265726A 
- 1383 0356 6A656374 		.ascii	"ject\\networking.cydsn\000"
- 1383      5C6E6574 
- 1383      776F726B 
- 1383      696E672E 
- 1383      63796473 
- 1384              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1255 0331 54696D65 		.ascii	"Timer_1_ReadStatusRegister\000"
+ 1255      725F315F 
+ 1255      52656164 
+ 1255      53746174 
+ 1255      75735265 
+ 1256              	.LASF4:
+ 1257 034c 6C6F6E67 		.ascii	"long int\000"
+ 1257      20696E74 
+ 1257      00
+ 1258              	.LASF13:
+ 1259 0355 63686172 		.ascii	"char\000"
+ 1259      00
+ 1260              	.LASF16:
+ 1261 035a 6C6F6E67 		.ascii	"long double\000"
+ 1261      20646F75 
+ 1261      626C6500 
+ 1262              	.LASF0:
+ 1263 0366 7369676E 		.ascii	"signed char\000"
+ 1263      65642063 
+ 1263      68617200 
+ 1264              	.LASF19:
+ 1265 0372 54696D65 		.ascii	"Timer_1_Stop\000"
+ 1265      725F315F 
+ 1265      53746F70 
+ 1265      00
+ 1266              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
