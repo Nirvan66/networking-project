@@ -57,6 +57,9 @@ int getString(char *c)
             }
         }
     }while(buffer[0]!=13);
+    size--;
+    c[size]='\0';
+    size++;
     return size;
 }
 /* [] END OF FILE */

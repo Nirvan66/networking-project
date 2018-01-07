@@ -91,13 +91,13 @@ int main(void)
         CyDelayUs(delay);
         
         // Iterate through string until \0
-        while ((transmit = * (input + idx)) != '\r')
+        while ((transmit = * (input + idx)) != '\0')
         {
             char binary[8];
             
             // Convert to binary
             itoa(transmit, binary, 2);
-            for (int i = 1; i < 8; ++i)
+            for (int i = 0; i < 7; ++i)
             {
                 if (binary[i] == '0')
                 {
@@ -114,6 +114,7 @@ int main(void)
             }
             ++idx;
         }
+        idx = 0;
     }
 }
     /*
