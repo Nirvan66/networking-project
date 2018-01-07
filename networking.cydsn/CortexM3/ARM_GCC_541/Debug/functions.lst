@@ -1,0 +1,942 @@
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"functions.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.getString,"ax",%progbits
+  20              		.align	2
+  21              		.global	getString
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	getString, %function
+  25              	getString:
+  26              	.LFB64:
+  27              		.file 1 "functions.c"
+   1:functions.c   **** /* ========================================
+   2:functions.c   ****  *
+   3:functions.c   ****  * Copyright YOUR COMPANY, THE YEAR
+   4:functions.c   ****  * All Rights Reserved
+   5:functions.c   ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:functions.c   ****  *
+   7:functions.c   ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:functions.c   ****  * WHICH IS THE PROPERTY OF your company.
+   9:functions.c   ****  *
+  10:functions.c   ****  * ========================================
+  11:functions.c   **** */
+  12:functions.c   **** #include "functions.h"
+  13:functions.c   **** #include <project.h>
+  14:functions.c   **** 
+  15:functions.c   **** int getString(char *c)
+  16:functions.c   **** {
+  28              		.loc 1 16 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 16
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 30B5     		push	{r4, r5, lr}
+  34              		.cfi_def_cfa_offset 12
+  35              		.cfi_offset 4, -12
+  36              		.cfi_offset 5, -8
+  37              		.cfi_offset 14, -4
+  38 0002 85B0     		sub	sp, sp, #20
+  39              		.cfi_def_cfa_offset 32
+  40 0004 0546     		mov	r5, r0
+  41              	.LVL1:
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 2
+
+
+  17:functions.c   ****     int size=0;
+  42              		.loc 1 17 0
+  43 0006 0024     		movs	r4, #0
+  44              	.LVL2:
+  45              	.L6:
+  18:functions.c   ****     int count=0;
+  19:functions.c   ****     uint8_t buffer[10];
+  20:functions.c   ****     do
+  21:functions.c   ****     {
+  22:functions.c   ****         if (0u != USBUART_IsConfigurationChanged())
+  46              		.loc 1 22 0
+  47 0008 FFF7FEFF 		bl	USBUART_IsConfigurationChanged
+  48              	.LVL3:
+  49 000c 20B1     		cbz	r0, .L2
+  23:functions.c   ****         {
+  24:functions.c   ****             /* Initialize IN endpoints when device is configured. */
+  25:functions.c   ****             if (0u != USBUART_GetConfiguration())
+  50              		.loc 1 25 0
+  51 000e FFF7FEFF 		bl	USBUART_GetConfiguration
+  52              	.LVL4:
+  53 0012 08B1     		cbz	r0, .L2
+  26:functions.c   ****             {
+  27:functions.c   ****                 /* Enumeration is done, enable OUT endpoint to receive data 
+  28:functions.c   ****                  * from host. */
+  29:functions.c   ****                 USBUART_CDC_Init();
+  54              		.loc 1 29 0
+  55 0014 FFF7FEFF 		bl	USBUART_CDC_Init
+  56              	.LVL5:
+  57              	.L2:
+  30:functions.c   ****             }
+  31:functions.c   ****         }
+  32:functions.c   ****         /* Service USB CDC when device is configured. */
+  33:functions.c   ****         if (0u != USBUART_GetConfiguration())
+  58              		.loc 1 33 0
+  59 0018 FFF7FEFF 		bl	USBUART_GetConfiguration
+  60              	.LVL6:
+  61 001c 98B1     		cbz	r0, .L3
+  34:functions.c   ****         {
+  35:functions.c   ****             /* Check for input data from host. */
+  36:functions.c   ****             if (0u != USBUART_DataIsReady())
+  62              		.loc 1 36 0
+  63 001e FFF7FEFF 		bl	USBUART_DataIsReady
+  64              	.LVL7:
+  65 0022 80B1     		cbz	r0, .L3
+  37:functions.c   ****             {
+  38:functions.c   ****                 /* Read received data and re-enable OUT endpoint. */
+  39:functions.c   ****                 count = USBUART_GetAll(buffer);
+  66              		.loc 1 39 0
+  67 0024 01A8     		add	r0, sp, #4
+  68 0026 FFF7FEFF 		bl	USBUART_GetAll
+  69              	.LVL8:
+  70 002a 0146     		mov	r1, r0
+  71              	.LVL9:
+  40:functions.c   **** 
+  41:functions.c   ****                 if (0u != count)
+  72              		.loc 1 41 0
+  73 002c 40B9     		cbnz	r0, .L7
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 3
+
+
+  74              	.LBB2:
+  75 002e 0AE0     		b	.L3
+  76              	.LVL10:
+  77              	.L5:
+  42:functions.c   ****                 {
+  43:functions.c   ****                     /* Wait until component is ready to send data to host. */
+  44:functions.c   ****                     //while (0u == USBUART_CDCIsReady());
+  45:functions.c   ****                     //LCD_ClearDisplay();
+  46:functions.c   ****                     //LCD_Position(0,0);
+  47:functions.c   ****                     for(int i=0;i<count;i++)
+  48:functions.c   ****                     {
+  49:functions.c   ****                         //LCD_PrintNumber(buffer[i]);
+  50:functions.c   ****                         //LCD_PrintString(",");
+  51:functions.c   ****                         c[size]=buffer[i];
+  78              		.loc 1 51 0 discriminator 3
+  79 0030 04AA     		add	r2, sp, #16
+  80 0032 1A44     		add	r2, r2, r3
+  81 0034 12F80C2C 		ldrb	r2, [r2, #-12]	@ zero_extendqisi2
+  82 0038 2A55     		strb	r2, [r5, r4]
+  52:functions.c   ****                         size++;
+  83              		.loc 1 52 0 discriminator 3
+  84 003a 0134     		adds	r4, r4, #1
+  85              	.LVL11:
+  47:functions.c   ****                     {
+  86              		.loc 1 47 0 discriminator 3
+  87 003c 0133     		adds	r3, r3, #1
+  88              	.LVL12:
+  89 003e 00E0     		b	.L4
+  90              	.LVL13:
+  91              	.L7:
+  92              	.LBE2:
+  93 0040 0023     		movs	r3, #0
+  94              	.L4:
+  95              	.LVL14:
+  96              	.LBB3:
+  47:functions.c   ****                     {
+  97              		.loc 1 47 0 is_stmt 0 discriminator 1
+  98 0042 8B42     		cmp	r3, r1
+  99 0044 F4DB     		blt	.L5
+ 100              	.LVL15:
+ 101              	.L3:
+ 102              	.LBE3:
+  53:functions.c   ****                     }
+  54:functions.c   ****                     //LCD_PrintNumber(count);
+  55:functions.c   ****                     //USBUART_PutData(buffer, count);
+  56:functions.c   ****                 }
+  57:functions.c   ****             }
+  58:functions.c   ****         }
+  59:functions.c   ****     }while(buffer[0]!=13);
+ 103              		.loc 1 59 0 is_stmt 1
+ 104 0046 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 105 004a 0D2B     		cmp	r3, #13
+ 106 004c DCD1     		bne	.L6
+  60:functions.c   ****     return size;
+  61:functions.c   **** }
+ 107              		.loc 1 61 0
+ 108 004e 2046     		mov	r0, r4
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 4
+
+
+ 109 0050 05B0     		add	sp, sp, #20
+ 110              		.cfi_def_cfa_offset 12
+ 111              		@ sp needed
+ 112 0052 30BD     		pop	{r4, r5, pc}
+ 113              		.cfi_endproc
+ 114              	.LFE64:
+ 115              		.size	getString, .-getString
+ 116              		.text
+ 117              	.Letext0:
+ 118              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+ 119              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+ 120              		.file 4 "Generated_Source\\PSoC5/USBUART.h"
+ 121              		.file 5 "Generated_Source\\PSoC5/USBUART_cdc.h"
+ 122              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 123              		.section	.debug_info,"",%progbits
+ 124              	.Ldebug_info0:
+ 125 0000 BE010000 		.4byte	0x1be
+ 126 0004 0400     		.2byte	0x4
+ 127 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 128 000a 04       		.byte	0x4
+ 129 000b 01       		.uleb128 0x1
+ 130 000c 6C010000 		.4byte	.LASF26
+ 131 0010 0C       		.byte	0xc
+ 132 0011 23000000 		.4byte	.LASF27
+ 133 0015 53000000 		.4byte	.LASF28
+ 134 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 135 001d 00000000 		.4byte	0
+ 136 0021 00000000 		.4byte	.Ldebug_line0
+ 137 0025 02       		.uleb128 0x2
+ 138 0026 04       		.byte	0x4
+ 139 0027 07       		.byte	0x7
+ 140 0028 1B010000 		.4byte	.LASF0
+ 141 002c 03       		.uleb128 0x3
+ 142 002d 04       		.byte	0x4
+ 143 002e 05       		.byte	0x5
+ 144 002f 696E7400 		.ascii	"int\000"
+ 145 0033 02       		.uleb128 0x2
+ 146 0034 08       		.byte	0x8
+ 147 0035 05       		.byte	0x5
+ 148 0036 0B020000 		.4byte	.LASF1
+ 149 003a 02       		.uleb128 0x2
+ 150 003b 08       		.byte	0x8
+ 151 003c 04       		.byte	0x4
+ 152 003d 48020000 		.4byte	.LASF2
+ 153 0041 02       		.uleb128 0x2
+ 154 0042 01       		.byte	0x1
+ 155 0043 06       		.byte	0x6
+ 156 0044 54020000 		.4byte	.LASF3
+ 157 0048 04       		.uleb128 0x4
+ 158 0049 00000000 		.4byte	.LASF7
+ 159 004d 02       		.byte	0x2
+ 160 004e 1D       		.byte	0x1d
+ 161 004f 53000000 		.4byte	0x53
+ 162 0053 02       		.uleb128 0x2
+ 163 0054 01       		.byte	0x1
+ 164 0055 08       		.byte	0x8
+ 165 0056 E7000000 		.4byte	.LASF4
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 5
+
+
+ 166 005a 02       		.uleb128 0x2
+ 167 005b 02       		.byte	0x2
+ 168 005c 05       		.byte	0x5
+ 169 005d 2E020000 		.4byte	.LASF5
+ 170 0061 02       		.uleb128 0x2
+ 171 0062 02       		.byte	0x2
+ 172 0063 07       		.byte	0x7
+ 173 0064 C7000000 		.4byte	.LASF6
+ 174 0068 04       		.uleb128 0x4
+ 175 0069 0A000000 		.4byte	.LASF8
+ 176 006d 02       		.byte	0x2
+ 177 006e 3F       		.byte	0x3f
+ 178 006f 73000000 		.4byte	0x73
+ 179 0073 02       		.uleb128 0x2
+ 180 0074 04       		.byte	0x4
+ 181 0075 05       		.byte	0x5
+ 182 0076 3F020000 		.4byte	.LASF9
+ 183 007a 02       		.uleb128 0x2
+ 184 007b 04       		.byte	0x4
+ 185 007c 07       		.byte	0x7
+ 186 007d B5000000 		.4byte	.LASF10
+ 187 0081 02       		.uleb128 0x2
+ 188 0082 08       		.byte	0x8
+ 189 0083 07       		.byte	0x7
+ 190 0084 39010000 		.4byte	.LASF11
+ 191 0088 02       		.uleb128 0x2
+ 192 0089 04       		.byte	0x4
+ 193 008a 07       		.byte	0x7
+ 194 008b 02020000 		.4byte	.LASF12
+ 195 008f 05       		.uleb128 0x5
+ 196 0090 04       		.byte	0x4
+ 197 0091 95000000 		.4byte	0x95
+ 198 0095 02       		.uleb128 0x2
+ 199 0096 01       		.byte	0x1
+ 200 0097 08       		.byte	0x8
+ 201 0098 19020000 		.4byte	.LASF13
+ 202 009c 04       		.uleb128 0x4
+ 203 009d 50010000 		.4byte	.LASF14
+ 204 00a1 03       		.byte	0x3
+ 205 00a2 18       		.byte	0x18
+ 206 00a3 48000000 		.4byte	0x48
+ 207 00a7 04       		.uleb128 0x4
+ 208 00a8 FA010000 		.4byte	.LASF15
+ 209 00ac 03       		.byte	0x3
+ 210 00ad 2C       		.byte	0x2c
+ 211 00ae 68000000 		.4byte	0x68
+ 212 00b2 02       		.uleb128 0x2
+ 213 00b3 04       		.byte	0x4
+ 214 00b4 04       		.byte	0x4
+ 215 00b5 48000000 		.4byte	.LASF16
+ 216 00b9 02       		.uleb128 0x2
+ 217 00ba 08       		.byte	0x8
+ 218 00bb 04       		.byte	0x4
+ 219 00bc F5000000 		.4byte	.LASF17
+ 220 00c0 06       		.uleb128 0x6
+ 221 00c1 1E020000 		.4byte	.LASF29
+ 222 00c5 01       		.byte	0x1
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 6
+
+
+ 223 00c6 0F       		.byte	0xf
+ 224 00c7 2C000000 		.4byte	0x2c
+ 225 00cb 00000000 		.4byte	.LFB64
+ 226 00cf 54000000 		.4byte	.LFE64-.LFB64
+ 227 00d3 01       		.uleb128 0x1
+ 228 00d4 9C       		.byte	0x9c
+ 229 00d5 67010000 		.4byte	0x167
+ 230 00d9 07       		.uleb128 0x7
+ 231 00da 6300     		.ascii	"c\000"
+ 232 00dc 01       		.byte	0x1
+ 233 00dd 0F       		.byte	0xf
+ 234 00de 8F000000 		.4byte	0x8f
+ 235 00e2 00000000 		.4byte	.LLST0
+ 236 00e6 08       		.uleb128 0x8
+ 237 00e7 4E000000 		.4byte	.LASF18
+ 238 00eb 01       		.byte	0x1
+ 239 00ec 11       		.byte	0x11
+ 240 00ed 2C000000 		.4byte	0x2c
+ 241 00f1 1E000000 		.4byte	.LLST1
+ 242 00f5 08       		.uleb128 0x8
+ 243 00f6 28020000 		.4byte	.LASF19
+ 244 00fa 01       		.byte	0x1
+ 245 00fb 12       		.byte	0x12
+ 246 00fc 2C000000 		.4byte	0x2c
+ 247 0100 3D000000 		.4byte	.LLST2
+ 248 0104 09       		.uleb128 0x9
+ 249 0105 38020000 		.4byte	.LASF20
+ 250 0109 01       		.byte	0x1
+ 251 010a 13       		.byte	0x13
+ 252 010b 67010000 		.4byte	0x167
+ 253 010f 02       		.uleb128 0x2
+ 254 0110 91       		.byte	0x91
+ 255 0111 64       		.sleb128 -28
+ 256 0112 0A       		.uleb128 0xa
+ 257 0113 00000000 		.4byte	.Ldebug_ranges0+0
+ 258 0117 29010000 		.4byte	0x129
+ 259 011b 0B       		.uleb128 0xb
+ 260 011c 6900     		.ascii	"i\000"
+ 261 011e 01       		.byte	0x1
+ 262 011f 2F       		.byte	0x2f
+ 263 0120 2C000000 		.4byte	0x2c
+ 264 0124 5C000000 		.4byte	.LLST3
+ 265 0128 00       		.byte	0
+ 266 0129 0C       		.uleb128 0xc
+ 267 012a 0C000000 		.4byte	.LVL3
+ 268 012e 88010000 		.4byte	0x188
+ 269 0132 0C       		.uleb128 0xc
+ 270 0133 12000000 		.4byte	.LVL4
+ 271 0137 94010000 		.4byte	0x194
+ 272 013b 0C       		.uleb128 0xc
+ 273 013c 18000000 		.4byte	.LVL5
+ 274 0140 A0010000 		.4byte	0x1a0
+ 275 0144 0C       		.uleb128 0xc
+ 276 0145 1C000000 		.4byte	.LVL6
+ 277 0149 94010000 		.4byte	0x194
+ 278 014d 0C       		.uleb128 0xc
+ 279 014e 22000000 		.4byte	.LVL7
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 7
+
+
+ 280 0152 AB010000 		.4byte	0x1ab
+ 281 0156 0D       		.uleb128 0xd
+ 282 0157 2A000000 		.4byte	.LVL8
+ 283 015b B6010000 		.4byte	0x1b6
+ 284 015f 0E       		.uleb128 0xe
+ 285 0160 01       		.uleb128 0x1
+ 286 0161 50       		.byte	0x50
+ 287 0162 02       		.uleb128 0x2
+ 288 0163 91       		.byte	0x91
+ 289 0164 64       		.sleb128 -28
+ 290 0165 00       		.byte	0
+ 291 0166 00       		.byte	0
+ 292 0167 0F       		.uleb128 0xf
+ 293 0168 9C000000 		.4byte	0x9c
+ 294 016c 77010000 		.4byte	0x177
+ 295 0170 10       		.uleb128 0x10
+ 296 0171 88000000 		.4byte	0x88
+ 297 0175 09       		.byte	0x9
+ 298 0176 00       		.byte	0
+ 299 0177 11       		.uleb128 0x11
+ 300 0178 DA000000 		.4byte	.LASF30
+ 301 017c 06       		.byte	0x6
+ 302 017d 1207     		.2byte	0x712
+ 303 017f 83010000 		.4byte	0x183
+ 304 0183 12       		.uleb128 0x12
+ 305 0184 A7000000 		.4byte	0xa7
+ 306 0188 13       		.uleb128 0x13
+ 307 0189 FC000000 		.4byte	.LASF21
+ 308 018d FC000000 		.4byte	.LASF21
+ 309 0191 04       		.byte	0x4
+ 310 0192 3201     		.2byte	0x132
+ 311 0194 13       		.uleb128 0x13
+ 312 0195 2F000000 		.4byte	.LASF22
+ 313 0199 2F000000 		.4byte	.LASF22
+ 314 019d 04       		.byte	0x4
+ 315 019e 3101     		.2byte	0x131
+ 316 01a0 14       		.uleb128 0x14
+ 317 01a1 28010000 		.4byte	.LASF23
+ 318 01a5 28010000 		.4byte	.LASF23
+ 319 01a9 05       		.byte	0x5
+ 320 01aa 22       		.byte	0x22
+ 321 01ab 14       		.uleb128 0x14
+ 322 01ac 58010000 		.4byte	.LASF24
+ 323 01b0 58010000 		.4byte	.LASF24
+ 324 01b4 05       		.byte	0x5
+ 325 01b5 29       		.byte	0x29
+ 326 01b6 14       		.uleb128 0x14
+ 327 01b7 14000000 		.4byte	.LASF25
+ 328 01bb 14000000 		.4byte	.LASF25
+ 329 01bf 05       		.byte	0x5
+ 330 01c0 2B       		.byte	0x2b
+ 331 01c1 00       		.byte	0
+ 332              		.section	.debug_abbrev,"",%progbits
+ 333              	.Ldebug_abbrev0:
+ 334 0000 01       		.uleb128 0x1
+ 335 0001 11       		.uleb128 0x11
+ 336 0002 01       		.byte	0x1
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 8
+
+
+ 337 0003 25       		.uleb128 0x25
+ 338 0004 0E       		.uleb128 0xe
+ 339 0005 13       		.uleb128 0x13
+ 340 0006 0B       		.uleb128 0xb
+ 341 0007 03       		.uleb128 0x3
+ 342 0008 0E       		.uleb128 0xe
+ 343 0009 1B       		.uleb128 0x1b
+ 344 000a 0E       		.uleb128 0xe
+ 345 000b 55       		.uleb128 0x55
+ 346 000c 17       		.uleb128 0x17
+ 347 000d 11       		.uleb128 0x11
+ 348 000e 01       		.uleb128 0x1
+ 349 000f 10       		.uleb128 0x10
+ 350 0010 17       		.uleb128 0x17
+ 351 0011 00       		.byte	0
+ 352 0012 00       		.byte	0
+ 353 0013 02       		.uleb128 0x2
+ 354 0014 24       		.uleb128 0x24
+ 355 0015 00       		.byte	0
+ 356 0016 0B       		.uleb128 0xb
+ 357 0017 0B       		.uleb128 0xb
+ 358 0018 3E       		.uleb128 0x3e
+ 359 0019 0B       		.uleb128 0xb
+ 360 001a 03       		.uleb128 0x3
+ 361 001b 0E       		.uleb128 0xe
+ 362 001c 00       		.byte	0
+ 363 001d 00       		.byte	0
+ 364 001e 03       		.uleb128 0x3
+ 365 001f 24       		.uleb128 0x24
+ 366 0020 00       		.byte	0
+ 367 0021 0B       		.uleb128 0xb
+ 368 0022 0B       		.uleb128 0xb
+ 369 0023 3E       		.uleb128 0x3e
+ 370 0024 0B       		.uleb128 0xb
+ 371 0025 03       		.uleb128 0x3
+ 372 0026 08       		.uleb128 0x8
+ 373 0027 00       		.byte	0
+ 374 0028 00       		.byte	0
+ 375 0029 04       		.uleb128 0x4
+ 376 002a 16       		.uleb128 0x16
+ 377 002b 00       		.byte	0
+ 378 002c 03       		.uleb128 0x3
+ 379 002d 0E       		.uleb128 0xe
+ 380 002e 3A       		.uleb128 0x3a
+ 381 002f 0B       		.uleb128 0xb
+ 382 0030 3B       		.uleb128 0x3b
+ 383 0031 0B       		.uleb128 0xb
+ 384 0032 49       		.uleb128 0x49
+ 385 0033 13       		.uleb128 0x13
+ 386 0034 00       		.byte	0
+ 387 0035 00       		.byte	0
+ 388 0036 05       		.uleb128 0x5
+ 389 0037 0F       		.uleb128 0xf
+ 390 0038 00       		.byte	0
+ 391 0039 0B       		.uleb128 0xb
+ 392 003a 0B       		.uleb128 0xb
+ 393 003b 49       		.uleb128 0x49
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 9
+
+
+ 394 003c 13       		.uleb128 0x13
+ 395 003d 00       		.byte	0
+ 396 003e 00       		.byte	0
+ 397 003f 06       		.uleb128 0x6
+ 398 0040 2E       		.uleb128 0x2e
+ 399 0041 01       		.byte	0x1
+ 400 0042 3F       		.uleb128 0x3f
+ 401 0043 19       		.uleb128 0x19
+ 402 0044 03       		.uleb128 0x3
+ 403 0045 0E       		.uleb128 0xe
+ 404 0046 3A       		.uleb128 0x3a
+ 405 0047 0B       		.uleb128 0xb
+ 406 0048 3B       		.uleb128 0x3b
+ 407 0049 0B       		.uleb128 0xb
+ 408 004a 27       		.uleb128 0x27
+ 409 004b 19       		.uleb128 0x19
+ 410 004c 49       		.uleb128 0x49
+ 411 004d 13       		.uleb128 0x13
+ 412 004e 11       		.uleb128 0x11
+ 413 004f 01       		.uleb128 0x1
+ 414 0050 12       		.uleb128 0x12
+ 415 0051 06       		.uleb128 0x6
+ 416 0052 40       		.uleb128 0x40
+ 417 0053 18       		.uleb128 0x18
+ 418 0054 9742     		.uleb128 0x2117
+ 419 0056 19       		.uleb128 0x19
+ 420 0057 01       		.uleb128 0x1
+ 421 0058 13       		.uleb128 0x13
+ 422 0059 00       		.byte	0
+ 423 005a 00       		.byte	0
+ 424 005b 07       		.uleb128 0x7
+ 425 005c 05       		.uleb128 0x5
+ 426 005d 00       		.byte	0
+ 427 005e 03       		.uleb128 0x3
+ 428 005f 08       		.uleb128 0x8
+ 429 0060 3A       		.uleb128 0x3a
+ 430 0061 0B       		.uleb128 0xb
+ 431 0062 3B       		.uleb128 0x3b
+ 432 0063 0B       		.uleb128 0xb
+ 433 0064 49       		.uleb128 0x49
+ 434 0065 13       		.uleb128 0x13
+ 435 0066 02       		.uleb128 0x2
+ 436 0067 17       		.uleb128 0x17
+ 437 0068 00       		.byte	0
+ 438 0069 00       		.byte	0
+ 439 006a 08       		.uleb128 0x8
+ 440 006b 34       		.uleb128 0x34
+ 441 006c 00       		.byte	0
+ 442 006d 03       		.uleb128 0x3
+ 443 006e 0E       		.uleb128 0xe
+ 444 006f 3A       		.uleb128 0x3a
+ 445 0070 0B       		.uleb128 0xb
+ 446 0071 3B       		.uleb128 0x3b
+ 447 0072 0B       		.uleb128 0xb
+ 448 0073 49       		.uleb128 0x49
+ 449 0074 13       		.uleb128 0x13
+ 450 0075 02       		.uleb128 0x2
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 10
+
+
+ 451 0076 17       		.uleb128 0x17
+ 452 0077 00       		.byte	0
+ 453 0078 00       		.byte	0
+ 454 0079 09       		.uleb128 0x9
+ 455 007a 34       		.uleb128 0x34
+ 456 007b 00       		.byte	0
+ 457 007c 03       		.uleb128 0x3
+ 458 007d 0E       		.uleb128 0xe
+ 459 007e 3A       		.uleb128 0x3a
+ 460 007f 0B       		.uleb128 0xb
+ 461 0080 3B       		.uleb128 0x3b
+ 462 0081 0B       		.uleb128 0xb
+ 463 0082 49       		.uleb128 0x49
+ 464 0083 13       		.uleb128 0x13
+ 465 0084 02       		.uleb128 0x2
+ 466 0085 18       		.uleb128 0x18
+ 467 0086 00       		.byte	0
+ 468 0087 00       		.byte	0
+ 469 0088 0A       		.uleb128 0xa
+ 470 0089 0B       		.uleb128 0xb
+ 471 008a 01       		.byte	0x1
+ 472 008b 55       		.uleb128 0x55
+ 473 008c 17       		.uleb128 0x17
+ 474 008d 01       		.uleb128 0x1
+ 475 008e 13       		.uleb128 0x13
+ 476 008f 00       		.byte	0
+ 477 0090 00       		.byte	0
+ 478 0091 0B       		.uleb128 0xb
+ 479 0092 34       		.uleb128 0x34
+ 480 0093 00       		.byte	0
+ 481 0094 03       		.uleb128 0x3
+ 482 0095 08       		.uleb128 0x8
+ 483 0096 3A       		.uleb128 0x3a
+ 484 0097 0B       		.uleb128 0xb
+ 485 0098 3B       		.uleb128 0x3b
+ 486 0099 0B       		.uleb128 0xb
+ 487 009a 49       		.uleb128 0x49
+ 488 009b 13       		.uleb128 0x13
+ 489 009c 02       		.uleb128 0x2
+ 490 009d 17       		.uleb128 0x17
+ 491 009e 00       		.byte	0
+ 492 009f 00       		.byte	0
+ 493 00a0 0C       		.uleb128 0xc
+ 494 00a1 898201   		.uleb128 0x4109
+ 495 00a4 00       		.byte	0
+ 496 00a5 11       		.uleb128 0x11
+ 497 00a6 01       		.uleb128 0x1
+ 498 00a7 31       		.uleb128 0x31
+ 499 00a8 13       		.uleb128 0x13
+ 500 00a9 00       		.byte	0
+ 501 00aa 00       		.byte	0
+ 502 00ab 0D       		.uleb128 0xd
+ 503 00ac 898201   		.uleb128 0x4109
+ 504 00af 01       		.byte	0x1
+ 505 00b0 11       		.uleb128 0x11
+ 506 00b1 01       		.uleb128 0x1
+ 507 00b2 31       		.uleb128 0x31
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 11
+
+
+ 508 00b3 13       		.uleb128 0x13
+ 509 00b4 00       		.byte	0
+ 510 00b5 00       		.byte	0
+ 511 00b6 0E       		.uleb128 0xe
+ 512 00b7 8A8201   		.uleb128 0x410a
+ 513 00ba 00       		.byte	0
+ 514 00bb 02       		.uleb128 0x2
+ 515 00bc 18       		.uleb128 0x18
+ 516 00bd 9142     		.uleb128 0x2111
+ 517 00bf 18       		.uleb128 0x18
+ 518 00c0 00       		.byte	0
+ 519 00c1 00       		.byte	0
+ 520 00c2 0F       		.uleb128 0xf
+ 521 00c3 01       		.uleb128 0x1
+ 522 00c4 01       		.byte	0x1
+ 523 00c5 49       		.uleb128 0x49
+ 524 00c6 13       		.uleb128 0x13
+ 525 00c7 01       		.uleb128 0x1
+ 526 00c8 13       		.uleb128 0x13
+ 527 00c9 00       		.byte	0
+ 528 00ca 00       		.byte	0
+ 529 00cb 10       		.uleb128 0x10
+ 530 00cc 21       		.uleb128 0x21
+ 531 00cd 00       		.byte	0
+ 532 00ce 49       		.uleb128 0x49
+ 533 00cf 13       		.uleb128 0x13
+ 534 00d0 2F       		.uleb128 0x2f
+ 535 00d1 0B       		.uleb128 0xb
+ 536 00d2 00       		.byte	0
+ 537 00d3 00       		.byte	0
+ 538 00d4 11       		.uleb128 0x11
+ 539 00d5 34       		.uleb128 0x34
+ 540 00d6 00       		.byte	0
+ 541 00d7 03       		.uleb128 0x3
+ 542 00d8 0E       		.uleb128 0xe
+ 543 00d9 3A       		.uleb128 0x3a
+ 544 00da 0B       		.uleb128 0xb
+ 545 00db 3B       		.uleb128 0x3b
+ 546 00dc 05       		.uleb128 0x5
+ 547 00dd 49       		.uleb128 0x49
+ 548 00de 13       		.uleb128 0x13
+ 549 00df 3F       		.uleb128 0x3f
+ 550 00e0 19       		.uleb128 0x19
+ 551 00e1 3C       		.uleb128 0x3c
+ 552 00e2 19       		.uleb128 0x19
+ 553 00e3 00       		.byte	0
+ 554 00e4 00       		.byte	0
+ 555 00e5 12       		.uleb128 0x12
+ 556 00e6 35       		.uleb128 0x35
+ 557 00e7 00       		.byte	0
+ 558 00e8 49       		.uleb128 0x49
+ 559 00e9 13       		.uleb128 0x13
+ 560 00ea 00       		.byte	0
+ 561 00eb 00       		.byte	0
+ 562 00ec 13       		.uleb128 0x13
+ 563 00ed 2E       		.uleb128 0x2e
+ 564 00ee 00       		.byte	0
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 12
+
+
+ 565 00ef 3F       		.uleb128 0x3f
+ 566 00f0 19       		.uleb128 0x19
+ 567 00f1 3C       		.uleb128 0x3c
+ 568 00f2 19       		.uleb128 0x19
+ 569 00f3 6E       		.uleb128 0x6e
+ 570 00f4 0E       		.uleb128 0xe
+ 571 00f5 03       		.uleb128 0x3
+ 572 00f6 0E       		.uleb128 0xe
+ 573 00f7 3A       		.uleb128 0x3a
+ 574 00f8 0B       		.uleb128 0xb
+ 575 00f9 3B       		.uleb128 0x3b
+ 576 00fa 05       		.uleb128 0x5
+ 577 00fb 00       		.byte	0
+ 578 00fc 00       		.byte	0
+ 579 00fd 14       		.uleb128 0x14
+ 580 00fe 2E       		.uleb128 0x2e
+ 581 00ff 00       		.byte	0
+ 582 0100 3F       		.uleb128 0x3f
+ 583 0101 19       		.uleb128 0x19
+ 584 0102 3C       		.uleb128 0x3c
+ 585 0103 19       		.uleb128 0x19
+ 586 0104 6E       		.uleb128 0x6e
+ 587 0105 0E       		.uleb128 0xe
+ 588 0106 03       		.uleb128 0x3
+ 589 0107 0E       		.uleb128 0xe
+ 590 0108 3A       		.uleb128 0x3a
+ 591 0109 0B       		.uleb128 0xb
+ 592 010a 3B       		.uleb128 0x3b
+ 593 010b 0B       		.uleb128 0xb
+ 594 010c 00       		.byte	0
+ 595 010d 00       		.byte	0
+ 596 010e 00       		.byte	0
+ 597              		.section	.debug_loc,"",%progbits
+ 598              	.Ldebug_loc0:
+ 599              	.LLST0:
+ 600 0000 00000000 		.4byte	.LVL0
+ 601 0004 08000000 		.4byte	.LVL2
+ 602 0008 0100     		.2byte	0x1
+ 603 000a 50       		.byte	0x50
+ 604 000b 08000000 		.4byte	.LVL2
+ 605 000f 54000000 		.4byte	.LFE64
+ 606 0013 0100     		.2byte	0x1
+ 607 0015 55       		.byte	0x55
+ 608 0016 00000000 		.4byte	0
+ 609 001a 00000000 		.4byte	0
+ 610              	.LLST1:
+ 611 001e 06000000 		.4byte	.LVL1
+ 612 0022 08000000 		.4byte	.LVL2
+ 613 0026 0200     		.2byte	0x2
+ 614 0028 30       		.byte	0x30
+ 615 0029 9F       		.byte	0x9f
+ 616 002a 08000000 		.4byte	.LVL2
+ 617 002e 54000000 		.4byte	.LFE64
+ 618 0032 0100     		.2byte	0x1
+ 619 0034 54       		.byte	0x54
+ 620 0035 00000000 		.4byte	0
+ 621 0039 00000000 		.4byte	0
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 13
+
+
+ 622              	.LLST2:
+ 623 003d 06000000 		.4byte	.LVL1
+ 624 0041 08000000 		.4byte	.LVL2
+ 625 0045 0200     		.2byte	0x2
+ 626 0047 30       		.byte	0x30
+ 627 0048 9F       		.byte	0x9f
+ 628 0049 2C000000 		.4byte	.LVL9
+ 629 004d 46000000 		.4byte	.LVL15
+ 630 0051 0100     		.2byte	0x1
+ 631 0053 50       		.byte	0x50
+ 632 0054 00000000 		.4byte	0
+ 633 0058 00000000 		.4byte	0
+ 634              	.LLST3:
+ 635 005c 30000000 		.4byte	.LVL10
+ 636 0060 40000000 		.4byte	.LVL13
+ 637 0064 0100     		.2byte	0x1
+ 638 0066 53       		.byte	0x53
+ 639 0067 42000000 		.4byte	.LVL14
+ 640 006b 46000000 		.4byte	.LVL15
+ 641 006f 0100     		.2byte	0x1
+ 642 0071 53       		.byte	0x53
+ 643 0072 00000000 		.4byte	0
+ 644 0076 00000000 		.4byte	0
+ 645              		.section	.debug_aranges,"",%progbits
+ 646 0000 1C000000 		.4byte	0x1c
+ 647 0004 0200     		.2byte	0x2
+ 648 0006 00000000 		.4byte	.Ldebug_info0
+ 649 000a 04       		.byte	0x4
+ 650 000b 00       		.byte	0
+ 651 000c 0000     		.2byte	0
+ 652 000e 0000     		.2byte	0
+ 653 0010 00000000 		.4byte	.LFB64
+ 654 0014 54000000 		.4byte	.LFE64-.LFB64
+ 655 0018 00000000 		.4byte	0
+ 656 001c 00000000 		.4byte	0
+ 657              		.section	.debug_ranges,"",%progbits
+ 658              	.Ldebug_ranges0:
+ 659 0000 2E000000 		.4byte	.LBB2
+ 660 0004 40000000 		.4byte	.LBE2
+ 661 0008 42000000 		.4byte	.LBB3
+ 662 000c 46000000 		.4byte	.LBE3
+ 663 0010 00000000 		.4byte	0
+ 664 0014 00000000 		.4byte	0
+ 665 0018 00000000 		.4byte	.LFB64
+ 666 001c 54000000 		.4byte	.LFE64
+ 667 0020 00000000 		.4byte	0
+ 668 0024 00000000 		.4byte	0
+ 669              		.section	.debug_line,"",%progbits
+ 670              	.Ldebug_line0:
+ 671 0000 9B010000 		.section	.debug_str,"MS",%progbits,1
+ 671      02006201 
+ 671      00000201 
+ 671      FB0E0D00 
+ 671      01010101 
+ 672              	.LASF7:
+ 673 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 673      6E74385F 
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 14
+
+
+ 673      7400
+ 674              	.LASF8:
+ 675 000a 5F5F696E 		.ascii	"__int32_t\000"
+ 675      7433325F 
+ 675      7400
+ 676              	.LASF25:
+ 677 0014 55534255 		.ascii	"USBUART_GetAll\000"
+ 677      4152545F 
+ 677      47657441 
+ 677      6C6C00
+ 678              	.LASF27:
+ 679 0023 66756E63 		.ascii	"functions.c\000"
+ 679      74696F6E 
+ 679      732E6300 
+ 680              	.LASF22:
+ 681 002f 55534255 		.ascii	"USBUART_GetConfiguration\000"
+ 681      4152545F 
+ 681      47657443 
+ 681      6F6E6669 
+ 681      67757261 
+ 682              	.LASF16:
+ 683 0048 666C6F61 		.ascii	"float\000"
+ 683      7400
+ 684              	.LASF18:
+ 685 004e 73697A65 		.ascii	"size\000"
+ 685      00
+ 686              	.LASF28:
+ 687 0053 433A5C55 		.ascii	"C:\\Users\\poonachatheethiran\\Documents\\PSoC Crea"
+ 687      73657273 
+ 687      5C706F6F 
+ 687      6E616368 
+ 687      61746865 
+ 688 0082 746F725C 		.ascii	"tor\\networking\\networking-project\\networking.cyd"
+ 688      6E657477 
+ 688      6F726B69 
+ 688      6E675C6E 
+ 688      6574776F 
+ 689 00b2 736E00   		.ascii	"sn\000"
+ 690              	.LASF10:
+ 691 00b5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 691      20756E73 
+ 691      69676E65 
+ 691      6420696E 
+ 691      7400
+ 692              	.LASF6:
+ 693 00c7 73686F72 		.ascii	"short unsigned int\000"
+ 693      7420756E 
+ 693      7369676E 
+ 693      65642069 
+ 693      6E7400
+ 694              	.LASF30:
+ 695 00da 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 695      52784275 
+ 695      66666572 
+ 695      00
+ 696              	.LASF4:
+ 697 00e7 756E7369 		.ascii	"unsigned char\000"
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 15
+
+
+ 697      676E6564 
+ 697      20636861 
+ 697      7200
+ 698              	.LASF17:
+ 699 00f5 646F7562 		.ascii	"double\000"
+ 699      6C6500
+ 700              	.LASF21:
+ 701 00fc 55534255 		.ascii	"USBUART_IsConfigurationChanged\000"
+ 701      4152545F 
+ 701      4973436F 
+ 701      6E666967 
+ 701      75726174 
+ 702              	.LASF0:
+ 703 011b 756E7369 		.ascii	"unsigned int\000"
+ 703      676E6564 
+ 703      20696E74 
+ 703      00
+ 704              	.LASF23:
+ 705 0128 55534255 		.ascii	"USBUART_CDC_Init\000"
+ 705      4152545F 
+ 705      4344435F 
+ 705      496E6974 
+ 705      00
+ 706              	.LASF11:
+ 707 0139 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 707      206C6F6E 
+ 707      6720756E 
+ 707      7369676E 
+ 707      65642069 
+ 708              	.LASF14:
+ 709 0150 75696E74 		.ascii	"uint8_t\000"
+ 709      385F7400 
+ 710              	.LASF24:
+ 711 0158 55534255 		.ascii	"USBUART_DataIsReady\000"
+ 711      4152545F 
+ 711      44617461 
+ 711      49735265 
+ 711      61647900 
+ 712              	.LASF26:
+ 713 016c 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 713      43313120 
+ 713      352E342E 
+ 713      31203230 
+ 713      31363036 
+ 714 019f 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 714      20726576 
+ 714      6973696F 
+ 714      6E203233 
+ 714      37373135 
+ 715 01d2 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 715      66756E63 
+ 715      74696F6E 
+ 715      2D736563 
+ 715      74696F6E 
+ 716              	.LASF15:
+ 717 01fa 696E7433 		.ascii	"int32_t\000"
+ 717      325F7400 
+ARM GAS  C:\Users\POONAC~1\AppData\Local\Temp\ccIoGMiK.s 			page 16
+
+
+ 718              	.LASF12:
+ 719 0202 73697A65 		.ascii	"sizetype\000"
+ 719      74797065 
+ 719      00
+ 720              	.LASF1:
+ 721 020b 6C6F6E67 		.ascii	"long long int\000"
+ 721      206C6F6E 
+ 721      6720696E 
+ 721      7400
+ 722              	.LASF13:
+ 723 0219 63686172 		.ascii	"char\000"
+ 723      00
+ 724              	.LASF29:
+ 725 021e 67657453 		.ascii	"getString\000"
+ 725      7472696E 
+ 725      6700
+ 726              	.LASF19:
+ 727 0228 636F756E 		.ascii	"count\000"
+ 727      7400
+ 728              	.LASF5:
+ 729 022e 73686F72 		.ascii	"short int\000"
+ 729      7420696E 
+ 729      7400
+ 730              	.LASF20:
+ 731 0238 62756666 		.ascii	"buffer\000"
+ 731      657200
+ 732              	.LASF9:
+ 733 023f 6C6F6E67 		.ascii	"long int\000"
+ 733      20696E74 
+ 733      00
+ 734              	.LASF2:
+ 735 0248 6C6F6E67 		.ascii	"long double\000"
+ 735      20646F75 
+ 735      626C6500 
+ 736              	.LASF3:
+ 737 0254 7369676E 		.ascii	"signed char\000"
+ 737      65642063 
+ 737      68617200 
+ 738              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

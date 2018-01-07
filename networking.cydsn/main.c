@@ -10,11 +10,12 @@
  * ========================================
 */
 #include "project.h"
+#include "functions.h"
 int InterruptCnt;
 /*******************************************************************************
 * Define Interrupt service routine and allocate an vector to the Interrupt
 ********************************************************************************/
-
+#define USBFS_DEVICE    (0u)
 typedef enum state {IDLE, COLLISION, BUSY_HIGH, BUSY_LOW} State;
 State cur_state = IDLE;
 int check_for_low = 0;
@@ -37,8 +38,10 @@ CY_ISR(InterruptHandler)
 CY_ISR(rise)
 {
     if (check_for_low == 0){
-        Timer_1_WritePeriod(60);
-        Timer_1_WriteCounter(59);
+        //Timer_1_WritePeriod(60);
+        //Timer_1_WriteCounter(59);
+        Timer_1_WritePeriod(52);
+        Timer_1_WriteCounter(51);
         Timer_1_Start();
         check_for_low = 1;
         cur_state = BUSY_HIGH;
@@ -48,8 +51,10 @@ CY_ISR(rise)
 CY_ISR(fall)
 {
     if (check_for_low == 1){
-        Timer_1_WritePeriod(770);
-        Timer_1_WriteCounter(769);
+        //Timer_1_WritePeriod(770);
+        //Timer_1_WriteCounter(769);
+        Timer_1_WritePeriod(830);
+        Timer_1_WriteCounter(829);
         Timer_1_Start();
         check_for_low = 0;
         cur_state = BUSY_LOW;
@@ -62,12 +67,56 @@ int main(void)
     TimerISR_StartEx(InterruptHandler);
     InterruptCnt=0;
     LCD_Start();
+    USBUART_Start(USBFS_DEVICE, USBUART_5V_OPERATION);
     
     isr_1_StartEx(rise);
     isr_2_StartEx(fall);
 
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-
+    uint16 delay = 500;
+    char input[44];
+    uint8 idx = 0;
+    char transmit;
+    
+    for(;;)
+    {
+        getString(input);
+        LCD_ClearDisplay();
+        LCD_Position(0,0);
+        LCD_PrintString(input);
+        
+        // Start Bit
+        NETWORK_OUT_Write(1);
+        CyDelayUs(delay);
+        NETWORK_OUT_Write(0);
+        CyDelayUs(delay);
+        
+        // Iterate through string until \0
+        while ((transmit = * (input + idx)) != '\r')
+        {
+            char binary[8];
+            
+            // Convert to binary
+            itoa(transmit, binary, 2);
+            for (int i = 1; i < 8; ++i)
+            {
+                if (binary[i] == '0')
+                {
+                    NETWORK_OUT_Write(0);
+                    CyDelayUs(delay * 2);
+                }
+                else
+                {
+                    NETWORK_OUT_Write(1);
+                    CyDelayUs(delay);
+                    NETWORK_OUT_Write(0);
+                    CyDelayUs(delay);
+                }
+            }
+            ++idx;
+        }
+    }
+}
+    /*
     for(;;)
     {
         switch(cur_state){
@@ -108,6 +157,6 @@ int main(void)
             break;
         }
     }
-}
+    */
 
 /* [] END OF FILE */
