@@ -16,6 +16,7 @@ int getString(char *c)
 {
     int size=0;
     int count=0;
+    int brk=1;
     uint8_t buffer[10];
     do
     {
@@ -48,16 +49,24 @@ int getString(char *c)
                     {
                         //LCD_PrintNumber(buffer[i]);
                         //LCD_PrintString(",");
-                        c[size]=buffer[i];
-                        size++;
+                        if(buffer[i]==13)
+                        {
+                            brk=!brk;
+                            USBUART_PutCRLF();
+                            break;
+                        }
+                        else
+                        {
+                            c[size]=buffer[i];
+                            size++;
+                        }
                     }
                     //LCD_PrintNumber(count);
                     //USBUART_PutData(buffer, count);
                 }
             }
         }
-    }while(buffer[0]!=13);
-    size--;
+    }while(brk);
     c[size]='\0';
     size++;
     return size;
