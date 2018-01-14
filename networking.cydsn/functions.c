@@ -53,7 +53,6 @@ int getString(char *c)
                         {
                             brk=!brk;
                             USBUART_PutCRLF();
-                            break;
                         }
                         else
                         {

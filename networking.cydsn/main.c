@@ -77,6 +77,7 @@ int main(void)
     char input[44];
     uint8 idx = 0;
     char transmit;
+    NETWORK_OUT_Write(0);
     
     for(;;)
     {
@@ -84,12 +85,6 @@ int main(void)
         LCD_ClearDisplay();
         LCD_Position(0,0);
         LCD_PrintString(input);
-        
-        // Start Bit
-        NETWORK_OUT_Write(1);
-        CyDelayUs(delay);
-        NETWORK_OUT_Write(0);
-        CyDelayUs(delay);
         
         // Iterate through string until \0
         while (cur_state != IDLE);
@@ -154,8 +149,12 @@ int main(void)
         /*
         while ((transmit = * (input + idx)) != '\0')
         {
-            char binary[8];
+            NETWORK_OUT_Write(1);
+            CyDelayUs(delay);
+            NETWORK_OUT_Write(0);
+            CyDelayUs(delay);
             
+            char binary[8];
             // Convert to binary
             itoa(transmit, binary, 2);
             for (int i = 0; i < 7; ++i)
