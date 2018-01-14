@@ -270,7 +270,9 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\main.c" />
-<name v=".\cyapicallbacks.h" />
+<name v=".\functions.c" />
+<name v=".\TopDesign\TopDesign.cysch" />
+<name v=".\networking.cydwr" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -278,7 +280,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1474, 751" SelectedTabbedMdiWindow="e01dd94c-118e-49d4-aeed-1d1d1bc51d85"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="efbc8320-364a-4a45-aaaf-371337ce0b7e" /><DocumentWindow Key="C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\main.c" Guid="e01dd94c-118e-49d4-aeed-1d1d1bc51d85" /><DocumentWindow Key="C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\cyapicallbacks.h" Guid="abb95eb1-d70e-42ee-80ff-09f73712c0f0" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1474, 751" SelectedTabbedMdiWindow="e01dd94c-118e-49d4-aeed-1d1d1bc51d85"><DocumentWindow Key="C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\main.c" Guid="e01dd94c-118e-49d4-aeed-1d1d1bc51d85" /><DocumentWindow Key="C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\functions.c" Guid="edcc2f3f-5bdd-4a19-be50-bdad0175b423" /><DocumentWindow Key="C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\TopDesign\TopDesign.cysch" Guid="65b99803-40f2-4f99-8fb3-4aed492e76ba" /><DocumentWindow Key="C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\networking.cydwr" Guid="b0d67cce-e000-4584-8c25-3677df943af8" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
