@@ -81,69 +81,97 @@ int main(void)
     char transmit;
     NETWORK_OUT_Write(0);
     uint8 no_collision = 1;
+    int8 transmission_complete = 0;
+    int size;
     
     for(;;)
     {
-        getString(input);
         LCD_ClearDisplay();
         LCD_Position(0,0);
-        LCD_PrintString(input);
+        LCD_PrintString(" READING STRING");
         
+        getString(input);
+
+        transmission_complete=0;
+        idx=0;
         
-        int8 transmission_complete = 0;
-        while (cur_state != IDLE);
-        
-        while (transmission_complete == 0)
+        while(cur_state != IDLE);
+        while(!transmission_complete)
         {
-            idx = 0;
-            if (cur_state == COLLISION){ no_collision = 0; }
-            if (no_collision)
+            switch(cur_state)
             {
-                while ((no_collision == 1) && (transmit = * (input + idx)) != '\0')
-                {
-                    NETWORK_OUT_Write(1);
-                    CyDelayUs(delay);
+                case IDLE :
+                    LCD_ClearDisplay();
+                    LCD_Position(0,0);
+                    LCD_PrintString("IDLE, Transmitting: ");
+                    LCD_Position(1,0);
+                    LCD_PrintString(input);
+                    LCD_PrintString("At: ");
+                    LCD_PrintNumber(idx);
+                    
+                    if((transmit = * (input + idx)) != '\0')
+                    {
+                        NETWORK_OUT_Write(1);
+                        CyDelayUs(delay);
+                        NETWORK_OUT_Write(0);
+                        CyDelayUs(delay);
+                        
+                        char binary[8];
+                    
+                        // Convert to binary
+                        itoa(transmit, binary, 2);
+                        for (int i = 0; i < 7; ++i)
+                        {
+                            if (binary[i] == '0')
+                            {
+                                NETWORK_OUT_Write(0);
+                                CyDelayUs(delay * 2);
+                            }
+                            else
+                            {
+                                NETWORK_OUT_Write(1);
+                                CyDelayUs(delay);
+                                NETWORK_OUT_Write(0);
+                                CyDelayUs(delay);
+                            }
+                        }
+                        ++idx;
+                    }
+                    else
+                    {
+                        transmission_complete=1;
+                    }
+                break;
+
+                case COLLISION:
+                    
+                    LCD_ClearDisplay();
+                    LCD_Position(0,0);
+                    LCD_PrintString(" COLLISION ");
+                    
+                    idx=0;
                     NETWORK_OUT_Write(0);
-                    CyDelayUs(delay);
-                    
-                    char binary[8];
                 
-                    // Convert to binary
-                    itoa(transmit, binary, 2);
-                    for (int i = 0; i < 7; ++i)
-                    {
-                        if (binary[i] == '0')
-                        {
-                            NETWORK_OUT_Write(0);
-                            CyDelayUs(delay * 2);
-                        }
-                        else
-                        {
-                            NETWORK_OUT_Write(1);
-                            CyDelayUs(delay);
-                            NETWORK_OUT_Write(0);
-                            CyDelayUs(delay);
-                        }
-                    }
-                    ++idx;
+                    uint32 delay = rand() % 129;
+                    //CyDelay((uint32) (((delay)/128) * 1000));
+                break;
                     
-                    if (cur_state == COLLISION)
-                    {
-                        no_collision = 0;
-                    }
-                }
-                transmission_complete = 1;
-                idx = 0;
-            } else
-            {
-                NETWORK_OUT_Write(0);
-                
-                uint32 delay = rand() % 129;
-                CyDelay((uint32) (delay * 1000));
+                case BUSY_HIGH:
+                    LCD_ClearDisplay();
+                    LCD_Position(0,0);
+                    LCD_PrintString(" BUSY_LOW ");
+                break;
+                    
+                case BUSY_LOW:
+                    LCD_ClearDisplay();
+                    LCD_Position(0,0);
+                    LCD_PrintString(" BUSY_HIGH ");
+                break;
             }
-        }
+        }  
     }
-}
+    
+    
     /*
     for(;;)
     {
@@ -158,14 +186,6 @@ int main(void)
             break;
             
             case BUSY_HIGH:;
-                LCD_Position(0,0);
-                LCD_PrintString("      BUSY      ");
-                
-                BUSY_Write(1);
-                IDLE_Write(!BUSY_Read());
-                COLLISION_Write(!BUSY_Read());
-            break;
-            
             case BUSY_LOW:;
                 LCD_Position(0,0);
                 LCD_PrintString("      BUSY      ");
@@ -186,5 +206,8 @@ int main(void)
         }
     }
     */
+    
+}
+    
 
 /* [] END OF FILE */
