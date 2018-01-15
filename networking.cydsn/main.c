@@ -12,11 +12,11 @@
 #include <stdlib.h>
 #include "project.h"
 #include "functions.h"
+#define USBFS_DEVICE    (0u)
 int InterruptCnt;
 /*******************************************************************************
 * Define Interrupt service routine and allocate an vector to the Interrupt
 ********************************************************************************/
-#define USBFS_DEVICE    (0u)
 typedef enum state {IDLE, COLLISION, BUSY_HIGH, BUSY_LOW} State;
 State cur_state = IDLE;
 int check_for_low = 0;
@@ -70,14 +70,17 @@ int main(void)
     LCD_Start();
     USBUART_Start(USBFS_DEVICE, USBUART_5V_OPERATION);
     
+    
+    
     isr_1_StartEx(rise);
     isr_2_StartEx(fall);
 
     uint16 delay = 500;
-    char input[44];
+    char input[44]; 
     uint8 idx = 0;
     char transmit;
     NETWORK_OUT_Write(0);
+    uint8 no_collision = 1;
     
     for(;;)
     {
@@ -86,16 +89,17 @@ int main(void)
         LCD_Position(0,0);
         LCD_PrintString(input);
         
-        // Iterate through string until \0
-        while (cur_state != IDLE);
+        
         int8 transmission_complete = 0;
+        while (cur_state != IDLE);
+        
         while (transmission_complete == 0)
         {
             idx = 0;
-            uint8 no_collision = 1;
+            if (cur_state == COLLISION){ no_collision = 0; }
             if (no_collision)
             {
-                while ((transmit = * (input + idx)) != '\0')
+                while ((no_collision == 1) && (transmit = * (input + idx)) != '\0')
                 {
                     NETWORK_OUT_Write(1);
                     CyDelayUs(delay);
@@ -136,46 +140,8 @@ int main(void)
                 
                 uint32 delay = rand() % 129;
                 CyDelay((uint32) (delay * 1000));
-                
-                if (cur_state != COLLISION)
-                {
-                    idx = 0;
-                    no_collision = 1;
-                }
             }
         }
-        
-        
-        /*
-        while ((transmit = * (input + idx)) != '\0')
-        {
-            NETWORK_OUT_Write(1);
-            CyDelayUs(delay);
-            NETWORK_OUT_Write(0);
-            CyDelayUs(delay);
-            
-            char binary[8];
-            // Convert to binary
-            itoa(transmit, binary, 2);
-            for (int i = 0; i < 7; ++i)
-            {
-                if (binary[i] == '0')
-                {
-                    NETWORK_OUT_Write(0);
-                    CyDelayUs(delay * 2);
-                }
-                else
-                {
-                    NETWORK_OUT_Write(1);
-                    CyDelayUs(delay);
-                    NETWORK_OUT_Write(0);
-                    CyDelayUs(delay);
-                }
-            }
-            ++idx;
-        }
-        idx = 0;
-        */
     }
 }
     /*

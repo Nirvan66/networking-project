@@ -12,8 +12,10 @@
 #include "functions.h"
 #include <project.h>
 
+
 int getString(char *c)
 {
+    
     int size=0;
     int count=0;
     int brk=1;
