@@ -31,8 +31,10 @@ CY_ISR(InterruptHandler)
     
     if (check_for_low == 0){
         cur_state = IDLE;
+        Timer_1_Stop();
     } else {
         cur_state = COLLISION;
+        Timer_1_Stop();
     }
 }
 
@@ -86,8 +88,7 @@ int main(void)
     
     for(;;)
     {
-        LCD_ClearDisplay();
-        LCD_Position(0,0);
+        LCD_Position(1,0);
         LCD_PrintString(" READING STRING");
         
         getString(input);
@@ -140,6 +141,10 @@ int main(void)
                     else
                     {
                         transmission_complete=1;
+                        LCD_ClearDisplay();
+                        LCD_Position(0,0);
+                        LCD_PrintString("Sent:");
+                        LCD_PrintString(input);
                     }
                 break;
 
