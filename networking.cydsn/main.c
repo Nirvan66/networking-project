@@ -104,8 +104,7 @@ int main(void)
                 case IDLE :
                     LCD_ClearDisplay();
                     LCD_Position(0,0);
-                    LCD_PrintString("IDLE, Transmitting: ");
-                    LCD_Position(1,0);
+                    LCD_PrintString("IDLE: ");
                     LCD_PrintString(input);
                     LCD_PrintString("At: ");
                     LCD_PrintNumber(idx);
@@ -150,8 +149,8 @@ int main(void)
 
                 case COLLISION:
                     
-                    LCD_ClearDisplay();
-                    LCD_Position(0,0);
+                    //LCD_ClearDisplay();
+                    LCD_Position(1,0);
                     LCD_PrintString(" COLLISION ");
                     
                     idx=0;
@@ -162,14 +161,14 @@ int main(void)
                 break;
                     
                 case BUSY_HIGH:
-                    LCD_ClearDisplay();
-                    LCD_Position(0,0);
+                    //LCD_ClearDisplay();
+                    LCD_Position(1,0);
                     LCD_PrintString(" BUSY_LOW ");
                 break;
                     
                 case BUSY_LOW:
-                    LCD_ClearDisplay();
-                    LCD_Position(0,0);
+                    //LCD_ClearDisplay();
+                    LCD_Position(1,0);
                     LCD_PrintString(" BUSY_HIGH ");
                 break;
             }
