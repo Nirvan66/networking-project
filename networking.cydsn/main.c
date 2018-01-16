@@ -150,6 +150,7 @@ int main(void)
                 case COLLISION:
                     
                     //LCD_ClearDisplay();
+                    LCD_Position(1,0);
                     LCD_PrintString("                 ");
                     LCD_Position(1,0);
                     LCD_PrintString(" COLLISION ");
@@ -163,6 +164,7 @@ int main(void)
                     
                 case BUSY_HIGH:
                     //LCD_ClearDisplay();
+                    LCD_Position(1,0);
                     LCD_PrintString("                 ");
                     LCD_Position(1,0);
                     LCD_PrintString(" BUSY_LOW ");
@@ -170,6 +172,7 @@ int main(void)
                     
                 case BUSY_LOW:
                     //LCD_ClearDisplay();
+                    LCD_Position(1,0);
                     LCD_PrintString("                 ");
                     LCD_Position(1,0);
                     LCD_PrintString(" BUSY_HIGH ");
