@@ -72,4 +72,13 @@ int getString(char *c)
     size++;
     return size;
 }
+
+int putString(uint8 * buffer, uint16 count)
+{
+    while(0u != USBUART_IsConfigurationChanged());
+    USBUART_CDC_Init();
+    while(0u == USBUART_CDCIsReady());
+    USBUART_PutData(buffer, count);
+    return 0;
+}
 /* [] END OF FILE */

@@ -1,5 +1,5 @@
 -- Project:   networking
--- Generated: 01/07/2018 17:27:23
+-- Generated: 01/28/2018 18:07:23
 -- PSoC Creator  4.1 Update 1
 
 ENTITY networking IS
@@ -52,6 +52,7 @@ ARCHITECTURE __DEFAULT__ OF networking IS
     SIGNAL Net_3 : bit;
     ATTRIBUTE global_signal OF Net_3 : SIGNAL IS true;
     SIGNAL Net_3_local : bit;
+    SIGNAL Net_52 : bit;
     SIGNAL Net_659 : bit;
     SIGNAL Net_66 : bit;
     SIGNAL Net_71 : bit;
@@ -76,6 +77,8 @@ ARCHITECTURE __DEFAULT__ OF networking IS
     SIGNAL \Timer_1:TimerUDB:status_2\ : bit;
     SIGNAL \Timer_1:TimerUDB:status_3\ : bit;
     SIGNAL \Timer_1:TimerUDB:status_tc\ : bit;
+    SIGNAL \Timer_2:Net_261\ : bit;
+    SIGNAL \Timer_2:Net_51\ : bit;
     SIGNAL \\\USBUART:Dm(0)\\__PA\ : bit;
     SIGNAL \\\USBUART:Dp(0)\\__PA\ : bit;
     SIGNAL \USBUART:Net_1010\ : bit;
@@ -108,6 +111,7 @@ ARCHITECTURE __DEFAULT__ OF networking IS
     ATTRIBUTE POWER OF one : SIGNAL IS true;
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
+    SIGNAL \ClockBlock.dclk_glb_ff_0__sig\ : bit;
     SIGNAL \Timer_1:TimerUDB:sT16:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \Timer_1:TimerUDB:sT16:timerdp:u0.cl0__sig\ : bit;
     SIGNAL \Timer_1:TimerUDB:sT16:timerdp:u0.z0__sig\ : bit;
@@ -150,12 +154,13 @@ ARCHITECTURE __DEFAULT__ OF networking IS
     ATTRIBUTE lib_model OF \Timer_1:TimerUDB:status_tc\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF Net_66 : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF Net_71 : LABEL IS "macrocell3";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell4";
     ATTRIBUTE lib_model OF \Timer_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell1";
     ATTRIBUTE lib_model OF \Timer_1:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell1";
     ATTRIBUTE lib_model OF \Timer_1:TimerUDB:sT16:timerdp:u0\ : LABEL IS "datapathcell1";
     ATTRIBUTE lib_model OF \Timer_1:TimerUDB:sT16:timerdp:u1\ : LABEL IS "datapathcell2";
     ATTRIBUTE Location OF \USBUART:USB\ : LABEL IS "F(USB,0)";
-    ATTRIBUTE lib_model OF \EdgeDetect_rise:last\ : LABEL IS "macrocell4";
+    ATTRIBUTE lib_model OF \EdgeDetect_rise:last\ : LABEL IS "macrocell5";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -458,6 +463,17 @@ ARCHITECTURE __DEFAULT__ OF networking IS
     ATTRIBUTE udb_clk OF statusicell : COMPONENT IS "clock";
     ATTRIBUTE udb_clken OF statusicell : COMPONENT IS "clk_en";
     ATTRIBUTE udb_reset OF statusicell : COMPONENT IS "reset";
+    COMPONENT timercell
+        PORT (
+            clock : IN std_ulogic;
+            kill : IN std_ulogic;
+            enable : IN std_ulogic;
+            capture : IN std_ulogic;
+            timer_reset : IN std_ulogic;
+            tc : OUT std_ulogic;
+            cmp : OUT std_ulogic;
+            irq : OUT std_ulogic);
+    END COMPONENT;
     COMPONENT usbcell
         PORT (
             sof_int : OUT std_ulogic;
@@ -503,7 +519,8 @@ BEGIN
             dclk_glb_0 => Net_255,
             dclk_0 => Net_255_local,
             dclk_glb_1 => Net_3,
-            dclk_1 => Net_3_local);
+            dclk_1 => Net_3_local,
+            dclk_glb_ff_0 => \ClockBlock.dclk_glb_ff_0__sig\);
 
     \LCD:LCDPort\:logicalport
         GENERIC MAP(
@@ -1378,6 +1395,14 @@ BEGIN
             interrupt => Net_172,
             clock => ClockBlock_BUS_CLK);
 
+    __ONE__:macrocell
+        GENERIC MAP(
+            eqn_main => "1'b0",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => __ONE__);
+
     \Timer_1:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
         GENERIC MAP(
             cy_ctrl_mode_0 => "11111111",
@@ -1626,6 +1651,27 @@ BEGIN
         PORT MAP(
             interrupt => Net_27,
             clock => ClockBlock_BUS_CLK);
+
+    RxISR:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_52,
+            clock => ClockBlock_BUS_CLK);
+
+    \Timer_2:TimerHW\:timercell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            clock => \ClockBlock.dclk_glb_ff_0__sig\,
+            kill => open,
+            enable => __ONE__,
+            capture => open,
+            timer_reset => open,
+            tc => \Timer_2:Net_51\,
+            cmp => \Timer_2:Net_261\,
+            irq => Net_52);
 
     \EdgeDetect_rise:last\:macrocell
         GENERIC MAP(

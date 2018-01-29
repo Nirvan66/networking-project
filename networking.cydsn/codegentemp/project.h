@@ -44,6 +44,8 @@
 #include "USBUART_msc.h"
 #include "NETWORK_OUT_aliases.h"
 #include "NETWORK_OUT.h"
+#include "RxISR.h"
+#include "Timer_2.h"
 #include "LCD_LCDPort_aliases.h"
 #include "LCD_LCDPort.h"
 #include "USBUART_Dm_aliases.h"
