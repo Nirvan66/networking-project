@@ -2,7 +2,7 @@
 --	Conversion of networking.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Jan 07 17:27:22 2018
+--	Sun Jan 28 18:07:22 2018
 --
 
 USE cypress.cypress.all;
@@ -309,6 +309,15 @@ SIGNAL tmpFB_0__NETWORK_OUT_net_0 : bit;
 SIGNAL tmpIO_0__NETWORK_OUT_net_0 : bit;
 TERMINAL tmpSIOVREF__NETWORK_OUT_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__NETWORK_OUT_net_0 : bit;
+SIGNAL Net_52 : bit;
+SIGNAL \Timer_2:Net_260\ : bit;
+SIGNAL \Timer_2:Net_266\ : bit;
+SIGNAL Net_57 : bit;
+SIGNAL \Timer_2:Net_51\ : bit;
+SIGNAL \Timer_2:Net_261\ : bit;
+SIGNAL \Timer_2:Net_57\ : bit;
+SIGNAL Net_46 : bit;
+SIGNAL \Timer_2:Net_102\ : bit;
 SIGNAL \Timer_1:TimerUDB:capture_last\\D\ : bit;
 SIGNAL \Timer_1:TimerUDB:tc_reg_i\\D\ : bit;
 SIGNAL \Timer_1:TimerUDB:hwEnable_reg\\D\ : bit;
@@ -1176,6 +1185,20 @@ NETWORK_OUT:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__NETWORK_OUT_net_0);
+RxISR:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_52);
+\Timer_2:TimerHW\:cy_psoc3_timer_v1_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(clock=>Net_255,
+		kill=>zero,
+		enable=>one,
+		capture=>zero,
+		timer_reset=>zero,
+		tc=>\Timer_2:Net_51\,
+		compare=>\Timer_2:Net_261\,
+		interrupt=>Net_52);
 \Timer_1:TimerUDB:capture_last\:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\Timer_1:TimerUDB:ClockOutFromEnBlock\,

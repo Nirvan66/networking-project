@@ -10,6 +10,7 @@
  * ========================================
 */
 #include <stdlib.h>
+#include <sys/timeb.h>
 #include "project.h"
 #include "functions.h"
 #define USBFS_DEVICE    (0u)
@@ -20,6 +21,11 @@ int InterruptCnt;
 typedef enum state {IDLE, COLLISION, BUSY_HIGH, BUSY_LOW} State;
 State cur_state = IDLE;
 int check_for_low = 0;
+unsigned char rx_bits[16];
+int rx_bit_idx = 0;
+int rx_buffer_idx = 0;;
+uint8 rx_buffer[50];
+int receiving = 0;
 
 CY_ISR(InterruptHandler)
 {
@@ -31,15 +37,20 @@ CY_ISR(InterruptHandler)
     
     if (check_for_low == 0){
         cur_state = IDLE;
-        Timer_1_Stop();
+        //Timer_1_Stop();
     } else {
         cur_state = COLLISION;
-        Timer_1_Stop();
+        //Timer_1_Stop();
     }
 }
 
 CY_ISR(rise)
 {
+    if (USBUART_CDCIsReady())
+    {
+        
+    }
+    
     if (check_for_low == 0){
         //Timer_1_WritePeriod(60);
         //Timer_1_WriteCounter(59);
@@ -48,6 +59,12 @@ CY_ISR(rise)
         Timer_1_Start();
         check_for_low = 1;
         cur_state = BUSY_HIGH;
+    }
+    
+    if (receiving == 0)
+    {
+        Timer_2_Start();
+        receiving = 1;
     }
 }
  
@@ -64,6 +81,42 @@ CY_ISR(fall)
     }
 }
 
+CY_ISR(Rx)
+{
+    char next = 0;
+    int shift_count = 7;
+    
+    Timer_2_STATUS;
+    Timer_2_Start();
+    
+    rx_bits[rx_bit_idx] = Rx_Read();
+    ++rx_bit_idx;
+    
+    if (rx_bit_idx >= 15)
+    {
+        rx_bit_idx = 0;
+        Timer_2_Stop();
+        receiving = 0;
+        
+        for (int i = 15; i >= 0; i--)
+        {
+            if (i == 15)
+            {
+                next = 0x80;
+            }
+            
+            if (i % 2 != 0)
+            {
+                next = (next | (rx_bits[i] << shift_count));
+                --shift_count;
+            }
+        }
+        
+        rx_buffer[rx_buffer_idx] = next;
+        ++rx_buffer_idx;
+    }
+}
+
 int main(void)
 {
     CyGlobalIntEnable;
@@ -76,6 +129,7 @@ int main(void)
     
     isr_1_StartEx(rise);
     isr_2_StartEx(fall);
+    RxISR_StartEx(Rx);
 
     uint16 delay = 500;
     char input[44]; 
@@ -85,6 +139,7 @@ int main(void)
     uint8 no_collision = 1;
     int8 transmission_complete = 0;
     int size;
+    int from_collision = 0;
     
     for(;;)
     {
@@ -102,6 +157,15 @@ int main(void)
             switch(cur_state)
             {
                 case IDLE :
+                    putString(rx_buffer, rx_buffer_idx);
+                    rx_buffer_idx = 0;
+                    if (from_collision == 1)
+                    {
+                        srand(Timer_1_ReadCounter());
+                        uint32 delay = rand() % 129;
+                        CyDelay((uint32) (((delay)/128.0) * 1000.0));
+                        from_collision = 0;
+                    }
                     LCD_ClearDisplay();
                     LCD_Position(0,0);
                     LCD_PrintString("IDLE: ");
@@ -145,6 +209,8 @@ int main(void)
                         LCD_PrintString("Sent:");
                         LCD_PrintString(input);
                     }
+                    
+                    
                 break;
 
                 case COLLISION:
@@ -157,6 +223,8 @@ int main(void)
                     
                     idx=0;
                     NETWORK_OUT_Write(0);
+                    
+                    from_collision = 1;
                 
                     uint32 delay = rand() % 129;
                     CyDelay((uint32) (((delay)/128) * 1000));

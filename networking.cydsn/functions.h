@@ -16,5 +16,6 @@
 #include <project.h>
     
 int getString(char * c);
+int putString(uint8 * c, uint16 count);
 #endif 
 /* [] END OF FILE */
