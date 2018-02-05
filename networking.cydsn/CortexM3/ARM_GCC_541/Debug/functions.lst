@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 1
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 1
 
 
    1              		.syntax unified
@@ -44,10 +44,10 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 1
   14:functions.c   **** 
   15:functions.c   **** 
   16:functions.c   **** int getString(char *c)
-  17:functions.c   **** {
+  17:functions.c   **** {   
   28              		.loc 1 17 0
   29              		.cfi_startproc
-  30              		@ args = 0, pretend = 0, frame = 16
+  30              		@ args = 0, pretend = 0, frame = 64
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              	.LVL0:
   33 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
@@ -58,1186 +58,1559 @@ ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 1
   38              		.cfi_offset 7, -12
   39              		.cfi_offset 8, -8
   40              		.cfi_offset 14, -4
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 2
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 2
 
 
-  41 0004 84B0     		sub	sp, sp, #16
-  42              		.cfi_def_cfa_offset 40
-  43 0006 8046     		mov	r8, r0
+  41 0004 90B0     		sub	sp, sp, #64
+  42              		.cfi_def_cfa_offset 88
+  43 0006 0546     		mov	r5, r0
   44              	.LVL1:
-  18:functions.c   ****     
-  19:functions.c   ****     int size=0;
-  20:functions.c   ****     int count=0;
+  18:functions.c   ****     int size=0;
+  19:functions.c   ****     
+  20:functions.c   ****     //used to check for new line at the end of data entry
   21:functions.c   ****     int brk=1;
-  45              		.loc 1 21 0
-  46 0008 0126     		movs	r6, #1
-  19:functions.c   ****     int count=0;
-  47              		.loc 1 19 0
-  48 000a 0025     		movs	r5, #0
-  49              	.LVL2:
-  50              	.L8:
-  22:functions.c   ****     uint8_t buffer[10];
-  23:functions.c   ****     do
-  24:functions.c   ****     {
-  25:functions.c   ****         if (0u != USBUART_IsConfigurationChanged())
-  51              		.loc 1 25 0
-  52 000c FFF7FEFF 		bl	USBUART_IsConfigurationChanged
-  53              	.LVL3:
-  54 0010 20B1     		cbz	r0, .L2
-  26:functions.c   ****         {
-  27:functions.c   ****             /* Initialize IN endpoints when device is configured. */
-  28:functions.c   ****             if (0u != USBUART_GetConfiguration())
-  55              		.loc 1 28 0
-  56 0012 FFF7FEFF 		bl	USBUART_GetConfiguration
-  57              	.LVL4:
-  58 0016 08B1     		cbz	r0, .L2
-  29:functions.c   ****             {
-  30:functions.c   ****                 /* Enumeration is done, enable OUT endpoint to receive data 
-  31:functions.c   ****                  * from host. */
-  32:functions.c   ****                 USBUART_CDC_Init();
-  59              		.loc 1 32 0
-  60 0018 FFF7FEFF 		bl	USBUART_CDC_Init
-  61              	.LVL5:
-  62              	.L2:
-  33:functions.c   ****             }
-  34:functions.c   ****         }
-  35:functions.c   ****         /* Service USB CDC when device is configured. */
-  36:functions.c   ****         if (0u != USBUART_GetConfiguration())
-  63              		.loc 1 36 0
-  64 001c FFF7FEFF 		bl	USBUART_GetConfiguration
-  65              	.LVL6:
-  66 0020 D8B1     		cbz	r0, .L3
-  37:functions.c   ****         {
-  38:functions.c   ****             /* Check for input data from host. */
-  39:functions.c   ****             if (0u != USBUART_DataIsReady())
-  67              		.loc 1 39 0
-  68 0022 FFF7FEFF 		bl	USBUART_DataIsReady
-  69              	.LVL7:
-  70 0026 C0B1     		cbz	r0, .L3
-  40:functions.c   ****             {
-  41:functions.c   ****                 /* Read received data and re-enable OUT endpoint. */
-  42:functions.c   ****                 count = USBUART_GetAll(buffer);
-  71              		.loc 1 42 0
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 3
+  22:functions.c   ****     //used to check for ',' to seprate address and data
+  23:functions.c   ****     int addr_data=0;
+  24:functions.c   **** 
+  25:functions.c   ****     //used to store data
+  26:functions.c   ****     int data_size=0;
+  27:functions.c   ****     char data[44];
+  28:functions.c   ****     
+  29:functions.c   ****     //used to store address
+  30:functions.c   ****     int addr_size=0;
+  31:functions.c   ****     char addr[5];
+  32:functions.c   ****     
+  33:functions.c   ****     uint8_t buffer[10];
+  34:functions.c   ****     int count=0;
+  35:functions.c   ****     
+  36:functions.c   ****     c[size++]=0;
+  45              		.loc 1 36 0
+  46 0008 0027     		movs	r7, #0
+  47 000a 0770     		strb	r7, [r0]
+  48              	.LVL2:
+  37:functions.c   ****     c[size++]=1;
+  49              		.loc 1 37 0
+  50 000c 0124     		movs	r4, #1
+  51 000e 4470     		strb	r4, [r0, #1]
+  52              	.LVL3:
+  38:functions.c   ****     c[size++]=(char)103;
+  53              		.loc 1 38 0
+  54 0010 6723     		movs	r3, #103
+  55 0012 8370     		strb	r3, [r0, #2]
+  30:functions.c   ****     char addr[5];
+  56              		.loc 1 30 0
+  57 0014 B846     		mov	r8, r7
+  26:functions.c   ****     char data[44];
+  58              		.loc 1 26 0
+  59 0016 3E46     		mov	r6, r7
+  60              	.LVL4:
+  61              	.L10:
+  39:functions.c   ****     do
+  40:functions.c   ****     {
+  41:functions.c   ****         if (0u != USBUART_IsConfigurationChanged())
+  62              		.loc 1 41 0
+  63 0018 FFF7FEFF 		bl	USBUART_IsConfigurationChanged
+  64              	.LVL5:
+  65 001c 20B1     		cbz	r0, .L2
+  42:functions.c   ****         {
+  43:functions.c   ****             /* Initialize IN endpoints when device is configured. */
+  44:functions.c   ****             if (0u != USBUART_GetConfiguration())
+  66              		.loc 1 44 0
+  67 001e FFF7FEFF 		bl	USBUART_GetConfiguration
+  68              	.LVL6:
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 3
 
 
-  72 0028 01A8     		add	r0, sp, #4
-  73 002a FFF7FEFF 		bl	USBUART_GetAll
-  74              	.LVL8:
-  75 002e 0746     		mov	r7, r0
-  76              	.LVL9:
-  43:functions.c   **** 
-  44:functions.c   ****                 if (0u != count)
-  77              		.loc 1 44 0
-  78 0030 80B9     		cbnz	r0, .L9
-  79              	.LBB2:
-  80 0032 12E0     		b	.L3
-  81              	.LVL10:
-  82              	.L7:
-  45:functions.c   ****                 {
-  46:functions.c   ****                     /* Wait until component is ready to send data to host. */
-  47:functions.c   ****                     //while (0u == USBUART_CDCIsReady());
-  48:functions.c   ****                     //LCD_ClearDisplay();
-  49:functions.c   ****                     //LCD_Position(0,0);
-  50:functions.c   ****                     for(int i=0;i<count;i++)
-  51:functions.c   ****                     {
-  52:functions.c   ****                         //LCD_PrintNumber(buffer[i]);
-  53:functions.c   ****                         //LCD_PrintString(",");
-  54:functions.c   ****                         if(buffer[i]==13)
-  83              		.loc 1 54 0
-  84 0034 04AB     		add	r3, sp, #16
-  85 0036 2344     		add	r3, r3, r4
-  86 0038 13F80C3C 		ldrb	r3, [r3, #-12]	@ zero_extendqisi2
-  87 003c 0D2B     		cmp	r3, #13
-  88 003e 04D1     		bne	.L5
-  55:functions.c   ****                         {
-  56:functions.c   ****                             brk=!brk;
-  89              		.loc 1 56 0
-  90 0040 86F00106 		eor	r6, r6, #1
-  91              	.LVL11:
-  57:functions.c   ****                             USBUART_PutCRLF();
-  92              		.loc 1 57 0
-  93 0044 FFF7FEFF 		bl	USBUART_PutCRLF
-  94              	.LVL12:
-  95 0048 02E0     		b	.L6
-  96              	.L5:
-  58:functions.c   ****                         }
-  59:functions.c   ****                         else
-  60:functions.c   ****                         {
-  61:functions.c   ****                             c[size]=buffer[i];
-  97              		.loc 1 61 0
-  98 004a 08F80530 		strb	r3, [r8, r5]
-  62:functions.c   ****                             size++;
-  99              		.loc 1 62 0
- 100 004e 0135     		adds	r5, r5, #1
- 101              	.LVL13:
- 102              	.L6:
-  50:functions.c   ****                     {
- 103              		.loc 1 50 0 discriminator 2
- 104 0050 0134     		adds	r4, r4, #1
+  69 0022 08B1     		cbz	r0, .L2
+  45:functions.c   ****             {
+  46:functions.c   ****                 /* Enumeration is done, enable OUT endpoint to receive data 
+  47:functions.c   ****                  * from host. */
+  48:functions.c   ****                 USBUART_CDC_Init();
+  70              		.loc 1 48 0
+  71 0024 FFF7FEFF 		bl	USBUART_CDC_Init
+  72              	.LVL7:
+  73              	.L2:
+  49:functions.c   ****             }
+  50:functions.c   ****         }
+  51:functions.c   ****         /* Service USB CDC when device is configured. */
+  52:functions.c   ****         if (0u != USBUART_GetConfiguration())
+  74              		.loc 1 52 0
+  75 0028 FFF7FEFF 		bl	USBUART_GetConfiguration
+  76              	.LVL8:
+  77 002c 50B3     		cbz	r0, .L3
+  53:functions.c   ****         {
+  54:functions.c   ****             /* Check for input data from host. */
+  55:functions.c   ****             if (0u != USBUART_DataIsReady())
+  78              		.loc 1 55 0
+  79 002e FFF7FEFF 		bl	USBUART_DataIsReady
+  80              	.LVL9:
+  81 0032 38B3     		cbz	r0, .L3
+  56:functions.c   ****             {
+  57:functions.c   ****                 /* Read received data and re-enable OUT endpoint. */
+  58:functions.c   ****                 count = USBUART_GetAll(buffer);
+  82              		.loc 1 58 0
+  83 0034 6846     		mov	r0, sp
+  84 0036 FFF7FEFF 		bl	USBUART_GetAll
+  85              	.LVL10:
+  86 003a 0146     		mov	r1, r0
+  87              	.LVL11:
+  59:functions.c   **** 
+  60:functions.c   ****                 if (0u != count)
+  88              		.loc 1 60 0
+  89 003c F8B9     		cbnz	r0, .L13
+  90              	.LBB2:
+  91 003e 21E0     		b	.L3
+  92              	.LVL12:
+  93              	.L9:
+  61:functions.c   ****                 {
+  62:functions.c   ****                     /* Wait until component is ready to send data to host. */
+  63:functions.c   ****                     //while (0u == USBUART_CDCIsReady());
+  64:functions.c   ****                     //LCD_ClearDisplay();
+  65:functions.c   ****                     //LCD_Position(0,0);
+  66:functions.c   ****                     for(int i=0;i<count;i++)
+  67:functions.c   ****                     {
+  68:functions.c   ****                         //LCD_PrintNumber(buffer[i]);
+  69:functions.c   ****                         //LCD_PrintString(",");
+  70:functions.c   ****                         if(buffer[i]==13)
+  94              		.loc 1 70 0
+  95 0040 10AA     		add	r2, sp, #64
+  96 0042 1A44     		add	r2, r2, r3
+  97 0044 12F8402C 		ldrb	r2, [r2, #-64]	@ zero_extendqisi2
+  98 0048 0D2A     		cmp	r2, #13
+  99 004a 04D1     		bne	.L5
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 4
+
+
+  71:functions.c   ****                         {
+  72:functions.c   ****                             brk=!brk;
+ 100              		.loc 1 72 0
+ 101 004c 84F00104 		eor	r4, r4, #1
+ 102              	.LVL13:
+  73:functions.c   ****                             USBUART_PutCRLF();
+ 103              		.loc 1 73 0
+ 104 0050 FFF7FEFF 		bl	USBUART_PutCRLF
  105              	.LVL14:
- 106 0052 00E0     		b	.L4
- 107              	.LVL15:
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 4
-
-
- 108              	.L9:
- 109              	.LBE2:
- 110 0054 0024     		movs	r4, #0
- 111              	.LVL16:
- 112              	.L4:
- 113              	.LBB3:
-  50:functions.c   ****                     {
- 114              		.loc 1 50 0 is_stmt 0 discriminator 1
- 115 0056 BC42     		cmp	r4, r7
- 116 0058 ECDB     		blt	.L7
- 117              	.LVL17:
- 118              	.L3:
- 119              	.LBE3:
-  63:functions.c   ****                         }
-  64:functions.c   ****                     }
-  65:functions.c   ****                     //LCD_PrintNumber(count);
-  66:functions.c   ****                     //USBUART_PutData(buffer, count);
-  67:functions.c   ****                 }
-  68:functions.c   ****             }
-  69:functions.c   ****         }
-  70:functions.c   ****     }while(brk);
- 120              		.loc 1 70 0 is_stmt 1
- 121 005a 002E     		cmp	r6, #0
- 122 005c D6D1     		bne	.L8
-  71:functions.c   ****     c[size]='\0';
- 123              		.loc 1 71 0
- 124 005e 0023     		movs	r3, #0
- 125 0060 08F80530 		strb	r3, [r8, r5]
+  74:functions.c   ****                             break;
+ 106              		.loc 1 74 0
+ 107 0054 16E0     		b	.L3
+ 108              	.LVL15:
+ 109              	.L5:
+  75:functions.c   ****                         }
+  76:functions.c   ****                         if(buffer[i]==',')
+ 110              		.loc 1 76 0
+ 111 0056 2C2A     		cmp	r2, #44
+ 112 0058 02D1     		bne	.L6
+  77:functions.c   ****                         {
+  78:functions.c   ****                             addr_data=!addr_data;
+ 113              		.loc 1 78 0
+ 114 005a 87F00107 		eor	r7, r7, #1
+ 115              	.LVL16:
+ 116 005e 0CE0     		b	.L7
+ 117              	.L6:
+  79:functions.c   ****                         }
+  80:functions.c   ****                         else
+  81:functions.c   ****                         {
+  82:functions.c   ****                             if(addr_data)
+ 118              		.loc 1 82 0
+ 119 0060 2FB1     		cbz	r7, .L8
+ 120              	.LVL17:
+  83:functions.c   ****                             {
+  84:functions.c   ****                                 data[data_size++]=buffer[i];
+ 121              		.loc 1 84 0
+ 122 0062 10A8     		add	r0, sp, #64
+ 123 0064 3044     		add	r0, r0, r6
+ 124 0066 00F82C2C 		strb	r2, [r0, #-44]
+ 125 006a 0136     		adds	r6, r6, #1
  126              	.LVL18:
-  72:functions.c   ****     size++;
-  73:functions.c   ****     return size;
-  74:functions.c   **** }
- 127              		.loc 1 74 0
- 128 0064 681C     		adds	r0, r5, #1
+ 127 006c 05E0     		b	.L7
+ 128              	.L8:
  129              	.LVL19:
- 130 0066 04B0     		add	sp, sp, #16
- 131              		.cfi_def_cfa_offset 24
- 132              		@ sp needed
- 133 0068 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
- 134              		.cfi_endproc
- 135              	.LFE64:
- 136              		.size	getString, .-getString
- 137              		.section	.text.putString,"ax",%progbits
- 138              		.align	2
- 139              		.global	putString
- 140              		.thumb
- 141              		.thumb_func
- 142              		.type	putString, %function
- 143              	putString:
- 144              	.LFB65:
-  75:functions.c   **** 
-  76:functions.c   **** int putString(char * buffer, uint16 count)
-  77:functions.c   **** {
- 145              		.loc 1 77 0
- 146              		.cfi_startproc
- 147              		@ args = 0, pretend = 0, frame = 0
- 148              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 5
+  85:functions.c   ****                             }
+  86:functions.c   ****                             else
+  87:functions.c   ****                             {
+  88:functions.c   ****                                 addr[addr_size++]=buffer[i];
+ 130              		.loc 1 88 0
+ 131 006e 10A8     		add	r0, sp, #64
+ 132 0070 4044     		add	r0, r0, r8
+ 133 0072 00F8342C 		strb	r2, [r0, #-52]
+ 134 0076 08F10108 		add	r8, r8, #1
+ 135              	.LVL20:
+ 136              	.L7:
+  66:functions.c   ****                     {
+ 137              		.loc 1 66 0 discriminator 2
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 5
 
 
- 149              	.LVL20:
- 150 0000 38B5     		push	{r3, r4, r5, lr}
- 151              		.cfi_def_cfa_offset 16
- 152              		.cfi_offset 3, -16
- 153              		.cfi_offset 4, -12
- 154              		.cfi_offset 5, -8
- 155              		.cfi_offset 14, -4
- 156 0002 0446     		mov	r4, r0
- 157 0004 0D46     		mov	r5, r1
- 158              	.LVL21:
- 159              	.L12:
-  78:functions.c   ****     while(0u != USBUART_IsConfigurationChanged());
- 160              		.loc 1 78 0 discriminator 1
- 161 0006 FFF7FEFF 		bl	USBUART_IsConfigurationChanged
- 162              	.LVL22:
- 163 000a 0028     		cmp	r0, #0
- 164 000c FBD1     		bne	.L12
-  79:functions.c   ****     USBUART_CDC_Init();
- 165              		.loc 1 79 0
- 166 000e FFF7FEFF 		bl	USBUART_CDC_Init
- 167              	.LVL23:
- 168              	.L13:
-  80:functions.c   ****     while(0u == USBUART_CDCIsReady());
- 169              		.loc 1 80 0 discriminator 1
- 170 0012 FFF7FEFF 		bl	USBUART_CDCIsReady
- 171              	.LVL24:
- 172 0016 0028     		cmp	r0, #0
- 173 0018 FBD0     		beq	.L13
-  81:functions.c   ****     USBUART_PutData(buffer, count);
- 174              		.loc 1 81 0
- 175 001a 2946     		mov	r1, r5
- 176 001c 2046     		mov	r0, r4
- 177 001e FFF7FEFF 		bl	USBUART_PutData
- 178              	.LVL25:
-  82:functions.c   ****     *(buffer) = '\0';
- 179              		.loc 1 82 0
- 180 0022 0020     		movs	r0, #0
- 181 0024 2070     		strb	r0, [r4]
-  83:functions.c   ****     return 0;
-  84:functions.c   **** }
- 182              		.loc 1 84 0
- 183 0026 38BD     		pop	{r3, r4, r5, pc}
- 184              		.cfi_endproc
- 185              	.LFE65:
- 186              		.size	putString, .-putString
- 187              		.text
- 188              	.Letext0:
- 189              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
- 190              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
- 191              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 192              		.file 5 "Generated_Source\\PSoC5/USBUART_cdc.h"
- 193              		.file 6 "Generated_Source\\PSoC5/USBUART.h"
- 194              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
- 195              		.section	.debug_info,"",%progbits
- 196              	.Ldebug_info0:
- 197 0000 6C020000 		.4byte	0x26c
- 198 0004 0400     		.2byte	0x4
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 6
+ 138 007a 0133     		adds	r3, r3, #1
+ 139              	.LVL21:
+ 140 007c 00E0     		b	.L4
+ 141              	.LVL22:
+ 142              	.L13:
+ 143              	.LBE2:
+ 144 007e 0023     		movs	r3, #0
+ 145              	.LVL23:
+ 146              	.L4:
+ 147              	.LBB3:
+  66:functions.c   ****                     {
+ 148              		.loc 1 66 0 is_stmt 0 discriminator 1
+ 149 0080 8B42     		cmp	r3, r1
+ 150 0082 DDDB     		blt	.L9
+ 151              	.LVL24:
+ 152              	.L3:
+ 153              	.LBE3:
+  89:functions.c   ****                             }
+  90:functions.c   ****                         }
+  91:functions.c   ****                     }
+  92:functions.c   ****                 }
+  93:functions.c   ****             }
+  94:functions.c   ****         }
+  95:functions.c   ****     }while(brk);
+ 154              		.loc 1 95 0 is_stmt 1
+ 155 0084 002C     		cmp	r4, #0
+ 156 0086 C7D1     		bne	.L10
+ 157              	.LVL25:
+  96:functions.c   ****     addr[addr_size++]='\0';
+ 158              		.loc 1 96 0
+ 159 0088 10AB     		add	r3, sp, #64
+ 160 008a 9844     		add	r8, r8, r3
+ 161              	.LVL26:
+ 162 008c 08F8344C 		strb	r4, [r8, #-52]
+ 163              	.LVL27:
+  97:functions.c   ****     c[size++]=(char)atoi(addr);
+ 164              		.loc 1 97 0
+ 165 0090 03A8     		add	r0, sp, #12
+ 166 0092 FFF7FEFF 		bl	atoi
+ 167              	.LVL28:
+ 168 0096 E870     		strb	r0, [r5, #3]
+ 169              	.LVL29:
+  98:functions.c   ****     c[size++]=(char)data_size;
+ 170              		.loc 1 98 0
+ 171 0098 2E71     		strb	r6, [r5, #4]
+ 172              	.LVL30:
+  99:functions.c   ****     c[size++]=(char)128;
+ 173              		.loc 1 99 0
+ 174 009a 8023     		movs	r3, #128
+ 175 009c 6B71     		strb	r3, [r5, #5]
+ 176              	.LVL31:
+ 100:functions.c   ****     c[size++]=(char)0b1110111;
+ 177              		.loc 1 100 0
+ 178 009e 7723     		movs	r3, #119
+ 179 00a0 AB71     		strb	r3, [r5, #6]
+ 180              	.LVL32:
+ 181              	.LBB4:
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 6
 
 
- 199 0006 00000000 		.4byte	.Ldebug_abbrev0
- 200 000a 04       		.byte	0x4
- 201 000b 01       		.uleb128 0x1
- 202 000c 80000000 		.4byte	.LASF32
- 203 0010 0C       		.byte	0xc
- 204 0011 23000000 		.4byte	.LASF33
- 205 0015 42020000 		.4byte	.LASF34
- 206 0019 18000000 		.4byte	.Ldebug_ranges0+0x18
- 207 001d 00000000 		.4byte	0
- 208 0021 00000000 		.4byte	.Ldebug_line0
- 209 0025 02       		.uleb128 0x2
- 210 0026 04       		.byte	0x4
- 211 0027 07       		.byte	0x7
- 212 0028 8B010000 		.4byte	.LASF0
- 213 002c 03       		.uleb128 0x3
- 214 002d 04       		.byte	0x4
- 215 002e 05       		.byte	0x5
- 216 002f 696E7400 		.ascii	"int\000"
- 217 0033 02       		.uleb128 0x2
- 218 0034 08       		.byte	0x8
- 219 0035 05       		.byte	0x5
- 220 0036 ED010000 		.4byte	.LASF1
- 221 003a 02       		.uleb128 0x2
- 222 003b 08       		.byte	0x8
- 223 003c 04       		.byte	0x4
- 224 003d 2A020000 		.4byte	.LASF2
- 225 0041 02       		.uleb128 0x2
- 226 0042 01       		.byte	0x1
- 227 0043 06       		.byte	0x6
- 228 0044 36020000 		.4byte	.LASF3
- 229 0048 04       		.uleb128 0x4
- 230 0049 00000000 		.4byte	.LASF7
- 231 004d 02       		.byte	0x2
- 232 004e 1D       		.byte	0x1d
- 233 004f 53000000 		.4byte	0x53
- 234 0053 02       		.uleb128 0x2
- 235 0054 01       		.byte	0x1
- 236 0055 08       		.byte	0x8
- 237 0056 33010000 		.4byte	.LASF4
- 238 005a 02       		.uleb128 0x2
- 239 005b 02       		.byte	0x2
- 240 005c 05       		.byte	0x5
- 241 005d 10020000 		.4byte	.LASF5
- 242 0061 02       		.uleb128 0x2
- 243 0062 02       		.byte	0x2
- 244 0063 07       		.byte	0x7
- 245 0064 20010000 		.4byte	.LASF6
- 246 0068 04       		.uleb128 0x4
- 247 0069 0A000000 		.4byte	.LASF8
- 248 006d 02       		.byte	0x2
- 249 006e 3F       		.byte	0x3f
- 250 006f 73000000 		.4byte	0x73
- 251 0073 02       		.uleb128 0x2
- 252 0074 04       		.byte	0x4
- 253 0075 05       		.byte	0x5
- 254 0076 21020000 		.4byte	.LASF9
- 255 007a 02       		.uleb128 0x2
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 7
+ 101:functions.c   ****     for(int i=0;i<data_size;i++)
+ 182              		.loc 1 101 0
+ 183 00a2 2346     		mov	r3, r4
+ 184              	.LBE4:
+ 100:functions.c   ****     c[size++]=(char)0b1110111;
+ 185              		.loc 1 100 0
+ 186 00a4 0720     		movs	r0, #7
+ 187              	.LBB5:
+ 188              		.loc 1 101 0
+ 189 00a6 06E0     		b	.L11
+ 190              	.LVL33:
+ 191              	.L12:
+ 102:functions.c   ****     {
+ 103:functions.c   ****         c[size++]=data[i];
+ 192              		.loc 1 103 0 discriminator 3
+ 193 00a8 10AA     		add	r2, sp, #64
+ 194 00aa 1A44     		add	r2, r2, r3
+ 195 00ac 12F82C2C 		ldrb	r2, [r2, #-44]	@ zero_extendqisi2
+ 196 00b0 2A54     		strb	r2, [r5, r0]
+ 101:functions.c   ****     for(int i=0;i<data_size;i++)
+ 197              		.loc 1 101 0 discriminator 3
+ 198 00b2 0133     		adds	r3, r3, #1
+ 199              	.LVL34:
+ 200              		.loc 1 103 0 discriminator 3
+ 201 00b4 0130     		adds	r0, r0, #1
+ 202              	.LVL35:
+ 203              	.L11:
+ 101:functions.c   ****     for(int i=0;i<data_size;i++)
+ 204              		.loc 1 101 0 discriminator 1
+ 205 00b6 9E42     		cmp	r6, r3
+ 206 00b8 F6DC     		bgt	.L12
+ 207              	.LVL36:
+ 208              	.LBE5:
+ 104:functions.c   ****     }
+ 105:functions.c   ****     c[size++]='\0';
+ 209              		.loc 1 105 0
+ 210 00ba 0023     		movs	r3, #0
+ 211              	.LVL37:
+ 212 00bc 2B54     		strb	r3, [r5, r0]
+ 106:functions.c   ****     return size;
+ 107:functions.c   **** }
+ 213              		.loc 1 107 0
+ 214 00be 0130     		adds	r0, r0, #1
+ 215              	.LVL38:
+ 216 00c0 10B0     		add	sp, sp, #64
+ 217              		.cfi_def_cfa_offset 24
+ 218              		@ sp needed
+ 219 00c2 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 220              		.cfi_endproc
+ 221              	.LFE64:
+ 222              		.size	getString, .-getString
+ 223 00c6 00BF     		.section	.text.putString,"ax",%progbits
+ 224              		.align	2
+ 225              		.global	putString
+ 226              		.thumb
+ 227              		.thumb_func
+ 228              		.type	putString, %function
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 7
 
 
- 256 007b 04       		.byte	0x4
- 257 007c 07       		.byte	0x7
- 258 007d 0E010000 		.4byte	.LASF10
- 259 0081 02       		.uleb128 0x2
- 260 0082 08       		.byte	0x8
- 261 0083 07       		.byte	0x7
- 262 0084 A9010000 		.4byte	.LASF11
- 263 0088 02       		.uleb128 0x2
- 264 0089 04       		.byte	0x4
- 265 008a 07       		.byte	0x7
- 266 008b E4010000 		.4byte	.LASF12
- 267 008f 05       		.uleb128 0x5
- 268 0090 04       		.byte	0x4
- 269 0091 95000000 		.4byte	0x95
- 270 0095 02       		.uleb128 0x2
- 271 0096 01       		.byte	0x1
- 272 0097 08       		.byte	0x8
- 273 0098 FB010000 		.4byte	.LASF13
- 274 009c 04       		.uleb128 0x4
- 275 009d C0010000 		.4byte	.LASF14
- 276 00a1 03       		.byte	0x3
- 277 00a2 18       		.byte	0x18
- 278 00a3 48000000 		.4byte	0x48
- 279 00a7 04       		.uleb128 0x4
- 280 00a8 DC010000 		.4byte	.LASF15
- 281 00ac 03       		.byte	0x3
- 282 00ad 2C       		.byte	0x2c
- 283 00ae 68000000 		.4byte	0x68
- 284 00b2 06       		.uleb128 0x6
- 285 00b3 77010000 		.4byte	.LASF16
- 286 00b7 04       		.byte	0x4
- 287 00b8 9301     		.2byte	0x193
- 288 00ba 61000000 		.4byte	0x61
- 289 00be 02       		.uleb128 0x2
- 290 00bf 04       		.byte	0x4
- 291 00c0 04       		.byte	0x4
- 292 00c1 75000000 		.4byte	.LASF17
- 293 00c5 02       		.uleb128 0x2
- 294 00c6 08       		.byte	0x8
- 295 00c7 04       		.byte	0x4
- 296 00c8 41010000 		.4byte	.LASF18
- 297 00cc 07       		.uleb128 0x7
- 298 00cd 00020000 		.4byte	.LASF22
- 299 00d1 01       		.byte	0x1
- 300 00d2 10       		.byte	0x10
- 301 00d3 2C000000 		.4byte	0x2c
- 302 00d7 00000000 		.4byte	.LFB64
- 303 00db 6C000000 		.4byte	.LFE64-.LFB64
- 304 00df 01       		.uleb128 0x1
- 305 00e0 9C       		.byte	0x9c
- 306 00e1 8B010000 		.4byte	0x18b
- 307 00e5 08       		.uleb128 0x8
- 308 00e6 6300     		.ascii	"c\000"
- 309 00e8 01       		.byte	0x1
- 310 00e9 10       		.byte	0x10
- 311 00ea 8F000000 		.4byte	0x8f
- 312 00ee 00000000 		.4byte	.LLST0
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 8
+ 229              	putString:
+ 230              	.LFB65:
+ 108:functions.c   **** 
+ 109:functions.c   **** 
+ 110:functions.c   **** int putString(char * buffer, uint16 count)
+ 111:functions.c   **** {
+ 231              		.loc 1 111 0
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235              	.LVL39:
+ 236 0000 38B5     		push	{r3, r4, r5, lr}
+ 237              		.cfi_def_cfa_offset 16
+ 238              		.cfi_offset 3, -16
+ 239              		.cfi_offset 4, -12
+ 240              		.cfi_offset 5, -8
+ 241              		.cfi_offset 14, -4
+ 242 0002 0446     		mov	r4, r0
+ 243 0004 0D46     		mov	r5, r1
+ 244              	.LVL40:
+ 245              	.L16:
+ 112:functions.c   ****     while(0u != USBUART_IsConfigurationChanged());
+ 246              		.loc 1 112 0 discriminator 1
+ 247 0006 FFF7FEFF 		bl	USBUART_IsConfigurationChanged
+ 248              	.LVL41:
+ 249 000a 0028     		cmp	r0, #0
+ 250 000c FBD1     		bne	.L16
+ 113:functions.c   ****     USBUART_CDC_Init();
+ 251              		.loc 1 113 0
+ 252 000e FFF7FEFF 		bl	USBUART_CDC_Init
+ 253              	.LVL42:
+ 254              	.L17:
+ 114:functions.c   ****     while(0u == USBUART_CDCIsReady());
+ 255              		.loc 1 114 0 discriminator 1
+ 256 0012 FFF7FEFF 		bl	USBUART_CDCIsReady
+ 257              	.LVL43:
+ 258 0016 0028     		cmp	r0, #0
+ 259 0018 FBD0     		beq	.L17
+ 115:functions.c   ****     USBUART_PutData(buffer, count);
+ 260              		.loc 1 115 0
+ 261 001a 2946     		mov	r1, r5
+ 262 001c 2046     		mov	r0, r4
+ 263 001e FFF7FEFF 		bl	USBUART_PutData
+ 264              	.LVL44:
+ 116:functions.c   ****     *(buffer) = '\0';
+ 265              		.loc 1 116 0
+ 266 0022 0020     		movs	r0, #0
+ 267 0024 2070     		strb	r0, [r4]
+ 117:functions.c   ****     return 0;
+ 118:functions.c   **** }
+ 268              		.loc 1 118 0
+ 269 0026 38BD     		pop	{r3, r4, r5, pc}
+ 270              		.cfi_endproc
+ 271              	.LFE65:
+ 272              		.size	putString, .-putString
+ 273              		.text
+ 274              	.Letext0:
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 8
 
 
- 313 00f2 09       		.uleb128 0x9
- 314 00f3 7B000000 		.4byte	.LASF19
- 315 00f7 01       		.byte	0x1
- 316 00f8 13       		.byte	0x13
- 317 00f9 2C000000 		.4byte	0x2c
- 318 00fd 1E000000 		.4byte	.LLST1
- 319 0101 09       		.uleb128 0x9
- 320 0102 0A020000 		.4byte	.LASF20
- 321 0106 01       		.byte	0x1
- 322 0107 14       		.byte	0x14
- 323 0108 2C000000 		.4byte	0x2c
- 324 010c 55000000 		.4byte	.LLST2
- 325 0110 0A       		.uleb128 0xa
- 326 0111 62726B00 		.ascii	"brk\000"
- 327 0115 01       		.byte	0x1
- 328 0116 15       		.byte	0x15
- 329 0117 2C000000 		.4byte	0x2c
- 330 011b 95000000 		.4byte	.LLST3
- 331 011f 0B       		.uleb128 0xb
- 332 0120 1A020000 		.4byte	.LASF21
- 333 0124 01       		.byte	0x1
- 334 0125 16       		.byte	0x16
- 335 0126 8B010000 		.4byte	0x18b
- 336 012a 02       		.uleb128 0x2
- 337 012b 91       		.byte	0x91
- 338 012c 5C       		.sleb128 -36
- 339 012d 0C       		.uleb128 0xc
- 340 012e 00000000 		.4byte	.Ldebug_ranges0+0
- 341 0132 4D010000 		.4byte	0x14d
- 342 0136 0A       		.uleb128 0xa
- 343 0137 6900     		.ascii	"i\000"
- 344 0139 01       		.byte	0x1
- 345 013a 32       		.byte	0x32
- 346 013b 2C000000 		.4byte	0x2c
- 347 013f B4000000 		.4byte	.LLST4
- 348 0143 0D       		.uleb128 0xd
- 349 0144 48000000 		.4byte	.LVL12
- 350 0148 15020000 		.4byte	0x215
- 351 014c 00       		.byte	0
- 352 014d 0D       		.uleb128 0xd
- 353 014e 10000000 		.4byte	.LVL3
- 354 0152 20020000 		.4byte	0x220
- 355 0156 0D       		.uleb128 0xd
- 356 0157 16000000 		.4byte	.LVL4
- 357 015b 2C020000 		.4byte	0x22c
- 358 015f 0D       		.uleb128 0xd
- 359 0160 1C000000 		.4byte	.LVL5
- 360 0164 38020000 		.4byte	0x238
- 361 0168 0D       		.uleb128 0xd
- 362 0169 20000000 		.4byte	.LVL6
- 363 016d 2C020000 		.4byte	0x22c
- 364 0171 0D       		.uleb128 0xd
- 365 0172 26000000 		.4byte	.LVL7
- 366 0176 43020000 		.4byte	0x243
- 367 017a 0E       		.uleb128 0xe
- 368 017b 2E000000 		.4byte	.LVL8
- 369 017f 4E020000 		.4byte	0x24e
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 9
+ 275              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+ 276              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+ 277              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 278              		.file 5 "Generated_Source\\PSoC5/USBUART_cdc.h"
+ 279              		.file 6 "Generated_Source\\PSoC5/USBUART.h"
+ 280              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.1\\psoc creator\\import\\gnu\\arm\\5.4.
+ 281              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 282              		.section	.debug_info,"",%progbits
+ 283              	.Ldebug_info0:
+ 284 0000 0F030000 		.4byte	0x30f
+ 285 0004 0400     		.2byte	0x4
+ 286 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 287 000a 04       		.byte	0x4
+ 288 000b 01       		.uleb128 0x1
+ 289 000c 8F000000 		.4byte	.LASF38
+ 290 0010 0C       		.byte	0xc
+ 291 0011 2D000000 		.4byte	.LASF39
+ 292 0015 6F020000 		.4byte	.LASF40
+ 293 0019 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 294 001d 00000000 		.4byte	0
+ 295 0021 00000000 		.4byte	.Ldebug_line0
+ 296 0025 02       		.uleb128 0x2
+ 297 0026 04       		.byte	0x4
+ 298 0027 07       		.byte	0x7
+ 299 0028 A0010000 		.4byte	.LASF0
+ 300 002c 03       		.uleb128 0x3
+ 301 002d 04       		.byte	0x4
+ 302 002e 05       		.byte	0x5
+ 303 002f 696E7400 		.ascii	"int\000"
+ 304 0033 02       		.uleb128 0x2
+ 305 0034 08       		.byte	0x8
+ 306 0035 05       		.byte	0x5
+ 307 0036 1A020000 		.4byte	.LASF1
+ 308 003a 02       		.uleb128 0x2
+ 309 003b 08       		.byte	0x8
+ 310 003c 04       		.byte	0x4
+ 311 003d 57020000 		.4byte	.LASF2
+ 312 0041 02       		.uleb128 0x2
+ 313 0042 01       		.byte	0x1
+ 314 0043 06       		.byte	0x6
+ 315 0044 63020000 		.4byte	.LASF3
+ 316 0048 04       		.uleb128 0x4
+ 317 0049 00000000 		.4byte	.LASF7
+ 318 004d 02       		.byte	0x2
+ 319 004e 1D       		.byte	0x1d
+ 320 004f 53000000 		.4byte	0x53
+ 321 0053 02       		.uleb128 0x2
+ 322 0054 01       		.byte	0x1
+ 323 0055 08       		.byte	0x8
+ 324 0056 3E010000 		.4byte	.LASF4
+ 325 005a 02       		.uleb128 0x2
+ 326 005b 02       		.byte	0x2
+ 327 005c 05       		.byte	0x5
+ 328 005d 3D020000 		.4byte	.LASF5
+ 329 0061 02       		.uleb128 0x2
+ 330 0062 02       		.byte	0x2
+ 331 0063 07       		.byte	0x7
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 9
 
 
- 370 0183 0F       		.uleb128 0xf
- 371 0184 01       		.uleb128 0x1
- 372 0185 50       		.byte	0x50
- 373 0186 02       		.uleb128 0x2
- 374 0187 91       		.byte	0x91
- 375 0188 5C       		.sleb128 -36
- 376 0189 00       		.byte	0
- 377 018a 00       		.byte	0
- 378 018b 10       		.uleb128 0x10
- 379 018c 9C000000 		.4byte	0x9c
- 380 0190 9B010000 		.4byte	0x19b
- 381 0194 11       		.uleb128 0x11
- 382 0195 88000000 		.4byte	0x88
- 383 0199 09       		.byte	0x9
- 384 019a 00       		.byte	0
- 385 019b 07       		.uleb128 0x7
- 386 019c 58000000 		.4byte	.LASF23
- 387 01a0 01       		.byte	0x1
- 388 01a1 4C       		.byte	0x4c
- 389 01a2 2C000000 		.4byte	0x2c
- 390 01a6 00000000 		.4byte	.LFB65
- 391 01aa 28000000 		.4byte	.LFE65-.LFB65
- 392 01ae 01       		.uleb128 0x1
- 393 01af 9C       		.byte	0x9c
- 394 01b0 04020000 		.4byte	0x204
- 395 01b4 12       		.uleb128 0x12
- 396 01b5 1A020000 		.4byte	.LASF21
- 397 01b9 01       		.byte	0x1
- 398 01ba 4C       		.byte	0x4c
- 399 01bb 8F000000 		.4byte	0x8f
- 400 01bf D2000000 		.4byte	.LLST5
- 401 01c3 12       		.uleb128 0x12
- 402 01c4 0A020000 		.4byte	.LASF20
- 403 01c8 01       		.byte	0x1
- 404 01c9 4C       		.byte	0x4c
- 405 01ca B2000000 		.4byte	0xb2
- 406 01ce F0000000 		.4byte	.LLST6
- 407 01d2 0D       		.uleb128 0xd
- 408 01d3 0A000000 		.4byte	.LVL22
- 409 01d7 20020000 		.4byte	0x220
- 410 01db 0D       		.uleb128 0xd
- 411 01dc 12000000 		.4byte	.LVL23
- 412 01e0 38020000 		.4byte	0x238
- 413 01e4 0D       		.uleb128 0xd
- 414 01e5 16000000 		.4byte	.LVL24
- 415 01e9 59020000 		.4byte	0x259
- 416 01ed 0E       		.uleb128 0xe
- 417 01ee 22000000 		.4byte	.LVL25
- 418 01f2 64020000 		.4byte	0x264
- 419 01f6 0F       		.uleb128 0xf
- 420 01f7 01       		.uleb128 0x1
- 421 01f8 50       		.byte	0x50
- 422 01f9 02       		.uleb128 0x2
- 423 01fa 74       		.byte	0x74
- 424 01fb 00       		.sleb128 0
- 425 01fc 0F       		.uleb128 0xf
- 426 01fd 01       		.uleb128 0x1
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 10
+ 332 0064 07020000 		.4byte	.LASF6
+ 333 0068 04       		.uleb128 0x4
+ 334 0069 0A000000 		.4byte	.LASF8
+ 335 006d 02       		.byte	0x2
+ 336 006e 3F       		.byte	0x3f
+ 337 006f 73000000 		.4byte	0x73
+ 338 0073 02       		.uleb128 0x2
+ 339 0074 04       		.byte	0x4
+ 340 0075 05       		.byte	0x5
+ 341 0076 4E020000 		.4byte	.LASF9
+ 342 007a 02       		.uleb128 0x2
+ 343 007b 04       		.byte	0x4
+ 344 007c 07       		.byte	0x7
+ 345 007d 27010000 		.4byte	.LASF10
+ 346 0081 02       		.uleb128 0x2
+ 347 0082 08       		.byte	0x8
+ 348 0083 07       		.byte	0x7
+ 349 0084 BE010000 		.4byte	.LASF11
+ 350 0088 02       		.uleb128 0x2
+ 351 0089 04       		.byte	0x4
+ 352 008a 07       		.byte	0x7
+ 353 008b FE010000 		.4byte	.LASF12
+ 354 008f 05       		.uleb128 0x5
+ 355 0090 04       		.byte	0x4
+ 356 0091 95000000 		.4byte	0x95
+ 357 0095 02       		.uleb128 0x2
+ 358 0096 01       		.byte	0x1
+ 359 0097 08       		.byte	0x8
+ 360 0098 28020000 		.4byte	.LASF13
+ 361 009c 04       		.uleb128 0x4
+ 362 009d D5010000 		.4byte	.LASF14
+ 363 00a1 03       		.byte	0x3
+ 364 00a2 18       		.byte	0x18
+ 365 00a3 48000000 		.4byte	0x48
+ 366 00a7 04       		.uleb128 0x4
+ 367 00a8 F6010000 		.4byte	.LASF15
+ 368 00ac 03       		.byte	0x3
+ 369 00ad 2C       		.byte	0x2c
+ 370 00ae 68000000 		.4byte	0x68
+ 371 00b2 06       		.uleb128 0x6
+ 372 00b3 8C010000 		.4byte	.LASF16
+ 373 00b7 04       		.byte	0x4
+ 374 00b8 9301     		.2byte	0x193
+ 375 00ba 61000000 		.4byte	0x61
+ 376 00be 02       		.uleb128 0x2
+ 377 00bf 04       		.byte	0x4
+ 378 00c0 04       		.byte	0x4
+ 379 00c1 7F000000 		.4byte	.LASF17
+ 380 00c5 02       		.uleb128 0x2
+ 381 00c6 08       		.byte	0x8
+ 382 00c7 04       		.byte	0x4
+ 383 00c8 4C010000 		.4byte	.LASF18
+ 384 00cc 07       		.uleb128 0x7
+ 385 00cd 2D020000 		.4byte	.LASF27
+ 386 00d1 01       		.byte	0x1
+ 387 00d2 10       		.byte	0x10
+ 388 00d3 2C000000 		.4byte	0x2c
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 10
 
 
- 427 01fe 51       		.byte	0x51
- 428 01ff 02       		.uleb128 0x2
- 429 0200 75       		.byte	0x75
- 430 0201 00       		.sleb128 0
- 431 0202 00       		.byte	0
- 432 0203 00       		.byte	0
- 433 0204 13       		.uleb128 0x13
- 434 0205 7E010000 		.4byte	.LASF35
- 435 0209 07       		.byte	0x7
- 436 020a 1207     		.2byte	0x712
- 437 020c 10020000 		.4byte	0x210
- 438 0210 14       		.uleb128 0x14
- 439 0211 A7000000 		.4byte	0xa7
- 440 0215 15       		.uleb128 0x15
- 441 0216 48010000 		.4byte	.LASF24
- 442 021a 48010000 		.4byte	.LASF24
- 443 021e 05       		.byte	0x5
- 444 021f 26       		.byte	0x26
- 445 0220 16       		.uleb128 0x16
- 446 0221 58010000 		.4byte	.LASF25
- 447 0225 58010000 		.4byte	.LASF25
- 448 0229 06       		.byte	0x6
- 449 022a 3201     		.2byte	0x132
- 450 022c 16       		.uleb128 0x16
- 451 022d 3F000000 		.4byte	.LASF26
- 452 0231 3F000000 		.4byte	.LASF26
- 453 0235 06       		.byte	0x6
- 454 0236 3101     		.2byte	0x131
- 455 0238 15       		.uleb128 0x15
- 456 0239 98010000 		.4byte	.LASF27
- 457 023d 98010000 		.4byte	.LASF27
- 458 0241 05       		.byte	0x5
- 459 0242 22       		.byte	0x22
- 460 0243 15       		.uleb128 0x15
- 461 0244 C8010000 		.4byte	.LASF28
- 462 0248 C8010000 		.4byte	.LASF28
- 463 024c 05       		.byte	0x5
- 464 024d 29       		.byte	0x29
- 465 024e 15       		.uleb128 0x15
- 466 024f 14000000 		.4byte	.LASF29
- 467 0253 14000000 		.4byte	.LASF29
- 468 0257 05       		.byte	0x5
- 469 0258 2B       		.byte	0x2b
- 470 0259 15       		.uleb128 0x15
- 471 025a 62000000 		.4byte	.LASF30
- 472 025e 62000000 		.4byte	.LASF30
- 473 0262 05       		.byte	0x5
- 474 0263 28       		.byte	0x28
- 475 0264 15       		.uleb128 0x15
- 476 0265 2F000000 		.4byte	.LASF31
- 477 0269 2F000000 		.4byte	.LASF31
- 478 026d 05       		.byte	0x5
- 479 026e 23       		.byte	0x23
- 480 026f 00       		.byte	0
- 481              		.section	.debug_abbrev,"",%progbits
- 482              	.Ldebug_abbrev0:
- 483 0000 01       		.uleb128 0x1
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 11
+ 389 00d7 00000000 		.4byte	.LFB64
+ 390 00db C6000000 		.4byte	.LFE64-.LFB64
+ 391 00df 01       		.uleb128 0x1
+ 392 00e0 9C       		.byte	0x9c
+ 393 00e1 03020000 		.4byte	0x203
+ 394 00e5 08       		.uleb128 0x8
+ 395 00e6 6300     		.ascii	"c\000"
+ 396 00e8 01       		.byte	0x1
+ 397 00e9 10       		.byte	0x10
+ 398 00ea 8F000000 		.4byte	0x8f
+ 399 00ee 00000000 		.4byte	.LLST0
+ 400 00f2 09       		.uleb128 0x9
+ 401 00f3 8A000000 		.4byte	.LASF19
+ 402 00f7 01       		.byte	0x1
+ 403 00f8 12       		.byte	0x12
+ 404 00f9 2C000000 		.4byte	0x2c
+ 405 00fd 1E000000 		.4byte	.LLST1
+ 406 0101 0A       		.uleb128 0xa
+ 407 0102 62726B00 		.ascii	"brk\000"
+ 408 0106 01       		.byte	0x1
+ 409 0107 15       		.byte	0x15
+ 410 0108 2C000000 		.4byte	0x2c
+ 411 010c AA000000 		.4byte	.LLST2
+ 412 0110 09       		.uleb128 0x9
+ 413 0111 1D010000 		.4byte	.LASF20
+ 414 0115 01       		.byte	0x1
+ 415 0116 17       		.byte	0x17
+ 416 0117 2C000000 		.4byte	0x2c
+ 417 011b C9000000 		.4byte	.LLST3
+ 418 011f 09       		.uleb128 0x9
+ 419 0120 23000000 		.4byte	.LASF21
+ 420 0124 01       		.byte	0x1
+ 421 0125 1A       		.byte	0x1a
+ 422 0126 2C000000 		.4byte	0x2c
+ 423 012a E8000000 		.4byte	.LLST4
+ 424 012e 0B       		.uleb128 0xb
+ 425 012f 85000000 		.4byte	.LASF22
+ 426 0133 01       		.byte	0x1
+ 427 0134 1B       		.byte	0x1b
+ 428 0135 03020000 		.4byte	0x203
+ 429 0139 03       		.uleb128 0x3
+ 430 013a 91       		.byte	0x91
+ 431 013b BC7F     		.sleb128 -68
+ 432 013d 09       		.uleb128 0x9
+ 433 013e 82010000 		.4byte	.LASF23
+ 434 0142 01       		.byte	0x1
+ 435 0143 1E       		.byte	0x1e
+ 436 0144 2C000000 		.4byte	0x2c
+ 437 0148 1F010000 		.4byte	.LLST5
+ 438 014c 0B       		.uleb128 0xb
+ 439 014d 39010000 		.4byte	.LASF24
+ 440 0151 01       		.byte	0x1
+ 441 0152 1F       		.byte	0x1f
+ 442 0153 13020000 		.4byte	0x213
+ 443 0157 03       		.uleb128 0x3
+ 444 0158 91       		.byte	0x91
+ 445 0159 B47F     		.sleb128 -76
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 11
 
 
- 484 0001 11       		.uleb128 0x11
- 485 0002 01       		.byte	0x1
- 486 0003 25       		.uleb128 0x25
- 487 0004 0E       		.uleb128 0xe
- 488 0005 13       		.uleb128 0x13
- 489 0006 0B       		.uleb128 0xb
- 490 0007 03       		.uleb128 0x3
- 491 0008 0E       		.uleb128 0xe
- 492 0009 1B       		.uleb128 0x1b
- 493 000a 0E       		.uleb128 0xe
- 494 000b 55       		.uleb128 0x55
- 495 000c 17       		.uleb128 0x17
- 496 000d 11       		.uleb128 0x11
- 497 000e 01       		.uleb128 0x1
- 498 000f 10       		.uleb128 0x10
- 499 0010 17       		.uleb128 0x17
- 500 0011 00       		.byte	0
- 501 0012 00       		.byte	0
- 502 0013 02       		.uleb128 0x2
- 503 0014 24       		.uleb128 0x24
- 504 0015 00       		.byte	0
- 505 0016 0B       		.uleb128 0xb
- 506 0017 0B       		.uleb128 0xb
- 507 0018 3E       		.uleb128 0x3e
- 508 0019 0B       		.uleb128 0xb
- 509 001a 03       		.uleb128 0x3
- 510 001b 0E       		.uleb128 0xe
- 511 001c 00       		.byte	0
- 512 001d 00       		.byte	0
- 513 001e 03       		.uleb128 0x3
- 514 001f 24       		.uleb128 0x24
- 515 0020 00       		.byte	0
- 516 0021 0B       		.uleb128 0xb
- 517 0022 0B       		.uleb128 0xb
- 518 0023 3E       		.uleb128 0x3e
- 519 0024 0B       		.uleb128 0xb
- 520 0025 03       		.uleb128 0x3
- 521 0026 08       		.uleb128 0x8
- 522 0027 00       		.byte	0
- 523 0028 00       		.byte	0
- 524 0029 04       		.uleb128 0x4
- 525 002a 16       		.uleb128 0x16
- 526 002b 00       		.byte	0
- 527 002c 03       		.uleb128 0x3
- 528 002d 0E       		.uleb128 0xe
- 529 002e 3A       		.uleb128 0x3a
- 530 002f 0B       		.uleb128 0xb
- 531 0030 3B       		.uleb128 0x3b
- 532 0031 0B       		.uleb128 0xb
- 533 0032 49       		.uleb128 0x49
- 534 0033 13       		.uleb128 0x13
- 535 0034 00       		.byte	0
- 536 0035 00       		.byte	0
- 537 0036 05       		.uleb128 0x5
- 538 0037 0F       		.uleb128 0xf
- 539 0038 00       		.byte	0
- 540 0039 0B       		.uleb128 0xb
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 12
+ 446 015b 0B       		.uleb128 0xb
+ 447 015c 47020000 		.4byte	.LASF25
+ 448 0160 01       		.byte	0x1
+ 449 0161 21       		.byte	0x21
+ 450 0162 23020000 		.4byte	0x223
+ 451 0166 03       		.uleb128 0x3
+ 452 0167 91       		.byte	0x91
+ 453 0168 A87F     		.sleb128 -88
+ 454 016a 09       		.uleb128 0x9
+ 455 016b 37020000 		.4byte	.LASF26
+ 456 016f 01       		.byte	0x1
+ 457 0170 22       		.byte	0x22
+ 458 0171 2C000000 		.4byte	0x2c
+ 459 0175 63010000 		.4byte	.LLST6
+ 460 0179 0C       		.uleb128 0xc
+ 461 017a 00000000 		.4byte	.Ldebug_ranges0+0
+ 462 017e 99010000 		.4byte	0x199
+ 463 0182 0A       		.uleb128 0xa
+ 464 0183 6900     		.ascii	"i\000"
+ 465 0185 01       		.byte	0x1
+ 466 0186 42       		.byte	0x42
+ 467 0187 2C000000 		.4byte	0x2c
+ 468 018b AE010000 		.4byte	.LLST7
+ 469 018f 0D       		.uleb128 0xd
+ 470 0190 54000000 		.4byte	.LVL14
+ 471 0194 AD020000 		.4byte	0x2ad
+ 472 0198 00       		.byte	0
+ 473 0199 0C       		.uleb128 0xc
+ 474 019a 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 475 019e B0010000 		.4byte	0x1b0
+ 476 01a2 0A       		.uleb128 0xa
+ 477 01a3 6900     		.ascii	"i\000"
+ 478 01a5 01       		.byte	0x1
+ 479 01a6 65       		.byte	0x65
+ 480 01a7 2C000000 		.4byte	0x2c
+ 481 01ab D7010000 		.4byte	.LLST8
+ 482 01af 00       		.byte	0
+ 483 01b0 0D       		.uleb128 0xd
+ 484 01b1 1C000000 		.4byte	.LVL5
+ 485 01b5 B8020000 		.4byte	0x2b8
+ 486 01b9 0D       		.uleb128 0xd
+ 487 01ba 22000000 		.4byte	.LVL6
+ 488 01be C4020000 		.4byte	0x2c4
+ 489 01c2 0D       		.uleb128 0xd
+ 490 01c3 28000000 		.4byte	.LVL7
+ 491 01c7 D0020000 		.4byte	0x2d0
+ 492 01cb 0D       		.uleb128 0xd
+ 493 01cc 2C000000 		.4byte	.LVL8
+ 494 01d0 C4020000 		.4byte	0x2c4
+ 495 01d4 0D       		.uleb128 0xd
+ 496 01d5 32000000 		.4byte	.LVL9
+ 497 01d9 DB020000 		.4byte	0x2db
+ 498 01dd 0E       		.uleb128 0xe
+ 499 01de 3A000000 		.4byte	.LVL10
+ 500 01e2 E6020000 		.4byte	0x2e6
+ 501 01e6 F1010000 		.4byte	0x1f1
+ 502 01ea 0F       		.uleb128 0xf
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 12
 
 
- 541 003a 0B       		.uleb128 0xb
- 542 003b 49       		.uleb128 0x49
- 543 003c 13       		.uleb128 0x13
- 544 003d 00       		.byte	0
- 545 003e 00       		.byte	0
- 546 003f 06       		.uleb128 0x6
- 547 0040 16       		.uleb128 0x16
- 548 0041 00       		.byte	0
- 549 0042 03       		.uleb128 0x3
- 550 0043 0E       		.uleb128 0xe
- 551 0044 3A       		.uleb128 0x3a
- 552 0045 0B       		.uleb128 0xb
- 553 0046 3B       		.uleb128 0x3b
- 554 0047 05       		.uleb128 0x5
- 555 0048 49       		.uleb128 0x49
- 556 0049 13       		.uleb128 0x13
- 557 004a 00       		.byte	0
- 558 004b 00       		.byte	0
- 559 004c 07       		.uleb128 0x7
- 560 004d 2E       		.uleb128 0x2e
- 561 004e 01       		.byte	0x1
- 562 004f 3F       		.uleb128 0x3f
- 563 0050 19       		.uleb128 0x19
- 564 0051 03       		.uleb128 0x3
- 565 0052 0E       		.uleb128 0xe
- 566 0053 3A       		.uleb128 0x3a
- 567 0054 0B       		.uleb128 0xb
- 568 0055 3B       		.uleb128 0x3b
- 569 0056 0B       		.uleb128 0xb
- 570 0057 27       		.uleb128 0x27
- 571 0058 19       		.uleb128 0x19
- 572 0059 49       		.uleb128 0x49
- 573 005a 13       		.uleb128 0x13
- 574 005b 11       		.uleb128 0x11
- 575 005c 01       		.uleb128 0x1
- 576 005d 12       		.uleb128 0x12
- 577 005e 06       		.uleb128 0x6
- 578 005f 40       		.uleb128 0x40
- 579 0060 18       		.uleb128 0x18
- 580 0061 9742     		.uleb128 0x2117
- 581 0063 19       		.uleb128 0x19
- 582 0064 01       		.uleb128 0x1
- 583 0065 13       		.uleb128 0x13
- 584 0066 00       		.byte	0
- 585 0067 00       		.byte	0
- 586 0068 08       		.uleb128 0x8
- 587 0069 05       		.uleb128 0x5
- 588 006a 00       		.byte	0
- 589 006b 03       		.uleb128 0x3
- 590 006c 08       		.uleb128 0x8
- 591 006d 3A       		.uleb128 0x3a
- 592 006e 0B       		.uleb128 0xb
- 593 006f 3B       		.uleb128 0x3b
- 594 0070 0B       		.uleb128 0xb
- 595 0071 49       		.uleb128 0x49
- 596 0072 13       		.uleb128 0x13
- 597 0073 02       		.uleb128 0x2
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 13
+ 503 01eb 01       		.uleb128 0x1
+ 504 01ec 50       		.byte	0x50
+ 505 01ed 02       		.uleb128 0x2
+ 506 01ee 7D       		.byte	0x7d
+ 507 01ef 00       		.sleb128 0
+ 508 01f0 00       		.byte	0
+ 509 01f1 10       		.uleb128 0x10
+ 510 01f2 96000000 		.4byte	.LVL28
+ 511 01f6 F1020000 		.4byte	0x2f1
+ 512 01fa 0F       		.uleb128 0xf
+ 513 01fb 01       		.uleb128 0x1
+ 514 01fc 50       		.byte	0x50
+ 515 01fd 03       		.uleb128 0x3
+ 516 01fe 91       		.byte	0x91
+ 517 01ff B47F     		.sleb128 -76
+ 518 0201 00       		.byte	0
+ 519 0202 00       		.byte	0
+ 520 0203 11       		.uleb128 0x11
+ 521 0204 95000000 		.4byte	0x95
+ 522 0208 13020000 		.4byte	0x213
+ 523 020c 12       		.uleb128 0x12
+ 524 020d 88000000 		.4byte	0x88
+ 525 0211 2B       		.byte	0x2b
+ 526 0212 00       		.byte	0
+ 527 0213 11       		.uleb128 0x11
+ 528 0214 95000000 		.4byte	0x95
+ 529 0218 23020000 		.4byte	0x223
+ 530 021c 12       		.uleb128 0x12
+ 531 021d 88000000 		.4byte	0x88
+ 532 0221 04       		.byte	0x4
+ 533 0222 00       		.byte	0
+ 534 0223 11       		.uleb128 0x11
+ 535 0224 9C000000 		.4byte	0x9c
+ 536 0228 33020000 		.4byte	0x233
+ 537 022c 12       		.uleb128 0x12
+ 538 022d 88000000 		.4byte	0x88
+ 539 0231 09       		.byte	0x9
+ 540 0232 00       		.byte	0
+ 541 0233 07       		.uleb128 0x7
+ 542 0234 62000000 		.4byte	.LASF28
+ 543 0238 01       		.byte	0x1
+ 544 0239 6E       		.byte	0x6e
+ 545 023a 2C000000 		.4byte	0x2c
+ 546 023e 00000000 		.4byte	.LFB65
+ 547 0242 28000000 		.4byte	.LFE65-.LFB65
+ 548 0246 01       		.uleb128 0x1
+ 549 0247 9C       		.byte	0x9c
+ 550 0248 9C020000 		.4byte	0x29c
+ 551 024c 13       		.uleb128 0x13
+ 552 024d 47020000 		.4byte	.LASF25
+ 553 0251 01       		.byte	0x1
+ 554 0252 6E       		.byte	0x6e
+ 555 0253 8F000000 		.4byte	0x8f
+ 556 0257 F6010000 		.4byte	.LLST9
+ 557 025b 13       		.uleb128 0x13
+ 558 025c 37020000 		.4byte	.LASF26
+ 559 0260 01       		.byte	0x1
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 13
 
 
- 598 0074 17       		.uleb128 0x17
- 599 0075 00       		.byte	0
- 600 0076 00       		.byte	0
- 601 0077 09       		.uleb128 0x9
- 602 0078 34       		.uleb128 0x34
- 603 0079 00       		.byte	0
- 604 007a 03       		.uleb128 0x3
- 605 007b 0E       		.uleb128 0xe
- 606 007c 3A       		.uleb128 0x3a
- 607 007d 0B       		.uleb128 0xb
- 608 007e 3B       		.uleb128 0x3b
- 609 007f 0B       		.uleb128 0xb
- 610 0080 49       		.uleb128 0x49
- 611 0081 13       		.uleb128 0x13
- 612 0082 02       		.uleb128 0x2
- 613 0083 17       		.uleb128 0x17
- 614 0084 00       		.byte	0
- 615 0085 00       		.byte	0
- 616 0086 0A       		.uleb128 0xa
- 617 0087 34       		.uleb128 0x34
- 618 0088 00       		.byte	0
- 619 0089 03       		.uleb128 0x3
- 620 008a 08       		.uleb128 0x8
- 621 008b 3A       		.uleb128 0x3a
- 622 008c 0B       		.uleb128 0xb
- 623 008d 3B       		.uleb128 0x3b
- 624 008e 0B       		.uleb128 0xb
- 625 008f 49       		.uleb128 0x49
- 626 0090 13       		.uleb128 0x13
- 627 0091 02       		.uleb128 0x2
- 628 0092 17       		.uleb128 0x17
- 629 0093 00       		.byte	0
- 630 0094 00       		.byte	0
- 631 0095 0B       		.uleb128 0xb
- 632 0096 34       		.uleb128 0x34
- 633 0097 00       		.byte	0
- 634 0098 03       		.uleb128 0x3
- 635 0099 0E       		.uleb128 0xe
- 636 009a 3A       		.uleb128 0x3a
- 637 009b 0B       		.uleb128 0xb
- 638 009c 3B       		.uleb128 0x3b
- 639 009d 0B       		.uleb128 0xb
- 640 009e 49       		.uleb128 0x49
- 641 009f 13       		.uleb128 0x13
- 642 00a0 02       		.uleb128 0x2
- 643 00a1 18       		.uleb128 0x18
- 644 00a2 00       		.byte	0
- 645 00a3 00       		.byte	0
- 646 00a4 0C       		.uleb128 0xc
- 647 00a5 0B       		.uleb128 0xb
- 648 00a6 01       		.byte	0x1
- 649 00a7 55       		.uleb128 0x55
- 650 00a8 17       		.uleb128 0x17
- 651 00a9 01       		.uleb128 0x1
- 652 00aa 13       		.uleb128 0x13
- 653 00ab 00       		.byte	0
- 654 00ac 00       		.byte	0
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 14
+ 560 0261 6E       		.byte	0x6e
+ 561 0262 B2000000 		.4byte	0xb2
+ 562 0266 14020000 		.4byte	.LLST10
+ 563 026a 0D       		.uleb128 0xd
+ 564 026b 0A000000 		.4byte	.LVL41
+ 565 026f B8020000 		.4byte	0x2b8
+ 566 0273 0D       		.uleb128 0xd
+ 567 0274 12000000 		.4byte	.LVL42
+ 568 0278 D0020000 		.4byte	0x2d0
+ 569 027c 0D       		.uleb128 0xd
+ 570 027d 16000000 		.4byte	.LVL43
+ 571 0281 FC020000 		.4byte	0x2fc
+ 572 0285 10       		.uleb128 0x10
+ 573 0286 22000000 		.4byte	.LVL44
+ 574 028a 07030000 		.4byte	0x307
+ 575 028e 0F       		.uleb128 0xf
+ 576 028f 01       		.uleb128 0x1
+ 577 0290 50       		.byte	0x50
+ 578 0291 02       		.uleb128 0x2
+ 579 0292 74       		.byte	0x74
+ 580 0293 00       		.sleb128 0
+ 581 0294 0F       		.uleb128 0xf
+ 582 0295 01       		.uleb128 0x1
+ 583 0296 51       		.byte	0x51
+ 584 0297 02       		.uleb128 0x2
+ 585 0298 75       		.byte	0x75
+ 586 0299 00       		.sleb128 0
+ 587 029a 00       		.byte	0
+ 588 029b 00       		.byte	0
+ 589 029c 14       		.uleb128 0x14
+ 590 029d 93010000 		.4byte	.LASF41
+ 591 02a1 08       		.byte	0x8
+ 592 02a2 1207     		.2byte	0x712
+ 593 02a4 A8020000 		.4byte	0x2a8
+ 594 02a8 15       		.uleb128 0x15
+ 595 02a9 A7000000 		.4byte	0xa7
+ 596 02ad 16       		.uleb128 0x16
+ 597 02ae 53010000 		.4byte	.LASF29
+ 598 02b2 53010000 		.4byte	.LASF29
+ 599 02b6 05       		.byte	0x5
+ 600 02b7 26       		.byte	0x26
+ 601 02b8 17       		.uleb128 0x17
+ 602 02b9 63010000 		.4byte	.LASF30
+ 603 02bd 63010000 		.4byte	.LASF30
+ 604 02c1 06       		.byte	0x6
+ 605 02c2 3201     		.2byte	0x132
+ 606 02c4 17       		.uleb128 0x17
+ 607 02c5 49000000 		.4byte	.LASF31
+ 608 02c9 49000000 		.4byte	.LASF31
+ 609 02cd 06       		.byte	0x6
+ 610 02ce 3101     		.2byte	0x131
+ 611 02d0 16       		.uleb128 0x16
+ 612 02d1 AD010000 		.4byte	.LASF32
+ 613 02d5 AD010000 		.4byte	.LASF32
+ 614 02d9 05       		.byte	0x5
+ 615 02da 22       		.byte	0x22
+ 616 02db 16       		.uleb128 0x16
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 14
 
 
- 655 00ad 0D       		.uleb128 0xd
- 656 00ae 898201   		.uleb128 0x4109
- 657 00b1 00       		.byte	0
- 658 00b2 11       		.uleb128 0x11
- 659 00b3 01       		.uleb128 0x1
- 660 00b4 31       		.uleb128 0x31
- 661 00b5 13       		.uleb128 0x13
- 662 00b6 00       		.byte	0
- 663 00b7 00       		.byte	0
- 664 00b8 0E       		.uleb128 0xe
- 665 00b9 898201   		.uleb128 0x4109
- 666 00bc 01       		.byte	0x1
- 667 00bd 11       		.uleb128 0x11
- 668 00be 01       		.uleb128 0x1
- 669 00bf 31       		.uleb128 0x31
- 670 00c0 13       		.uleb128 0x13
- 671 00c1 00       		.byte	0
- 672 00c2 00       		.byte	0
- 673 00c3 0F       		.uleb128 0xf
- 674 00c4 8A8201   		.uleb128 0x410a
- 675 00c7 00       		.byte	0
- 676 00c8 02       		.uleb128 0x2
- 677 00c9 18       		.uleb128 0x18
- 678 00ca 9142     		.uleb128 0x2111
- 679 00cc 18       		.uleb128 0x18
- 680 00cd 00       		.byte	0
- 681 00ce 00       		.byte	0
- 682 00cf 10       		.uleb128 0x10
- 683 00d0 01       		.uleb128 0x1
- 684 00d1 01       		.byte	0x1
- 685 00d2 49       		.uleb128 0x49
- 686 00d3 13       		.uleb128 0x13
- 687 00d4 01       		.uleb128 0x1
- 688 00d5 13       		.uleb128 0x13
- 689 00d6 00       		.byte	0
- 690 00d7 00       		.byte	0
- 691 00d8 11       		.uleb128 0x11
- 692 00d9 21       		.uleb128 0x21
- 693 00da 00       		.byte	0
- 694 00db 49       		.uleb128 0x49
- 695 00dc 13       		.uleb128 0x13
- 696 00dd 2F       		.uleb128 0x2f
- 697 00de 0B       		.uleb128 0xb
- 698 00df 00       		.byte	0
- 699 00e0 00       		.byte	0
- 700 00e1 12       		.uleb128 0x12
- 701 00e2 05       		.uleb128 0x5
- 702 00e3 00       		.byte	0
- 703 00e4 03       		.uleb128 0x3
- 704 00e5 0E       		.uleb128 0xe
- 705 00e6 3A       		.uleb128 0x3a
- 706 00e7 0B       		.uleb128 0xb
- 707 00e8 3B       		.uleb128 0x3b
- 708 00e9 0B       		.uleb128 0xb
- 709 00ea 49       		.uleb128 0x49
- 710 00eb 13       		.uleb128 0x13
- 711 00ec 02       		.uleb128 0x2
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 15
+ 617 02dc DD010000 		.4byte	.LASF33
+ 618 02e0 DD010000 		.4byte	.LASF33
+ 619 02e4 05       		.byte	0x5
+ 620 02e5 29       		.byte	0x29
+ 621 02e6 16       		.uleb128 0x16
+ 622 02e7 14000000 		.4byte	.LASF34
+ 623 02eb 14000000 		.4byte	.LASF34
+ 624 02ef 05       		.byte	0x5
+ 625 02f0 2B       		.byte	0x2b
+ 626 02f1 16       		.uleb128 0x16
+ 627 02f2 F1010000 		.4byte	.LASF35
+ 628 02f6 F1010000 		.4byte	.LASF35
+ 629 02fa 07       		.byte	0x7
+ 630 02fb 4D       		.byte	0x4d
+ 631 02fc 16       		.uleb128 0x16
+ 632 02fd 6C000000 		.4byte	.LASF36
+ 633 0301 6C000000 		.4byte	.LASF36
+ 634 0305 05       		.byte	0x5
+ 635 0306 28       		.byte	0x28
+ 636 0307 16       		.uleb128 0x16
+ 637 0308 39000000 		.4byte	.LASF37
+ 638 030c 39000000 		.4byte	.LASF37
+ 639 0310 05       		.byte	0x5
+ 640 0311 23       		.byte	0x23
+ 641 0312 00       		.byte	0
+ 642              		.section	.debug_abbrev,"",%progbits
+ 643              	.Ldebug_abbrev0:
+ 644 0000 01       		.uleb128 0x1
+ 645 0001 11       		.uleb128 0x11
+ 646 0002 01       		.byte	0x1
+ 647 0003 25       		.uleb128 0x25
+ 648 0004 0E       		.uleb128 0xe
+ 649 0005 13       		.uleb128 0x13
+ 650 0006 0B       		.uleb128 0xb
+ 651 0007 03       		.uleb128 0x3
+ 652 0008 0E       		.uleb128 0xe
+ 653 0009 1B       		.uleb128 0x1b
+ 654 000a 0E       		.uleb128 0xe
+ 655 000b 55       		.uleb128 0x55
+ 656 000c 17       		.uleb128 0x17
+ 657 000d 11       		.uleb128 0x11
+ 658 000e 01       		.uleb128 0x1
+ 659 000f 10       		.uleb128 0x10
+ 660 0010 17       		.uleb128 0x17
+ 661 0011 00       		.byte	0
+ 662 0012 00       		.byte	0
+ 663 0013 02       		.uleb128 0x2
+ 664 0014 24       		.uleb128 0x24
+ 665 0015 00       		.byte	0
+ 666 0016 0B       		.uleb128 0xb
+ 667 0017 0B       		.uleb128 0xb
+ 668 0018 3E       		.uleb128 0x3e
+ 669 0019 0B       		.uleb128 0xb
+ 670 001a 03       		.uleb128 0x3
+ 671 001b 0E       		.uleb128 0xe
+ 672 001c 00       		.byte	0
+ 673 001d 00       		.byte	0
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 15
 
 
- 712 00ed 17       		.uleb128 0x17
- 713 00ee 00       		.byte	0
- 714 00ef 00       		.byte	0
- 715 00f0 13       		.uleb128 0x13
- 716 00f1 34       		.uleb128 0x34
- 717 00f2 00       		.byte	0
- 718 00f3 03       		.uleb128 0x3
- 719 00f4 0E       		.uleb128 0xe
- 720 00f5 3A       		.uleb128 0x3a
- 721 00f6 0B       		.uleb128 0xb
- 722 00f7 3B       		.uleb128 0x3b
- 723 00f8 05       		.uleb128 0x5
- 724 00f9 49       		.uleb128 0x49
- 725 00fa 13       		.uleb128 0x13
- 726 00fb 3F       		.uleb128 0x3f
- 727 00fc 19       		.uleb128 0x19
- 728 00fd 3C       		.uleb128 0x3c
- 729 00fe 19       		.uleb128 0x19
- 730 00ff 00       		.byte	0
- 731 0100 00       		.byte	0
- 732 0101 14       		.uleb128 0x14
- 733 0102 35       		.uleb128 0x35
- 734 0103 00       		.byte	0
- 735 0104 49       		.uleb128 0x49
- 736 0105 13       		.uleb128 0x13
- 737 0106 00       		.byte	0
- 738 0107 00       		.byte	0
- 739 0108 15       		.uleb128 0x15
- 740 0109 2E       		.uleb128 0x2e
- 741 010a 00       		.byte	0
- 742 010b 3F       		.uleb128 0x3f
- 743 010c 19       		.uleb128 0x19
- 744 010d 3C       		.uleb128 0x3c
- 745 010e 19       		.uleb128 0x19
- 746 010f 6E       		.uleb128 0x6e
- 747 0110 0E       		.uleb128 0xe
- 748 0111 03       		.uleb128 0x3
- 749 0112 0E       		.uleb128 0xe
- 750 0113 3A       		.uleb128 0x3a
- 751 0114 0B       		.uleb128 0xb
- 752 0115 3B       		.uleb128 0x3b
- 753 0116 0B       		.uleb128 0xb
- 754 0117 00       		.byte	0
- 755 0118 00       		.byte	0
- 756 0119 16       		.uleb128 0x16
- 757 011a 2E       		.uleb128 0x2e
- 758 011b 00       		.byte	0
- 759 011c 3F       		.uleb128 0x3f
- 760 011d 19       		.uleb128 0x19
- 761 011e 3C       		.uleb128 0x3c
- 762 011f 19       		.uleb128 0x19
- 763 0120 6E       		.uleb128 0x6e
- 764 0121 0E       		.uleb128 0xe
- 765 0122 03       		.uleb128 0x3
- 766 0123 0E       		.uleb128 0xe
- 767 0124 3A       		.uleb128 0x3a
- 768 0125 0B       		.uleb128 0xb
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 16
+ 674 001e 03       		.uleb128 0x3
+ 675 001f 24       		.uleb128 0x24
+ 676 0020 00       		.byte	0
+ 677 0021 0B       		.uleb128 0xb
+ 678 0022 0B       		.uleb128 0xb
+ 679 0023 3E       		.uleb128 0x3e
+ 680 0024 0B       		.uleb128 0xb
+ 681 0025 03       		.uleb128 0x3
+ 682 0026 08       		.uleb128 0x8
+ 683 0027 00       		.byte	0
+ 684 0028 00       		.byte	0
+ 685 0029 04       		.uleb128 0x4
+ 686 002a 16       		.uleb128 0x16
+ 687 002b 00       		.byte	0
+ 688 002c 03       		.uleb128 0x3
+ 689 002d 0E       		.uleb128 0xe
+ 690 002e 3A       		.uleb128 0x3a
+ 691 002f 0B       		.uleb128 0xb
+ 692 0030 3B       		.uleb128 0x3b
+ 693 0031 0B       		.uleb128 0xb
+ 694 0032 49       		.uleb128 0x49
+ 695 0033 13       		.uleb128 0x13
+ 696 0034 00       		.byte	0
+ 697 0035 00       		.byte	0
+ 698 0036 05       		.uleb128 0x5
+ 699 0037 0F       		.uleb128 0xf
+ 700 0038 00       		.byte	0
+ 701 0039 0B       		.uleb128 0xb
+ 702 003a 0B       		.uleb128 0xb
+ 703 003b 49       		.uleb128 0x49
+ 704 003c 13       		.uleb128 0x13
+ 705 003d 00       		.byte	0
+ 706 003e 00       		.byte	0
+ 707 003f 06       		.uleb128 0x6
+ 708 0040 16       		.uleb128 0x16
+ 709 0041 00       		.byte	0
+ 710 0042 03       		.uleb128 0x3
+ 711 0043 0E       		.uleb128 0xe
+ 712 0044 3A       		.uleb128 0x3a
+ 713 0045 0B       		.uleb128 0xb
+ 714 0046 3B       		.uleb128 0x3b
+ 715 0047 05       		.uleb128 0x5
+ 716 0048 49       		.uleb128 0x49
+ 717 0049 13       		.uleb128 0x13
+ 718 004a 00       		.byte	0
+ 719 004b 00       		.byte	0
+ 720 004c 07       		.uleb128 0x7
+ 721 004d 2E       		.uleb128 0x2e
+ 722 004e 01       		.byte	0x1
+ 723 004f 3F       		.uleb128 0x3f
+ 724 0050 19       		.uleb128 0x19
+ 725 0051 03       		.uleb128 0x3
+ 726 0052 0E       		.uleb128 0xe
+ 727 0053 3A       		.uleb128 0x3a
+ 728 0054 0B       		.uleb128 0xb
+ 729 0055 3B       		.uleb128 0x3b
+ 730 0056 0B       		.uleb128 0xb
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 16
 
 
- 769 0126 3B       		.uleb128 0x3b
- 770 0127 05       		.uleb128 0x5
- 771 0128 00       		.byte	0
- 772 0129 00       		.byte	0
- 773 012a 00       		.byte	0
- 774              		.section	.debug_loc,"",%progbits
- 775              	.Ldebug_loc0:
- 776              	.LLST0:
- 777 0000 00000000 		.4byte	.LVL0
- 778 0004 0C000000 		.4byte	.LVL2
- 779 0008 0100     		.2byte	0x1
- 780 000a 50       		.byte	0x50
- 781 000b 0C000000 		.4byte	.LVL2
- 782 000f 6C000000 		.4byte	.LFE64
- 783 0013 0100     		.2byte	0x1
- 784 0015 58       		.byte	0x58
- 785 0016 00000000 		.4byte	0
- 786 001a 00000000 		.4byte	0
- 787              	.LLST1:
- 788 001e 08000000 		.4byte	.LVL1
- 789 0022 0C000000 		.4byte	.LVL2
- 790 0026 0200     		.2byte	0x2
- 791 0028 30       		.byte	0x30
- 792 0029 9F       		.byte	0x9f
- 793 002a 0C000000 		.4byte	.LVL2
- 794 002e 64000000 		.4byte	.LVL18
- 795 0032 0100     		.2byte	0x1
- 796 0034 55       		.byte	0x55
- 797 0035 64000000 		.4byte	.LVL18
- 798 0039 66000000 		.4byte	.LVL19
- 799 003d 0300     		.2byte	0x3
- 800 003f 75       		.byte	0x75
- 801 0040 01       		.sleb128 1
- 802 0041 9F       		.byte	0x9f
- 803 0042 66000000 		.4byte	.LVL19
- 804 0046 6C000000 		.4byte	.LFE64
- 805 004a 0100     		.2byte	0x1
- 806 004c 50       		.byte	0x50
- 807 004d 00000000 		.4byte	0
- 808 0051 00000000 		.4byte	0
- 809              	.LLST2:
- 810 0055 08000000 		.4byte	.LVL1
- 811 0059 0C000000 		.4byte	.LVL2
- 812 005d 0200     		.2byte	0x2
- 813 005f 30       		.byte	0x30
- 814 0060 9F       		.byte	0x9f
- 815 0061 30000000 		.4byte	.LVL9
- 816 0065 34000000 		.4byte	.LVL10
- 817 0069 0100     		.2byte	0x1
- 818 006b 50       		.byte	0x50
- 819 006c 34000000 		.4byte	.LVL10
- 820 0070 54000000 		.4byte	.LVL15
- 821 0074 0100     		.2byte	0x1
- 822 0076 57       		.byte	0x57
- 823 0077 54000000 		.4byte	.LVL15
- 824 007b 56000000 		.4byte	.LVL16
- 825 007f 0100     		.2byte	0x1
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 17
+ 731 0057 27       		.uleb128 0x27
+ 732 0058 19       		.uleb128 0x19
+ 733 0059 49       		.uleb128 0x49
+ 734 005a 13       		.uleb128 0x13
+ 735 005b 11       		.uleb128 0x11
+ 736 005c 01       		.uleb128 0x1
+ 737 005d 12       		.uleb128 0x12
+ 738 005e 06       		.uleb128 0x6
+ 739 005f 40       		.uleb128 0x40
+ 740 0060 18       		.uleb128 0x18
+ 741 0061 9742     		.uleb128 0x2117
+ 742 0063 19       		.uleb128 0x19
+ 743 0064 01       		.uleb128 0x1
+ 744 0065 13       		.uleb128 0x13
+ 745 0066 00       		.byte	0
+ 746 0067 00       		.byte	0
+ 747 0068 08       		.uleb128 0x8
+ 748 0069 05       		.uleb128 0x5
+ 749 006a 00       		.byte	0
+ 750 006b 03       		.uleb128 0x3
+ 751 006c 08       		.uleb128 0x8
+ 752 006d 3A       		.uleb128 0x3a
+ 753 006e 0B       		.uleb128 0xb
+ 754 006f 3B       		.uleb128 0x3b
+ 755 0070 0B       		.uleb128 0xb
+ 756 0071 49       		.uleb128 0x49
+ 757 0072 13       		.uleb128 0x13
+ 758 0073 02       		.uleb128 0x2
+ 759 0074 17       		.uleb128 0x17
+ 760 0075 00       		.byte	0
+ 761 0076 00       		.byte	0
+ 762 0077 09       		.uleb128 0x9
+ 763 0078 34       		.uleb128 0x34
+ 764 0079 00       		.byte	0
+ 765 007a 03       		.uleb128 0x3
+ 766 007b 0E       		.uleb128 0xe
+ 767 007c 3A       		.uleb128 0x3a
+ 768 007d 0B       		.uleb128 0xb
+ 769 007e 3B       		.uleb128 0x3b
+ 770 007f 0B       		.uleb128 0xb
+ 771 0080 49       		.uleb128 0x49
+ 772 0081 13       		.uleb128 0x13
+ 773 0082 02       		.uleb128 0x2
+ 774 0083 17       		.uleb128 0x17
+ 775 0084 00       		.byte	0
+ 776 0085 00       		.byte	0
+ 777 0086 0A       		.uleb128 0xa
+ 778 0087 34       		.uleb128 0x34
+ 779 0088 00       		.byte	0
+ 780 0089 03       		.uleb128 0x3
+ 781 008a 08       		.uleb128 0x8
+ 782 008b 3A       		.uleb128 0x3a
+ 783 008c 0B       		.uleb128 0xb
+ 784 008d 3B       		.uleb128 0x3b
+ 785 008e 0B       		.uleb128 0xb
+ 786 008f 49       		.uleb128 0x49
+ 787 0090 13       		.uleb128 0x13
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 17
 
 
- 826 0081 50       		.byte	0x50
- 827 0082 56000000 		.4byte	.LVL16
- 828 0086 5A000000 		.4byte	.LVL17
- 829 008a 0100     		.2byte	0x1
- 830 008c 57       		.byte	0x57
- 831 008d 00000000 		.4byte	0
- 832 0091 00000000 		.4byte	0
- 833              	.LLST3:
- 834 0095 08000000 		.4byte	.LVL1
- 835 0099 0C000000 		.4byte	.LVL2
- 836 009d 0200     		.2byte	0x2
- 837 009f 31       		.byte	0x31
- 838 00a0 9F       		.byte	0x9f
- 839 00a1 0C000000 		.4byte	.LVL2
- 840 00a5 6C000000 		.4byte	.LFE64
- 841 00a9 0100     		.2byte	0x1
- 842 00ab 56       		.byte	0x56
- 843 00ac 00000000 		.4byte	0
- 844 00b0 00000000 		.4byte	0
- 845              	.LLST4:
- 846 00b4 34000000 		.4byte	.LVL10
- 847 00b8 54000000 		.4byte	.LVL15
- 848 00bc 0100     		.2byte	0x1
- 849 00be 54       		.byte	0x54
- 850 00bf 56000000 		.4byte	.LVL16
- 851 00c3 5A000000 		.4byte	.LVL17
- 852 00c7 0100     		.2byte	0x1
- 853 00c9 54       		.byte	0x54
- 854 00ca 00000000 		.4byte	0
- 855 00ce 00000000 		.4byte	0
- 856              	.LLST5:
- 857 00d2 00000000 		.4byte	.LVL20
- 858 00d6 06000000 		.4byte	.LVL21
- 859 00da 0100     		.2byte	0x1
- 860 00dc 50       		.byte	0x50
- 861 00dd 06000000 		.4byte	.LVL21
- 862 00e1 28000000 		.4byte	.LFE65
- 863 00e5 0100     		.2byte	0x1
- 864 00e7 54       		.byte	0x54
- 865 00e8 00000000 		.4byte	0
- 866 00ec 00000000 		.4byte	0
- 867              	.LLST6:
- 868 00f0 00000000 		.4byte	.LVL20
- 869 00f4 06000000 		.4byte	.LVL21
- 870 00f8 0100     		.2byte	0x1
- 871 00fa 51       		.byte	0x51
- 872 00fb 06000000 		.4byte	.LVL21
- 873 00ff 28000000 		.4byte	.LFE65
- 874 0103 0400     		.2byte	0x4
- 875 0105 F3       		.byte	0xf3
- 876 0106 01       		.uleb128 0x1
- 877 0107 51       		.byte	0x51
- 878 0108 9F       		.byte	0x9f
- 879 0109 00000000 		.4byte	0
- 880 010d 00000000 		.4byte	0
- 881              		.section	.debug_aranges,"",%progbits
- 882 0000 24000000 		.4byte	0x24
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 18
+ 788 0091 02       		.uleb128 0x2
+ 789 0092 17       		.uleb128 0x17
+ 790 0093 00       		.byte	0
+ 791 0094 00       		.byte	0
+ 792 0095 0B       		.uleb128 0xb
+ 793 0096 34       		.uleb128 0x34
+ 794 0097 00       		.byte	0
+ 795 0098 03       		.uleb128 0x3
+ 796 0099 0E       		.uleb128 0xe
+ 797 009a 3A       		.uleb128 0x3a
+ 798 009b 0B       		.uleb128 0xb
+ 799 009c 3B       		.uleb128 0x3b
+ 800 009d 0B       		.uleb128 0xb
+ 801 009e 49       		.uleb128 0x49
+ 802 009f 13       		.uleb128 0x13
+ 803 00a0 02       		.uleb128 0x2
+ 804 00a1 18       		.uleb128 0x18
+ 805 00a2 00       		.byte	0
+ 806 00a3 00       		.byte	0
+ 807 00a4 0C       		.uleb128 0xc
+ 808 00a5 0B       		.uleb128 0xb
+ 809 00a6 01       		.byte	0x1
+ 810 00a7 55       		.uleb128 0x55
+ 811 00a8 17       		.uleb128 0x17
+ 812 00a9 01       		.uleb128 0x1
+ 813 00aa 13       		.uleb128 0x13
+ 814 00ab 00       		.byte	0
+ 815 00ac 00       		.byte	0
+ 816 00ad 0D       		.uleb128 0xd
+ 817 00ae 898201   		.uleb128 0x4109
+ 818 00b1 00       		.byte	0
+ 819 00b2 11       		.uleb128 0x11
+ 820 00b3 01       		.uleb128 0x1
+ 821 00b4 31       		.uleb128 0x31
+ 822 00b5 13       		.uleb128 0x13
+ 823 00b6 00       		.byte	0
+ 824 00b7 00       		.byte	0
+ 825 00b8 0E       		.uleb128 0xe
+ 826 00b9 898201   		.uleb128 0x4109
+ 827 00bc 01       		.byte	0x1
+ 828 00bd 11       		.uleb128 0x11
+ 829 00be 01       		.uleb128 0x1
+ 830 00bf 31       		.uleb128 0x31
+ 831 00c0 13       		.uleb128 0x13
+ 832 00c1 01       		.uleb128 0x1
+ 833 00c2 13       		.uleb128 0x13
+ 834 00c3 00       		.byte	0
+ 835 00c4 00       		.byte	0
+ 836 00c5 0F       		.uleb128 0xf
+ 837 00c6 8A8201   		.uleb128 0x410a
+ 838 00c9 00       		.byte	0
+ 839 00ca 02       		.uleb128 0x2
+ 840 00cb 18       		.uleb128 0x18
+ 841 00cc 9142     		.uleb128 0x2111
+ 842 00ce 18       		.uleb128 0x18
+ 843 00cf 00       		.byte	0
+ 844 00d0 00       		.byte	0
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 18
 
 
- 883 0004 0200     		.2byte	0x2
- 884 0006 00000000 		.4byte	.Ldebug_info0
- 885 000a 04       		.byte	0x4
- 886 000b 00       		.byte	0
- 887 000c 0000     		.2byte	0
- 888 000e 0000     		.2byte	0
- 889 0010 00000000 		.4byte	.LFB64
- 890 0014 6C000000 		.4byte	.LFE64-.LFB64
- 891 0018 00000000 		.4byte	.LFB65
- 892 001c 28000000 		.4byte	.LFE65-.LFB65
- 893 0020 00000000 		.4byte	0
- 894 0024 00000000 		.4byte	0
- 895              		.section	.debug_ranges,"",%progbits
- 896              	.Ldebug_ranges0:
- 897 0000 32000000 		.4byte	.LBB2
- 898 0004 54000000 		.4byte	.LBE2
- 899 0008 56000000 		.4byte	.LBB3
- 900 000c 5A000000 		.4byte	.LBE3
- 901 0010 00000000 		.4byte	0
- 902 0014 00000000 		.4byte	0
- 903 0018 00000000 		.4byte	.LFB64
- 904 001c 6C000000 		.4byte	.LFE64
- 905 0020 00000000 		.4byte	.LFB65
- 906 0024 28000000 		.4byte	.LFE65
- 907 0028 00000000 		.4byte	0
- 908 002c 00000000 		.4byte	0
- 909              		.section	.debug_line,"",%progbits
- 910              	.Ldebug_line0:
- 911 0000 C5010000 		.section	.debug_str,"MS",%progbits,1
- 911      02006F01 
- 911      00000201 
- 911      FB0E0D00 
- 911      01010101 
- 912              	.LASF7:
- 913 0000 5F5F7569 		.ascii	"__uint8_t\000"
- 913      6E74385F 
- 913      7400
- 914              	.LASF8:
- 915 000a 5F5F696E 		.ascii	"__int32_t\000"
- 915      7433325F 
- 915      7400
- 916              	.LASF29:
- 917 0014 55534255 		.ascii	"USBUART_GetAll\000"
- 917      4152545F 
- 917      47657441 
- 917      6C6C00
- 918              	.LASF33:
- 919 0023 66756E63 		.ascii	"functions.c\000"
- 919      74696F6E 
- 919      732E6300 
- 920              	.LASF31:
- 921 002f 55534255 		.ascii	"USBUART_PutData\000"
- 921      4152545F 
- 921      50757444 
- 921      61746100 
- 922              	.LASF26:
- 923 003f 55534255 		.ascii	"USBUART_GetConfiguration\000"
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 19
+ 845 00d1 10       		.uleb128 0x10
+ 846 00d2 898201   		.uleb128 0x4109
+ 847 00d5 01       		.byte	0x1
+ 848 00d6 11       		.uleb128 0x11
+ 849 00d7 01       		.uleb128 0x1
+ 850 00d8 31       		.uleb128 0x31
+ 851 00d9 13       		.uleb128 0x13
+ 852 00da 00       		.byte	0
+ 853 00db 00       		.byte	0
+ 854 00dc 11       		.uleb128 0x11
+ 855 00dd 01       		.uleb128 0x1
+ 856 00de 01       		.byte	0x1
+ 857 00df 49       		.uleb128 0x49
+ 858 00e0 13       		.uleb128 0x13
+ 859 00e1 01       		.uleb128 0x1
+ 860 00e2 13       		.uleb128 0x13
+ 861 00e3 00       		.byte	0
+ 862 00e4 00       		.byte	0
+ 863 00e5 12       		.uleb128 0x12
+ 864 00e6 21       		.uleb128 0x21
+ 865 00e7 00       		.byte	0
+ 866 00e8 49       		.uleb128 0x49
+ 867 00e9 13       		.uleb128 0x13
+ 868 00ea 2F       		.uleb128 0x2f
+ 869 00eb 0B       		.uleb128 0xb
+ 870 00ec 00       		.byte	0
+ 871 00ed 00       		.byte	0
+ 872 00ee 13       		.uleb128 0x13
+ 873 00ef 05       		.uleb128 0x5
+ 874 00f0 00       		.byte	0
+ 875 00f1 03       		.uleb128 0x3
+ 876 00f2 0E       		.uleb128 0xe
+ 877 00f3 3A       		.uleb128 0x3a
+ 878 00f4 0B       		.uleb128 0xb
+ 879 00f5 3B       		.uleb128 0x3b
+ 880 00f6 0B       		.uleb128 0xb
+ 881 00f7 49       		.uleb128 0x49
+ 882 00f8 13       		.uleb128 0x13
+ 883 00f9 02       		.uleb128 0x2
+ 884 00fa 17       		.uleb128 0x17
+ 885 00fb 00       		.byte	0
+ 886 00fc 00       		.byte	0
+ 887 00fd 14       		.uleb128 0x14
+ 888 00fe 34       		.uleb128 0x34
+ 889 00ff 00       		.byte	0
+ 890 0100 03       		.uleb128 0x3
+ 891 0101 0E       		.uleb128 0xe
+ 892 0102 3A       		.uleb128 0x3a
+ 893 0103 0B       		.uleb128 0xb
+ 894 0104 3B       		.uleb128 0x3b
+ 895 0105 05       		.uleb128 0x5
+ 896 0106 49       		.uleb128 0x49
+ 897 0107 13       		.uleb128 0x13
+ 898 0108 3F       		.uleb128 0x3f
+ 899 0109 19       		.uleb128 0x19
+ 900 010a 3C       		.uleb128 0x3c
+ 901 010b 19       		.uleb128 0x19
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 19
 
 
- 923      4152545F 
- 923      47657443 
- 923      6F6E6669 
- 923      67757261 
- 924              	.LASF23:
- 925 0058 70757453 		.ascii	"putString\000"
- 925      7472696E 
- 925      6700
- 926              	.LASF30:
- 927 0062 55534255 		.ascii	"USBUART_CDCIsReady\000"
- 927      4152545F 
- 927      43444349 
- 927      73526561 
- 927      647900
- 928              	.LASF17:
- 929 0075 666C6F61 		.ascii	"float\000"
- 929      7400
- 930              	.LASF19:
- 931 007b 73697A65 		.ascii	"size\000"
- 931      00
- 932              	.LASF32:
- 933 0080 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 933      43313120 
- 933      352E342E 
- 933      31203230 
- 933      31363036 
- 934 00b3 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 934      20726576 
- 934      6973696F 
- 934      6E203233 
- 934      37373135 
- 935 00e6 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 935      66756E63 
- 935      74696F6E 
- 935      2D736563 
- 935      74696F6E 
- 936              	.LASF10:
- 937 010e 6C6F6E67 		.ascii	"long unsigned int\000"
- 937      20756E73 
- 937      69676E65 
- 937      6420696E 
- 937      7400
- 938              	.LASF6:
- 939 0120 73686F72 		.ascii	"short unsigned int\000"
- 939      7420756E 
- 939      7369676E 
- 939      65642069 
- 939      6E7400
- 940              	.LASF4:
- 941 0133 756E7369 		.ascii	"unsigned char\000"
- 941      676E6564 
- 941      20636861 
- 941      7200
- 942              	.LASF18:
- 943 0141 646F7562 		.ascii	"double\000"
- 943      6C6500
- 944              	.LASF24:
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 20
+ 902 010c 00       		.byte	0
+ 903 010d 00       		.byte	0
+ 904 010e 15       		.uleb128 0x15
+ 905 010f 35       		.uleb128 0x35
+ 906 0110 00       		.byte	0
+ 907 0111 49       		.uleb128 0x49
+ 908 0112 13       		.uleb128 0x13
+ 909 0113 00       		.byte	0
+ 910 0114 00       		.byte	0
+ 911 0115 16       		.uleb128 0x16
+ 912 0116 2E       		.uleb128 0x2e
+ 913 0117 00       		.byte	0
+ 914 0118 3F       		.uleb128 0x3f
+ 915 0119 19       		.uleb128 0x19
+ 916 011a 3C       		.uleb128 0x3c
+ 917 011b 19       		.uleb128 0x19
+ 918 011c 6E       		.uleb128 0x6e
+ 919 011d 0E       		.uleb128 0xe
+ 920 011e 03       		.uleb128 0x3
+ 921 011f 0E       		.uleb128 0xe
+ 922 0120 3A       		.uleb128 0x3a
+ 923 0121 0B       		.uleb128 0xb
+ 924 0122 3B       		.uleb128 0x3b
+ 925 0123 0B       		.uleb128 0xb
+ 926 0124 00       		.byte	0
+ 927 0125 00       		.byte	0
+ 928 0126 17       		.uleb128 0x17
+ 929 0127 2E       		.uleb128 0x2e
+ 930 0128 00       		.byte	0
+ 931 0129 3F       		.uleb128 0x3f
+ 932 012a 19       		.uleb128 0x19
+ 933 012b 3C       		.uleb128 0x3c
+ 934 012c 19       		.uleb128 0x19
+ 935 012d 6E       		.uleb128 0x6e
+ 936 012e 0E       		.uleb128 0xe
+ 937 012f 03       		.uleb128 0x3
+ 938 0130 0E       		.uleb128 0xe
+ 939 0131 3A       		.uleb128 0x3a
+ 940 0132 0B       		.uleb128 0xb
+ 941 0133 3B       		.uleb128 0x3b
+ 942 0134 05       		.uleb128 0x5
+ 943 0135 00       		.byte	0
+ 944 0136 00       		.byte	0
+ 945 0137 00       		.byte	0
+ 946              		.section	.debug_loc,"",%progbits
+ 947              	.Ldebug_loc0:
+ 948              	.LLST0:
+ 949 0000 00000000 		.4byte	.LVL0
+ 950 0004 18000000 		.4byte	.LVL4
+ 951 0008 0100     		.2byte	0x1
+ 952 000a 50       		.byte	0x50
+ 953 000b 18000000 		.4byte	.LVL4
+ 954 000f C6000000 		.4byte	.LFE64
+ 955 0013 0100     		.2byte	0x1
+ 956 0015 55       		.byte	0x55
+ 957 0016 00000000 		.4byte	0
+ 958 001a 00000000 		.4byte	0
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 20
 
 
- 945 0148 55534255 		.ascii	"USBUART_PutCRLF\000"
- 945      4152545F 
- 945      50757443 
- 945      524C4600 
- 946              	.LASF25:
- 947 0158 55534255 		.ascii	"USBUART_IsConfigurationChanged\000"
- 947      4152545F 
- 947      4973436F 
- 947      6E666967 
- 947      75726174 
- 948              	.LASF16:
- 949 0177 75696E74 		.ascii	"uint16\000"
- 949      313600
- 950              	.LASF35:
- 951 017e 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 951      52784275 
- 951      66666572 
- 951      00
- 952              	.LASF0:
- 953 018b 756E7369 		.ascii	"unsigned int\000"
- 953      676E6564 
- 953      20696E74 
- 953      00
- 954              	.LASF27:
- 955 0198 55534255 		.ascii	"USBUART_CDC_Init\000"
- 955      4152545F 
- 955      4344435F 
- 955      496E6974 
- 955      00
- 956              	.LASF11:
- 957 01a9 6C6F6E67 		.ascii	"long long unsigned int\000"
- 957      206C6F6E 
- 957      6720756E 
- 957      7369676E 
- 957      65642069 
- 958              	.LASF14:
- 959 01c0 75696E74 		.ascii	"uint8_t\000"
- 959      385F7400 
- 960              	.LASF28:
- 961 01c8 55534255 		.ascii	"USBUART_DataIsReady\000"
- 961      4152545F 
- 961      44617461 
- 961      49735265 
- 961      61647900 
- 962              	.LASF15:
- 963 01dc 696E7433 		.ascii	"int32_t\000"
- 963      325F7400 
- 964              	.LASF12:
- 965 01e4 73697A65 		.ascii	"sizetype\000"
- 965      74797065 
- 965      00
- 966              	.LASF1:
- 967 01ed 6C6F6E67 		.ascii	"long long int\000"
- 967      206C6F6E 
- 967      6720696E 
- 967      7400
- 968              	.LASF13:
-ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccOPO4q0.s 			page 21
+ 959              	.LLST1:
+ 960 001e 08000000 		.4byte	.LVL1
+ 961 0022 0C000000 		.4byte	.LVL2
+ 962 0026 0200     		.2byte	0x2
+ 963 0028 31       		.byte	0x31
+ 964 0029 9F       		.byte	0x9f
+ 965 002a 0C000000 		.4byte	.LVL2
+ 966 002e 10000000 		.4byte	.LVL3
+ 967 0032 0200     		.2byte	0x2
+ 968 0034 32       		.byte	0x32
+ 969 0035 9F       		.byte	0x9f
+ 970 0036 10000000 		.4byte	.LVL3
+ 971 003a 90000000 		.4byte	.LVL27
+ 972 003e 0200     		.2byte	0x2
+ 973 0040 33       		.byte	0x33
+ 974 0041 9F       		.byte	0x9f
+ 975 0042 90000000 		.4byte	.LVL27
+ 976 0046 98000000 		.4byte	.LVL29
+ 977 004a 0200     		.2byte	0x2
+ 978 004c 34       		.byte	0x34
+ 979 004d 9F       		.byte	0x9f
+ 980 004e 98000000 		.4byte	.LVL29
+ 981 0052 9A000000 		.4byte	.LVL30
+ 982 0056 0200     		.2byte	0x2
+ 983 0058 35       		.byte	0x35
+ 984 0059 9F       		.byte	0x9f
+ 985 005a 9A000000 		.4byte	.LVL30
+ 986 005e 9E000000 		.4byte	.LVL31
+ 987 0062 0200     		.2byte	0x2
+ 988 0064 36       		.byte	0x36
+ 989 0065 9F       		.byte	0x9f
+ 990 0066 9E000000 		.4byte	.LVL31
+ 991 006a A8000000 		.4byte	.LVL33
+ 992 006e 0200     		.2byte	0x2
+ 993 0070 37       		.byte	0x37
+ 994 0071 9F       		.byte	0x9f
+ 995 0072 A8000000 		.4byte	.LVL33
+ 996 0076 B6000000 		.4byte	.LVL35
+ 997 007a 0300     		.2byte	0x3
+ 998 007c 70       		.byte	0x70
+ 999 007d 01       		.sleb128 1
+ 1000 007e 9F       		.byte	0x9f
+ 1001 007f B6000000 		.4byte	.LVL35
+ 1002 0083 BA000000 		.4byte	.LVL36
+ 1003 0087 0100     		.2byte	0x1
+ 1004 0089 50       		.byte	0x50
+ 1005 008a BA000000 		.4byte	.LVL36
+ 1006 008e C0000000 		.4byte	.LVL38
+ 1007 0092 0300     		.2byte	0x3
+ 1008 0094 70       		.byte	0x70
+ 1009 0095 01       		.sleb128 1
+ 1010 0096 9F       		.byte	0x9f
+ 1011 0097 C0000000 		.4byte	.LVL38
+ 1012 009b C6000000 		.4byte	.LFE64
+ 1013 009f 0100     		.2byte	0x1
+ 1014 00a1 50       		.byte	0x50
+ 1015 00a2 00000000 		.4byte	0
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 21
 
 
- 969 01fb 63686172 		.ascii	"char\000"
- 969      00
- 970              	.LASF22:
- 971 0200 67657453 		.ascii	"getString\000"
- 971      7472696E 
- 971      6700
- 972              	.LASF20:
- 973 020a 636F756E 		.ascii	"count\000"
- 973      7400
- 974              	.LASF5:
- 975 0210 73686F72 		.ascii	"short int\000"
- 975      7420696E 
- 975      7400
- 976              	.LASF21:
- 977 021a 62756666 		.ascii	"buffer\000"
- 977      657200
- 978              	.LASF9:
- 979 0221 6C6F6E67 		.ascii	"long int\000"
- 979      20696E74 
- 979      00
- 980              	.LASF2:
- 981 022a 6C6F6E67 		.ascii	"long double\000"
- 981      20646F75 
- 981      626C6500 
- 982              	.LASF3:
- 983 0236 7369676E 		.ascii	"signed char\000"
- 983      65642063 
- 983      68617200 
- 984              	.LASF34:
- 985 0242 433A5C55 		.ascii	"C:\\Users\\schledererj\\sdp\\github\\networking-pro"
- 985      73657273 
- 985      5C736368 
- 985      6C656465 
- 985      7265726A 
- 986 0270 6A656374 		.ascii	"ject\\networking.cydsn\000"
- 986      5C6E6574 
- 986      776F726B 
- 986      696E672E 
- 986      63796473 
- 987              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1016 00a6 00000000 		.4byte	0
+ 1017              	.LLST2:
+ 1018 00aa 08000000 		.4byte	.LVL1
+ 1019 00ae 18000000 		.4byte	.LVL4
+ 1020 00b2 0200     		.2byte	0x2
+ 1021 00b4 31       		.byte	0x31
+ 1022 00b5 9F       		.byte	0x9f
+ 1023 00b6 18000000 		.4byte	.LVL4
+ 1024 00ba C6000000 		.4byte	.LFE64
+ 1025 00be 0100     		.2byte	0x1
+ 1026 00c0 54       		.byte	0x54
+ 1027 00c1 00000000 		.4byte	0
+ 1028 00c5 00000000 		.4byte	0
+ 1029              	.LLST3:
+ 1030 00c9 08000000 		.4byte	.LVL1
+ 1031 00cd 18000000 		.4byte	.LVL4
+ 1032 00d1 0200     		.2byte	0x2
+ 1033 00d3 30       		.byte	0x30
+ 1034 00d4 9F       		.byte	0x9f
+ 1035 00d5 18000000 		.4byte	.LVL4
+ 1036 00d9 C6000000 		.4byte	.LFE64
+ 1037 00dd 0100     		.2byte	0x1
+ 1038 00df 57       		.byte	0x57
+ 1039 00e0 00000000 		.4byte	0
+ 1040 00e4 00000000 		.4byte	0
+ 1041              	.LLST4:
+ 1042 00e8 08000000 		.4byte	.LVL1
+ 1043 00ec 18000000 		.4byte	.LVL4
+ 1044 00f0 0200     		.2byte	0x2
+ 1045 00f2 30       		.byte	0x30
+ 1046 00f3 9F       		.byte	0x9f
+ 1047 00f4 18000000 		.4byte	.LVL4
+ 1048 00f8 62000000 		.4byte	.LVL17
+ 1049 00fc 0100     		.2byte	0x1
+ 1050 00fe 56       		.byte	0x56
+ 1051 00ff 62000000 		.4byte	.LVL17
+ 1052 0103 6C000000 		.4byte	.LVL18
+ 1053 0107 0300     		.2byte	0x3
+ 1054 0109 76       		.byte	0x76
+ 1055 010a 01       		.sleb128 1
+ 1056 010b 9F       		.byte	0x9f
+ 1057 010c 6C000000 		.4byte	.LVL18
+ 1058 0110 C6000000 		.4byte	.LFE64
+ 1059 0114 0100     		.2byte	0x1
+ 1060 0116 56       		.byte	0x56
+ 1061 0117 00000000 		.4byte	0
+ 1062 011b 00000000 		.4byte	0
+ 1063              	.LLST5:
+ 1064 011f 08000000 		.4byte	.LVL1
+ 1065 0123 18000000 		.4byte	.LVL4
+ 1066 0127 0200     		.2byte	0x2
+ 1067 0129 30       		.byte	0x30
+ 1068 012a 9F       		.byte	0x9f
+ 1069 012b 18000000 		.4byte	.LVL4
+ 1070 012f 6E000000 		.4byte	.LVL19
+ 1071 0133 0100     		.2byte	0x1
+ 1072 0135 58       		.byte	0x58
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 22
+
+
+ 1073 0136 6E000000 		.4byte	.LVL19
+ 1074 013a 7A000000 		.4byte	.LVL20
+ 1075 013e 0300     		.2byte	0x3
+ 1076 0140 78       		.byte	0x78
+ 1077 0141 01       		.sleb128 1
+ 1078 0142 9F       		.byte	0x9f
+ 1079 0143 7A000000 		.4byte	.LVL20
+ 1080 0147 88000000 		.4byte	.LVL25
+ 1081 014b 0100     		.2byte	0x1
+ 1082 014d 58       		.byte	0x58
+ 1083 014e 88000000 		.4byte	.LVL25
+ 1084 0152 8C000000 		.4byte	.LVL26
+ 1085 0156 0300     		.2byte	0x3
+ 1086 0158 78       		.byte	0x78
+ 1087 0159 01       		.sleb128 1
+ 1088 015a 9F       		.byte	0x9f
+ 1089 015b 00000000 		.4byte	0
+ 1090 015f 00000000 		.4byte	0
+ 1091              	.LLST6:
+ 1092 0163 08000000 		.4byte	.LVL1
+ 1093 0167 18000000 		.4byte	.LVL4
+ 1094 016b 0200     		.2byte	0x2
+ 1095 016d 30       		.byte	0x30
+ 1096 016e 9F       		.byte	0x9f
+ 1097 016f 3C000000 		.4byte	.LVL11
+ 1098 0173 40000000 		.4byte	.LVL12
+ 1099 0177 0100     		.2byte	0x1
+ 1100 0179 50       		.byte	0x50
+ 1101 017a 40000000 		.4byte	.LVL12
+ 1102 017e 53000000 		.4byte	.LVL14-1
+ 1103 0182 0100     		.2byte	0x1
+ 1104 0184 51       		.byte	0x51
+ 1105 0185 56000000 		.4byte	.LVL15
+ 1106 0189 7E000000 		.4byte	.LVL22
+ 1107 018d 0100     		.2byte	0x1
+ 1108 018f 51       		.byte	0x51
+ 1109 0190 7E000000 		.4byte	.LVL22
+ 1110 0194 80000000 		.4byte	.LVL23
+ 1111 0198 0100     		.2byte	0x1
+ 1112 019a 50       		.byte	0x50
+ 1113 019b 80000000 		.4byte	.LVL23
+ 1114 019f 84000000 		.4byte	.LVL24
+ 1115 01a3 0100     		.2byte	0x1
+ 1116 01a5 51       		.byte	0x51
+ 1117 01a6 00000000 		.4byte	0
+ 1118 01aa 00000000 		.4byte	0
+ 1119              	.LLST7:
+ 1120 01ae 40000000 		.4byte	.LVL12
+ 1121 01b2 53000000 		.4byte	.LVL14-1
+ 1122 01b6 0100     		.2byte	0x1
+ 1123 01b8 53       		.byte	0x53
+ 1124 01b9 56000000 		.4byte	.LVL15
+ 1125 01bd 7E000000 		.4byte	.LVL22
+ 1126 01c1 0100     		.2byte	0x1
+ 1127 01c3 53       		.byte	0x53
+ 1128 01c4 80000000 		.4byte	.LVL23
+ 1129 01c8 84000000 		.4byte	.LVL24
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 23
+
+
+ 1130 01cc 0100     		.2byte	0x1
+ 1131 01ce 53       		.byte	0x53
+ 1132 01cf 00000000 		.4byte	0
+ 1133 01d3 00000000 		.4byte	0
+ 1134              	.LLST8:
+ 1135 01d7 A2000000 		.4byte	.LVL32
+ 1136 01db A8000000 		.4byte	.LVL33
+ 1137 01df 0200     		.2byte	0x2
+ 1138 01e1 30       		.byte	0x30
+ 1139 01e2 9F       		.byte	0x9f
+ 1140 01e3 A8000000 		.4byte	.LVL33
+ 1141 01e7 BC000000 		.4byte	.LVL37
+ 1142 01eb 0100     		.2byte	0x1
+ 1143 01ed 53       		.byte	0x53
+ 1144 01ee 00000000 		.4byte	0
+ 1145 01f2 00000000 		.4byte	0
+ 1146              	.LLST9:
+ 1147 01f6 00000000 		.4byte	.LVL39
+ 1148 01fa 06000000 		.4byte	.LVL40
+ 1149 01fe 0100     		.2byte	0x1
+ 1150 0200 50       		.byte	0x50
+ 1151 0201 06000000 		.4byte	.LVL40
+ 1152 0205 28000000 		.4byte	.LFE65
+ 1153 0209 0100     		.2byte	0x1
+ 1154 020b 54       		.byte	0x54
+ 1155 020c 00000000 		.4byte	0
+ 1156 0210 00000000 		.4byte	0
+ 1157              	.LLST10:
+ 1158 0214 00000000 		.4byte	.LVL39
+ 1159 0218 06000000 		.4byte	.LVL40
+ 1160 021c 0100     		.2byte	0x1
+ 1161 021e 51       		.byte	0x51
+ 1162 021f 06000000 		.4byte	.LVL40
+ 1163 0223 28000000 		.4byte	.LFE65
+ 1164 0227 0400     		.2byte	0x4
+ 1165 0229 F3       		.byte	0xf3
+ 1166 022a 01       		.uleb128 0x1
+ 1167 022b 51       		.byte	0x51
+ 1168 022c 9F       		.byte	0x9f
+ 1169 022d 00000000 		.4byte	0
+ 1170 0231 00000000 		.4byte	0
+ 1171              		.section	.debug_aranges,"",%progbits
+ 1172 0000 24000000 		.4byte	0x24
+ 1173 0004 0200     		.2byte	0x2
+ 1174 0006 00000000 		.4byte	.Ldebug_info0
+ 1175 000a 04       		.byte	0x4
+ 1176 000b 00       		.byte	0
+ 1177 000c 0000     		.2byte	0
+ 1178 000e 0000     		.2byte	0
+ 1179 0010 00000000 		.4byte	.LFB64
+ 1180 0014 C6000000 		.4byte	.LFE64-.LFB64
+ 1181 0018 00000000 		.4byte	.LFB65
+ 1182 001c 28000000 		.4byte	.LFE65-.LFB65
+ 1183 0020 00000000 		.4byte	0
+ 1184 0024 00000000 		.4byte	0
+ 1185              		.section	.debug_ranges,"",%progbits
+ 1186              	.Ldebug_ranges0:
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 24
+
+
+ 1187 0000 3E000000 		.4byte	.LBB2
+ 1188 0004 7E000000 		.4byte	.LBE2
+ 1189 0008 80000000 		.4byte	.LBB3
+ 1190 000c 84000000 		.4byte	.LBE3
+ 1191 0010 00000000 		.4byte	0
+ 1192 0014 00000000 		.4byte	0
+ 1193 0018 A2000000 		.4byte	.LBB4
+ 1194 001c A4000000 		.4byte	.LBE4
+ 1195 0020 A6000000 		.4byte	.LBB5
+ 1196 0024 BA000000 		.4byte	.LBE5
+ 1197 0028 00000000 		.4byte	0
+ 1198 002c 00000000 		.4byte	0
+ 1199 0030 00000000 		.4byte	.LFB64
+ 1200 0034 C6000000 		.4byte	.LFE64
+ 1201 0038 00000000 		.4byte	.LFB65
+ 1202 003c 28000000 		.4byte	.LFE65
+ 1203 0040 00000000 		.4byte	0
+ 1204 0044 00000000 		.4byte	0
+ 1205              		.section	.debug_line,"",%progbits
+ 1206              	.Ldebug_line0:
+ 1207 0000 62020000 		.section	.debug_str,"MS",%progbits,1
+ 1207      0200E301 
+ 1207      00000201 
+ 1207      FB0E0D00 
+ 1207      01010101 
+ 1208              	.LASF7:
+ 1209 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1209      6E74385F 
+ 1209      7400
+ 1210              	.LASF8:
+ 1211 000a 5F5F696E 		.ascii	"__int32_t\000"
+ 1211      7433325F 
+ 1211      7400
+ 1212              	.LASF34:
+ 1213 0014 55534255 		.ascii	"USBUART_GetAll\000"
+ 1213      4152545F 
+ 1213      47657441 
+ 1213      6C6C00
+ 1214              	.LASF21:
+ 1215 0023 64617461 		.ascii	"data_size\000"
+ 1215      5F73697A 
+ 1215      6500
+ 1216              	.LASF39:
+ 1217 002d 66756E63 		.ascii	"functions.c\000"
+ 1217      74696F6E 
+ 1217      732E6300 
+ 1218              	.LASF37:
+ 1219 0039 55534255 		.ascii	"USBUART_PutData\000"
+ 1219      4152545F 
+ 1219      50757444 
+ 1219      61746100 
+ 1220              	.LASF31:
+ 1221 0049 55534255 		.ascii	"USBUART_GetConfiguration\000"
+ 1221      4152545F 
+ 1221      47657443 
+ 1221      6F6E6669 
+ 1221      67757261 
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 25
+
+
+ 1222              	.LASF28:
+ 1223 0062 70757453 		.ascii	"putString\000"
+ 1223      7472696E 
+ 1223      6700
+ 1224              	.LASF36:
+ 1225 006c 55534255 		.ascii	"USBUART_CDCIsReady\000"
+ 1225      4152545F 
+ 1225      43444349 
+ 1225      73526561 
+ 1225      647900
+ 1226              	.LASF17:
+ 1227 007f 666C6F61 		.ascii	"float\000"
+ 1227      7400
+ 1228              	.LASF22:
+ 1229 0085 64617461 		.ascii	"data\000"
+ 1229      00
+ 1230              	.LASF19:
+ 1231 008a 73697A65 		.ascii	"size\000"
+ 1231      00
+ 1232              	.LASF38:
+ 1233 008f 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1233      43313120 
+ 1233      352E342E 
+ 1233      31203230 
+ 1233      31363036 
+ 1234 00c2 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1234      20726576 
+ 1234      6973696F 
+ 1234      6E203233 
+ 1234      37373135 
+ 1235 00f5 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1235      66756E63 
+ 1235      74696F6E 
+ 1235      2D736563 
+ 1235      74696F6E 
+ 1236              	.LASF20:
+ 1237 011d 61646472 		.ascii	"addr_data\000"
+ 1237      5F646174 
+ 1237      6100
+ 1238              	.LASF10:
+ 1239 0127 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1239      20756E73 
+ 1239      69676E65 
+ 1239      6420696E 
+ 1239      7400
+ 1240              	.LASF24:
+ 1241 0139 61646472 		.ascii	"addr\000"
+ 1241      00
+ 1242              	.LASF4:
+ 1243 013e 756E7369 		.ascii	"unsigned char\000"
+ 1243      676E6564 
+ 1243      20636861 
+ 1243      7200
+ 1244              	.LASF18:
+ 1245 014c 646F7562 		.ascii	"double\000"
+ 1245      6C6500
+ 1246              	.LASF29:
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 26
+
+
+ 1247 0153 55534255 		.ascii	"USBUART_PutCRLF\000"
+ 1247      4152545F 
+ 1247      50757443 
+ 1247      524C4600 
+ 1248              	.LASF30:
+ 1249 0163 55534255 		.ascii	"USBUART_IsConfigurationChanged\000"
+ 1249      4152545F 
+ 1249      4973436F 
+ 1249      6E666967 
+ 1249      75726174 
+ 1250              	.LASF23:
+ 1251 0182 61646472 		.ascii	"addr_size\000"
+ 1251      5F73697A 
+ 1251      6500
+ 1252              	.LASF16:
+ 1253 018c 75696E74 		.ascii	"uint16\000"
+ 1253      313600
+ 1254              	.LASF41:
+ 1255 0193 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1255      52784275 
+ 1255      66666572 
+ 1255      00
+ 1256              	.LASF0:
+ 1257 01a0 756E7369 		.ascii	"unsigned int\000"
+ 1257      676E6564 
+ 1257      20696E74 
+ 1257      00
+ 1258              	.LASF32:
+ 1259 01ad 55534255 		.ascii	"USBUART_CDC_Init\000"
+ 1259      4152545F 
+ 1259      4344435F 
+ 1259      496E6974 
+ 1259      00
+ 1260              	.LASF11:
+ 1261 01be 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1261      206C6F6E 
+ 1261      6720756E 
+ 1261      7369676E 
+ 1261      65642069 
+ 1262              	.LASF14:
+ 1263 01d5 75696E74 		.ascii	"uint8_t\000"
+ 1263      385F7400 
+ 1264              	.LASF33:
+ 1265 01dd 55534255 		.ascii	"USBUART_DataIsReady\000"
+ 1265      4152545F 
+ 1265      44617461 
+ 1265      49735265 
+ 1265      61647900 
+ 1266              	.LASF35:
+ 1267 01f1 61746F69 		.ascii	"atoi\000"
+ 1267      00
+ 1268              	.LASF15:
+ 1269 01f6 696E7433 		.ascii	"int32_t\000"
+ 1269      325F7400 
+ 1270              	.LASF12:
+ 1271 01fe 73697A65 		.ascii	"sizetype\000"
+ 1271      74797065 
+ARM GAS  C:\Users\SCHLED~1\AppData\Local\Temp\ccSeMzyh.s 			page 27
+
+
+ 1271      00
+ 1272              	.LASF6:
+ 1273 0207 73686F72 		.ascii	"short unsigned int\000"
+ 1273      7420756E 
+ 1273      7369676E 
+ 1273      65642069 
+ 1273      6E7400
+ 1274              	.LASF1:
+ 1275 021a 6C6F6E67 		.ascii	"long long int\000"
+ 1275      206C6F6E 
+ 1275      6720696E 
+ 1275      7400
+ 1276              	.LASF13:
+ 1277 0228 63686172 		.ascii	"char\000"
+ 1277      00
+ 1278              	.LASF27:
+ 1279 022d 67657453 		.ascii	"getString\000"
+ 1279      7472696E 
+ 1279      6700
+ 1280              	.LASF26:
+ 1281 0237 636F756E 		.ascii	"count\000"
+ 1281      7400
+ 1282              	.LASF5:
+ 1283 023d 73686F72 		.ascii	"short int\000"
+ 1283      7420696E 
+ 1283      7400
+ 1284              	.LASF25:
+ 1285 0247 62756666 		.ascii	"buffer\000"
+ 1285      657200
+ 1286              	.LASF9:
+ 1287 024e 6C6F6E67 		.ascii	"long int\000"
+ 1287      20696E74 
+ 1287      00
+ 1288              	.LASF2:
+ 1289 0257 6C6F6E67 		.ascii	"long double\000"
+ 1289      20646F75 
+ 1289      626C6500 
+ 1290              	.LASF3:
+ 1291 0263 7369676E 		.ascii	"signed char\000"
+ 1291      65642063 
+ 1291      68617200 
+ 1292              	.LASF40:
+ 1293 026f 433A5C55 		.ascii	"C:\\Users\\schledererj\\sdp\\github\\networking-pro"
+ 1293      73657273 
+ 1293      5C736368 
+ 1293      6C656465 
+ 1293      7265726A 
+ 1294 029d 6A656374 		.ascii	"ject\\networking.cydsn\000"
+ 1294      5C6E6574 
+ 1294      776F726B 
+ 1294      696E672E 
+ 1294      63796473 
+ 1295              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

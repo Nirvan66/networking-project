@@ -14,12 +14,28 @@
 
 
 int getString(char *c)
-{
-    
+{   
     int size=0;
-    int count=0;
+    
+    //used to check for new line at the end of data entry
     int brk=1;
+    //used to check for ',' to seprate address and data
+    int addr_data=0;
+
+    //used to store data
+    int data_size=0;
+    char data[44];
+    
+    //used to store address
+    int addr_size=0;
+    char addr[5];
+    
     uint8_t buffer[10];
+    int count=0;
+    
+    c[size++]=0;
+    c[size++]=1;
+    c[size++]=(char)103;
     do
     {
         if (0u != USBUART_IsConfigurationChanged())
@@ -55,23 +71,41 @@ int getString(char *c)
                         {
                             brk=!brk;
                             USBUART_PutCRLF();
+                            break;
+                        }
+                        if(buffer[i]==',')
+                        {
+                            addr_data=!addr_data;
                         }
                         else
                         {
-                            c[size]=buffer[i];
-                            size++;
+                            if(addr_data)
+                            {
+                                data[data_size++]=buffer[i];
+                            }
+                            else
+                            {
+                                addr[addr_size++]=buffer[i];
+                            }
                         }
                     }
-                    //LCD_PrintNumber(count);
-                    //USBUART_PutData(buffer, count);
                 }
             }
         }
     }while(brk);
-    c[size]='\0';
-    size++;
+    addr[addr_size++]='\0';
+    c[size++]=(char)atoi(addr);
+    c[size++]=(char)data_size;
+    c[size++]=(char)128;
+    c[size++]=(char)0b1110111;
+    for(int i=0;i<data_size;i++)
+    {
+        c[size++]=data[i];
+    }
+    c[size++]='\0';
     return size;
 }
+
 
 int putString(char * buffer, uint16 count)
 {
