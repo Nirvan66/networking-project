@@ -24,7 +24,7 @@ int check_for_low = 0;
 unsigned char rx_bits[16];
 int rx_bit_idx = 0;
 int rx_buffer_idx = 0;;
-char rx_buffer[50];
+char rx_buffer[52];
 int receiving = 0;
 
 CY_ISR(InterruptHandler)
@@ -39,6 +39,15 @@ CY_ISR(InterruptHandler)
         cur_state = IDLE;
         if (*(rx_buffer) != '\0')
         {
+            /*
+            char dest_addr = *(rx_buffer + 3);
+            if (dest_addr == 0xE7)
+            {
+                //char payload[44];
+                //memcpy(payload, &rx_buffer[8], 44);
+                putString(rx_buffer, rx_buffer_idx);
+            }
+            */
             putString(rx_buffer, rx_buffer_idx);
             rx_buffer_idx = 0;
         }
@@ -142,11 +151,14 @@ int main(void)
     
     for(;;)
     {
-        LCD_Position(1,0);
-        LCD_PrintString(" READING STRING");
+        //LCD_Position(1,0);
+        //LCD_PrintString(" READING STRING");
         
-        getString(input);
-
+        //char prompt[24]="Format: <address>,<data>";
+        //putString(prompt,24);
+        
+        int message_length = getString(input);
+        
         transmission_complete=0;
         idx=0;
         
@@ -166,15 +178,17 @@ int main(void)
                         from_collision = 0;
                     }
                     */
-                    LCD_ClearDisplay();
-                    LCD_Position(0,0);
-                    LCD_PrintString("IDLE: ");
-                    LCD_PrintString(input);
-                    LCD_PrintString("At: ");
-                    LCD_PrintNumber(idx);
+                    //LCD_ClearDisplay();
+                    //LCD_Position(0,0);
+                    //LCD_PrintString("IDLE: ");
+                    //LCD_PrintString(input);
+                    //LCD_PrintString("At: ");
+                    //LCD_PrintNumber(idx);
                     
-                    if((transmit = * (input + idx)) != '\0')
+                    //if((transmit = * (input + idx)) != '\0')
+                    if(idx < message_length - 1)
                     {
+                        transmit = * (input + idx);
                         NETWORK_OUT_Write(1);
                         CyDelayUs(delay);
                         NETWORK_OUT_Write(0);
@@ -183,7 +197,14 @@ int main(void)
                         char binary[8];
                     
                         // Convert to binary
-                        itoa(transmit, binary, 2);
+                        // TODO: fix this
+                        if(transmit == '\0')
+                        {
+                            strcpy(binary, "0000000");
+                        } else
+                        {
+                            itoa(transmit, binary, 2);
+                        }
                         for (int i = 0; i < 7; ++i)
                         {
                             if (binary[i] == '0')
@@ -204,10 +225,10 @@ int main(void)
                     else
                     {
                         transmission_complete=1;
-                        LCD_ClearDisplay();
-                        LCD_Position(0,0);
-                        LCD_PrintString("Sent:");
-                        LCD_PrintString(input);
+                        //LCD_ClearDisplay();
+                        //LCD_Position(0,0);
+                        //LCD_PrintString("Sent:");
+                        //LCD_PrintString(input);
                     }
                     
                     
@@ -216,10 +237,10 @@ int main(void)
                 case COLLISION:
                     
                     //LCD_ClearDisplay();
-                    LCD_Position(1,0);
-                    LCD_PrintString("                 ");
-                    LCD_Position(1,0);
-                    LCD_PrintString(" COLLISION ");
+                    //LCD_Position(1,0);
+                    //LCD_PrintString("                 ");
+                    //LCD_Position(1,0);
+                    //LCD_PrintString(" COLLISION ");
                     
                     idx=0;
                     NETWORK_OUT_Write(0);
@@ -232,18 +253,18 @@ int main(void)
                     
                 case BUSY_HIGH:
                     //LCD_ClearDisplay();
-                    LCD_Position(1,0);
-                    LCD_PrintString("                 ");
-                    LCD_Position(1,0);
-                    LCD_PrintString(" BUSY_LOW ");
+                    //LCD_Position(1,0);
+                    //LCD_PrintString("                 ");
+                    //LCD_Position(1,0);
+                    //LCD_PrintString(" BUSY_LOW ");
                 break;
                     
                 case BUSY_LOW:
                     //LCD_ClearDisplay();
-                    LCD_Position(1,0);
-                    LCD_PrintString("                 ");
-                    LCD_Position(1,0);
-                    LCD_PrintString(" BUSY_HIGH ");
+                    //LCD_Position(1,0);
+                    //LCD_PrintString("                 ");
+                    //LCD_Position(1,0);
+                    //LCD_PrintString(" BUSY_HIGH ");
                 break;
             }
         }
