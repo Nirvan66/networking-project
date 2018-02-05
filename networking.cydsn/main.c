@@ -24,7 +24,7 @@ int check_for_low = 0;
 unsigned char rx_bits[16];
 int rx_bit_idx = 0;
 int rx_buffer_idx = 0;;
-uint8 rx_buffer[50];
+char rx_buffer[50];
 int receiving = 0;
 
 CY_ISR(InterruptHandler)
@@ -37,6 +37,11 @@ CY_ISR(InterruptHandler)
     
     if (check_for_low == 0){
         cur_state = IDLE;
+        if (*(rx_buffer) != '\0')
+        {
+            putString(rx_buffer, rx_buffer_idx);
+            rx_buffer_idx = 0;
+        }
         //Timer_1_Stop();
     } else {
         cur_state = COLLISION;
@@ -46,11 +51,6 @@ CY_ISR(InterruptHandler)
 
 CY_ISR(rise)
 {
-    if (USBUART_CDCIsReady())
-    {
-        
-    }
-    
     if (check_for_low == 0){
         //Timer_1_WritePeriod(60);
         //Timer_1_WriteCounter(59);
@@ -84,7 +84,7 @@ CY_ISR(fall)
 CY_ISR(Rx)
 {
     char next = 0;
-    int shift_count = 7;
+    int shift_count = 0;
     
     Timer_2_STATUS;
     Timer_2_Start();
@@ -102,13 +102,13 @@ CY_ISR(Rx)
         {
             if (i == 15)
             {
-                next = 0x80;
+                next = 0x00;
             }
             
             if (i % 2 != 0)
             {
-                next = (next | (rx_bits[i] << shift_count));
-                --shift_count;
+                next = (next | (rx_bits[i] << (shift_count-1)));
+                ++shift_count;
             }
         }
         
@@ -124,11 +124,10 @@ int main(void)
     InterruptCnt=0;
     LCD_Start();
     USBUART_Start(USBFS_DEVICE, USBUART_5V_OPERATION);
-    
-    
-    
     isr_1_StartEx(rise);
     isr_2_StartEx(fall);
+    Timer_2_WritePeriod(52);
+    Timer_2_WriteCounter(51);
     RxISR_StartEx(Rx);
 
     uint16 delay = 500;
@@ -151,14 +150,14 @@ int main(void)
         transmission_complete=0;
         idx=0;
         
+        
         while(cur_state != IDLE);
         while(!transmission_complete)
         {
             switch(cur_state)
             {
                 case IDLE :
-                    putString(rx_buffer, rx_buffer_idx);
-                    rx_buffer_idx = 0;
+                    /*
                     if (from_collision == 1)
                     {
                         srand(Timer_1_ReadCounter());
@@ -166,6 +165,7 @@ int main(void)
                         CyDelay((uint32) (((delay)/128.0) * 1000.0));
                         from_collision = 0;
                     }
+                    */
                     LCD_ClearDisplay();
                     LCD_Position(0,0);
                     LCD_PrintString("IDLE: ");
@@ -224,10 +224,10 @@ int main(void)
                     idx=0;
                     NETWORK_OUT_Write(0);
                     
-                    from_collision = 1;
+                    //from_collision = 1;
                 
                     uint32 delay = rand() % 129;
-                    CyDelay((uint32) (((delay)/128) * 1000));
+                    CyDelay((uint32) (((delay)/128.0) * 1000.0));
                 break;
                     
                 case BUSY_HIGH:
@@ -246,7 +246,7 @@ int main(void)
                     LCD_PrintString(" BUSY_HIGH ");
                 break;
             }
-        }  
+        }
     }
 }   
     
