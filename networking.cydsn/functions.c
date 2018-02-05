@@ -12,16 +12,13 @@
 #include "functions.h"
 #include <project.h>
 
+int get(char *c);
 
 int getString(char *c)
-{   
+{
     int size=0;
-    
-    //used to check for new line at the end of data entry
-    int brk=1;
-    //used to check for ',' to seprate address and data
-    int addr_data=0;
-
+    char prompt_adr[26]="Input destination address:";
+    char prompt_data[11]="Input data:";
     //used to store data
     int data_size=0;
     char data[44];
@@ -30,12 +27,39 @@ int getString(char *c)
     int addr_size=0;
     char addr[5];
     
-    uint8_t buffer[10];
-    int count=0;
-    
     c[size++]=0;
     c[size++]=1;
     c[size++]=(char)103;
+    
+    putString("\n",1);
+    USBUART_PutCRLF();
+    putString(prompt_adr,26);
+    addr_size=get(addr);
+    c[size++]=(char)atoi(addr);
+    
+    putString(prompt_data,11);
+    data_size=get(data);
+    
+    c[size++]=(char)data_size;
+    c[size++]=(char)128;
+    c[size++]=(char)0b1110111;
+    for(int i=0;i<data_size;i++)
+    {
+        c[size++]=data[i];
+    }
+    c[size]='\0';
+    return size;
+}
+
+int get(char *c)
+{   
+    int size=0;
+    
+    //used to check for new line at the end of data entry
+    int brk=1;
+    
+    uint8_t buffer[10];
+    int count=0;
     do
     {
         if (0u != USBUART_IsConfigurationChanged())
@@ -73,19 +97,15 @@ int getString(char *c)
                             USBUART_PutCRLF();
                             break;
                         }
-                        if(buffer[i]==',')
-                        {
-                            addr_data=!addr_data;
-                        }
                         else
                         {
-                            if(addr_data)
+                            if(buffer[i]==127)
                             {
-                                data[data_size++]=buffer[i];
+                                if(size>0){size--;}
                             }
                             else
                             {
-                                addr[addr_size++]=buffer[i];
+                                c[size++]=buffer[i];
                             }
                         }
                     }
@@ -93,16 +113,7 @@ int getString(char *c)
             }
         }
     }while(brk);
-    addr[addr_size++]='\0';
-    c[size++]=(char)atoi(addr);
-    c[size++]=(char)data_size;
-    c[size++]=(char)128;
-    c[size++]=(char)0b1110111;
-    for(int i=0;i<data_size;i++)
-    {
-        c[size++]=data[i];
-    }
-    c[size++]='\0';
+    c[size]='\0';
     return size;
 }
 
@@ -113,7 +124,15 @@ int putString(char * buffer, uint16 count)
     USBUART_CDC_Init();
     while(0u == USBUART_CDCIsReady());
     USBUART_PutData(buffer, count);
-    *(buffer) = '\0';
     return 0;
+}
+
+void char_bin(char c, char binary[8])
+{   int i;
+    for (i = 0; i < 7; i++)
+    {
+        binary[(6-i)]=( (c & (1 << i)) ? '1' : '0' );
+    }
+    binary[i]='\0';
 }
 /* [] END OF FILE */

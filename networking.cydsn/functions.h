@@ -17,5 +17,6 @@
     
 int getString(char * c);
 int putString(char * c, uint16 count);
+void char_bin(char c, char binary[8]);
 #endif 
 /* [] END OF FILE */

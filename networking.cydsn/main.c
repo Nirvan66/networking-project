@@ -37,7 +37,7 @@ CY_ISR(InterruptHandler)
     
     if (check_for_low == 0){
         cur_state = IDLE;
-        if (*(rx_buffer) != '\0')
+        if (rx_buffer_idx!=0)
         {
             /*
             char dest_addr = *(rx_buffer + 3);
@@ -51,10 +51,10 @@ CY_ISR(InterruptHandler)
             putString(rx_buffer, rx_buffer_idx);
             rx_buffer_idx = 0;
         }
-        //Timer_1_Stop();
+        Timer_1_Stop();
     } else {
         cur_state = COLLISION;
-        //Timer_1_Stop();
+        Timer_1_Stop();
     }
 }
 
@@ -142,7 +142,6 @@ int main(void)
     uint16 delay = 500;
     char input[44]; 
     uint8 idx = 0;
-    char transmit;
     NETWORK_OUT_Write(0);
     uint8 no_collision = 1;
     int8 transmission_complete = 0;
@@ -154,14 +153,10 @@ int main(void)
         //LCD_Position(1,0);
         //LCD_PrintString(" READING STRING");
         
-        //char prompt[24]="Format: <address>,<data>";
-        //putString(prompt,24);
-        
         int message_length = getString(input);
         
         transmission_complete=0;
         idx=0;
-        
         
         while(cur_state != IDLE);
         while(!transmission_complete)
@@ -184,27 +179,26 @@ int main(void)
                     //LCD_PrintString(input);
                     //LCD_PrintString("At: ");
                     //LCD_PrintNumber(idx);
-                    
                     //if((transmit = * (input + idx)) != '\0')
-                    if(idx < message_length - 1)
+                    if(idx <= message_length)
                     {
-                        transmit = * (input + idx);
+                        char transmit = * (input + idx);
                         NETWORK_OUT_Write(1);
                         CyDelayUs(delay);
                         NETWORK_OUT_Write(0);
                         CyDelayUs(delay);
                         
-                        char binary[8];
-                    
+                        char binary[8]={1};
+                        char_bin(transmit, binary);
                         // Convert to binary
                         // TODO: fix this
-                        if(transmit == '\0')
-                        {
-                            strcpy(binary, "0000000");
-                        } else
-                        {
-                            itoa(transmit, binary, 2);
-                        }
+                        //if(transmit == '\0')
+                        //{
+                        //    strcpy(binary, "0000000");
+                        //} else
+                        //{
+                        //    itoa(transmit, binary,2);
+                        //}
                         for (int i = 0; i < 7; ++i)
                         {
                             if (binary[i] == '0')
