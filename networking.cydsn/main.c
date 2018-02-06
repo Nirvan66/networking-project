@@ -40,26 +40,31 @@ CY_ISR(InterruptHandler)
     if (check_for_low == 0){
         cur_state = IDLE;
         
-        /*
+        
         if (rx_buffer_idx!=0)
         {
             
             char dest_addr = *(rx_buffer + 3);
-            if (dest_addr == 0xE7)
+            
+            if (dest_addr == 103 || dest_addr == 0 || dest_addr == 104 || dest_addr == 105)
             {
-                //char payload[44];
-                //memcpy(payload, &rx_buffer[8], 44);
-                putString(rx_buffer, rx_buffer_idx);
+                char payload[44];
+                memcpy(payload, &rx_buffer[7], 44);
+                
+                putString(payload, *(rx_buffer + 4));
             }
             
-            putString(rx_buffer, rx_buffer_idx);
+            
+            //putString(rx_buffer, rx_buffer_idx);
             rx_buffer_idx = 0;
         }
-        */
+        
         //Timer_1_Stop();
     } else {
         cur_state = COLLISION;
         Timer_1_Stop();
+        Timer_2_Stop();
+        receiving = 0;
     }
 }
 
@@ -122,32 +127,6 @@ CY_ISR(Rx)
                 next = (next | (rx_bits[i] << (shift_count-1)));
                 ++shift_count;
             }
-        }
-        
-        if (rxing_message == 1 && rx_message_length != 0 && rx_buffer_idx >= 7)
-        {
-            char * c = &next;
-            putString(c, 1);
-            --rx_message_length;
-            if (rx_message_length == 0)
-            {
-                rx_buffer_idx = 0;
-                rxing_message = 0;
-            }
-        }
-        
-        if (rxing_message == 1 && rx_buffer_idx == 4)
-        {
-            rx_message_length = next;
-        }
-        
-        if (rx_buffer_idx == 3 && next == 103)
-        {
-            rxing_message = 1;
-        }
-        else if (rx_buffer_idx == 3 && next != 103)
-        {
-            rx_buffer_idx = 0;
         }
                 
         rx_buffer[rx_buffer_idx] = next;
