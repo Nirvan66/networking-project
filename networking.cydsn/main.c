@@ -26,6 +26,7 @@ int rx_bit_idx = 0;
 int rx_buffer_idx = 0;;
 char rx_buffer[52];
 int receiving = 0;
+
 int rxing_message = 0;
 char rx_message_length = 0;
 
@@ -50,6 +51,8 @@ CY_ISR(InterruptHandler)
             {
                 char payload[44];
                 memcpy(payload, &rx_buffer[7], 44);
+                
+                
                 
                 putString(payload, *(rx_buffer + 4));
             }
@@ -128,9 +131,8 @@ CY_ISR(Rx)
                 ++shift_count;
             }
         }
-                
+         
         rx_buffer[rx_buffer_idx] = next;
-        
         ++rx_buffer_idx;
     }
 }

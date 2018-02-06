@@ -19,6 +19,14 @@ int getString(char *c)
     int size=0;
     char prompt_adr[27]="Input destination address:";
     char prompt_data[12]="Input data:";
+    char prompt_intro[48]="Waiting for message. Press enter to send message";
+    
+    char temp[2];
+    putString(prompt_intro,48);
+    putString("\n",1);
+    USBUART_PutCRLF();
+    get(temp);
+    
     //used to store data
     int data_size=0;
     char data[44];
@@ -120,11 +128,10 @@ int get(char *c)
 
 int putString(char * buffer, uint16 count)
 {
-    buffer[count]='.';
     while(0u != USBUART_IsConfigurationChanged());
     USBUART_CDC_Init();
     while(0u == USBUART_CDCIsReady());
-    USBUART_PutData(buffer, count+1);
+    USBUART_PutData(buffer, count);
     return 0;
 }
 
