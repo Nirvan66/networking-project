@@ -51,10 +51,10 @@ CY_ISR(InterruptHandler)
             putString(rx_buffer, rx_buffer_idx);
             rx_buffer_idx = 0;
         }
-        Timer_1_Stop();
+        //Timer_1_Stop();
     } else {
         cur_state = COLLISION;
-        Timer_1_Stop();
+        //Timer_1_Stop();
     }
 }
 
@@ -180,7 +180,7 @@ int main(void)
                     //LCD_PrintString("At: ");
                     //LCD_PrintNumber(idx);
                     //if((transmit = * (input + idx)) != '\0')
-                    if(idx <= message_length)
+                    if(idx < message_length)
                     {
                         char transmit = * (input + idx);
                         NETWORK_OUT_Write(1);
@@ -264,41 +264,4 @@ int main(void)
         }
     }
 }   
-    
-    /*
-    for(;;)
-    {
-        switch(cur_state){
-            case IDLE :;
-                LCD_Position(0,0);
-                LCD_PrintString("      IDLE      ");
-                
-                IDLE_Write(1);
-                BUSY_Write(!IDLE_Read());
-                COLLISION_Write(!IDLE_Read());
-            break;
-            
-            case BUSY_HIGH:;
-            case BUSY_LOW:;
-                LCD_Position(0,0);
-                LCD_PrintString("      BUSY      ");
-                
-                BUSY_Write(1);
-                IDLE_Write(!BUSY_Read());
-                COLLISION_Write(!BUSY_Read());
-            break;
-            
-            case COLLISION:;
-                LCD_Position(0,0);
-                LCD_PrintString("   COLLISION    ");
-                
-                COLLISION_Write(1);
-                IDLE_Write(!COLLISION_Read());
-                BUSY_Write(!COLLISION_Read());
-            break;
-        }
-    }
-    */
-    
-
 /* [] END OF FILE */

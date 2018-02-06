@@ -1,4 +1,4 @@
---------------- Build Started: 02/05/2018 17:49:28 Project: networking, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
+--------------- Build Started: 02/05/2018 18:38:58 Project: networking, Configuration: ARM GCC 5.4-2016-q2-update Debug ---------------
 The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_541\Debug/functions.lst -g -D DEBUG -D CY_CORE_ID=0 -Wall -ffunction-sections -ffat-lto-objects -Og -c functions.c -o .\CortexM3\ARM_GCC_541\Debug\functions.o
 functions.c: In function 'getString':
@@ -6,8 +6,8 @@ functions.c:27:9: warning: variable 'addr_size' set but not used [-Wunused-but-s
      int addr_size=0;
          ^
 functions.c: In function 'putString':
-functions.c:126:21: warning: pointer targets in passing argument 1 of 'USBUART_PutData' differ in signedness [-Wpointer-sign]
-     USBUART_PutData(buffer, count);
+functions.c:127:21: warning: pointer targets in passing argument 1 of 'USBUART_PutData' differ in signedness [-Wpointer-sign]
+     USBUART_PutData(buffer, count+1);
                      ^
 In file included from Generated_Source\PSoC5/project.h:39:0,
                  from functions.h:16,
@@ -20,6 +20,6 @@ arm-none-eabi-ar.exe: creating .\CortexM3\ARM_GCC_541\Debug\networking.a
 arm-none-eabi-gcc.exe -Wl,--start-group -o "C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\CortexM3\ARM_GCC_541\Debug\networking.elf" .\CortexM3\ARM_GCC_541\Debug\main.o .\CortexM3\ARM_GCC_541\Debug\functions.o .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_541\Debug\cymetadata.o .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o .\CortexM3\ARM_GCC_541\Debug\networking.a "C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" -mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,.\CortexM3\ARM_GCC_541\Debug/networking.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -Og -ffat-lto-objects -Wl,--end-group
 cyelftool.exe -C "C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\CortexM3\ARM_GCC_541\Debug\networking.elf" --flash_row_size 256 --flash_size 262144 --flash_offset 0x00000000
 cyelftool.exe -S "C:\Users\poonachatheethiran\Documents\PSoC Creator\networking\networking-project\networking.cydsn\CortexM3\ARM_GCC_541\Debug\networking.elf"
-Flash used: 13480 of 262144 bytes (5.1 %).
+Flash used: 13464 of 262144 bytes (5.1 %).
 SRAM used: 2905 of 65536 bytes (4.4 %). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 02/05/2018 17:49:29 ---------------
+--------------- Build Succeeded: 02/05/2018 18:38:59 ---------------
