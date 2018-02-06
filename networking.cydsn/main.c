@@ -26,6 +26,8 @@ int rx_bit_idx = 0;
 int rx_buffer_idx = 0;;
 char rx_buffer[52];
 int receiving = 0;
+int rxing_message = 0;
+char rx_message_length = 0;
 
 CY_ISR(InterruptHandler)
 {
@@ -37,9 +39,11 @@ CY_ISR(InterruptHandler)
     
     if (check_for_low == 0){
         cur_state = IDLE;
+        
+        /*
         if (rx_buffer_idx!=0)
         {
-            /*
+            
             char dest_addr = *(rx_buffer + 3);
             if (dest_addr == 0xE7)
             {
@@ -47,22 +51,22 @@ CY_ISR(InterruptHandler)
                 //memcpy(payload, &rx_buffer[8], 44);
                 putString(rx_buffer, rx_buffer_idx);
             }
-            */
+            
             putString(rx_buffer, rx_buffer_idx);
             rx_buffer_idx = 0;
         }
+        */
         //Timer_1_Stop();
     } else {
         cur_state = COLLISION;
-        //Timer_1_Stop();
+        Timer_1_Stop();
     }
 }
 
 CY_ISR(rise)
 {
+    Timer_1_Stop();
     if (check_for_low == 0){
-        //Timer_1_WritePeriod(60);
-        //Timer_1_WriteCounter(59);
         Timer_1_WritePeriod(52);
         Timer_1_WriteCounter(51);
         Timer_1_Start();
@@ -79,9 +83,8 @@ CY_ISR(rise)
  
 CY_ISR(fall)
 {
+    Timer_1_Stop();
     if (check_for_low == 1){
-        //Timer_1_WritePeriod(770);
-        //Timer_1_WriteCounter(769);
         Timer_1_WritePeriod(830);
         Timer_1_WriteCounter(829);
         Timer_1_Start();
@@ -121,7 +124,34 @@ CY_ISR(Rx)
             }
         }
         
+        if (rxing_message == 1 && rx_message_length != 0 && rx_buffer_idx >= 7)
+        {
+            char * c = &next;
+            putString(c, 1);
+            --rx_message_length;
+            if (rx_message_length == 0)
+            {
+                rx_buffer_idx = 0;
+                rxing_message = 0;
+            }
+        }
+        
+        if (rxing_message == 1 && rx_buffer_idx == 4)
+        {
+            rx_message_length = next;
+        }
+        
+        if (rx_buffer_idx == 3 && next == 103)
+        {
+            rxing_message = 1;
+        }
+        else if (rx_buffer_idx == 3 && next != 103)
+        {
+            rx_buffer_idx = 0;
+        }
+                
         rx_buffer[rx_buffer_idx] = next;
+        
         ++rx_buffer_idx;
     }
 }
